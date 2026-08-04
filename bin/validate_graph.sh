@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+ROOT=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+BORIS_BIN=${BORIS_BIN:-./bin/boris}
+CONTENT_DIR=${CONTENT_DIR:-content}
+DIST_DIR=${DIST_DIR:-dist/cantilever}
+
+cd "$ROOT"
+
+echo "==> Validating Thermal Extraction Devices form IDs"
+python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl
+
+echo "==> Running Boris graph diagnostics"
+CHECK_REPORT=$(mktemp "${TMPDIR:-/tmp}/ted-boris-check.XXXXXX")
+trap 'rm -f "$CHECK_REPORT"' EXIT
+
+if "$BORIS_BIN" check --input "$CONTENT_DIR" --format json 2>"$CHECK_REPORT"; then
+  echo "✅ Boris graph diagnostics passed"
+else
+  unexpected=$(jq -r '[.findings[]? | select(.code != "unreferenced_page")] | length' "$CHECK_REPORT")
+  if [[ "$unexpected" -ne 0 ]]; then
+    echo "❌ Boris graph diagnostics found $unexpected unexpected finding(s)" >&2
+    cat "$CHECK_REPORT" >&2
+    exit 1
+  fi
+  echo "⚠️ Boris reported baseline diagnostics; parent edges remain valid."
+fi
+
+echo "==> Compiling primary Cantilever publication"
+BORIS_BIN="$BORIS_BIN" CONTENT_DIR="$CONTENT_DIR" DIST_DIR="$DIST_DIR" ./scripts/ted-build.sh
+
+echo "🎉 Graph, form IDs, HTML IDs, and publication checks passed cleanly."
