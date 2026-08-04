@@ -138,7 +138,13 @@ def allocate_form_id(collection: str, used: set[str]) -> str:
 
 
 def content_pages(root: Path) -> list[Path]:
-    return sorted(root.rglob("*.md"), key=lambda path: path.relative_to(root).as_posix())
+    pages = []
+    for path in root.rglob("*.md"):
+        rel = path.relative_to(root)
+        if any(part in ("includes", "_includes") or part.startswith("_") for part in rel.parts[:-1]) or rel.name.startswith("_"):
+            continue
+        pages.append(path)
+    return sorted(pages, key=lambda path: path.relative_to(root).as_posix())
 
 
 def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) -> list[dict[str, str | None]]:
