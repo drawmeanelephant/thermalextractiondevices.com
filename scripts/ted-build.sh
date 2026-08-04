@@ -20,13 +20,20 @@ python3 scripts/audit_markdown_links.py "$CONTENT_DIR"
   --html-dir "$DIST_DIR" \
   --sitemap \
   --site-url "$SITE_URL" \
+  --layout-rule default glob:botanicals/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:changelog/* "$THEME/layouts/compact.html" \
+  --layout-rule default glob:cultivars/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:devices/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:guides/* "$THEME/layouts/compact.html" \
+  --layout-rule default glob:lab-results/* "$THEME/layouts/compact.html" \
+  --layout-rule default glob:law-and-use/* "$THEME/layouts/compact.html" \
+  --layout-rule default glob:manufacturers/* "$THEME/layouts/compact.html" \
+  --layout-rule default glob:products/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:reference/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:releases/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:safety/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:specs/* "$THEME/layouts/compact.html" \
+  --layout-rule default glob:terpenes/* "$THEME/layouts/compact.html" \
   --jobs "$BORIS_JOBS"
 
 python3 scripts/audit_html_ids.py "$DIST_DIR"

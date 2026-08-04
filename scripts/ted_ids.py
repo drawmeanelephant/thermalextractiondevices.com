@@ -12,23 +12,37 @@ from pathlib import Path
 
 
 DEFAULT_PREFIX = {
+    "botanicals": "TBOT",
     "changelog": "TCHG",
+    "cultivars": "TCUL",
     "devices": "TED",
     "guides": "TGDE",
+    "lab-results": "TLAB",
+    "law-and-use": "TLAW",
+    "manufacturers": "TMFR",
+    "products": "TPRD",
     "reference": "TREF",
     "releases": "TREL",
     "safety": "TSAFE",
     "specs": "TSPEC",
+    "terpenes": "TTRP",
 }
 
 FORM_PREFIXES = {
+    "botanicals": ("TBOT",),
     "changelog": ("TCHG",),
+    "cultivars": ("TCUL",),
     "devices": ("TED",),
     "guides": ("TGDE",),
+    "lab-results": ("TLAB",),
+    "law-and-use": ("TLAW",),
+    "manufacturers": ("TMFR",),
+    "products": ("TPRD",),
     "reference": ("TREF",),
     "releases": ("TREL",),
     "safety": ("TSAFE",),
     "specs": ("TSPEC",),
+    "terpenes": ("TTRP",),
 }
 
 ID_PATTERN = re.compile(r"^[A-Z0-9]+(?:-[A-Z0-9]+)*$")

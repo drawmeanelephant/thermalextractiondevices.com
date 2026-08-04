@@ -1,6 +1,7 @@
 dist/
 publish/
 site/
+exports/
 bin/boris*
 node_modules/
 .wrangler/
