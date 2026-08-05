@@ -1,0 +1,262 @@
+#!/usr/bin/env python3
+"""Canonical state-backed ingestion CLI for Thermal Extraction Devices.
+
+Usage
+-----
+
+    python3 scripts/state_ingest.py massachusetts                 # live sync
+    python3 scripts/state_ingest.py massachusetts --fixtures-only # offline, committed fixtures
+    python3 scripts/state_ingest.py massachusetts --dataset licenses --skip-publish
+    python3 scripts/state_ingest.py massachusetts --report-only
+    python3 scripts/state_ingest.py massachusetts --artifacts-dir /mnt/ingest --quiet
+
+Flags
+-----
+--refresh          Force re-download even when an immutable snapshot matches.
+--dataset NAME     Sync only the named dataset (repeatable).
+--artifacts-dir P  Where large raw/normalized artifacts live (default var/ingest/).
+--skip-content     Do not regenerate Boris content pages.
+--skip-publish     Do not run privacy scan / ID / link / Boris validation gates.
+--fixtures-only    Serve all payloads from committed fixtures; no network.
+--report-only      Render a change report from the existing manifest only.
+--quiet            Print only the final summary line.
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as _dt
+import sys
+import tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.ingest.core import ChangeReport, IngestError, utc_now  # noqa: E402
+from scripts.ingest.fetch import Fetcher, FixtureFetcher  # noqa: E402
+from scripts.ingest.ids import NaturalKeyRegistry  # noqa: E402
+from scripts.ingest.storage import ArtifactStore  # noqa: E402
+from scripts.ingest.validation import assert_clean, scan_directory, validate_relations  # noqa: E402
+
+GENERATED_COLLECTIONS = [
+    "jurisdictions", "licenses", "organizations", "testing-laboratories",
+    "contaminants", "datasets", "requirements", "safety-advisories",
+    "affected-products",
+]
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="state_ingest.py",
+        description="Ingest state-backed cannabis data into the Boris archive.",
+    )
+    parser.add_argument("state", choices=["massachusetts"], help="State adapter to run")
+    parser.add_argument("--refresh", action="store_true",
+                        help="Re-download datasets even when snapshots match")
+    parser.add_argument("--dataset", action="append", dest="datasets", default=None,
+                        help="Sync only this dataset (repeatable)")
+    parser.add_argument("--artifacts-dir", type=Path, default=None,
+                        help="Working directory for large artifacts (default var/ingest/<state>-ccc)")
+    parser.add_argument("--skip-content", action="store_true",
+                        help="Do not regenerate Boris content pages")
+    parser.add_argument("--skip-publish", action="store_true",
+                        help="Do not run privacy/ID/link/Boris validation gates")
+    parser.add_argument("--fixtures-only", action="store_true",
+                        help="Serve payloads from committed fixtures; no network")
+    parser.add_argument("--allow-fixture-content", action="store_true",
+                        help="DEV ONLY: allow fixture/synthetic records to generate "
+                             "content. Never use for publishable output.")
+    parser.add_argument("--report-only", action="store_true",
+                        help="Render a change report from the existing manifest only")
+    parser.add_argument("--quiet", action="store_true", help="Minimal output")
+    return parser
+
+
+def _new_store(args, state: str) -> ArtifactStore:
+    if args.fixtures_only:
+        # Fixture runs are fully isolated and must never touch committed data.
+        base = Path(tempfile.mkdtemp(prefix=f"{state}-ingest-fixture-"))
+        return ArtifactStore(state=state,
+                             working_root=base / "var" / "ingest" / f"{state}-ccc",
+                             durable_root=base / "data" / f"{state}-ccc")
+    working = args.artifacts_dir or (ROOT / "var" / "ingest" / f"{state}-ccc")
+    durable = ROOT / "data" / f"{state}-ccc"
+    return ArtifactStore(state=state, working_root=working, durable_root=durable)
+
+
+def main() -> int:
+    args = build_parser().parse_args()
+    state = args.state
+
+    try:
+        from scripts.ingest.states import massachusetts as ma
+    except ImportError as error:  # pragma: no cover
+        print(f"state_ingest: cannot load {state} adapter: {error}", file=sys.stderr)
+        return 2
+
+    # Hard guard: fixture/synthetic records must never reach publishable
+    # content or the durable manifest without an explicit development flag.
+    if (args.fixtures_only and not args.report_only
+            and not args.skip_content and not args.allow_fixture_content):
+        print("state_ingest: refusing to run datasets or generate content in "
+              "fixture-only mode (fixture/synthetic records are for tests "
+              "only). Pass --allow-fixture-content ONLY for isolated "
+              "development output, or run live with official sources.",
+              file=sys.stderr)
+        return 2
+
+    store = _new_store(args, state)
+    registry_path = store.durable_root / "id-map.json"
+    registry = NaturalKeyRegistry(registry_path, ma.ID_PREFIXES, ma.ID_COLLECTIONS)
+
+    if args.report_only:
+        return _report_only(args, store, ma)
+
+    fetcher: object
+    if args.fixtures_only:
+        fixtures = ROOT / "tests" / "fixtures" / state
+        fetcher = FixtureFetcher(fixtures)
+    else:
+        fetcher = Fetcher()
+
+    datasets = args.datasets or list(ma.DATASETS.keys())
+    for requested in args.datasets or []:
+        if requested not in ma.DATASETS:
+            print(f"state_ingest: unknown dataset {requested!r}; "
+                  f"known: {', '.join(sorted(ma.DATASETS))}", file=sys.stderr)
+            return 2
+
+    # Dev-flag output is routed to an isolated, gitignored demo directory so
+    # fixture/synthetic pages can never land in the real content tree.
+    if args.fixtures_only and args.allow_fixture_content and not args.skip_content:
+        demo = ROOT / "var" / "ingest" / f"{state}-ccc" / "demo-content"
+        content_root: Path = demo
+        print(f"state_ingest: dev-flag content will be written to {demo} "
+              "(isolated; never publishable)", file=sys.stderr)
+    else:
+        content_root = ROOT / "content"
+
+    sync = ma.MassachusettsSync(
+        fetch=fetcher, store=store, registry=registry,
+        content_root=content_root, datasets=datasets,
+        refresh=args.refresh, fixtures_only=args.fixtures_only,
+        allow_fixture_content=args.allow_fixture_content,
+    )
+
+    report = ChangeReport(state=state, run_id=_run_id(), started_at=utc_now())
+    for slug in datasets:
+        sync.run_dataset(slug, report)
+
+    advisories = sync.discover_advisories() if not args.skip_content else []
+    if not args.skip_content:
+        sync.generate_content(report, advisories)
+
+    # Publication gates (fail without publishing on any error).
+    errors = []
+    if not args.skip_publish:
+        errors += _publish_gates(store, report, quiet=args.quiet)
+
+    report.completed_at = utc_now()
+    report.errors.extend(errors)
+    sync.store.write_report(f"sync-{report.run_id}.md", report.to_markdown())
+    registry.save()
+
+    if not args.quiet:
+        print(report.to_markdown())
+    else:
+        ok = not report.errors
+        print(f"state_ingest: {'OK' if ok else 'FAILED'} {state} run={report.run_id} "
+              f"datasets={len(report.datasets)} pages={len(report.pages_generated)} "
+              f"warnings={len(report.warnings)} errors={len(report.errors)}")
+    return 1 if report.errors else 0
+
+
+def _publish_gates(store, report, *, quiet: bool) -> list[str]:
+    """Privacy scan, relation targets, ID validation, Markdown links, Boris gate."""
+    from scripts.ingest.states.massachusetts import PRIVACY_SPEC
+    from scripts.ingest.validation import PrivacyViolationError
+
+    errors: list[str] = []
+    content = ROOT / "content"
+
+    findings = scan_directory(content, PRIVACY_SPEC, only_collections=GENERATED_COLLECTIONS)
+    if findings:
+        errors.append(f"privacy scan: {len(findings)} finding(s); first: {findings[0]}")
+        for finding in findings[:5]:
+            report.warnings.append(f"privacy: {finding}")
+    if not errors:
+        try:
+            assert_clean(findings)
+        except PrivacyViolationError as error:
+            errors.append(str(error))
+
+    broken = validate_relations(content)
+    if broken:
+        errors.append(f"relation targets: {len(broken)} broken; first: {broken[0]}")
+        report.warnings.extend(f"relation: {b}" for b in broken[:5])
+
+    if errors:
+        return errors
+
+    import os
+    import subprocess
+
+    # The Boris graph/build gate needs a compiler. Provision it once from the
+    # pinned commit when missing (same path CI uses), so a fresh clone can run
+    # the full gate chain without manual setup.
+    boris_bin = os.environ.get("BORIS_BIN")
+    if not boris_bin and not (ROOT / "bin" / "boris").is_file():
+        print("state_ingest: provisioning pinned Boris compiler...")
+        proc = subprocess.run(
+            ["bash", "scripts/ensure-boris.sh", "--provision"],
+            cwd=str(ROOT), capture_output=True, text=True,
+        )
+        if proc.returncode != 0:
+            return ["Boris compiler could not be provisioned; "
+                    "run ./scripts/ensure-boris.sh --provision first"]
+
+    # ID + link audits and the Boris graph/build gate.
+    steps = [
+        (["python3", "scripts/ted_ids.py", "--root", "content", "--map", "metadata/id-map.jsonl"], "ID validation"),
+        (["python3", "scripts/audit_markdown_links.py", "content"], "Markdown link audit"),
+        (["bash", "bin/validate_graph.sh"], "Boris graph + build gate"),
+    ]
+    for command, label in steps:
+        proc = subprocess.run(command, cwd=str(ROOT), capture_output=True, text=True)
+        if proc.returncode != 0:
+            tail = (proc.stderr or proc.stdout or "").strip().splitlines()[-8:]
+            errors.append(f"{label} failed:\n" + "\n".join(f"  {line}" for line in tail))
+        elif not quiet:
+            print(f"state_ingest: {label} passed")
+    return errors
+
+
+def _report_only(args, store, ma) -> int:
+    from scripts.ingest.core import ChangeReport
+
+    report = ChangeReport(state=ma.STATE, run_id=_run_id(), started_at=utc_now())
+    for slug, entries in store.all_snapshot_records().items():
+        latest = entries[-1] if entries else {}
+        report.datasets[slug] = {
+            "slug": slug,
+            "status": "archived",
+            "row_count": latest.get("row_count"),
+            "raw_sha256": latest.get("raw_sha256"),
+            "normalized_sha256": latest.get("normalized_sha256"),
+            "change": f"snapshots archived: {len(entries)}",
+            "message": "",
+        }
+    report.completed_at = utc_now()
+    store.write_report(f"sync-{report.run_id}.md", report.to_markdown())
+    print(report.to_markdown())
+    return 0
+
+
+def _run_id() -> str:
+    return _dt.datetime.now(_dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

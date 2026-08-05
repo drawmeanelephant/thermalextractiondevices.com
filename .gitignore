@@ -35,3 +35,8 @@ __pycache__/
 
 # DCC ingestion working cache (re-fetched on --refresh; not part of the immutable archive)
 data/dcc/cache/
+
+# Ingest working directory: large raw/normalized artifacts stay out of Git.
+# Only small durable records under data/<jurisdiction>-ccc/ are committed.
+var/
+.tools/

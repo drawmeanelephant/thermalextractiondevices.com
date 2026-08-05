@@ -2,7 +2,8 @@
 set -Eeuo pipefail
 
 ROOT=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
-BORIS_BIN=${BORIS_BIN:-./bin/boris}
+BORIS_BIN=${BORIS_BIN:-$("$ROOT/scripts/ensure-boris.sh")}
+
 CONTENT_DIR=${CONTENT_DIR:-content}
 DIST_DIR=${DIST_DIR:-dist/cantilever}
 
