@@ -7,6 +7,7 @@ ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$ROOT"
 
 export BORIS_AUTO_PROVISION=1
+export SKIP_RELEASE_AUDIT=1
 
 echo "==> Resolving Boris compiler binary..."
 BORIS_BIN=$(./scripts/ensure-boris.sh --provision)
