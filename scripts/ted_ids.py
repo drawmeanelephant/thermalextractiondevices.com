@@ -12,6 +12,7 @@ from pathlib import Path
 
 
 DEFAULT_PREFIX = {
+    "affected-products": "TAFP",
     "botanicals": "TBOT",
     "changelog": "TCHG",
     "contaminants": "TCNT",
@@ -31,12 +32,14 @@ DEFAULT_PREFIX = {
     "releases": "TREL",
     "requirements": "TREQ",
     "safety": "TSAFE",
+    "safety-advisories": "TSAD",
     "specs": "TSPEC",
     "terpenes": "TTRP",
     "testing-laboratories": "TSTL",
 }
 
 FORM_PREFIXES = {
+    "affected-products": ("TAFP",),
     "botanicals": ("TBOT",),
     "changelog": ("TCHG",),
     "contaminants": ("TCNT",),
@@ -56,6 +59,7 @@ FORM_PREFIXES = {
     "releases": ("TREL",),
     "requirements": ("TREQ",),
     "safety": ("TSAFE",),
+    "safety-advisories": ("TSAD",),
     "specs": ("TSPEC",),
     "terpenes": ("TTRP",),
     "testing-laboratories": ("TSTL",),
