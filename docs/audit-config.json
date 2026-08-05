@@ -1,0 +1,91 @@
+{
+  "comment": "Shared allowlist/suppression config for the public-release audits. Deep-merges over the defaults embedded in scripts/audit_common.py. Review this file whenever the audit surfaces new findings; never silence findings by deleting the config.",
+  "thresholds": {
+    "large_file_bytes": 5000000,
+    "review_file_bytes": 1000000,
+    "report_limit": 25
+  },
+  "prohibited_fields": [
+    "businessEmail",
+    "businessPhone",
+    "businessOwnerName",
+    "parcelNumber",
+    "premiseStreetAddress",
+    "premiseLatitude",
+    "premiseLongitude",
+    "business_email",
+    "business_phone",
+    "business_owner",
+    "parcel_number",
+    "premise_street",
+    "premise_latitude",
+    "premise_longitude"
+  ],
+  "allowlist": {
+    "emails": ["@users.noreply.github.com", "@example.com", "@example.org"],
+    "secrets": [
+      "\\$\\{\\{\\s*secrets\\.[A-Za-z0-9_]+\\s*\\}\\}",
+      "\\$\\{\\{\\s*env\\.[A-Za-z0-9_]+\\s*\\}\\}",
+      "BORIS_[A-Z_]+",
+      "CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID"
+    ],
+    "personal_paths": [],
+    "phones": [],
+    "addresses": [],
+    "coordinates": [],
+    "tax_ids": [],
+    "large_files": [
+      "themes/cantilever/assets/fonts/inter/Inter-Bold.ttf",
+      "themes/cantilever/assets/fonts/inter/Inter-Regular.ttf",
+      "themes/cantilever/assets/fonts/inter/Inter-ExtraBold.ttf",
+      "themes/cantilever/assets/fonts/inter/Inter-SemiBold.ttf"
+    ],
+    "duplicate_blobs": [],
+    "human_review": [],
+    "generated_artifacts": ["metadata/id-map.jsonl"]
+  },
+  "suppressions": [
+    "PII-005:scripts/audit_sensitive_content.py",
+    "PII-006:scripts/audit_sensitive_content.py",
+    "PII-005:scripts/audit_common.py",
+    "PII-006:scripts/audit_common.py",
+    "PII-007:docs/audit-config.json"
+  ],
+  "fail_threshold": "high",
+  "required_policy_documents": [
+    "README.md",
+    "LICENSE.md",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    "DATA_SOURCES.md",
+    "PRIVACY.md",
+    "docs/pre-publication-checklist.md",
+    "docs/artifact-storage.md"
+  ],
+  "human_review_paths": [
+    "content/lab-results/",
+    "content/products/",
+    "content/law-and-use/",
+    "content/manufacturers/",
+    "content/guides/manufacturer-research-queue.md",
+    "content/contaminants/",
+    "content/datasets/",
+    "content/jurisdictions/",
+    "content/licenses/",
+    "content/organizations/",
+    "content/recalls/",
+    "content/requirements/",
+    "content/testing-laboratories/",
+    "content/safety-advisories/",
+    "content/affected-products/",
+    "data/"
+  ],
+  "recommended_headers": {
+    "Content-Security-Policy": "critical",
+    "X-Content-Type-Options": "high",
+    "Referrer-Policy": "medium",
+    "Permissions-Policy": "medium",
+    "Cross-Origin-Opener-Policy": "medium",
+    "X-Frame-Options": "high"
+  }
+}
