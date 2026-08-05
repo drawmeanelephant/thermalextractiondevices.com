@@ -36,19 +36,22 @@ Fresh, minty, camphoraceous, cooling sensory character.
 | --- | --- |
 | Standard boiling point | 176 °C |
 | Reference pressure | 101.325 kPa |
-| Data source | NIST Chemistry WebBook |
+| Data source | NIST Chemistry WebBook (SRD 69); mean of 6 determinations [^1] |
 
 ## Thermal-extraction context
 
-> Temperature note: The listed boiling point is a reference property measured under stated conditions. It is not a dosage recommendation or a guarantee that a vaporizer set to that temperature will selectively extract this compound.
+{{include includes/boiling-point-vs-device-note.md}}
 
 ## Reported biological activity
 
 ### Human evidence
-Clinical trials support 1,8-cineole as a mucolytic and anti-inflammatory agent in upper respiratory conditions.
+A placebo-controlled double-blind trial found that oral cineole (1,8-cineole) improved symptoms and cough frequency in patients with acute bronchitis [^2]. The study evaluated oral capsules, not inhalation from a vaporizer.
 
 ### Animal or laboratory evidence
-Preclinical studies demonstrate inhibition of inflammatory cytokines and anti-spasmodic airway activity.
+
+{{include includes/preclinical-evidence-note.md}}
+
+Preclinical studies report inhibition of inflammatory cytokine signaling and anti-spasmodic airway activity; these claims remain uncited in the archive [^3].
 
 ### Traditional or anecdotal claims
 Longstanding use in respiratory vapor inhalations and chest rubs.
@@ -56,6 +59,12 @@ Longstanding use in respiratory vapor inhalations and chest rubs.
 ## Cannabis laboratory results
 
 Check [Lab Results](../lab-results.md) for detected levels.
+
+## Sources
+
+[^1]: NIST Chemistry WebBook, SRD 69, *Eucalyptol / 1,8-Cineole* (CAS 470-82-6) phase-change data: normal boiling point 449.5 ± 0.3 K (≈176.4 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C470826&Mask=4
+[^2]: Fischer J, Dethlefsen U. Efficacy of cineole in patients suffering from acute bronchitis: a placebo-controlled double-blind trial. *Cough.* 2013;9:25. doi:10.1186/1745-9974-9-25. PMID 24261680.
+[^3]: No primary source located during the editorial audit for the airway anti-spasmodic and cytokine claims; requires identification and verification.
 
 ## Related pages
 

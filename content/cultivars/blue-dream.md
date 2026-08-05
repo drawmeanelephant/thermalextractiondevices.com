@@ -5,7 +5,7 @@ parent: cultivars
 status: published
 tags: ["cultivar", "hybrid", "genetics"]
 relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0007, relates_to=terpenes/TTRP-0003, relates_to=terpenes/TTRP-0004]
-summary: Overview index for the Blue Dream genetic lineage and verified batch laboratory analyses.
+summary: Overview index for the Blue Dream genetic lineage and an illustrative sample batch laboratory record (demonstration).
 ---
 
 # Blue Dream
@@ -20,11 +20,14 @@ summary: Overview index for the Blue Dream genetic lineage and verified batch la
 
 ## Associated Commercial Products
 
-- [Buckeye Relief Blue Dream Flower](../products/example-producer-blue-dream.md)
+- [Buckeye Relief Blue Dream Flower (sample record)](../products/example-producer-blue-dream.md)
 
-## Verified Laboratory Batches
+## Sample Laboratory Records (Demonstration)
 
-- [Batch 123 COA (Buckeye Relief)](../lab-results/example-producer-blue-dream-batch-123.md)
+- [Sample Batch 123 COA (demonstration)](../lab-results/example-producer-blue-dream-batch-123.md)
+
+> [!IMPORTANT]
+> The batch record linked above is a **demonstration / sample record**, not a verified Certificate of Analysis. Its batch identifier and numeric values are illustrative placeholders and must not be cited as verified laboratory evidence for this cultivar.
 
 ## Common Terpene Nodes
 

@@ -16,7 +16,7 @@ summary: Internal editorial research backlog for thermal extraction hardware man
 
 ## Verified & Documented Manufacturers
 
-- [Storz & Bickel GmbH](../manufacturers/storz-bickel.md) (`TMFR-0003`) - ISO 13485 Certified Medical & Consumer Extractors.
+- [Storz & Bickel GmbH](../manufacturers/storz-bickel.md) (`TMFR-0003`) - ISO 13485:2016 certified; medical-device variants (Mighty+ Medic, Volcano Medic 2) certified under EU MDR.
 - [DynaVap LLC](../manufacturers/dynavap.md) (`TMFR-0002`) - Analog Mechanical Extraction Devices.
 - [Arizer](../manufacturers/arizer.md) (`TMFR-0001`) - All-Glass Stem Convection Vaporization.
 

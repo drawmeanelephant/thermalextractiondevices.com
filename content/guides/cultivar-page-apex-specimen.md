@@ -18,6 +18,9 @@ summary: Comprehensive feature specimen exercising Boris markdown extensions, in
 
 This page serves as an intentionally overstuffed Apex Markdown specimen, validating formatting capabilities across Boris compilation targets.
 
+> [!IMPORTANT]
+> The numeric values used below are **illustrative sample data** for demonstrating formatting and the Total THC calculation. They do not describe a verified real-world batch.
+
 ## Formatting Feature Demonstration
 
 ### GFM Callouts

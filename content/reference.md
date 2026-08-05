@@ -16,6 +16,5 @@ All satellite records in this collection follow the form identifier schema `refe
 
 ## Technical Reference Documents
 
-- [[reference/TREF-0001|TREF-0001 Solvation & Thermal Constant Tables]]
-- [[reference/TREF-0002|Cultivar Name, Product Name, and Chemovar]]
+- [[reference/TREF-0001|Physical Property Data Standards]]
 - [[reference/TREF-0003|Evidence Labels and Claim Grammar]]
