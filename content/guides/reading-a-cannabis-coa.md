@@ -32,6 +32,9 @@ If a COA reports:
 
 $$\text{Total Active THC} = 0.52 + (24.2 \times 0.877) = 0.52 + 21.22 = 21.74\%$$
 
+> [!NOTE]
+> This worked example uses the same numeric values as the [Sample COA record (demonstration)](../lab-results/example-producer-blue-dream-batch-123.md) in this archive. Those figures are illustrative sample data used for teaching the calculation; they do not describe a verified real-world product.
+
 ## Units, LOD, and LOQ Handling
 
 - **mg/g to Percent**: $10\text{ mg/g} = 1.0\%\text{ by weight}$.

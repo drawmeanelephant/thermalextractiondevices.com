@@ -33,22 +33,25 @@ Mild, sweet, floral, warm chamomile-like scent.
 | Property | Value |
 | --- | --- |
 | Standard boiling point | 153 °C |
-| Reference pressure | 0.667 kPa (5 mmHg) |
-| Data source | NIST Chemistry WebBook |
+| Reference pressure | 0.667 kPa (5 mmHg) — reduced pressure [^1] |
+| Data source | Secondary literature; NIST WebBook (CAS 515-69-5) lists no normal boiling point |
 
 ## Thermal-extraction context
 
-> Temperature note: The listed boiling point is a reference property measured under stated conditions. It is not a dosage recommendation or a guarantee that a vaporizer set to that temperature will selectively extract this compound.
+{{include includes/boiling-point-vs-device-note.md}}
 
-Note: The listed boiling point of 153 °C is measured under reduced pressure (5 mmHg / 0.667 kPa). At standard 101.3 kPa atmospheric pressure, the calculated boiling point exceeds 300 °C.
+Note: The listed boiling point of 153 °C is measured under reduced pressure (5 mmHg / 0.667 kPa) [^1]. At standard 101.3 kPa atmospheric pressure, the boiling point is estimated to exceed 300 °C; this atmospheric estimate is a calculation from secondary literature, not a direct measurement.
 
 ## Reported biological activity
 
 ### Human evidence
-Dermatological studies confirm anti-inflammatory skin-soothing efficacy in topical applications.
+Topical application research reports skin-soothing and anti-inflammatory activity, but the supporting data are drawn substantially from animal and cell models, with limited human trials [^2].
 
 ### Animal or laboratory evidence
-Shows analgesic, anti-inflammatory, and antimicrobial activity in rodent model systems.
+
+{{include includes/preclinical-evidence-note.md}}
+
+Rodent and cell models report analgesic, anti-inflammatory, and antimicrobial activity [^2].
 
 ### Traditional or anecdotal claims
 Long tradition of use in soothing chamomile teas and cosmetic preparations.
@@ -56,6 +59,11 @@ Long tradition of use in soothing chamomile teas and cosmetic preparations.
 ## Cannabis laboratory results
 
 Check [Lab Results](../lab-results.md) for quantifiable levels.
+
+## Sources
+
+[^1]: Reduced-pressure boiling point from secondary literature (≈153 °C at 5 mmHg). NIST WebBook (CAS 515-69-5) lists no phase-change data. https://webbook.nist.gov/cgi/cbook.cgi?ID=C515695&Units=SI
+[^2]: Eddin LB, Jha NK, Goyal SN, et al. Health Benefits, Pharmacological Effects, Molecular Mechanisms, and Therapeutic Potential of α-Bisabolol. *Nutrients.* 2022;14(7):1370. doi:10.3390/nu14071370. PMID 35405982.
 
 ## Related pages
 

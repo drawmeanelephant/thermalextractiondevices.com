@@ -18,10 +18,14 @@ summary: Genus of flowering trees and shrubs producing essential oil flavedo ric
 
 ## Shared Terpene Chemistry
 
-Citrus fruit rinds (flavedo) contain oil sacs yielding up to 90–95% pure monoterpene content:
+Citrus fruit rinds (flavedo) contain oil sacs rich in volatile monoterpenes; cold-pressed citrus peel oils are commonly reported to contain roughly 90–95% monoterpene content, predominantly d-limonene. This proportion is reported across essential-oil industry and analytical literature and varies by species, cultivar, and extraction method [^1].
 
 - [D-Limonene](../terpenes/d-limonene.md)
 
 ## Industrial & Botanical Applications
 
 D-limonene extracted from cold-pressed citrus peel is widely utilized in natural flavorings, fragrances, and green solvent extraction.
+
+## Sources
+
+[^1]: The ~90–95% monoterpene figure for cold-pressed citrus peel oil is widely cited in essential-oil industry literature. The archive treats it as a reported industry figure; a specific primary measurement source should still be attached for this collection.

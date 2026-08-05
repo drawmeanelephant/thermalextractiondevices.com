@@ -33,13 +33,13 @@ Woody, pine-like, green, slightly spicy note.
 
 | Property | Value |
 | --- | --- |
-| Standard boiling point | 166 °C |
+| Standard boiling point | 166 °C (Antoine estimate; not explicitly listed by NIST) [^1] |
 | Reference pressure | 101.325 kPa |
-| Data source | NIST Chemistry WebBook |
+| Data source | Secondary literature; NIST WebBook (CAS 127-91-3) lists no explicit boiling point |
 
 ## Thermal-extraction context
 
-> Temperature note: The listed boiling point is a reference property measured under stated conditions. It is not a dosage recommendation or a guarantee that a vaporizer set to that temperature will selectively extract this compound.
+{{include includes/boiling-point-vs-device-note.md}}
 
 ## Reported biological activity
 
@@ -47,7 +47,10 @@ Woody, pine-like, green, slightly spicy note.
 Clinical evidence for isolated β-pinene remains limited.
 
 ### Animal or laboratory evidence
-Exhibits cytotoxic and antioxidant properties in cellular studies.
+
+{{include includes/preclinical-evidence-note.md}}
+
+Cellular studies report cytotoxic and antioxidant properties; this claim remains uncited in the archive [^2].
 
 ### Traditional or anecdotal claims
 Associated with herbal steam preparations.
@@ -55,6 +58,11 @@ Associated with herbal steam preparations.
 ## Cannabis laboratory results
 
 See [Lab Results](../lab-results.md) for batch analyses.
+
+## Sources
+
+[^1]: The 166 °C figure is consistent with NIST Antoine parameters for β-pinene (CAS 127-91-3), which extend to ≈439 K; NIST lists no explicit boiling point for the compound. https://webbook.nist.gov/cgi/cbook.cgi?ID=C127913&Mask=4
+[^2]: No primary source located during the editorial audit; requires identification and verification.
 
 ## Related pages
 

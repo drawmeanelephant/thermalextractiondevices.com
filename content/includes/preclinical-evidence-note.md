@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> **Preclinical evidence is not human clinical evidence.** Findings below are reported from *in vitro*, cell-culture, or animal-model assays under controlled laboratory conditions. They indicate biological activity in a research model and do not establish any benefit (or safety) in people, and do not transfer to inhaled or vaporized use at consumer-relevant doses.

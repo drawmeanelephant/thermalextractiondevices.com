@@ -10,37 +10,47 @@ summary: German hardware manufacturer specializing in certified medical and cons
 
 # Storz & Bickel GmbH
 
+{{include includes/manufacturer-claim-note.md}}
+
 ## Corporate Identity & Origin
 
 | Field | Detail |
 | --- | --- |
 | Legal Entity | Storz & Bickel GmbH |
 | Headquarters | Tuttlingen, Germany |
-| ISO Certification | ISO 13485 (Medical device quality management system) |
-| Foundation Year | 2002 (Markus Storz & Jürgen Bickel) |
+| ISO Certification | ISO 13485:2016 (medical device quality management system), per TÜV SÜD certificate [^1] |
+| Foundation Year | 2002 (Markus Storz & Jürgen Bickel) [^1] |
 
 ## Official Product Families
 
 - **Desktop Units**: Volcano Classic, Volcano Hybrid
 - **Portable Units**: Mighty, Mighty+, Crafty+, Venty
+- **Medical Variants**: Volcano Medic 2, Mighty+ Medic
 
 ## Engineering & Architecture
 
-- **Primary Heating Methods**: Hybrid conduction and convection heat exchange.
-- **Power Sources**: Mains AC power (Volcano), dual lithium-ion battery arrays (Mighty/Mighty+/Venty).
-- **Vapor Path Contact**: Medical-grade PEEK (Polyether ether ketone), stainless steel heating chambers, ceramic-coated aluminum, medical-grade silicone seals.
-- **Electronics Separation**: Airpath is physically separated from internal printed circuit boards and battery compartments.
-
-## Repairability & Warranty Terms
-
-- **Warranty Duration**: 2-year standard manufacturer warranty (+1 year upon online registration).
-- **Service & Repair**: Factory repair center evaluation, user-replaceable wear parts (o-rings, cooling units, screens, dosing capsules).
+- **Primary Heating Methods**: Hybrid conduction and convection heat exchange (per manufacturer).
+- **Power Sources**: Mains AC power (Volcano); dual internal lithium-ion cell arrays (Mighty/Mighty+/Venty).
+- **Vapor Path Contact**: PEEK (polyether ether ketone) cooling unit, stainless steel heating chambers, ceramic-coated aluminum, silicone seals. Terms such as "medical grade" are manufacturer marketing language unless tied to a specific cited material standard [^2].
+- **Airpath Design**: Storz & Bickel describes a labyrinth-designed airpath in its cooling units; the widely used phrase "isolated airpath" is not the manufacturer's own terminology [^2].
 
 ## Documented Certifications vs Marketing Claims
 
-- **ISO 13485 / DIN EN ISO 13485**: Certified quality management for manufacturing medical vaporizers (Mighty+ Medic, Volcano Medic 2).
-- **Claim Distinction**: Terms such as "isolated airpath" and "medical grade" represent verified engineering specifications audited under European medical device directives for designated Medic variants.
+- **ISO 13485:2016**: Certified quality-management system for Storz & Bickel GmbH [^1].
+- **EU MDR Medical Device Certification**: Only the **Mighty+ Medic** and **Volcano Medic 2** are certified medical devices, certified under the European Medical Device Regulation (EU MDR) by TÜV SÜD (July 2023). The consumer household devices are not certified medical devices [^3].
+- **Claim Distinction**: Terms such as "medical grade" describe manufacturer marketing or specific material specifications; medical-device status applies only to the designated Medic variants, not the full consumer catalog.
+
+## Repairability & Warranty Terms
+
+- **Warranty Duration**: 2-year standard manufacturer warranty (extendable on registration).
+- **Service & Repair**: Factory repair center evaluation; user-replaceable wear parts (O-rings, cooling units, screens, dosing capsules).
 
 ## Related Devices
 
 - [Mighty+ Thermal Extractor](../devices/mighty-plus.md)
+
+## Sources
+
+[^1]: Storz & Bickel, "About us" and "Why Storz & Bickel" (ISO 13485:2016). https://www.storz-bickel.com/en/about-us
+[^2]: Storz & Bickel product page: "Efficient Cooling Unit – through labyrinth-designed airpath". https://www.storz-bickel.com/en/mighty-plus
+[^3]: Storz & Bickel, "Our Medical Devices" (VOLCANO MEDIC 2 and MIGHTY+ MEDIC certified under EU MDR, TÜV SÜD, July 2023). https://support.storz-bickel.com/hc/en-us/articles/32145749331601-Our-Medical-Devices

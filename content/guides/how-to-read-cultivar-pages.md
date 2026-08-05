@@ -16,7 +16,7 @@ Cultivar pages in the Thermal Extraction Devices archive function as overview in
 
 1. **Breeder Lineage & Provenance**: First-party origin notes attributed to primary seed banks (e.g. Sensi Seeds, Dutch Passion).
 2. **Chemovar Disclaimer**: Warning highlighting that commercial names do not guarantee fixed chemical ratios across harvests.
-3. **Evidence Status**: Clear indication whether verified batch-level COAs are attached or if the page is currently awaiting COA submission.
+3. **Evidence Status**: Clear indication whether verified batch-level COAs are attached or if the page is currently awaiting COA submission. Demonstration/sample records are labeled as such and must not be counted as verified evidence.
 4. **Graph Node Connections**: Direct links to primary terpene nodes ([β-Myrcene](../terpenes/beta-myrcene.md), [D-Limonene](../terpenes/d-limonene.md), [α-Pinene](../terpenes/alpha-pinene.md)) detected across historical records.
 
 ## Recommended Workflow

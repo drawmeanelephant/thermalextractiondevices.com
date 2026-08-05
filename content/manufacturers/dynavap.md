@@ -10,6 +10,8 @@ summary: American thermal extraction hardware manufacturer specializing in batte
 
 # DynaVap LLC
 
+{{include includes/manufacturer-claim-note.md}}
+
 ## Corporate Identity & Origin
 
 | Field | Detail |
@@ -17,7 +19,7 @@ summary: American thermal extraction hardware manufacturer specializing in batte
 | Legal Entity | DynaVap LLC |
 | Headquarters | DeForest, Wisconsin, USA |
 | Operating Principle | Battery-Free Thermal Extraction (Analog Mechanical) |
-| Foundation Year | 2015 (George Breiwa) |
+| Foundation Year | 2015 (George Breiwa) [^1] |
 
 ## Official Product Families
 
@@ -28,16 +30,23 @@ summary: American thermal extraction hardware manufacturer specializing in batte
 
 ## Engineering & Architecture
 
-- **Primary Heating Methods**: Conduction-dominant thermal mass storage with secondary convection during draw.
+- **Primary Heating Methods**: Conduction-dominant thermal mass storage with secondary convection during draw (per manufacturer).
 - **Power Sources**: External thermal input (butane torch, induction heater).
-- **Vapor Path Contact**: Medical-grade 316 stainless steel, Grade 5 titanium, high-temperature fluoroelastomer o-rings. Zero plastics, batteries, or electronic circuitry in airpath.
-- **Temperature Control**: Mechanical bimetallic disc calibrated cap that clicks at target phase-change temperature (~190–210 °C).
+- **Vapor Path Contact**: Stainless steel and titanium parts with high-temperature fluoroelastomer O-rings. DynaVap markets materials as "medical grade stainless steel" / "medical grade titanium"; the specific "316" steel grade is stated by DynaVap on some component pages (e.g., VonG X tip) but not on all [^2].
+- **Temperature Control**: Mechanical bimetallic disc cap that produces an audible "click". DynaVap states the Captive Cap clicks at ~240 °C ± 10 °C (~230–250 °C) and the Low-Temp Cap at ~215 °C ± 10 °C (~205–220 °C) [^3]. The click is an auditory/tactile indicator, not digital temperature regulation.
 
 ## Repairability & Warranty Terms
 
-- **Warranty Duration**: Lifetime guarantee on metal components; modular wear parts replaceable individually.
+- **Warranty Duration**: Limited lifetime warranty on functional metal components and replacement parts; caps, CCDs, O-rings, and accessories are excluded [^4].
 - **Service & Repair**: Fully user-serviceable; completely disassembles without tools for cleaning or part replacement.
 
 ## Related Devices
 
 - [DynaVap M7 Thermal Extractor](../devices/dynavap-m7.md)
+
+## Sources
+
+[^1]: DynaVap, company history page ("In late 2015, DynaVap was born"). https://www.dynavap.com/pages/history
+[^2]: DynaVap uses "medical grade stainless steel" on official pages; grade 316 appears on selected component pages (e.g., stainless steel tip VonG X). https://www.dynavap.com/pages/how-to-use
+[^3]: DynaVap FAQ / support cap click temperature figures. https://www.dynavap.com/pages/faq
+[^4]: DynaVap Device Warranty (limited lifetime coverage of metal components; caps, CCDs, O-rings excluded). https://dynavap.freshdesk.com/support/solutions/articles/1510000
