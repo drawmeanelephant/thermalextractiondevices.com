@@ -1,11 +1,36 @@
+# --- Build outputs (never commit) ---
 dist/
 publish/
 site/
 exports/
+
+# --- Local toolchain & provisioner artifacts ---
 bin/boris*
+.tools/
+.zig-cache/
+zig-out/
+
+# --- Dependencies ---
 node_modules/
+
+# --- Local environment & secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+
+# --- Editor / OS noise ---
 .wrangler/
 .DS_Store
+.idea/
+.vscode/
+*.log
 *.tmp
 
 # DCC ingestion working cache (re-fetched on --refresh; not part of the immutable archive)

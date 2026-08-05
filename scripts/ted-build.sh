@@ -46,4 +46,30 @@ if [[ -f "$DIST_DIR/_boris/proof/checks.json" ]]; then
   fi
 fi
 
+# Copy the committed security-headers manifest into the build output so
+# Cloudflare Pages applies it on deploy. The source of truth is repo-root
+# _headers; dist/ is generated and must never be edited directly.
+if [[ -f "$ROOT/_headers" ]]; then
+  cp "$ROOT/_headers" "$DIST_DIR/_headers"
+  echo "==> Security headers manifest copied to $DIST_DIR/_headers"
+fi
+
+# Local public-release audit hook (runs when the audit config exists).
+# Fails the build on blocking findings; tool errors only warn, so a broken
+# audit tool can never silently break a release build.
+if [[ -f "$ROOT/docs/audit-config.json" ]]; then
+  set +e
+  python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" >&2
+  AUDIT_RC=$?
+  set -e
+  if [[ "$AUDIT_RC" -eq 0 ]]; then
+    echo "==> Public-release audit passed"
+  elif [[ "$AUDIT_RC" -eq 2 ]]; then
+    echo "⚠️ Public-release audit: tool error (output above); continuing build" >&2
+  else
+    echo "❌ Public-release audit: blocking findings (output above)" >&2
+    exit 1
+  fi
+fi
+
 echo "Thermal Extraction Devices build passed: $DIST_DIR"
