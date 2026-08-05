@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "script_version": "0.1.0-poc",
+  "retrieval_timestamp": "2026-08-04T23:21:57Z",
+  "dcc_warning": "Source data are entered by licensees and may later be corrected or revised by the Department of Cannabis Control (DCC).",
+  "datasets": {
+    "license-registry": {
+      "dataset": "license-registry",
+      "source_urls": [
+        "https://as-dcc-pub-cann-w-p-002.azurewebsites.net/licenses/filteredSearch"
+      ],
+      "retrieval_timestamp": "2026-08-04T23:21:57Z",
+      "retrieval_date": "2026-08-04",
+      "data_through": "2026-08-04",
+      "query_params": {
+        "pageSize": 1000,
+        "pageNumber": "1..N"
+      },
+      "raw_files": {
+        "raw.json": "794179a7076de7491d79c2592a0e99dbe8feaeed1f20bcc4eacbc0483e0da455"
+      },
+      "raw_checksum": "324875e45efbd872201ca6b6e7908f13a10566ab74ad7f7e2e132b569c0d1da9",
+      "normalized_checksum": "6d9ec1de89b21dc6e2933dbd36aa33d2bdea6e5d2944cd2ee51fe2a9aae3f6b4",
+      "normalized_rows": 20821,
+      "script_version": "0.1.0-poc",
+      "schema_version": "1.0",
+      "methodology_changelog_date": "",
+      "status": "ok",
+      "note": ""
+    },
+    "testing-labs": {
+      "dataset": "testing-labs",
+      "source_urls": [
+        "https://as-dcc-pub-cann-w-p-002.azurewebsites.net/licenses/AdvancedSearch"
+      ],
+      "retrieval_timestamp": "2026-08-04T23:21:57Z",
+      "retrieval_date": "2026-08-04",
+      "data_through": "2026-08-04",
+      "query_params": {
+        "licenseStatus": "Active",
+        "licenseType": "Commercial -  Testing Laboratory",
+        "pageSize": 1000
+      },
+      "raw_files": {
+        "raw.json": "0eb79c9ece56c66168a27bd229e71b2b9e8d10ab4b07f375ede0d3624241a615"
+      },
+      "raw_checksum": "5b27e1c42cc5735acbac4aa593e8e3d6199fbc2c2f2681a0cd31cf536db9dc78",
+      "normalized_checksum": "59c2723f3c648f522f011084791a4bcca2fe318dbef7d6f2cdb29336965e9445",
+      "normalized_rows": 18,
+      "script_version": "0.1.0-poc",
+      "schema_version": "1.0",
+      "methodology_changelog_date": "",
+      "status": "ok",
+      "note": ""
+    },
+    "recalls-index": {
+      "dataset": "recalls-index",
+      "source_urls": [
+        "https://recalls.cannabis.ca.gov/recalls"
+      ],
+      "retrieval_timestamp": "2026-08-04T23:21:57Z",
+      "retrieval_date": "2026-08-04",
+      "data_through": "9/9/2025",
+      "query_params": {
+        "page": "1..N"
+      },
+      "raw_files": {
+        "index-page-01.html": "11393c2c4ffb357236d0233ae7e694e748ead227a406dec0befd18d3d2e63fe5",
+        "index-page-02.html": "82df8275c4977528a0c8fff76f8055a17556e561ff3c6821b02d42f35ac560be",
+        "index-page-03.html": "f45d8c6657b4fe249818794d19d64f1ccfb265024ec431132e393aaa8ff7d4a5",
+        "index-page-04.html": "769241b4f84c509113d130f3865f4a20dace328d9374641a4e777dce5a9bc8e4",
+        "index-page-05.html": "871df967d713f0c9c64f905df2e13af587fe9835bd425aece98ab13738a94d46",
+        "index-page-06.html": "bd8184dd09f9bc4a67833c31bc6bcb112c20bc30c87a7fd118450b177f090234",
+        "index-page-07.html": "a25e930826fea54a475c436bc85ca4207bd4b9cf15328cf7c68dd846c1a2194d",
+        "index-page-08.html": "72e88617f9f94502b04bbc2c124e15d2d2f55755608fe3a82bd21a34a6c73693",
+        "index-page-09.html": "2a31872e61030fd33db0d29a70716d1b95b94a50b494db88eaba5500162fb689",
+        "index-page-10.html": "fe2d974b57769e37e556a477bef03912f4638862b287d58ce2689aa52c8f32fe",
+        "index-page-11.html": "c3770fc54cc8e5d61d1c53a937fe10fcbd62442dac813dca87c9cac80ab96727",
+        "index-page-12.html": "d6bd620a93fb11e4a476b807fee9d68e361f7c7d8c1e5e80e1b754347535de23",
+        "index-page-13.html": "09972e43acf408b37f65aa5a6bafe9a02081499eb40e418367ae1176ea0b7972",
+        "index-page-14.html": "db1c8e29ebc6d9751b9c6e31c3e7af2d9dbaf906c9af35d298843eb8fea76087",
+        "index-page-15.html": "570938c0811aa27858f5ca8459256495d976995cdfd8804324def5bcf1eaf924",
+        "index-page-16.html": "d33682577c696a55c6da8c54da9289a3facf2abdad56e510628c6e3fd84ebb01",
+        "index-page-17.html": "7368cb3ac52e0be8c31fed872565ff75207d1e9e70cbece85b2b47878ba0c27a",
+        "index-page-18.html": "bcc0baf1d8c786e441c8fcaa518bc3deb262b2e8dcc35366fc1ee53c54d3e191",
+        "index-page-19.html": "dbbd4d3767991465b8df4ef6e523b0ae4458dc8efd60c074e5f0c303cb9c012c",
+        "index-page-20.html": "4e378b5bcc7ab0f2412a53a70edb2138c21b25a1a43abe11a648ae548af36ff1",
+        "index-page-21.html": "0cec674f8b594bd2cb208a41e30f4865f261ab80a711a1c88143084761dbef1d",
+        "index-page-22.html": "443c60dc5d9e4ab905d7eaa995ccee597c152313ae4d157cca371030327a5269",
+        "index-page-23.html": "fe52925c591ab2687a9f93b33a06cbe9461fdf36770a8a67ff6e3543f8e1ac40",
+        "index-page-24.html": "d9c7b1626aae9cb03e7cbd0ff2e63517c73b04acfe0ec8ba28ef6546183095a0",
+        "index-page-25.html": "fd7165afc324d3fca342859553f0c241e66b67ecf786486016afe04524aa989d",
+        "index-page-26.html": "9f545bc107055fcb24edd54d265f0b8ec8b1a045cb12a5f40427a7ec12704ed8",
+        "index-page-27.html": "ee75966096c2051a51e9be695cea074528d218aa4ee22b8ed81dc9b49936002f",
+        "index-page-28.html": "6622860eb2d1909e286e1808a4a07845b28f2b053dfbd4cb0f3323f6a25d4b14",
+        "index-page-29.html": "3a9c0ea5ad943d1f9fbbacc8f6bf689b205378a8eef82131c5bb69665df6dbbf",
+        "index-page-30.html": "11fc7167be089fa09512f4b2780fb4bf82d55c6d9088f176d9a708c183d699e2",
+        "index-page-31.html": "03a6ed8c49356204f7bc3beb55e22d0ecb048e47dbd3ba5e1f84a61369ac0817"
+      },
+      "raw_checksum": "c90581b257ef9722b67d203c1379342dbab31b293951e2248889a4bf3d5735dd",
+      "normalized_checksum": "31560c5d744785e2c4411a11e8aae1c183c788ad39df2dac5d774561116afa19",
+      "normalized_rows": 181,
+      "script_version": "0.1.0-poc",
+      "schema_version": "1.0",
+      "methodology_changelog_date": "",
+      "status": "ok",
+      "note": ""
+    },
+    "recalls-details": {
+      "dataset": "recalls-details",
+      "source_urls": [
+        "https://recalls.cannabis.ca.gov/recalls/<id>"
+      ],
+      "retrieval_timestamp": "2026-08-04T23:21:57Z",
+      "retrieval_date": "2026-08-04",
+      "data_through": "",
+      "query_params": {
+        "representative": true,
+        "limit": 6
+      },
+      "raw_files": {
+        "6a68dfdbc5b39a34e10f7334.html": "44a64293d58a49721effd67e28a6114e01dd14ab5dc0dd4b6244dae7963bb2f6",
+        "6a43e400469891f7ecd256ae.html": "4f04b99ecc272e689dab2d4643fd0b1f048ba73c226f32953844a5cd5b561eba",
+        "6a3c3b5b3e7bbb565418e5a5.html": "4f165cfc1a102dbd41e4625a6f6061c69d44376016f53a3409933d03d373d365",
+        "6a39be622b28878ef4fac90d.html": "1cfea95e54f5af02af022bf373046d698c5e1cbd0654fa94b811387915bbb787",
+        "6a39ba986d79688bab955d8f.html": "1d96538c9ab5c28f9d7c86ab22fc9afb24cffe937f22e7cbe5bb5fd2e6875d6f",
+        "6a39b80122dc5a363f09adc6.html": "488844f2751c720be0cdcdb4d51c7f92c8bcd0c8691394f346835afd07fc3358"
+      },
+      "raw_checksum": "31452df940e38812394a8ae34b350deea5eda41a6b06170957ea32d0cec24572",
+      "normalized_checksum": "b7a92c3aa414c1b57cafc11d8f26fcbe7dc74c4ab17e4e155bbd295641d8b058",
+      "normalized_rows": 6,
+      "script_version": "0.1.0-poc",
+      "schema_version": "1.0",
+      "methodology_changelog_date": "",
+      "status": "ok",
+      "note": ""
+    },
+    "requirements": {
+      "dataset": "requirements",
+      "source_urls": [
+        "https://www.cannabis.ca.gov/licensees/testing-laboratories/"
+      ],
+      "retrieval_timestamp": "2026-08-04T23:21:57Z",
+      "retrieval_date": "2026-08-04",
+      "data_through": "2026-08-04",
+      "query_params": {},
+      "raw_files": {
+        "dcc-testing-page.html": "4e66dffc1cadcaa2b0bfed2431b5de08b59a2e4443d9a07080c8e4ed322081c6"
+      },
+      "raw_checksum": "6901eed11e01dfed2d01a3c77686ebafd71d2b5af397fc6ab1067ce3e072791e",
+      "normalized_checksum": "26f0ff773864f56709b065a9802b0a38a32062693a5c0271d7ed0c8691e6ba67",
+      "normalized_rows": null,
+      "script_version": "0.1.0-poc",
+      "schema_version": "1.0",
+      "methodology_changelog_date": "2026-08-04",
+      "status": "ok",
+      "note": "curated, versioned; numeric action limits left to regulation text"
+    },
+    "harvest": {
+      "dataset": "harvest",
+      "source_urls": [
+        "https://lookerstudio.google.com/embed/reporting/91831a20-eba8-4556-9401-c569ad8d9d0b/page/p_z20nuw1mvd",
+        "https://www.cannabis.ca.gov/resources/data-dashboard/harvest-report/"
+      ],
+      "retrieval_timestamp": "2026-08-04T23:21:57Z",
+      "retrieval_date": "2026-08-04",
+      "data_through": "",
+      "query_params": {},
+      "raw_files": {
+        "raw.html": "10874c925e55179924427d606e4ed5ab792e6446ad3b1f790b1533153269b376"
+      },
+      "raw_checksum": "1dbfa09e1ed5a25014a4fd63b5d6b1a8c67040343bbd5bfc9616a8313c02b084",
+      "normalized_checksum": "f52fffadc780050f93e15a9e4767d7dac2d0ed021998d90654b7f256cd664ea8",
+      "normalized_rows": null,
+      "script_version": "0.1.0-poc",
+      "schema_version": "1.0",
+      "methodology_changelog_date": "03/10/2026",
+      "status": "unstable",
+      "note": "undocumented Looker Studio embed; aggregate-only until entity model proven"
+    },
+    "monthly-sales": {
+      "dataset": "monthly-sales",
+      "source_urls": [
+        "https://lookerstudio.google.com/embed/reporting/6b47e2fb-90e6-4bfa-97d6-d91e3fa4d1f2/page/p_hp495019xd",
+        "https://www.cannabis.ca.gov/resources/data-dashboard/daily-sales-units-by-item-category-report/"
+      ],
+      "retrieval_timestamp": "2026-08-04T23:21:57Z",
+      "retrieval_date": "2026-08-04",
+      "data_through": "",
+      "query_params": {},
+      "raw_files": {
+        "raw.html": "c3cee8ae87885ac0bef04ccd8e4365c11fd3628ca6f352583c7fc955f1f40c6f"
+      },
+      "raw_checksum": "cf21cb6a5a2e7286f3052c1881d7a1821430ac271c6984c101471886f052ec73",
+      "normalized_checksum": "f52fffadc780050f93e15a9e4767d7dac2d0ed021998d90654b7f256cd664ea8",
+      "normalized_rows": null,
+      "script_version": "0.1.0-poc",
+      "schema_version": "1.0",
+      "methodology_changelog_date": "03/10/2026",
+      "status": "unstable",
+      "note": "undocumented Looker Studio embed; aggregate-only until entity model proven"
+    }
+  }
+}

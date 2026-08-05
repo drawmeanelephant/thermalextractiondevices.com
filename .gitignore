@@ -7,3 +7,6 @@ node_modules/
 .wrangler/
 .DS_Store
 *.tmp
+
+# DCC ingestion working cache (re-fetched on --refresh; not part of the immutable archive)
+data/dcc/cache/
