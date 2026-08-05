@@ -34,21 +34,24 @@ Woody, earthy, bark, fresh floral, and citrus-like profile.
 
 | Property | Value |
 | --- | --- |
-| Standard boiling point | 276 °C |
+| Standard boiling point | 276 °C [^1] |
 | Reference pressure | 101.325 kPa |
-| Data source | NIST Chemistry WebBook |
+| Data source | NIST Chemistry WebBook (SRD 69), nerolidol isomer record (549.2 K); reduced-pressure value only under CAS 7212-44-4 |
 
 ## Thermal-extraction context
 
-> Temperature note: The listed boiling point is a reference property measured under stated conditions. It is not a dosage recommendation or a guarantee that a vaporizer set to that temperature will selectively extract this compound.
+{{include includes/boiling-point-vs-device-note.md}}
 
 ## Reported biological activity
 
 ### Human evidence
-Evaluated clinically primarily as a transdermal skin penetration enhancer.
+Reported in pharmaceutical delivery research as a transdermal skin penetration enhancer; no human clinical evaluation of therapeutic benefit was identified for this archive [^2].
 
 ### Animal or laboratory evidence
-Demonstrates antiparasitic, antifungal, and sedative effects in animal assays.
+
+{{include includes/preclinical-evidence-note.md}}
+
+Animal assays report antiparasitic, antifungal, and sedative effects; these claims remain uncited in the archive [^2].
 
 ### Traditional or anecdotal claims
 Constituent of traditional woody and floral aromatic tinctures.
@@ -56,6 +59,11 @@ Constituent of traditional woody and floral aromatic tinctures.
 ## Cannabis laboratory results
 
 Consult [Lab Results](../lab-results.md) for batch analyses.
+
+## Sources
+
+[^1]: The 276 °C figure corresponds to a NIST boiling point of 549.2 K recorded for the nerolidol structure (1,6,10-dodecatrien-3-ol, 3,7,11-trimethyl-). The CAS 7212-44-4 page itself lists only a reduced-pressure value (≈114 °C at 0.001 bar). https://webbook.nist.gov/cgi/cbook.cgi?ID=C142507&Mask=3FFF
+[^2]: No primary source located during the editorial audit for the penetration-enhancer and antiparasitic/antifungal/sedative claims; requires identification and verification.
 
 ## Related pages
 

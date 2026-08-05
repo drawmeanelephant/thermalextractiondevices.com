@@ -35,21 +35,24 @@ Sharp, pine, resinous, fresh forest odor profile.
 | --- | --- |
 | Standard boiling point | 156 °C |
 | Reference pressure | 101.325 kPa |
-| Data source | NIST Chemistry WebBook |
+| Data source | NIST Chemistry WebBook (SRD 69); mean of 14 determinations [^1] |
 
 ## Thermal-extraction context
 
-> Temperature note: The listed boiling point is a reference property measured under stated conditions. It is not a dosage recommendation or a guarantee that a vaporizer set to that temperature will selectively extract this compound.
+{{include includes/boiling-point-vs-device-note.md}}
 
 α-Pinene is one of the more volatile monoterpenes present in botanical matrix headspace.
 
 ## Reported biological activity
 
 ### Human evidence
-Bronchodilator effects observed in acute inhalation studies at specified doses.
+No verified controlled human study of inhaled α-pinene as a bronchodilator was identified for this archive; that widely circulated claim remains unresolved [^2].
 
 ### Animal or laboratory evidence
-In vitro assays demonstrate acetylcholinesterase inhibition and antimicrobial activity.
+
+{{include includes/preclinical-evidence-note.md}}
+
+In vitro assays report acetylcholinesterase inhibition, antimicrobial activity, and suppression of inflammatory signaling in mouse peritoneal macrophages [^3].
 
 ### Traditional or anecdotal claims
 Historically used in forest-bathing and herbal vapor treatments for respiratory clarity.
@@ -57,6 +60,12 @@ Historically used in forest-bathing and herbal vapor treatments for respiratory 
 ## Cannabis laboratory results
 
 Consult [Lab Results](../lab-results.md) for batch-level measurements.
+
+## Sources
+
+[^1]: NIST Chemistry WebBook, SRD 69, *α-Pinene* (CAS 80-56-8) phase-change data: normal boiling point 430 ± 4 K (≈156.9 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C80568&Mask=4
+[^2]: No primary source located during the editorial audit; the acute-inhalation bronchodilator claim requires identification and verification before it can be retained.
+[^3]: Kim D-S, Lee H-J, Jeon Y-D, et al. Alpha-Pinene Exhibits Anti-Inflammatory Activity Through the Suppression of MAPKs and the NF-κB Pathway in Mouse Peritoneal Macrophages. *Am J Chin Med.* 2015;43(4):731–742. doi:10.1142/S0192415X15500457. PMID 26119957.
 
 ## Related pages
 

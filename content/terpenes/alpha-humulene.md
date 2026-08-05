@@ -33,13 +33,13 @@ Earthy, woody, herbal, hoppy aroma profile.
 
 | Property | Value |
 | --- | --- |
-| Standard boiling point | 264 °C |
+| Standard boiling point | 264 °C (atmospheric; unconfirmed by NIST) [^1] |
 | Reference pressure | 101.325 kPa |
-| Data source | NIST Chemistry WebBook |
+| Data source | Secondary literature; NIST WebBook lists only a reduced-pressure value (≈123 °C at 0.013 bar) |
 
 ## Thermal-extraction context
 
-> Temperature note: The listed boiling point is a reference property measured under stated conditions. It is not a dosage recommendation or a guarantee that a vaporizer set to that temperature will selectively extract this compound.
+{{include includes/boiling-point-vs-device-note.md}}
 
 ## Reported biological activity
 
@@ -47,7 +47,10 @@ Earthy, woody, herbal, hoppy aroma profile.
 Clinical evidence for isolated human oral or vaporized humulene administration is minimal.
 
 ### Animal or laboratory evidence
-Demonstrates topical and systemic anti-inflammatory markers in animal inflammation models.
+
+{{include includes/preclinical-evidence-note.md}}
+
+Animal inflammation models report topical and systemic anti-inflammatory markers; the claim remains uncited in this archive [^2].
 
 ### Traditional or anecdotal claims
 Associated with traditional hoppy medicinal infusions.
@@ -55,6 +58,11 @@ Associated with traditional hoppy medicinal infusions.
 ## Cannabis laboratory results
 
 Refer to [Lab Results](../lab-results.md) for batch data.
+
+## Sources
+
+[^1]: The 264 °C atmospheric value is from secondary literature and is not confirmed by NIST, whose α-humulene (CAS 6753-98-6) record lists only a reduced-pressure boiling point of 396.2 K (≈123 °C) at 0.013 bar. https://webbook.nist.gov/cgi/cbook.cgi?ID=C6753986&Mask=4
+[^2]: No primary source located during the editorial audit; requires identification and verification.
 
 ## Related pages
 

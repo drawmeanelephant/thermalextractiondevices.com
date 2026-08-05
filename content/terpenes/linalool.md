@@ -35,21 +35,24 @@ Floral, lavender, sweet, light citrus woodiness.
 | --- | --- |
 | Standard boiling point | 198 °C |
 | Reference pressure | 101.325 kPa |
-| Data source | NIST Chemistry WebBook |
+| Data source | NIST Chemistry WebBook (SRD 69): 471.7–471.8 K (≈198.6 °C) [^1] |
 
 ## Thermal-extraction context
 
-> Temperature note: The listed boiling point is a reference property measured under stated conditions. It is not a dosage recommendation or a guarantee that a vaporizer set to that temperature will selectively extract this compound.
+{{include includes/boiling-point-vs-device-note.md}}
 
 Linalool contains a hydroxyl functional group, yielding a higher standard boiling point than unfunctionalized monoterpenes.
 
 ## Reported biological activity
 
 ### Human evidence
-Clinical trials in lavender aromatherapy show mild physiological calming effects and reduction in post-operative anxiety parameters.
+An inhalation study using physiological and sensory measurements documented sedative effects of optically active linalools in human participants [^2]. No randomized controlled trial of *pure linalool* for anxiety was located for this archive; the calming evidence for linalool is carried largely by lavender essential-oil studies and non-RCT physiology studies [^3].
 
 ### Animal or laboratory evidence
-Rodent assays indicate central nervous system depressant and anticonvulsant potential.
+
+{{include includes/preclinical-evidence-note.md}}
+
+Rodent assays report central nervous system depressant and anticonvulsant potential; these claims remain uncited in the archive [^3].
 
 ### Traditional or anecdotal claims
 Longstanding use in floral teas and sleep hygiene rituals.
@@ -57,6 +60,12 @@ Longstanding use in floral teas and sleep hygiene rituals.
 ## Cannabis laboratory results
 
 Check [Lab Results](../lab-results.md) for quantifiable levels.
+
+## Sources
+
+[^1]: NIST Chemistry WebBook, SRD 69, *Linalool* (CAS 78-70-6): normal boiling point 471.75–471.8 K (≈198.6 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C78706&Mask=4
+[^2]: Sugawara Y, Hara C, Tamura K, et al. Sedative effect on humans of inhalation of essential oil of linalool: sensory evaluation and physiological measurements using optically active linalools. *Anal Chim Acta.* 1998;365(1–3):293–299. doi:10.1016/S0003-2670(97)00639-9.
+[^3]: No primary source located during the editorial audit for the rodent CNS-depressant/anticonvulsant claims; requires identification and verification.
 
 ## Related pages
 
