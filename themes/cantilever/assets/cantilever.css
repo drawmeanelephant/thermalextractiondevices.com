@@ -820,7 +820,8 @@ body {
   vertical-align: top;
 }
 
-.article tbody tr:nth-child(even) { background: #fcfbf8; }
+.article tbody tr:nth-child(even) { background: var(--surface); }
+.article tbody tr:hover { background: var(--surface-hover); }
 
 .article table :is(th, td) code { font-size: 0.85em; }
 
