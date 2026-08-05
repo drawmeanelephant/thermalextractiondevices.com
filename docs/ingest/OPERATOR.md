@@ -105,7 +105,7 @@ When a source release changes (checksum changes), the importer:
 4. writes a revision entry in the sync report.
 
 `supersedes` relations are only emitted when the official release relationship
-supports them — see `content/datasets/TDAT-0009.md` (Testing Corrections and
+supports them — see `content/datasets/TDTS-0009.md` (Testing Corrections and
 Clarifications).
 
 ## ID mapping

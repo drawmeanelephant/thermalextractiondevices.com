@@ -68,7 +68,7 @@ Once `3628c641` (or current `main`) is reachable, the required pass is:
 ## 4. Files modified
 
 * `scripts/ted_ids.py` — added collection prefixes for the Massachusetts
-  collections (`TJUR`, `TLIC`, `TORG`, `TTLB`, `TCNT`, `TDAT`, `TREQ`,
+  collections (`TJUR`, `TLIC`, `TORG`, `TSTL`, `TCNT`, `TDTS`, `TREQ`,
   `TSAD`, `TAFP`). **Merge-sensitive**: California `main` may carry its own
   `ted_ids.py` changes that must be reconciled.
 * `.gitignore` — ignores `var/` and `.tools/` (large ingest artifacts).

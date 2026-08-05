@@ -115,13 +115,13 @@ TRUNKS = {
         "merged into a single organization.", "TORG"),
     "testing-laboratories": ("Testing Laboratories",
         "Independent Testing Laboratories licensed by state regulators. Pages "
-        "contain only approved public fields and never rank or grade labs.", "TTLB"),
+        "contain only approved public fields and never rank or grade labs.", "TSTL"),
     "contaminants": ("Contaminants",
         "Analytes and contaminants tracked in official state testing data and "
         "public health advisories.", "TCNT"),
     "datasets": ("Datasets",
         "Official state open-data datasets and the aggregate pages derived from "
-        "them, each with source provenance and revision history.", "TDAT"),
+        "them, each with source provenance and revision history.", "TDTS"),
     "requirements": ("Requirements",
         "Regulatory requirements governing licensed establishments and testing.", "TREQ"),
     "safety-advisories": ("Safety Advisories",
@@ -155,7 +155,7 @@ CONTAMINANTS = [
 
 ID_PREFIXES = {
     "jurisdiction": "TJUR", "license": "TLIC", "organization": "TORG",
-    "testing_laboratory": "TTLB", "contaminant": "TCNT", "dataset": "TDAT",
+    "testing_laboratory": "TSTL", "contaminant": "TCNT", "dataset": "TDTS",
     "requirement": "TREQ", "safety_advisory": "TSAD", "affected_product": "TAFP",
 }
 

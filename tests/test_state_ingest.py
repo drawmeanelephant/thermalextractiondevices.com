@@ -61,7 +61,7 @@ class EndToEndTestCase(unittest.TestCase):
             self.assertTrue((content / "jurisdictions.md").exists())
             self.assertTrue((content / "safety-advisories.md").exists())
             self.assertTrue((content / "jurisdictions" / "TJUR-0001.md").exists())
-            lab_files = list((content / "testing-laboratories").glob("TTLB-*.md"))
+            lab_files = list((content / "testing-laboratories").glob("TSTL-*.md"))
             self.assertGreaterEqual(len(lab_files), 10)
             advisory_files = list((content / "safety-advisories").glob("TSAD-*.md"))
             self.assertEqual(len(advisory_files), 3)

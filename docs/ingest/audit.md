@@ -103,7 +103,7 @@ questions are answered against the repository as found:
 4. **How are stable IDs allocated?** By `ted_ids.py`: existing form IDs are
    preserved/normalized, missing ones allocated from the next unused
    `<PREFIX>-NNNN`. This task adds nine collection prefixes
-   (`TJUR, TLIC, TORG, TTLB, TCNT, TDAT, TREQ, TSAD, TAFP`).
+   (`TJUR, TLIC, TORG, TSTL, TCNT, TDTS, TREQ, TSAD, TAFP`).
 5. **Which raw/normalized artifacts are committed?** None today (no data
    tree). The new policy: only small durable records under
    `data/massachusetts-ccc/`; large raw/normalized files live under
