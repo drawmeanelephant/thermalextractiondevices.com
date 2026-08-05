@@ -7,3 +7,8 @@ node_modules/
 .wrangler/
 .DS_Store
 *.tmp
+
+# Ingest working directory: large raw/normalized artifacts stay out of Git.
+# Only small durable records under data/<jurisdiction>-ccc/ are committed.
+var/
+.tools/

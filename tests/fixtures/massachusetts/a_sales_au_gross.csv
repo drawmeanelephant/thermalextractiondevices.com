@@ -1,0 +1,41 @@
+SALEPERIOD,SALEDATE,SALESPERIODTYPE,INDUSTRY,DATATYPE,PRODUCTCATEGORYNAME,QUANTITY,UNITS,TOTAL_$,RECEIPTS
+2018-01-01 - 2026-06-07,2023-11-07,Historical,Adult-Use,Delivery Operators,Buds,1446.75,241,10292.91,0
+2018-01-01 - 2026-06-07,2025-12-11,Historical,Adult-Use,Delivery Couriers,Buds,1851.5099999999998,177,7873.34,0
+2018-01-01 - 2026-06-07,2021-02-10,Historical,Adult-Use,Retail,Concentrate,665.5,636,44258.29,555
+2018-01-01 - 2026-06-07,2023-11-02,Historical,Adult-Use,Retail,Concentrate,1089.3,354,18793.06,328
+2018-01-01 - 2026-06-07,2025-01-19,Historical,Adult-Use,Delivery Operators,Concentrate (Bulk),1.0,1,8.55,0
+2018-01-01 - 2026-06-07,2023-05-25,Historical,Adult-Use,Retail,Concentrate (Bulk),12.0,14,474.85999999999996,14
+2018-01-01 - 2026-06-07,2021-10-11,Historical,Adult-Use,Delivery Couriers,Concentrate (Each),29.0,28,1731.0,0
+2018-01-01 - 2026-06-07,2023-03-11,Historical,Adult-Use,Delivery Couriers,Concentrate (Each),7.0,5,341.0,0
+2018-01-01 - 2026-06-07,2024-06-16,Historical,Adult-Use,Retail,Fresh Frozen Flower,28.0,1,129.0,1
+2018-01-01 - 2026-06-07,2025-05-30,Historical,Adult-Use,Retail,Fresh Frozen Flower,66.5,8,230.39,8
+2018-01-01 - 2026-06-07,2023-09-23,Historical,Adult-Use,Retail,Immature Plants,20.0,15,600.0,11
+2018-01-01 - 2026-06-07,2025-01-07,Historical,Adult-Use,Retail,Immature Plants,3.0,3,60.010000000000005,3
+2018-01-01 - 2026-06-07,2018-12-09,Historical,Adult-Use,Retail,Infused (edible),1821.0,1369,48214.42,1053
+2018-01-01 - 2026-06-07,2022-11-02,Historical,Adult-Use,Delivery Operators,Infused (edible),99.0,66,1974.35,0
+2018-01-01 - 2026-06-07,2024-09-19,Historical,Adult-Use,Delivery Couriers,Infused (non-edible),2.0,1,54.0,0
+2018-01-01 - 2026-06-07,2023-03-13,Historical,Adult-Use,Retail,Infused (non-edible),244.0,189,8956.5,173
+2018-01-01 - 2026-06-07,2021-08-28,Historical,Adult-Use,Delivery Couriers,Infused Beverage,9.0,6,118.0,0
+2026-06-14 - 2026-06-21,2026-06-21,Historical,Adult-Use,Retail,Infused Beverage,6144.0,3131,33049.11000000001,1730
+2018-01-01 - 2026-06-07,2021-09-29,Historical,Adult-Use,Retail,Infused Beverages (Bulk),0.12000000000000001,5,120.0,5
+2018-01-01 - 2026-06-07,2021-07-04,Historical,Adult-Use,Retail,Infused Beverages (Bulk),0.0,1,20.0,1
+2018-01-01 - 2026-06-07,2025-07-17,Historical,Adult-Use,Retail,Infused Liquid (Bulk),0.0,1,6.0,1
+2018-01-01 - 2026-06-07,2024-03-09,Historical,Adult-Use,Retail,Infused Liquid (Bulk),0.5,1,25.0,1
+2018-01-01 - 2026-06-07,2020-07-13,Historical,Adult-Use,Retail,Infused Pre-Rolls,270.8,230,7050.42,215
+2018-01-01 - 2026-06-07,2024-10-01,Historical,Adult-Use,Retail,Infused Pre-Rolls,10996.49,7309,162423.08000000002,5199
+2018-01-01 - 2026-06-07,2023-04-14,Historical,Adult-Use,Retail,Kief,160.0,143,3258.4799999999996,128
+2018-01-01 - 2026-06-07,2022-12-16,Historical,Adult-Use,Retail,Kief,158.0,137,3077.8399999999997,130
+2018-01-01 - 2026-06-07,2022-08-21,Historical,Adult-Use,Delivery Couriers,Raw Pre-Rolls,104.8,55,1575.0,0
+2018-01-01 - 2026-06-07,2022-08-15,Historical,Adult-Use,Delivery Operators,Raw Pre-Rolls,46.55,32,753.2,0
+2018-01-01 - 2026-06-07,2024-10-03,Historical,Adult-Use,Retail,Seeds,7022.0,74,10625.18,74
+2018-01-01 - 2026-06-07,2023-11-10,Historical,Adult-Use,Retail,Seeds,9.0,8,269.95,8
+2018-01-01 - 2026-06-07,2025-10-09,Historical,Adult-Use,Delivery Operators,Shake/Trim,42.0,5,179.82999999999998,0
+2018-01-01 - 2026-06-07,2023-02-10,Historical,Adult-Use,Retail,Shake/Trim,11252.0,787,39519.22,743
+2018-01-01 - 2026-06-07,2019-05-24,Historical,Adult-Use,Retail,Shake/Trim (by strain),631.5,473,9200.35,433
+2018-01-01 - 2026-06-07,2024-03-12,Historical,Adult-Use,Delivery Operators,Shake/Trim (by strain),231.0,21,983.77,0
+2018-01-01 - 2026-06-07,2025-12-26,Historical,Adult-Use,Retail,Suppository,6.0,4,242.5,4
+2018-01-01 - 2026-06-07,2025-03-13,Historical,Adult-Use,Retail,Suppository,3.0,3,210.0,3
+2018-01-01 - 2026-06-07,2021-12-24,Historical,Adult-Use,Retail,Vape Product,18432.0,16564,963070.64,12295
+2018-01-01 - 2026-06-07,2025-06-29,Historical,Adult-Use,Delivery Operators,Vape Product,264.0,220,7447.11,0
+2018-01-01 - 2026-06-07,2024-06-17,Historical,Adult-Use,Retail,Waste,3.5,1,29.99,1
+2018-01-01 - 2026-06-07,2024-06-11,Historical,Adult-Use,Retail,Waste,7.0,1,59.98,1
