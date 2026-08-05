@@ -1,0 +1,19 @@
+{
+  "source": "https://www.cannabis.ca.gov/licensees/testing-laboratories/",
+  "panel": [
+    "Cannabinoids and terpenes",
+    "Residual solvents and processing chemicals",
+    "Residual pesticides",
+    "Heavy metals",
+    "Microbial impurities",
+    "Mycotoxins",
+    "Moisture content and water activity",
+    "Foreign material"
+  ],
+  "citations": {
+    "MAUCRSA": "Business and Professions Code sections 26000 et seq.",
+    "testing_authority": "Business and Professions Code section 26110",
+    "lab_regulations": "CCR Title 4, Division 42, Chapter 5, sections 15701-15705"
+  },
+  "notes": "Numeric decision/action limits are set in the DCC regulatory text; verify limits against the current version of Title 4, Division 42 before relying on them."
+}

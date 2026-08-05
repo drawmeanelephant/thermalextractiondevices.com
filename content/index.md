@@ -32,6 +32,21 @@ This platform maintains technical specifications, engineering schematics, safety
 
 ---
 
+## California DCC Data Collections
+
+Source-traceable records derived from California Department of Cannabis Control data (license registry, testing laboratories, recalls, contaminants, requirements, and aggregate datasets). See the [California DCC Data Landscape](datasets/TDTS-0004.md) overview.
+
+- **[Jurisdictions](jurisdictions.md)**: State-level jurisdiction profiles (`jurisdictions/TJUR-XXXX`).
+- **[Licenses](licenses.md)**: Aggregate license counts and licensing summaries (`licenses/TLIC-XXXX`).
+- **[Organizations](organizations.md)**: Licensed organizations and recall-involved businesses (`organizations/TORG-XXXX`).
+- **[Testing Laboratories](testing-laboratories.md)**: California testing laboratory license records (`testing-laboratories/TSTL-XXXX`).
+- **[Recalls](recalls.md)**: Cannabis recall notices and safety enforcement records (`recalls/TRCL-XXXX`).
+- **[Contaminants](contaminants.md)**: Contaminant classes regulated under cannabis testing (`contaminants/TCNT-XXXX`).
+- **[Datasets](datasets.md)**: Dated, source-traceable dataset snapshots and aggregate reporting surfaces (`datasets/TDTS-XXXX`).
+- **[Requirements](requirements.md)**: Regulatory requirements and testing panels (`requirements/TREQ-XXXX`).
+
+---
+
 ## Archival & Graph Architecture
 
 This repository is compiled statically using **Boris** and deployed continuously to Cloudflare Pages.

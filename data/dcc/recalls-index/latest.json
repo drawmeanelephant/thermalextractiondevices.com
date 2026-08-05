@@ -1,0 +1,1454 @@
+{
+  "dataset": "recalls-index",
+  "retrieval_date": "2026-08-04",
+  "normalized": [
+    {
+      "id": "6a68dfdbc5b39a34e10f7334",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a68dfdbc5b39a34e10f7334",
+      "type": "Voluntary",
+      "date": "8/3/2026",
+      "title": "Baddies Worldwide  Flower",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "6a43e400469891f7ecd256ae",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a43e400469891f7ecd256ae",
+      "type": "Voluntary",
+      "date": "7/2/2026",
+      "title": "Stiiizy Vape Cartridge and  Integrated Vaporizer",
+      "reason": "Adulterated: Pesticide Category II Contamination (Pyrethrins)"
+    },
+    {
+      "id": "6a3c3b5b3e7bbb565418e5a5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a3c3b5b3e7bbb565418e5a5",
+      "type": "Voluntary",
+      "date": "6/25/2026",
+      "title": "Lavinia Before Sex Edible",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "6a39be622b28878ef4fac90d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a39be622b28878ef4fac90d",
+      "type": "Voluntary",
+      "date": "6/23/2026",
+      "title": "Infused pre-roll products packaged by The Higher Path Infused Pre-Roll",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6a39ba986d79688bab955d8f",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a39ba986d79688bab955d8f",
+      "type": "Voluntary",
+      "date": "6/23/2026",
+      "title": "Pre-roll products packaged by The Higher Path Pre-Roll",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6a39b80122dc5a363f09adc6",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a39b80122dc5a363f09adc6",
+      "type": "Voluntary",
+      "date": "6/23/2026",
+      "title": "Flower products packaged by The Higher Path Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6a298137bb2d05e9afc2c265",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a298137bb2d05e9afc2c265",
+      "type": "Voluntary",
+      "date": "6/10/2026",
+      "title": "Hud's Buds Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6a232de738fb6c5513a12792",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a232de738fb6c5513a12792",
+      "type": "Voluntary",
+      "date": "6/10/2026",
+      "title": "White Rabbit Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6a1dc9de98859a29f3f06962",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6a1dc9de98859a29f3f06962",
+      "type": "Voluntary",
+      "date": "6/2/2026",
+      "title": "Teds Budz Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus terreus)"
+    },
+    {
+      "id": "69fcd4c2c3306dd2d846ad42",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69fcd4c2c3306dd2d846ad42",
+      "type": "Voluntary",
+      "date": "5/8/2026",
+      "title": "Canna Creamery Edible",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "69f5062022586b8849e9ca84",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69f5062022586b8849e9ca84",
+      "type": "Voluntary",
+      "date": "5/5/2026",
+      "title": "Punch Bar Edible",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "69dfd9e6f9ee786037778a16",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69dfd9e6f9ee786037778a16",
+      "type": "Voluntary",
+      "date": "4/17/2026",
+      "title": "Korova Edible",
+      "reason": "Adulterated: Prohibited Product"
+    },
+    {
+      "id": "69c454e93e73b4fb85e02ce0",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69c454e93e73b4fb85e02ce0",
+      "type": "Voluntary",
+      "date": "3/27/2026",
+      "title": "Korova Edible",
+      "reason": "Adulterated: Prohibited Product"
+    },
+    {
+      "id": "69bac321a64de26e1f61b1bc",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69bac321a64de26e1f61b1bc",
+      "type": "Voluntary",
+      "date": "3/26/2026",
+      "title": "Firehouse Dispensary Infused Pre-Roll",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "69b1b5a32a82b185bbc723ca",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69b1b5a32a82b185bbc723ca",
+      "type": "Voluntary",
+      "date": "3/18/2026",
+      "title": "Luigi Integrated Vaporizer",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "69a85ce32d19d8796b0803db",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69a85ce32d19d8796b0803db",
+      "type": "Voluntary",
+      "date": "3/6/2026",
+      "title": "Punch Edible",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "69a21d3f96df1c8b70f43527",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69a21d3f96df1c8b70f43527",
+      "type": "Voluntary",
+      "date": "3/4/2026",
+      "title": "Left Coast Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus fumigatus)"
+    },
+    {
+      "id": "69a205cb8fa6fba508b1b4fb",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69a205cb8fa6fba508b1b4fb",
+      "type": "Voluntary",
+      "date": "3/3/2026",
+      "title": "West Coast Cure Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "6998af38ba87ca08bd8caba5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6998af38ba87ca08bd8caba5",
+      "type": "Voluntary",
+      "date": "2/23/2026",
+      "title": "Tiny Fires Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus fumigatus)"
+    },
+    {
+      "id": "69851e0f298cd056cfb16d79",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69851e0f298cd056cfb16d79",
+      "type": "Voluntary",
+      "date": "2/6/2026",
+      "title": "Punch Bar Edible",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6939c0529310ecb7609fcecd",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6939c0529310ecb7609fcecd",
+      "type": "Voluntary",
+      "date": "1/16/2026",
+      "title": "(RECALL RESCINDED) Back Country Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6939ba78cf564c5d273c7038",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6939ba78cf564c5d273c7038",
+      "type": "Voluntary",
+      "date": "1/16/2026",
+      "title": "(RECALL RESCINDED) Back Country  Concentrate",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "69612a25c92173ffea4e8179",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69612a25c92173ffea4e8179",
+      "type": "Voluntary",
+      "date": "1/15/2026",
+      "title": "Blazrade Integrated Vaporizer",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "6949c49c275295130057a2b9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6949c49c275295130057a2b9",
+      "type": "Voluntary",
+      "date": "12/23/2025",
+      "title": "Canna-Lean THC Tincture",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6949c333275295130057a2b5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6949c333275295130057a2b5",
+      "type": "Voluntary",
+      "date": "12/23/2025",
+      "title": "Herba-Lean THC MCT Tincture",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "69449011220ee0d97a09e7c2",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69449011220ee0d97a09e7c2",
+      "type": "Voluntary",
+      "date": "12/22/2025",
+      "title": "Vibe Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger); Microbial Contamination (Aspergillus flavus); Microb..."
+    },
+    {
+      "id": "692de8526885e3b780908abf",
+      "url": "https://recalls.cannabis.ca.gov/recalls/692de8526885e3b780908abf",
+      "type": "Mandatory",
+      "date": "12/4/2025",
+      "title": "Coastal Sun Greenhouse Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "69263e87a4fa6eedebd6c039",
+      "url": "https://recalls.cannabis.ca.gov/recalls/69263e87a4fa6eedebd6c039",
+      "type": "Voluntary",
+      "date": "12/4/2025",
+      "title": "Honey King Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus)"
+    },
+    {
+      "id": "6926012c57a72c517a7927fc",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6926012c57a72c517a7927fc",
+      "type": "Voluntary",
+      "date": "12/4/2025",
+      "title": "Pure Beauty Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus fumigatus)"
+    },
+    {
+      "id": "6925e7cc4fdb2651d21000be",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6925e7cc4fdb2651d21000be",
+      "type": "Voluntary",
+      "date": "12/1/2025",
+      "title": "Zurpz Connoisseur Integrated Vaporizer",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "691f827fb0f55be0f7377c9b",
+      "url": "https://recalls.cannabis.ca.gov/recalls/691f827fb0f55be0f7377c9b",
+      "type": "Voluntary",
+      "date": "12/1/2025",
+      "title": "PotShot Beverage",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "6924e7173e31dcbd909c9f63",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6924e7173e31dcbd909c9f63",
+      "type": "Voluntary",
+      "date": "11/26/2025",
+      "title": "CLSICS Edible",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "680813de0a02d94b409051cb",
+      "url": "https://recalls.cannabis.ca.gov/recalls/680813de0a02d94b409051cb",
+      "type": "Voluntary",
+      "date": "11/20/2025",
+      "title": "Caviar Gold Infused Pre-Roll",
+      "reason": "Adulterated: Pesticide Category I Contamination (Paclobutrazol)"
+    },
+    {
+      "id": "691508e4bfd28f115bd1da13",
+      "url": "https://recalls.cannabis.ca.gov/recalls/691508e4bfd28f115bd1da13",
+      "type": "Voluntary",
+      "date": "11/14/2025",
+      "title": "Humble Bounty Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "68f01187a1ea37801c910981",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68f01187a1ea37801c910981",
+      "type": "Voluntary",
+      "date": "10/17/2025",
+      "title": "Cities Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "68dc1e41372f5d5e380d20f1",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68dc1e41372f5d5e380d20f1",
+      "type": "Voluntary",
+      "date": "10/3/2025",
+      "title": "Zurpz Integrated Vaporizer",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "68cd9bbc430614b40340b9ca",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68cd9bbc430614b40340b9ca",
+      "type": "Voluntary",
+      "date": "9/22/2025",
+      "title": "Catalyst Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "68c9eaf9ee3f253d00cfa2be",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68c9eaf9ee3f253d00cfa2be",
+      "type": "Voluntary",
+      "date": "9/18/2025",
+      "title": "Terpys Infused Flower",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus niger); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "68bb4247277fb53dceadb603",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68bb4247277fb53dceadb603",
+      "type": "Voluntary",
+      "date": "9/9/2025",
+      "title": "Live Oro Beverage",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "68bb4102277fb53dceadb600",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68bb4102277fb53dceadb600",
+      "type": "Voluntary",
+      "date": "9/9/2025",
+      "title": "Voila Beverage",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "68bb3fdd277fb53dceadb5fd",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68bb3fdd277fb53dceadb5fd",
+      "type": "Voluntary",
+      "date": "9/9/2025",
+      "title": "Reefresh Beverage",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "68bb3c9f277fb53dceadb5f7",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68bb3c9f277fb53dceadb5f7",
+      "type": "Voluntary",
+      "date": "9/9/2025",
+      "title": "Olala Beverage",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "68af7d32f9fe68d804e858be",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68af7d32f9fe68d804e858be",
+      "type": "Voluntary",
+      "date": "9/5/2025",
+      "title": "Punch Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Daminozide)"
+    },
+    {
+      "id": "68a38a94a2543acbbf481d07",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68a38a94a2543acbbf481d07",
+      "type": "Voluntary",
+      "date": "8/22/2025",
+      "title": "Mr. Zips Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Daminozide)"
+    },
+    {
+      "id": "6896301db1a1dbf6ed2660e4",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6896301db1a1dbf6ed2660e4",
+      "type": "Voluntary",
+      "date": "8/12/2025",
+      "title": "8-Track Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "689a0f741ddade6d2bbbdb25",
+      "url": "https://recalls.cannabis.ca.gov/recalls/689a0f741ddade6d2bbbdb25",
+      "type": "Voluntary",
+      "date": "8/11/2025",
+      "title": "Himalaya Vape Cartridge",
+      "reason": "Adulterated and Misbranded: Prohibited Product"
+    },
+    {
+      "id": "688d39f9608329d100bd15bc",
+      "url": "https://recalls.cannabis.ca.gov/recalls/688d39f9608329d100bd15bc",
+      "type": "Voluntary",
+      "date": "8/5/2025",
+      "title": "Iced Infused Flower and  Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "688d39f0608329d100bd15b9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/688d39f0608329d100bd15b9",
+      "type": "Voluntary",
+      "date": "8/5/2025",
+      "title": "Sluggers Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "688a598cfb4b11aeefd90243",
+      "url": "https://recalls.cannabis.ca.gov/recalls/688a598cfb4b11aeefd90243",
+      "type": "Voluntary",
+      "date": "8/1/2025",
+      "title": "California Love and Megan's Brand Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "688931563e687541be28d909",
+      "url": "https://recalls.cannabis.ca.gov/recalls/688931563e687541be28d909",
+      "type": "Voluntary",
+      "date": "7/30/2025",
+      "title": "Konez Vape Cartridge",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "686eebe4e18974d667a1250e",
+      "url": "https://recalls.cannabis.ca.gov/recalls/686eebe4e18974d667a1250e",
+      "type": "Voluntary",
+      "date": "7/30/2025",
+      "title": "Malibu Skateboards Infused Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "685ac399a5767e9bd4299cf3",
+      "url": "https://recalls.cannabis.ca.gov/recalls/685ac399a5767e9bd4299cf3",
+      "type": "Mandatory",
+      "date": "7/17/2025",
+      "title": "Alien Labs Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus); Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "686d9e7c2c808b9976ca6035",
+      "url": "https://recalls.cannabis.ca.gov/recalls/686d9e7c2c808b9976ca6035",
+      "type": "Voluntary",
+      "date": "7/15/2025",
+      "title": "Rollers Delight Infused Flower and Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "68645cbcc770556dd1eedc84",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68645cbcc770556dd1eedc84",
+      "type": "Voluntary",
+      "date": "7/8/2025",
+      "title": "Malibu Skateboards Infused Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "68659c06bf883c279db9fda7",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68659c06bf883c279db9fda7",
+      "type": "Voluntary",
+      "date": "7/7/2025",
+      "title": "High Power Beverage",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "685ef369cc5cc22033bf6c62",
+      "url": "https://recalls.cannabis.ca.gov/recalls/685ef369cc5cc22033bf6c62",
+      "type": "Voluntary",
+      "date": "7/2/2025",
+      "title": "Almora Naturally Better Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus fumigatus); Microbial Contamination (Aspergillus niger); Mic..."
+    },
+    {
+      "id": "68644cffda2ab8a7147f8fde",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68644cffda2ab8a7147f8fde",
+      "type": "Voluntary",
+      "date": "7/1/2025",
+      "title": "Emerald Bay Extracts Tablet",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "685dc1eda34dbb6517647c95",
+      "url": "https://recalls.cannabis.ca.gov/recalls/685dc1eda34dbb6517647c95",
+      "type": "Voluntary",
+      "date": "6/30/2025",
+      "title": "Pop's Weed Infused Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6859b52b6240f323aa90f91f",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6859b52b6240f323aa90f91f",
+      "type": "Voluntary",
+      "date": "6/26/2025",
+      "title": "Sluggers Flower and  Pre-Roll",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67d9957f61812ef297c873ce",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67d9957f61812ef297c873ce",
+      "type": "Mandatory",
+      "date": "6/26/2025",
+      "title": "Alien Labs Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "6859c1263ac16dd9b79d4d6e",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6859c1263ac16dd9b79d4d6e",
+      "type": "Voluntary",
+      "date": "6/24/2025",
+      "title": "Moca  Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus fumigatus)"
+    },
+    {
+      "id": "68508fed3f86ce0b7a6948f8",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68508fed3f86ce0b7a6948f8",
+      "type": "Voluntary",
+      "date": "6/23/2025",
+      "title": "Golden Nuggets and Solis Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "685085643f86ce0b7a6948f5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/685085643f86ce0b7a6948f5",
+      "type": "Voluntary",
+      "date": "6/18/2025",
+      "title": "Rove Ice Packs Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus); Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "68430a9c756a3425f6e09241",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68430a9c756a3425f6e09241",
+      "type": "Voluntary",
+      "date": "6/11/2025",
+      "title": "Rollers Delight Infused Pre-Roll",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6830e5eedc244dc5ad4cd0fa",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6830e5eedc244dc5ad4cd0fa",
+      "type": "Voluntary",
+      "date": "5/28/2025",
+      "title": "Quickies Flower, Pre-Roll, Infused Pre-Roll, and Vape Cartridge",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "6830c47e19b3195b7d15ab3c",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6830c47e19b3195b7d15ab3c",
+      "type": "Voluntary",
+      "date": "5/27/2025",
+      "title": "N'Refused  Edible",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6830bace19b3195b7d15ab32",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6830bace19b3195b7d15ab32",
+      "type": "Voluntary",
+      "date": "5/27/2025",
+      "title": "Personals Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6830b01b19b3195b7d15ab2c",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6830b01b19b3195b7d15ab2c",
+      "type": "Voluntary",
+      "date": "5/27/2025",
+      "title": "Grasshoppers Peanut Butter Cups Edible",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6826696d651df98cac943a90",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6826696d651df98cac943a90",
+      "type": "Voluntary",
+      "date": "5/21/2025",
+      "title": "Legion of Dank Delights Edible",
+      "reason": "Adulterated and Misbranded: Other; Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "68263e4690232c8644ea388d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68263e4690232c8644ea388d",
+      "type": "Voluntary",
+      "date": "5/15/2025",
+      "title": "Brite Beverage",
+      "reason": "Adulterated: Prohibited Product; Other"
+    },
+    {
+      "id": "681a690ede8dfd7993fb4d2d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/681a690ede8dfd7993fb4d2d",
+      "type": "Voluntary",
+      "date": "5/6/2025",
+      "title": "Mainstage Edible",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "6815444781aae3b8cf89b805",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6815444781aae3b8cf89b805",
+      "type": "Voluntary",
+      "date": "5/6/2025",
+      "title": "She's Baked Lemonade Stand Edible",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "6813b5e2171a2609a7b46d63",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6813b5e2171a2609a7b46d63",
+      "type": "Voluntary",
+      "date": "5/2/2025",
+      "title": "Moods Liquid Dab Tincture",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "6814ee606c27402413d2d041",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6814ee606c27402413d2d041",
+      "type": "Voluntary",
+      "date": "4/30/2025",
+      "title": "Grasshoppers Peanut Butter Cups Edible",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "68111fa2c31741749dfed972",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68111fa2c31741749dfed972",
+      "type": "Voluntary",
+      "date": "4/30/2025",
+      "title": "Personals Flower",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "68110cdec31741749dfed970",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68110cdec31741749dfed970",
+      "type": "Voluntary",
+      "date": "4/30/2025",
+      "title": "N'Refused  Edible",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "68080bb50a02d94b409051c1",
+      "url": "https://recalls.cannabis.ca.gov/recalls/68080bb50a02d94b409051c1",
+      "type": "Voluntary",
+      "date": "4/24/2025",
+      "title": "Hi Pre-Roll",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus terreus); Microbial Contamination (Aspergillus niger); Micro..."
+    },
+    {
+      "id": "67f6dd47ad69398ae71adddf",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67f6dd47ad69398ae71adddf",
+      "type": "Voluntary",
+      "date": "4/16/2025",
+      "title": "Smartweed Flower",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "67fd4fdff04bba13cf57a683",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67fd4fdff04bba13cf57a683",
+      "type": "Mandatory",
+      "date": "4/15/2025",
+      "title": "Smoken Promises Flower and  Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "67fd4d20f04bba13cf57a67a",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67fd4d20f04bba13cf57a67a",
+      "type": "Mandatory",
+      "date": "4/15/2025",
+      "title": "Connected Flower and  Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "67f42df6ef33cec4b8c75611",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67f42df6ef33cec4b8c75611",
+      "type": "Mandatory",
+      "date": "4/15/2025",
+      "title": " Alien Labs Flower and  Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "67f93629a6af6c345158589b",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67f93629a6af6c345158589b",
+      "type": "Voluntary",
+      "date": "4/14/2025",
+      "title": "Nug Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus)"
+    },
+    {
+      "id": "67f44320ef33cec4b8c75618",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67f44320ef33cec4b8c75618",
+      "type": "Voluntary",
+      "date": "4/11/2025",
+      "title": "Honey Edible",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67ec59be4becf15d41092d3b",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67ec59be4becf15d41092d3b",
+      "type": "Voluntary",
+      "date": "4/9/2025",
+      "title": "Oakfruitland (OFL) Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67f044164c8fed4662b01b99",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67f044164c8fed4662b01b99",
+      "type": "Voluntary",
+      "date": "4/4/2025",
+      "title": "Rollers Delight Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger); Microbial Contamination (Aspergillus fumigatus); Mic..."
+    },
+    {
+      "id": "67eef04f7e45d7785194736a",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67eef04f7e45d7785194736a",
+      "type": "Voluntary",
+      "date": "4/4/2025",
+      "title": "Nice Guys Flower and Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger); Microbial Contamination (Aspergillus fumigatus); Mic..."
+    },
+    {
+      "id": "67cb60539b4d75e795d8eada",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67cb60539b4d75e795d8eada",
+      "type": "Voluntary",
+      "date": "4/4/2025",
+      "title": "Awesome Dope Edible and Honey Edible",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67eecc81eeed9a2d044639f6",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67eecc81eeed9a2d044639f6",
+      "type": "Voluntary",
+      "date": "4/3/2025",
+      "title": "ERB Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger); Microbial Contamination (Aspergillus flavus); Microb..."
+    },
+    {
+      "id": "67edc40ed271b2cd4fb6700b",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67edc40ed271b2cd4fb6700b",
+      "type": "Voluntary",
+      "date": "4/3/2025",
+      "title": "Brite Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "67edb9ef03fb5784226ca7f7",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67edb9ef03fb5784226ca7f7",
+      "type": "Voluntary",
+      "date": "4/3/2025",
+      "title": "Tyson Jab Jar Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus); Microbial Contamination (Aspergillus niger); Microb..."
+    },
+    {
+      "id": "67edaf9003fb5784226ca7f3",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67edaf9003fb5784226ca7f3",
+      "type": "Voluntary",
+      "date": "4/3/2025",
+      "title": "Pearl Pharma Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus fumigatus); Microbial Contamination (Aspergillus terreus)"
+    },
+    {
+      "id": "67d9a58bee53fc0e4a85cfd0",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67d9a58bee53fc0e4a85cfd0",
+      "type": "Mandatory",
+      "date": "3/28/2025",
+      "title": "Connected and Alien Labs  Flower",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67e2f72be1d586b2abb40828",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67e2f72be1d586b2abb40828",
+      "type": "Voluntary",
+      "date": "3/26/2025",
+      "title": "Secrets by Cream of the Crop Infused Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "67d4467a4106f28998de60cc",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67d4467a4106f28998de60cc",
+      "type": "Voluntary",
+      "date": "3/26/2025",
+      "title": "Tree of Life Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "67e1c59a764a2b6664808b45",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67e1c59a764a2b6664808b45",
+      "type": "Voluntary",
+      "date": "3/25/2025",
+      "title": "Ape Vape Cartridge and  Integrated Vaporizer",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "67d09f9f5c03fd67e1699304",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67d09f9f5c03fd67e1699304",
+      "type": "Voluntary",
+      "date": "3/20/2025",
+      "title": "Poppy Flower Roll-Ups Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67cb5f3e9b4d75e795d8ead7",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67cb5f3e9b4d75e795d8ead7",
+      "type": "Voluntary",
+      "date": "3/14/2025",
+      "title": "Caps Apothecary Inc. Infused Flower and  Infused Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67cf2bf64e313b143eeeefaf",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67cf2bf64e313b143eeeefaf",
+      "type": "Voluntary",
+      "date": "3/11/2025",
+      "title": "Vintage Cannabis Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67cb5ddc9b4d75e795d8ead5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67cb5ddc9b4d75e795d8ead5",
+      "type": "Voluntary",
+      "date": "3/11/2025",
+      "title": "Black Pearl Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67cb5ccd9b4d75e795d8ead3",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67cb5ccd9b4d75e795d8ead3",
+      "type": "Voluntary",
+      "date": "3/11/2025",
+      "title": "Kingston Royal VS1 Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67ca292d29119e4c62d9f0bd",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67ca292d29119e4c62d9f0bd",
+      "type": "Voluntary",
+      "date": "3/7/2025",
+      "title": "Lucky Family Brands Inc.  Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67ca15a2d3e118305ac6204e",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67ca15a2d3e118305ac6204e",
+      "type": "Voluntary",
+      "date": "3/7/2025",
+      "title": "Noah's Premium Pre-Roll and Infused Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67c8a860cb103f654b157bf9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67c8a860cb103f654b157bf9",
+      "type": "Voluntary",
+      "date": "3/7/2025",
+      "title": "Hard Eighth Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67c63ac9abf1dacdb9277769",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67c63ac9abf1dacdb9277769",
+      "type": "Voluntary",
+      "date": "3/7/2025",
+      "title": "Herbarium and Dona Pablo Pre-Roll",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67c7586fb3647b7230d6851d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67c7586fb3647b7230d6851d",
+      "type": "Voluntary",
+      "date": "3/4/2025",
+      "title": "Tonik Beverage",
+      "reason": ""
+    },
+    {
+      "id": "67c0a8966a1df8e2aab2a805",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67c0a8966a1df8e2aab2a805",
+      "type": "Voluntary",
+      "date": "2/28/2025",
+      "title": "Connected Flower and Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67b7be7906f27bfc532c0345",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67b7be7906f27bfc532c0345",
+      "type": "Voluntary",
+      "date": "2/24/2025",
+      "title": "American Weed Co., Yum Yumz and High 90's Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67b8d224dcf312eab06ec3c9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67b8d224dcf312eab06ec3c9",
+      "type": "Voluntary",
+      "date": "2/21/2025",
+      "title": "Culture Cannabis and The Drop Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67b8bf5feee6bdf8bdc4f05d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67b8bf5feee6bdf8bdc4f05d",
+      "type": "Voluntary",
+      "date": "2/21/2025",
+      "title": "Black Pearl Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67b65de006adb198f38bbd2a",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67b65de006adb198f38bbd2a",
+      "type": "Voluntary",
+      "date": "2/21/2025",
+      "title": "West Coast Cure Diamond Infused Flower",
+      "reason": "Adulterated: Other"
+    },
+    {
+      "id": "67a3ed7d027ff9b39bd5c651",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67a3ed7d027ff9b39bd5c651",
+      "type": "Voluntary",
+      "date": "2/19/2025",
+      "title": "Tonik  Beverage",
+      "reason": ""
+    },
+    {
+      "id": "67a26199d7bedce43a97eac8",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67a26199d7bedce43a97eac8",
+      "type": "Voluntary",
+      "date": "2/4/2025",
+      "title": "Canna America live resin Integrated Vaporizer",
+      "reason": ""
+    },
+    {
+      "id": "679aa03c6c2cf8a3a782d944",
+      "url": "https://recalls.cannabis.ca.gov/recalls/679aa03c6c2cf8a3a782d944",
+      "type": "Voluntary",
+      "date": "1/30/2025",
+      "title": "Jeeter and Baby Jeeter  Pre-Roll",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67995807ff1d541902f51156",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67995807ff1d541902f51156",
+      "type": "Voluntary",
+      "date": "1/29/2025",
+      "title": "Top Shelf Cultivation Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "678a9dcd3820f840e8dab8d9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/678a9dcd3820f840e8dab8d9",
+      "type": "Voluntary",
+      "date": "1/17/2025",
+      "title": "Noah's Premium Live Rosin Diamond Infused Pre-Roll",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "677c1ce27b818645f37d81b5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/677c1ce27b818645f37d81b5",
+      "type": "Voluntary",
+      "date": "1/6/2025",
+      "title": "Alien Labs  Flower",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67743be120de76de169418b0",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67743be120de76de169418b0",
+      "type": "Voluntary",
+      "date": "12/31/2024",
+      "title": "Cream of the Crop  Flower",
+      "reason": "Adulterated and Misbranded: Inaccurate Labeling (Cannabinoid inflation); Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "676352eb82281c7c02888fb4",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676352eb82281c7c02888fb4",
+      "type": "Voluntary",
+      "date": "12/19/2024",
+      "title": "Flavorz Integrated Vaporizer",
+      "reason": ""
+    },
+    {
+      "id": "6761c1de449a15805975db10",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761c1de449a15805975db10",
+      "type": "Voluntary",
+      "date": "12/16/2024",
+      "title": "Connected Flower and Pre-Roll",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "6761fe8594a546fcd1a88447",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761fe8594a546fcd1a88447",
+      "type": "Voluntary",
+      "date": "12/13/2024",
+      "title": "Dixie Elixir Beverage",
+      "reason": "Adulterated: Prohibited Product"
+    },
+    {
+      "id": "6761f90394a546fcd1a8843a",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761f90394a546fcd1a8843a",
+      "type": "Voluntary",
+      "date": "12/13/2024",
+      "title": "Connected Flower",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "675ca701d777de57d7f3a540",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675ca701d777de57d7f3a540",
+      "type": "Voluntary",
+      "date": "12/6/2024",
+      "title": "STIIIZY Premium THC Pods Vape Cartridge",
+      "reason": ""
+    },
+    {
+      "id": "6761ac09d62cebee0c5c993f",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761ac09d62cebee0c5c993f",
+      "type": "Voluntary",
+      "date": "12/5/2024",
+      "title": "CRU  Integrated Vaporizer",
+      "reason": ""
+    },
+    {
+      "id": "675cd698db9d2f38e6a8bfd4",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675cd698db9d2f38e6a8bfd4",
+      "type": "Voluntary",
+      "date": "12/5/2024",
+      "title": "CRU Pre-Roll",
+      "reason": ""
+    },
+    {
+      "id": "675cd7eadb9d2f38e6a8bfd7",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675cd7eadb9d2f38e6a8bfd7",
+      "type": "Voluntary",
+      "date": "12/4/2024",
+      "title": "Kind Republic Vape Cartridge",
+      "reason": ""
+    },
+    {
+      "id": "675cd355db9d2f38e6a8bfcd",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675cd355db9d2f38e6a8bfcd",
+      "type": "Voluntary",
+      "date": "11/22/2024",
+      "title": "Panda Pen Vape Cartridge",
+      "reason": ""
+    },
+    {
+      "id": "675cd52bdb9d2f38e6a8bfd2",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675cd52bdb9d2f38e6a8bfd2",
+      "type": "Voluntary",
+      "date": "11/21/2024",
+      "title": "Flav Vape Cartridge and  Integrated Vaporizer",
+      "reason": ""
+    },
+    {
+      "id": "675cd92adb9d2f38e6a8bfd9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675cd92adb9d2f38e6a8bfd9",
+      "type": "Voluntary",
+      "date": "11/1/2024",
+      "title": "Rove Drink Loud THC Shot Beverage",
+      "reason": "Adulterated: Prohibited Product"
+    },
+    {
+      "id": "675cda3e89feb03b44eca7ca",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675cda3e89feb03b44eca7ca",
+      "type": "Voluntary",
+      "date": "10/25/2024",
+      "title": "Phire Premium Concentrate Vape Cartridge",
+      "reason": ""
+    },
+    {
+      "id": "676052bb754559745e2d2bf5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676052bb754559745e2d2bf5",
+      "type": "Voluntary",
+      "date": "10/17/2024",
+      "title": "Josh Wax Pre Roll Multipack Pre-Roll",
+      "reason": "Adulterated: Heavy Metal Contamination (Arsenic)"
+    },
+    {
+      "id": "6761f01694a546fcd1a88422",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761f01694a546fcd1a88422",
+      "type": "Mandatory",
+      "date": "10/16/2024",
+      "title": "Embargo alert for products manufactured by K.U.S.H. Collective -  Integrated Vaporizer and Vape Cartridge",
+      "reason": ""
+    },
+    {
+      "id": "67605ca02dec600a5fdab80d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67605ca02dec600a5fdab80d",
+      "type": "Voluntary",
+      "date": "10/14/2024",
+      "title": "Project Moonwalk Cannabis Infused THC Sorbet Edible",
+      "reason": ""
+    },
+    {
+      "id": "6761ec9694a546fcd1a88412",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761ec9694a546fcd1a88412",
+      "type": "Voluntary",
+      "date": "10/9/2024",
+      "title": "Cali Heights Integrated Vaporizer and Vape Cartridge",
+      "reason": ""
+    },
+    {
+      "id": "6761e5bc66acba23980354d6",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761e5bc66acba23980354d6",
+      "type": "Voluntary",
+      "date": "10/8/2024",
+      "title": "West Coast Cure Pre-Roll, Integrated Vaporizer, and Vape Cartridge",
+      "reason": ""
+    },
+    {
+      "id": "676321559f9bcc32fed462a9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676321559f9bcc32fed462a9",
+      "type": "Mandatory",
+      "date": "9/27/2024",
+      "title": "Flower products packaged by Higher Ground Holdings, LLC Flower",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus niger); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67607231348fc6641c27094a",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607231348fc6641c27094a",
+      "type": "Mandatory",
+      "date": "9/19/2024",
+      "title": "All natural Henry's Original Premium Cannabis Smokes Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "67606ff62dec600a5fdab8c0",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67606ff62dec600a5fdab8c0",
+      "type": "Mandatory",
+      "date": "9/18/2024",
+      "title": "Mary Mary Premium Cannabis Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger); Microbial Contamination (Aspergillus terreus)"
+    },
+    {
+      "id": "676062d92dec600a5fdab858",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676062d92dec600a5fdab858",
+      "type": "Mandatory",
+      "date": "9/12/2024",
+      "title": "Lime Ultra 5 Pack Infused Pre-Roll",
+      "reason": "Adulterated and Misbranded: Pesticide Category I Contamination (Chlorfenapyr); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "675c9df9d777de57d7f3a530",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675c9df9d777de57d7f3a530",
+      "type": "Mandatory",
+      "date": "9/12/2024",
+      "title": "Lime Ready to Roll Infused  Flower",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "675cd072db9d2f38e6a8bfc9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/675cd072db9d2f38e6a8bfc9",
+      "type": "Mandatory",
+      "date": "9/11/2024",
+      "title": "CLSICS 10 Hash Infused Dog Walkers Infused Pre-Roll",
+      "reason": "Adulterated: Pesticide Category I Contamination (Paclobutrazol)"
+    },
+    {
+      "id": "676078ffe7333c2117ce13a3",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676078ffe7333c2117ce13a3",
+      "type": "Voluntary",
+      "date": "9/6/2024",
+      "title": "Retro Hits Premium Cannabis Distillate Vape Cartridge",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "676071c2348fc6641c270943",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676071c2348fc6641c270943",
+      "type": "Mandatory",
+      "date": "9/6/2024",
+      "title": "Circles Cannabis Oil Vaporizer Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "6760641e2dec600a5fdab874",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6760641e2dec600a5fdab874",
+      "type": "Mandatory",
+      "date": "9/6/2024",
+      "title": "Cloud Cannabis Oil Vaporizer Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "67607a8ce7333c2117ce13b0",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607a8ce7333c2117ce13b0",
+      "type": "Mandatory",
+      "date": "8/29/2024",
+      "title": "CUREpen Premium THC Oil  Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "676061d02dec600a5fdab847",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676061d02dec600a5fdab847",
+      "type": "Mandatory",
+      "date": "8/29/2024",
+      "title": "West Coast Cure Live Resin Diamonds Concentrate",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "67607b87e7333c2117ce13b5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607b87e7333c2117ce13b5",
+      "type": "Mandatory",
+      "date": "8/22/2024",
+      "title": "NHPR Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "67607b92e7333c2117ce13b7",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607b92e7333c2117ce13b7",
+      "type": "Mandatory",
+      "date": "8/21/2024",
+      "title": "Flor Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "676060ab2dec600a5fdab838",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676060ab2dec600a5fdab838",
+      "type": "Mandatory",
+      "date": "8/16/2024",
+      "title": "Glass House Farms Cannabis Flower Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus)"
+    },
+    {
+      "id": "67607f00e7333c2117ce13bd",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607f00e7333c2117ce13bd",
+      "type": "Mandatory",
+      "date": "8/8/2024",
+      "title": "Almora Naturally Better Single Origin Cannabis  Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "67605ea02dec600a5fdab82d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67605ea02dec600a5fdab82d",
+      "type": "Mandatory",
+      "date": "8/1/2024",
+      "title": "Lowell 35's 10 Tall Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "67607e33e7333c2117ce13b9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607e33e7333c2117ce13b9",
+      "type": "Voluntary",
+      "date": "7/30/2024",
+      "title": "Kush Creaturz Flower",
+      "reason": "Misbranded: Other"
+    },
+    {
+      "id": "67608170e7333c2117ce13c5",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67608170e7333c2117ce13c5",
+      "type": "Mandatory",
+      "date": "7/24/2024",
+      "title": "THC Design Estate Grown Premium Cannabis Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus)"
+    },
+    {
+      "id": "676083c6141ebf4b23e9273e",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676083c6141ebf4b23e9273e",
+      "type": "Mandatory",
+      "date": "7/17/2024",
+      "title": "CIRCLES Cannabis Oil Vaporizer Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "6760735a67bff701781d9588",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6760735a67bff701781d9588",
+      "type": "Mandatory",
+      "date": "7/17/2024",
+      "title": "Backpackboyz PREMIUM VAPE Integrated Vaporizer",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "676085e1141ebf4b23e9274b",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676085e1141ebf4b23e9274b",
+      "type": "Mandatory",
+      "date": "7/2/2024",
+      "title": "WEST COAST CURE LIVE RESIN Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "676081e0141ebf4b23e9272e",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676081e0141ebf4b23e9272e",
+      "type": "Mandatory",
+      "date": "7/2/2024",
+      "title": "WEST COAST CURE CUREpen Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "67607a66e7333c2117ce13ab",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607a66e7333c2117ce13ab",
+      "type": "Mandatory",
+      "date": "7/2/2024",
+      "title": "WCC CUREpen PREMIUM THC OIL Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "67608d79141ebf4b23e92757",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67608d79141ebf4b23e92757",
+      "type": "Mandatory",
+      "date": "6/25/2024",
+      "title": "CUREpen PREMIUM THC OIL Vape Cartridge",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    },
+    {
+      "id": "67608282141ebf4b23e92734",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67608282141ebf4b23e92734",
+      "type": "Voluntary",
+      "date": "6/12/2024",
+      "title": "WEST COAST CURE PREMIUM CURE Flower",
+      "reason": "Adulterated and Misbranded: Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "676075d467bff701781d9596",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676075d467bff701781d9596",
+      "type": "Mandatory",
+      "date": "6/3/2024",
+      "title": "BloomBox Flower and Pat's Flower",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus niger); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67607f90e7333c2117ce13c2",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67607f90e7333c2117ce13c2",
+      "type": "Voluntary",
+      "date": "5/24/2024",
+      "title": "Almora Naturally Better Live Resin Seltzer Beverage",
+      "reason": "Adulterated and Misbranded: Other"
+    },
+    {
+      "id": "67608ef1141ebf4b23e92759",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67608ef1141ebf4b23e92759",
+      "type": "Mandatory",
+      "date": "5/17/2024",
+      "title": "LAX PACKS PREMIUM FLOWER Flower",
+      "reason": "Adulterated and Misbranded: Inaccurate Labeling (Cannabinoid inflation); Microbial Contamination (Aspergillus fumigatus)"
+    },
+    {
+      "id": "676090aa141ebf4b23e9275c",
+      "url": "https://recalls.cannabis.ca.gov/recalls/676090aa141ebf4b23e9275c",
+      "type": "Voluntary",
+      "date": "5/9/2024",
+      "title": "Cali KOSHER Flower",
+      "reason": "Adulterated and Misbranded: Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "6760919a141ebf4b23e9275e",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6760919a141ebf4b23e9275e",
+      "type": "Mandatory",
+      "date": "5/6/2024",
+      "title": "CANNDESCENT CALIFORNIA 100% WHOLE FLOWER Pre-Roll",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus spp.); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "67608862141ebf4b23e92750",
+      "url": "https://recalls.cannabis.ca.gov/recalls/67608862141ebf4b23e92750",
+      "type": "Voluntary",
+      "date": "4/30/2024",
+      "title": "Mary's Medicinal Transdermal Compound Topical",
+      "reason": "Adulterated and Misbranded: Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "6761bc23449a15805975db04",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761bc23449a15805975db04",
+      "type": "Mandatory",
+      "date": "4/25/2024",
+      "title": "C CREME Infused Pre-Roll",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus flavus); Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "6761b090449a15805975daf0",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761b090449a15805975daf0",
+      "type": "Mandatory",
+      "date": "4/19/2024",
+      "title": "8 TRACK 1.0 Gram Pre-Roll",
+      "reason": "Adulterated and Misbranded: Microbial Contamination (Aspergillus niger); Microbial Contamination (Aspergillus flavus)"
+    },
+    {
+      "id": "6761b362449a15805975daf9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761b362449a15805975daf9",
+      "type": "Mandatory",
+      "date": "4/9/2024",
+      "title": "Tyson Undisputed Cannabis Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "6761b4b3449a15805975dafe",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761b4b3449a15805975dafe",
+      "type": "Voluntary",
+      "date": "3/29/2024",
+      "title": "Blem 3.5 Gram Flower",
+      "reason": "Adulterated and Misbranded: Inaccurate Labeling (Cannabinoid inflation)"
+    },
+    {
+      "id": "6761bccb449a15805975db06",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761bccb449a15805975db06",
+      "type": "Mandatory",
+      "date": "3/25/2024",
+      "title": "UPNORTH 3.5 Gram, Maui-Wowie Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus terreus)"
+    },
+    {
+      "id": "6761abdbd62cebee0c5c993d",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761abdbd62cebee0c5c993d",
+      "type": "Mandatory",
+      "date": "3/20/2024",
+      "title": " Almora 14 Half Gram, GMO POP Pre-Roll",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "6761ad93d62cebee0c5c9946",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761ad93d62cebee0c5c9946",
+      "type": "Mandatory",
+      "date": "3/11/2024",
+      "title": "Passiflora Premium Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus fumigatus)"
+    },
+    {
+      "id": "6761acd7d62cebee0c5c9943",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761acd7d62cebee0c5c9943",
+      "type": "Mandatory",
+      "date": "3/11/2024",
+      "title": "JC Rad Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus niger)"
+    },
+    {
+      "id": "6761aeec449a15805975dae9",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761aeec449a15805975dae9",
+      "type": "Voluntary",
+      "date": "3/4/2024",
+      "title": "Panda PEN 1 ML Premium Disposable Vape Cartridge",
+      "reason": "Misbranded: Inaccurate Labeling (Obscured information panel)"
+    },
+    {
+      "id": "6761b005449a15805975daee",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761b005449a15805975daee",
+      "type": "Mandatory",
+      "date": "3/1/2024",
+      "title": "Grizzly Peak Premium Indoor Citrus Boost, RS11, and Zoap Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "6761b1ab449a15805975daf4",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761b1ab449a15805975daf4",
+      "type": "Mandatory",
+      "date": "2/21/2024",
+      "title": "Roundtrip Pistachio Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "6761b0f4449a15805975daf2",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761b0f4449a15805975daf2",
+      "type": "Mandatory",
+      "date": "2/21/2024",
+      "title": "\\tLOWELL BIG BUDS Blueberry Kush Indica Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus spp.)"
+    },
+    {
+      "id": "6761bc0d449a15805975db02",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761bc0d449a15805975db02",
+      "type": "Mandatory",
+      "date": "2/15/2024",
+      "title": "Nfuzed Air metered-dose inhaler and Nfuzed Cannabis Infused Inhaler Integrated Vaporizer",
+      "reason": ""
+    },
+    {
+      "id": "6761f3d194a546fcd1a88430",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761f3d194a546fcd1a88430",
+      "type": "Mandatory",
+      "date": "1/10/2024",
+      "title": "Urban Therapies Distribution, LLC Flower",
+      "reason": "Adulterated: Microbial Contamination (Aspergillus flavus)"
+    },
+    {
+      "id": "6761f34694a546fcd1a8842c",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761f34694a546fcd1a8842c",
+      "type": "Voluntary",
+      "date": "1/10/2024",
+      "title": "Fog City Farms - Shark Bites Pacific Chemistry Hybrid Infused Pre-Roll",
+      "reason": "Adulterated: Pesticide Category II Contamination (Spiromesifen)"
+    },
+    {
+      "id": "6761f5f394a546fcd1a88434",
+      "url": "https://recalls.cannabis.ca.gov/recalls/6761f5f394a546fcd1a88434",
+      "type": "Voluntary",
+      "date": "12/7/2023",
+      "title": "Grizzly Peak Farms, LLC Zoap Cannabis Flower",
+      "reason": "Adulterated: Pesticide Category I Contamination (Chlorfenapyr)"
+    }
+  ]
+}
