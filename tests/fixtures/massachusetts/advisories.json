@@ -1,0 +1,412 @@
+[
+ {
+  "url": "https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-may-31-2024-and-january-23-2025-february-3-2025/",
+  "slug": "notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-may-31-2024-and-january-23-2025-february-3-2025",
+  "title": "Public Health and Safety Advisory: Potentially Contaminated Marijuana Products (sold between May 31, 2024, and January 23, 2025)",
+  "advisory_date": "2025-02-03",
+  "date_ranges": {
+   "sold_between": [
+    "2024-05-31",
+    "2025-01-23"
+   ]
+  },
+  "concern": "4 and June 2024; however, following additional compliance testing, samples of the affected products were found to have the presence of yeast and mold above the acceptable testing limits established for Total Yeast and Mold and coliforms. The affected products are subject to further investigation by the Commission and would be subject to confirmatory retesting and passing results before the products can be made available to the public. The Commission deems a threat to public health and safety when Marijuana is found to have Total Yeast",
+  "consumer_instructions": "are urged to check whether any of the affected products are currently in their possession. Consumers and Patients that possess any of the affected products may destroy it or return it to the store where they purchased it for proper disposal. Please contact the retailer the product was purchased from based on the included chart. Consumers and Patients who experience adverse health effects after consuming the affected products should seek medical attention and notify the retailer. Pursuant to Comm",
+  "products": [
+   {
+    "product": "1 g Pre-rolls Strane",
+    "strain": "Carbon Fiber",
+    "batch": "CaFi-240409"
+   },
+   {
+    "product": "3.5 g Strane",
+    "strain": "Carbon Fiber",
+    "batch": "CaFi-240409"
+   },
+   {
+    "product": "1 g Pre-rolls Strane",
+    "strain": "Carbon Fiber",
+    "batch": "CaFi-240409"
+   },
+   {
+    "product": "28 g Strane",
+    "strain": "Carbon Fiber",
+    "batch": "CaFi-240409"
+   },
+   {
+    "product": "1 g Pre-rolls Strane",
+    "strain": "Frosted Jungle",
+    "batch": "FrJu-240521"
+   },
+   {
+    "product": "3.5 g Strane",
+    "strain": "Frosted Jungle",
+    "batch": "FrJu-240521"
+   },
+   {
+    "product": "3.5 g Garcia Hand Picked",
+    "strain": "Highland OG",
+    "batch": "HiOG-240409"
+   },
+   {
+    "product": "28 g Garcia Hand Picked",
+    "strain": "Highland OG",
+    "batch": "HiOG-240409"
+   },
+   {
+    "product": "7 g Garcia Hand Picked",
+    "strain": "Highland OG",
+    "batch": "HiOG-240409"
+   },
+   {
+    "product": "1 g Pre-rolls Garcia Hand Picked",
+    "strain": "Highland OG",
+    "batch": "HiOG-240409"
+   },
+   {
+    "product": "Pre-rolls Strane",
+    "strain": "Silver Kush",
+    "batch": "SiKu-240305"
+   },
+   {
+    "product": "5g Pre-roll 10 pk Strane",
+    "strain": "Silver Kush",
+    "batch": "SiKu-240305"
+   }
+  ],
+  "licensees": [
+   {
+    "licensee": "253 Organic, LLC d/b/a 253 Farmacy",
+    "license_number": "MR281245",
+    "municipality": "Montague"
+   },
+   {
+    "licensee": "Ashli\u2019s, Inc. d/b/a Zahara",
+    "license_number": "MR281332",
+    "municipality": "Attleboro"
+   },
+   {
+    "licensee": "KG Collective Brockton, LLC d/b/a Kush Groove",
+    "license_number": "MR281374",
+    "municipality": "Brockton"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MR281787",
+    "municipality": "Somerville"
+   },
+   {
+    "licensee": "Enlite Cannabis Dispensary, LLC",
+    "license_number": "MR281867",
+    "municipality": "Northampton"
+   },
+   {
+    "licensee": "Herbal Pathways d/b/a HiBrid",
+    "license_number": "MR282037",
+    "municipality": "Pittsfield"
+   },
+   {
+    "licensee": "Holistic Industries, Inc     d/b/a Liberty Cannabis",
+    "license_number": "MR282605",
+    "municipality": "Easthampton"
+   },
+   {
+    "licensee": "Holistic Industries, Inc.     d/b/a Liberty Cannabis",
+    "license_number": "MR282667",
+    "municipality": "Springfield"
+   },
+   {
+    "licensee": "Great Barrington Retail, Inc. d/b/a Great Barrington Dispensary",
+    "license_number": "MR282884",
+    "municipality": "Great Barrington"
+   },
+   {
+    "licensee": "6 Bricks, LLC",
+    "license_number": "MR283098",
+    "municipality": "Springfield"
+   },
+   {
+    "licensee": "Cypress Tree Management Natick, Inc. d/b/a Redi",
+    "license_number": "MR283773",
+    "municipality": "Natick"
+   },
+   {
+    "licensee": "Erba C3 Dorchester LLC d/b/a High Profile x Budega",
+    "license_number": "MR284013",
+    "municipality": "Boston"
+   },
+   {
+    "licensee": "Massachusetts Citizens for Social Equity LLC d/b/a High Profile x Budega",
+    "license_number": "MR284097",
+    "municipality": "Boston"
+   },
+   {
+    "licensee": "Rooted In, LLC",
+    "license_number": "MR284261",
+    "municipality": "Boston"
+   },
+   {
+    "licensee": "Smokey Leaf LLC",
+    "license_number": "MR284276",
+    "municipality": "Greenfield"
+   },
+   {
+    "licensee": "Enlite Cannabis Dispensary LLC",
+    "license_number": "MR284651",
+    "municipality": "Springfield"
+   },
+   {
+    "licensee": "ARL Healthcare Inc. d/b/a Panacea Wellness",
+    "license_number": "MR284873",
+    "municipality": "Quincy"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MTC1526-R",
+    "municipality": "Easthampton"
+   },
+   {
+    "licensee": "ARL Healthcare, Inc. d/b/a Panacea Wellness",
+    "license_number": "MTC225-R",
+    "municipality": "Quincy"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MTC685-R",
+    "municipality": "Somerville"
+   },
+   {
+    "licensee": "Patriot Care Corp d/b/a Cannabist",
+    "license_number": "MR281282",
+    "municipality": "Greenfield"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MR281787",
+    "municipality": "Somerville"
+   },
+   {
+    "licensee": "Holistic Industries, Inc d/b/a Liberty Cannabis",
+    "license_number": "MR282605",
+    "municipality": "Easthampton"
+   },
+   {
+    "licensee": "Z&T Inc d/b/a Capital Cannabis",
+    "license_number": "MR283213",
+    "municipality": "Douglas"
+   },
+   {
+    "licensee": "Rooted In, LLC",
+    "license_number": "MR284261",
+    "municipality": "Boston"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MTC1526-R",
+    "municipality": "Easthampton"
+   },
+   {
+    "licensee": "Holistic Industries, Inc.",
+    "license_number": "MTC685-R",
+    "municipality": "Somerville"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MR281787",
+    "municipality": "Somerville"
+   },
+   {
+    "licensee": "Enlite Cannabis Dispensary, LLC",
+    "license_number": "MR281867",
+    "municipality": "Northampton"
+   },
+   {
+    "licensee": "TDMA LLC d/b/a Diem",
+    "license_number": "MR282376",
+    "municipality": "Worcester"
+   },
+   {
+    "licensee": "ARL Healthcare Inc. d/b/a Panacea Wellness",
+    "license_number": "MR282382",
+    "municipality": "Middleborough"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MR282667",
+    "municipality": "Springfield"
+   },
+   {
+    "licensee": "Great Barrington Retail, Inc. d/b/a Great Barrington Dispensary",
+    "license_number": "MR282884",
+    "municipality": "Great Barrington"
+   },
+   {
+    "licensee": "6 Bricks, LLC.",
+    "license_number": "MR283098",
+    "municipality": "Springfield"
+   },
+   {
+    "licensee": "Uma Flowers LLC",
+    "license_number": "MR283143",
+    "municipality": "Pepperell"
+   },
+   {
+    "licensee": "KG Collective Cambridge, LLC d/b/a Kush Groove",
+    "license_number": "MR284181",
+    "municipality": "Cambridge"
+   },
+   {
+    "licensee": "Rooted In, LLC",
+    "license_number": "MR284261",
+    "municipality": "Boston"
+   },
+   {
+    "licensee": "Smokey Leaf LLC",
+    "license_number": "MR284276",
+    "municipality": "Greenfield"
+   },
+   {
+    "licensee": "Uma Flowers Lunenburg LLC",
+    "license_number": "MR284518",
+    "municipality": "Lunenburg"
+   },
+   {
+    "licensee": "Enlite Cannabis Dispensary LLC",
+    "license_number": "MR284651",
+    "municipality": "Springfield"
+   },
+   {
+    "licensee": "ARL Healthcare, Inc. d/b/a Panacea Wellness",
+    "license_number": "MTC1085-R",
+    "municipality": "Middleborough"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a Liberty Cannabis",
+    "license_number": "MTC1526-R",
+    "municipality": "Easthampton"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. d/b/a",
+    "license_number": "MTC685-R",
+    "municipality": "Somerville"
+   },
+   {
+    "licensee": "Ashli\u2019s, Inc. d/b/a Zahara",
+    "license_number": "MR281332",
+    "municipality": "Attleboro"
+   },
+   {
+    "licensee": "Holistic Industries, Inc d/b/a Liberty Cannabis",
+    "license_number": "MR282605",
+    "municipality": "Easthampton"
+   },
+   {
+    "licensee": "Uma Flowers LLC",
+    "license_number": "MR283143",
+    "municipality": "Pepperell"
+   },
+   {
+    "licensee": "KG Collective Cambridge, LLC d/b/a Kush Groove",
+    "license_number": "MR284181",
+    "municipality": "Cambridge"
+   }
+  ],
+  "affected_product_count": 12
+ },
+ {
+  "url": "https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-september-18-2024-and-january-30-2025-february-3/",
+  "slug": "notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-september-18-2024-and-january-30-2025-february-3",
+  "title": "Public Health and Safety Advisory: Potentially Contaminated Marijuana Products (sold between September 18, 2024, and January 30, 2025)",
+  "advisory_date": "2025-02-03",
+  "date_ranges": {
+   "sold_between": [
+    "2024-09-18",
+    "2025-01-30"
+   ]
+  },
+  "concern": "September 2024; however, following additional compliance testing, samples of the affected products were found to have the presence of yeast and mold above the acceptable testing limits established for Total Yeast and Mold. The affected products are subject to further investigation by the Commission and would be subject to confirmatory retesting before the products can be made available to the public. The Commission deems a threat to public health and safety when Marijuana is found to have Total Yeast and Mold above the acceptable lim",
+  "consumer_instructions": ". Consumers are urged to check whether any of the affected products are currently in their possession. Consumers that possess any of the affected products may destroy it or return it to the store where they purchased it for proper disposal. Please contact the retailer the product was purchased from based on the included chart. Consumers who experience adverse health effects after consuming the affected products should seek medical attention and notify the retailer. The cultivator has notified t",
+  "products": [
+   {
+    "product": "3.5g Jar",
+    "strain": "Slap N Tickle",
+    "batch": "F2H23SLAP080524"
+   },
+   {
+    "product": "0.8g Pre-Roll",
+    "strain": "Slap N Tickle",
+    "batch": "F2H23SLAP080524"
+   },
+   {
+    "product": "3.5g Jar",
+    "strain": "Tiger\u2019s Eye",
+    "batch": "F3H23TEYE081924"
+   },
+   {
+    "product": "0.8g Pre-Roll",
+    "strain": "Tiger\u2019s Eye",
+    "batch": "F3H23TEYE081924"
+   }
+  ],
+  "licensees": [
+   {
+    "licensee": "East Boston Local Roots LLC d/b/a East Boston Cannabis Co.",
+    "license_number": "MR284117",
+    "municipality": "Boston"
+   },
+   {
+    "licensee": "202 Trading Company, Inc. d/b/a Bud Barn",
+    "license_number": "MR281735",
+    "municipality": "Winchendon"
+   },
+   {
+    "licensee": "Holistic Industries, Inc. D/b/a Liberty Cannabis",
+    "license_number": "MR282667",
+    "municipality": "Springfield"
+   },
+   {
+    "licensee": "Indica LLC",
+    "license_number": "MR284431",
+    "municipality": "Adams"
+   },
+   {
+    "licensee": "Z&T Inc d/b/a Capital Cannabis",
+    "license_number": "MR283213",
+    "municipality": "Douglas"
+   },
+   {
+    "licensee": "Cadella LLC d/b/a   Quincy Cannabis Company",
+    "license_number": "MR284556",
+    "municipality": "Quincy"
+   },
+   {
+    "licensee": "202 Trading Company, Inc. d/b/a Bud Barn",
+    "license_number": "MR281735",
+    "municipality": "Winchendon"
+   },
+   {
+    "licensee": "Z&T Inc d/b/a Capital Cannabis",
+    "license_number": "MR283213",
+    "municipality": "Douglas"
+   }
+  ],
+  "affected_product_count": 4
+ },
+ {
+  "url": "https://masscannabiscontrol.com/2025/08/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-contaminated-and-potentially-contaminated-marijuana-products-august-6-2025/",
+  "slug": "notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-contaminated-and-potentially-contaminated-marijuana-products-august-6-2025",
+  "title": "Public Health and Safety Advisory: Contaminated and Potentially Contaminated Marijuana Products",
+  "advisory_date": "2025-08-06",
+  "date_ranges": {
+   "tested_between": [
+    "2024-04-01",
+    "2025-04-15"
+   ]
+  },
+  "concern": "ially contaminated Marijuana flower and Marijuana Products (\u201cthe affected products\u201d) that were tested between April 1, 2024 and April 15, 2025 and noted in the Summary Suspension Order (\u201cSSO\u201d) issued on June 30, 2025. In the Order, the Commission identified 544 lab samples that previously failed Total Yeast and Mold testing. Consumers and Patients are urged to check the labels of any adult- or medical-use Marijuana and Marijuana Products in their possession to determine whether those products were tested during the relevant period ide",
+  "consumer_instructions": "e Marijuana Retailer, Medical Marijuana Treatment Center, or Marijuana Delivery Operators. Consumers and Patients that possess any of the affected products may destroy them or return them to the licensee where they were purchased for disposal and/or contact them for more information. Additionally, to promote public health and safety, licensees should follow their established policies and procedures to recall any affected products, as applicable. Public Health and Safety Advisories Portal Get Not",
+  "products": [],
+  "licensees": [],
+  "affected_product_count": 0
+ }
+]
