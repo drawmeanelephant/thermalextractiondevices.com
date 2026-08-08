@@ -33,16 +33,16 @@ summary: Propyl-side-chain homologue of CBD; no measured atmospheric boiling poi
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | **Not experimentally measured at 1 atm**; predicted ≈460–465 °C, with decomposition preceding boiling | "160–180 °C" figures in vape literature are misinterpreted evaporation temperatures [^2] |
-| Vapor pressure | Not measured; by analogy, higher than CBD (shorter side chain, lower mass) | CBD: 6.31×10⁻⁶ mmHg at 20 °C; ≈0.345 mmHg at 180 °C (calculated) [^2] |
+| Boiling point | **Not experimentally measured at 1 atm**; predicted ≈460–465 °C, with decomposition preceding boiling | "160–180 °C" figures in vape literature are misinterpreted evaporation temperatures [^3] |
+| Vapor pressure | Not measured; by analogy, higher than CBD (shorter side chain, lower mass) | CBD measured ≈10⁻³–10⁻¹ Pa over 61–121 °C (Lovestead & Bruno 2017); CBDV itself not measured [^2] |
 | Melting point | Not reported in authoritative sources | Expected similar to or slightly below CBD (≈66 °C) |
 | logP (octanol-water) | Predicted ≈5.7–6.0 | Slightly lower than CBD |
 | Water solubility | Practically insoluble (<1 µg/mL estimated) | Soluble in ethanol, methanol, DMSO, lipids |
-| Thermal decomposition | Degradation significant above ≈120 °C; oxidation products dominate | [^2] |
-| Oxidation / light sensitivity | High; polyphenolic structure vulnerable to air and UV | [^2] |
-| Known degradation products | CBEV-type (cannabielsoin), HU-331-analog quinones, CBNV (oxidative), by analogy to CBD | [^2] |
+| Thermal decomposition | Not independently characterized; by analogy to CBD, degradation becomes significant at elevated temperature | [^4] |
+| Oxidation / light sensitivity | High; polyphenolic structure vulnerable to air and UV (by analogy to CBD) | [^4] |
+| Known degradation products | CBEV-type (cannabielsoin), HU-331-analog quinones, CBNV (oxidative), by analogy to CBD (predicted; not experimentally characterized) | [^4] |
 
-> **Boiling point is not a device setpoint.** The commonly cited "CBDV boiling point ≈160–180 °C" is incorrect; those temperatures reflect matrix evaporation, not boiling at 1 atm.
+> **Boiling point is not a device setpoint.** The commonly cited "CBDV boiling point ≈160–180 °C" is incorrect; those temperatures reflect matrix evaporation, not boiling at 1 atm [^3].
 
 ## Thermal-extraction context
 
@@ -57,16 +57,16 @@ CBDV is a minor cannabinoid in most measured chemotypes and is reported in highe
 ## Reported biological activity
 
 ### Human evidence
-No verified controlled human study of inhaled isolated CBDV was identified for this archive [^3].
+No controlled human study of inhaled isolated CBDV was identified in this archive's literature review (as of 2026-08-08).
 
 ### Preclinical animal and in vitro evidence
 
 {{include includes/preclinical-evidence-note.md}}
 
-Early preclinical work investigated CBDV for anticonvulsant activity in animal seizure models; no human clinical effect at consumer-relevant doses is established [^3].
+Early preclinical work investigated CBDV for anticonvulsant activity in animal seizure models [^5]; no human clinical effect at consumer-relevant doses is established.
 
 ### Industry claims
-Minor-cannabinoid marketing claims for CBDV remain unsupported by controlled human evidence [^3].
+Minor-cannabinoid marketing claims for CBDV remain unsupported by controlled human evidence.
 
 ## Degradation products
 
@@ -75,8 +75,10 @@ Minor-cannabinoid marketing claims for CBDV remain unsupported by controlled hum
 ## Sources
 
 [^1]: PubChem CID 11601669, Cannabidivarin (CAS 24274-48-4). Verified 2026-08-08.
-[^2]: Research-corpus dossier research/compounds/cannabinoids/cbdv/artifact.md (boiling-point correction, vapor-pressure analogy to CBD per El-Hage et al. 2023). Not all ledger items re-verified in this wave.
-[^3]: Research-corpus dossier research/compounds/cannabinoids/cbdv/artifact.md evidence review; no human trials identified.
+[^2]: Lovestead TM, Bruno TJ. Determination of cannabinoid vapor pressures to aid in vapor phase detection of intoxication. *Forensic Chem.* 2017;5:79–85. doi:10.1016/j.forc.2017.06.003. PMID 29266138. (Measured CBD/Δ9-THC vapor pressures; the analogy basis — CBDV itself is not measured.)
+[^3]: Eyal AM, Berneman Zeitouni D, Tal D, Schlesinger D, Davidson EM, Raz N. Vapor pressure, vaping, and corrections to misconceptions related to medical cannabis' active pharmaceutical ingredients' physical properties and compositions. *Cannabis Cannabinoid Res.* 2023;8(3):414–425. doi:10.1089/can.2021.0173. PMID 35442765.
+[^4]: García-Valverde MT, Sánchez-Carnerero Callado C, Díaz-Liñán MC, et al. Effect of temperature in the degradation of cannabinoids: from a brief residence in the gas chromatography inlet port to a longer period in thermal treatments. *Front Chem.* 2022;10:1038729. doi:10.3389/fchem.2022.1038729.
+[^5]: Hill AJ, Mercier MS, Hill TD, Glyn SE, Jones NA, Yamasaki Y, et al. Cannabidivarin is anticonvulsant in mouse and rat in vitro and in seizure models. *Br J Pharmacol.* 2012;167(8):1629–1642. doi:10.1111/j.1476-5381.2012.02207.x. PMID 22970845. (Animal/in vitro study.)
 
 ## Related pages
 

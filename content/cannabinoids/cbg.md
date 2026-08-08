@@ -34,14 +34,14 @@ summary: Neutral phytocannabinoid formed from CBGA by decarboxylation; no measur
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Melting point | ≈52 °C | DSC/TGA measurement [^2] |
-| Boiling point | **Not experimentally measured at 1 atm** — decomposition precedes boiling. The widely cited "CBG boiling point = 52 °C" is a high-vacuum short-path distillation temperature, not an atmospheric boiling point [^2] |
-| Vapor pressure | No direct experimental data; by analogy to THC/CBD, ≈10⁻⁶–10⁻⁷ Torr at 20 °C, ≈0.1–0.2 Torr at 180 °C (extrapolated) | [^2] |
+| Melting point | ≈52 °C (reported) | [^2] |
+| Boiling point | **Not experimentally measured at 1 atm** — decomposition precedes boiling. The widely cited "CBG boiling point = 52 °C" is not an atmospheric boiling point: 52 °C is CBG's reported melting point, and at 1 atm CBG decomposes before boiling [^2][^3][^5] |
+| Vapor pressure | No direct experimental data; by analogy to the measured THC/CBD data, ≈10⁻⁶–10⁻⁷ Torr at 20 °C, ≈0.1–0.2 Torr at 180 °C (extrapolated) | [^4] |
 | logP (octanol-water) | 7.4 (computed XLogP3) | Extremely lipophilic |
 | Water solubility | Practically insoluble | Soluble in ethanol, methanol, acetonitrile, chloroform, scCO₂ |
-| Thermal decomposition | Onset ≈150 °C; at 250 °C a 35.6% loss of CBG with emergence of CBC was reported | [^2] |
+| Thermal decomposition | Onset ≈150 °C; significant loss of CBG with emergence of CBC at elevated temperature | [^3] |
 | Oxidation / light sensitivity | High | Store cold, dark, inert |
-| Known degradation products | CBC (thermal cyclization); VCE-003-type quinones (oxidative) | [^2] |
+| Known degradation products | CBC (thermal cyclization); VCE-003-type quinones (oxidative) | [^3] |
 
 > **Boiling point is not a device setpoint.** "CBG boils at 52 °C" is a reduced-pressure (≤0.05 Torr) distillation figure; at 1 atm CBG decomposes (≈150 °C) before boiling. Vaporizer chamber temperatures (170–220 °C) achieve evaporation from the matrix, not true boiling.
 
@@ -49,7 +49,7 @@ summary: Neutral phytocannabinoid formed from CBGA by decarboxylation; no measur
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-Effective volatilization of CBG from plant matrix generally requires chamber temperatures ≥170 °C; this is vapor-pressure-driven evaporation/sublimation, not bulk boiling [^2].
+Effective volatilization of CBG from plant matrix requires elevated chamber temperatures; this is vapor-pressure-driven evaporation, not bulk boiling [^5].
 
 ## Cannabis occurrence
 
@@ -62,16 +62,16 @@ CBGA is the shared precursor of the major cannabinoid acids (THCA, CBDA, CBCA) a
 ## Reported biological activity
 
 ### Human evidence
-No verified controlled human study of inhaled isolated CBG was identified for this archive [^3].
+No controlled human study of inhaled isolated CBG was identified in this archive's literature review (as of 2026-08-08).
 
 ### Preclinical animal and in vitro evidence
 
 {{include includes/preclinical-evidence-note.md}}
 
-Preclinical studies report CBG modulation of cannabinoid receptors and α2-adrenoceptors, antimicrobial activity, and anti-inflammatory effects in vitro; concentrations exceed plausible human exposure from cannabis [^3].
+Preclinical studies report CBG modulation of cannabinoid receptors and α2-adrenoceptors, antimicrobial activity, and anti-inflammatory effects in vitro (peer-reviewed review: Jastrząb et al. 2022 [^2]); concentrations exceed plausible human exposure from cannabis.
 
 ### Industry claims
-"CBG is the mother of all cannabinoids" is a marketing framing of the precursor role of CBGA (not CBG itself); analgesic/anti-inflammatory marketing claims lack controlled human evidence [^3].
+"CBG is the mother of all cannabinoids" is a marketing framing of the precursor role of CBGA (not CBG itself); analgesic/anti-inflammatory marketing claims lack controlled human evidence.
 
 ## Degradation products
 
@@ -81,8 +81,10 @@ Preclinical studies report CBG modulation of cannabinoid receptors and α2-adren
 ## Sources
 
 [^1]: PubChem CID 5315659, Cannabigerol (CAS 25654-31-3). Verified 2026-08-08.
-[^2]: Research-corpus dossier research/compounds/cannabinoids/cbg/artifact.md (DSC/TGA per Jastrząb 2022; boiling-point correction re: high-vacuum distillation). Not all ledger items re-verified in this wave.
-[^3]: Research-corpus dossier research/compounds/cannabinoids/cbg/artifact.md evidence table; no human trials identified.
+[^2]: Jastrząb A, Jarocka-Karpowicz I, Skrzydlewska E. The origin and biomedical relevance of cannabigerol. *Int J Mol Sci.* 2022;23(14):7929. doi:10.3390/ijms23147929. (Peer-reviewed review; CBG identity, properties, and reported biological activities.)
+[^3]: García-Valverde MT, Sánchez-Carnerero Callado C, Díaz-Liñán MC, et al. Effect of temperature in the degradation of cannabinoids: from a brief residence in the gas chromatography inlet port to a longer period in thermal treatments. *Front Chem.* 2022;10:1038729. doi:10.3389/fchem.2022.1038729. (Thermal degradation of cannabinoids with temperature; CBC emergence from CBG.)
+[^4]: Lovestead TM, Bruno TJ. Determination of cannabinoid vapor pressures to aid in vapor phase detection of intoxication. *Forensic Chem.* 2017;5:79–85. doi:10.1016/j.forc.2017.06.003. PMID 29266138. (Measured CBD/Δ9-THC vapor pressures; the analogy basis — CBG itself is not measured.)
+[^5]: Eyal AM, Berneman Zeitouni D, Tal D, Schlesinger D, Davidson EM, Raz N. Vapor pressure, vaping, and corrections to misconceptions related to medical cannabis' active pharmaceutical ingredients' physical properties and compositions. *Cannabis Cannabinoid Res.* 2023;8(3):414–425. doi:10.1089/can.2021.0173. PMID 35442765. (Boiling-point figures in marketing are not thermodynamic boiling points; evaporation is governed by relative vapor pressure.)
 
 ## Related pages
 

@@ -16,8 +16,9 @@ from scripts.cultivar_profiles import (
     clr_transform,
     numeric_value,
     profile_matrix,
+    profile_warnings,
     reporting_rate,
-    substitute_zeros,
+    validate_profile,
 )
 
 
@@ -27,11 +28,12 @@ def measurement(
     value: float | None = 5.0,
     lod: float | None = None,
     loq: float | None = None,
+    unit: str = "mg/g",
 ) -> AnalyteMeasurement:
     return AnalyteMeasurement(
         compound_id=compound_id,
         compound_name="CBD",
-        unit="mg/g",
+        unit=unit,
         censoring=censoring,
         method="HPLC-UV",
         value=value,
@@ -43,10 +45,12 @@ def measurement(
 def profile(
     analytes: tuple[AnalyteMeasurement, ...],
     record_kind: RecordKind = RecordKind.VERIFIED,
+    batch_id: str = "BR-BD-20260315-123",
+    lab_report_id: str = "lab-results/TLAB-0101",
 ) -> BatchProfile:
     return BatchProfile(
-        batch_id="lab-results/TLAB-0101",
-        lab_report_id="COA-101",
+        batch_id=batch_id,
+        lab_report_id=lab_report_id,
         producer_id="organizations/TORG-0001",
         product_id="products/TPRD-0001",
         cultivar_labels=("Blue Dream",),
@@ -77,7 +81,7 @@ class MeasurementValidationTests(unittest.TestCase):
             measurement(censoring=Censoring.BELOW_LOQ, value=None, loq=None)
 
     def test_nd_should_record_lod(self):
-        # Enforced as a soft rule: nd without lod is a validation problem.
+        # Enforced as a soft rule: nd without lod is a warning, not an error.
         from scripts.cultivar_profiles import validate_measurement
 
         self.assertTrue(validate_measurement(measurement(censoring=Censoring.ND, value=None)))
@@ -127,7 +131,10 @@ class CensoringTests(unittest.TestCase):
 
 
 class ProfileValidationTests(unittest.TestCase):
-    def test_mixed_units_rejected(self):
+    def test_mixed_units_allowed(self):
+        # Real COAs mix units (% w/w cannabinoids, mg/g terpenes, ppm
+        # pesticides). Comparison/composition requires explicit normalization
+        # into a compatible analyte subset, not wholesale rejection.
         other = AnalyteMeasurement(
             compound_id="terpenes/TTRP-0005",
             compound_name="β-Myrcene",
@@ -136,8 +143,9 @@ class ProfileValidationTests(unittest.TestCase):
             method="GC-FID",
             value=0.5,
         )
-        with self.assertRaises(ValueError):
-            profile((measurement(), other))
+        p = profile((measurement(), other))
+        self.assertEqual(len(p.analytes), 2)
+        self.assertEqual(validate_profile(p), [])
 
     def test_duplicate_analyte_rejected(self):
         with self.assertRaises(ValueError):
@@ -147,46 +155,81 @@ class ProfileValidationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             profile(())
 
-
-class ZeroStrategyTests(unittest.TestCase):
-    def test_substitution_requires_explicit_strategy(self):
-        p = profile(
-            (
-                measurement(compound_id="a"),
-                measurement(compound_id="b", censoring=Censoring.ND, value=None, lod=0.01),
-            )
+    def test_producer_product_id_accept_real_null(self):
+        p = BatchProfile(
+            batch_id="BR-BD-20260315-123",
+            lab_report_id="lab-results/TLAB-0101",
+            producer_id=None,
+            product_id=None,
+            cultivar_labels=("Blue Dream",),
+            sample_type="flower",
+            basis=Basis.DRY_WEIGHT,
+            decarb_convention=DecarbConvention.TOTAL_POTENTIAL,
+            record_kind=RecordKind.VERIFIED,
+            analytes=(measurement(),),
         )
-        with self.assertRaises(ValueError):
-            substitute_zeros(p.analytes, zero_strategy="")
+        self.assertIsNone(p.producer_id)
+        self.assertIsNone(p.product_id)
+        self.assertEqual(validate_profile(p), [])
 
-    def test_substitution_floor_from_smallest_quantified(self):
-        p = profile(
-            (
-                measurement(compound_id="a", value=2.0),
-                measurement(compound_id="b", value=4.0),
-                measurement(compound_id="c", censoring=Censoring.BELOW_LOQ, value=None, loq=0.1),
+    def test_literal_null_string_rejected(self):
+        # The old schema permitted the literal string "null"; only real JSON
+        # null is acceptable.
+        with self.assertRaises(ValueError):
+            BatchProfile(
+                batch_id="BR-BD-20260315-123",
+                lab_report_id="lab-results/TLAB-0101",
+                producer_id="null",
+                product_id="products/TPRD-0001",
+                cultivar_labels=("Blue Dream",),
+                sample_type="flower",
+                basis=Basis.DRY_WEIGHT,
+                decarb_convention=DecarbConvention.TOTAL_POTENTIAL,
+                record_kind=RecordKind.VERIFIED,
+                analytes=(measurement(),),
             )
-        )
-        values = substitute_zeros(p.analytes, zero_strategy="multiplicative_replacement_0.5")
-        # floor = 0.5 * 2.0 = 1.0 for the censored entry
-        self.assertEqual(values, [2.0, 4.0, 1.0])
 
-    def test_invalid_delta_rejected(self):
-        p = profile((measurement(),))
-        with self.assertRaises(ValueError):
-            substitute_zeros(p.analytes, zero_strategy="multiplicative_replacement_0")
-        with self.assertRaises(ValueError):
-            substitute_zeros(p.analytes, zero_strategy="multiplicative_replacement_1.5")
+    def test_report_identity_distinct_from_batch_identity(self):
+        # One commercial batch may have retests/corrected reports: several
+        # lab_report_ids share one batch_id and remain distinct entities.
+        first = profile((measurement(),), lab_report_id="lab-results/TLAB-0101")
+        retest = profile((measurement(),), lab_report_id="lab-results/TLAB-0102")
+        self.assertEqual(first.batch_id, retest.batch_id)
+        self.assertNotEqual(first.lab_report_id, retest.lab_report_id)
 
-    def test_not_tested_dropped_in_substitution(self):
-        p = profile(
-            (
-                measurement(compound_id="a"),
-                measurement(compound_id="b", censoring=Censoring.NOT_TESTED, value=None),
+    def test_lab_report_id_must_be_canonical(self):
+        # Report identity is a canonical lab-results/TLAB-XXXX record id, not
+        # a free-form COA string.
+        with self.assertRaises(ValueError):
+            BatchProfile(
+                batch_id="BR-BD-20260315-123",
+                lab_report_id="COA-101",
+                producer_id="organizations/TORG-0001",
+                product_id="products/TPRD-0001",
+                cultivar_labels=("Blue Dream",),
+                sample_type="flower",
+                basis=Basis.DRY_WEIGHT,
+                decarb_convention=DecarbConvention.TOTAL_POTENTIAL,
+                record_kind=RecordKind.VERIFIED,
+                analytes=(measurement(),),
             )
+
+
+class SoftWarningTests(unittest.TestCase):
+    def test_nd_without_lod_is_soft_not_hard(self):
+        # The documented soft warning must not become a hard error at
+        # BatchProfile construction.
+        p = profile(
+            (measurement(compound_id="a", censoring=Censoring.ND, value=None),)
         )
-        values = substitute_zeros(p.analytes, zero_strategy="multiplicative_replacement_0.5")
-        self.assertEqual(values, [5.0])
+        self.assertEqual(validate_profile(p), [])
+        self.assertTrue(any("lod" in w for w in profile_warnings(p)))
+
+    def test_nd_with_lod_has_no_warning(self):
+        p = profile(
+            (measurement(compound_id="a", censoring=Censoring.ND, value=None, lod=0.01),)
+        )
+        self.assertEqual(profile_warnings(p), [])
 
 
 class CompositionalTests(unittest.TestCase):
@@ -210,16 +253,27 @@ class CompositionalTests(unittest.TestCase):
 
 
 class ProfileMatrixTests(unittest.TestCase):
-    def test_matrix_excludes_demonstration_records(self):
+    def test_matrix_excludes_non_verified_records(self):
         verified = profile(
             (measurement(compound_id="cannabinoids/TCBN-0002"),), record_kind=RecordKind.VERIFIED
         )
         demo = profile(
             (measurement(compound_id="cannabinoids/TCBN-0002"),), record_kind=RecordKind.DEMONSTRATION
         )
-        rows, matrix = profile_matrix([verified, demo], ["cannabinoids/TCBN-0002"])
+        unverified = profile(
+            (measurement(compound_id="cannabinoids/TCBN-0002"),), record_kind=RecordKind.UNVERIFIED
+        )
+        rows, matrix = profile_matrix([verified, demo, unverified], ["cannabinoids/TCBN-0002"])
         self.assertEqual(len(rows), 1)
         self.assertEqual(list(matrix), ["lab-results/TLAB-0101"])
+
+    def test_matrix_rows_keyed_by_report_id(self):
+        # Retests of the same batch are separate rows (one per report).
+        first = profile((measurement(),), lab_report_id="lab-results/TLAB-0101")
+        retest = profile((measurement(),), lab_report_id="lab-results/TLAB-0102")
+        rows, matrix = profile_matrix([first, retest], ["cannabinoids/TCBN-0002"])
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(list(matrix), ["lab-results/TLAB-0101", "lab-results/TLAB-0102"])
 
     def test_matrix_keeps_censored_as_none(self):
         p = profile(
@@ -229,8 +283,8 @@ class ProfileMatrixTests(unittest.TestCase):
             )
         )
         _, matrix = profile_matrix([p], ["a", "b"])
-        self.assertEqual(matrix[p.batch_id]["a"], 5.0)
-        self.assertIsNone(matrix[p.batch_id]["b"])
+        self.assertEqual(matrix[p.lab_report_id]["a"], 5.0)
+        self.assertIsNone(matrix[p.lab_report_id]["b"])
 
 
 if __name__ == "__main__":
