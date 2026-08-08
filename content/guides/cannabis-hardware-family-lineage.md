@@ -45,11 +45,11 @@ Cannabis Hardware (2009–present)
 │   │   ├─ Bliss (built-in PID + external XLR, 5 pockets) → TED-0030
 │   │   └─ Fusion (dual PID, dual 25 mm coils) → TED-0031
 │   ├─ Third generation (2024-04)
-│   │   └─ MOAB (compact kit, 16 mm coil + Mercury diffuser) — not yet modeled
+│   │   └─ MOAB (compact station, 25 mm axial coil + built-in PID) → TED-0032
 │   └─ Current diffuser heads (successors to Mary/Jane): Vmax, Vmax Injector, Mercury — not yet modeled
 │
 └─ Airstream Family — integrated all-in-one wireless (2024-11)
-    └─ Airstream (built-in coil + PID, integrated vapor path) — not yet modeled
+    └─ Airstream (built-in coil + PID, integrated vapor path) → TED-0033
 ```
 
 ## FlowerPot family (wired, 20 mm coil + PID)
@@ -77,23 +77,23 @@ Cannabis Hardware (2009–present)
 | Nova | 2 | 2023-09 | Current | Complete system — base station, built-in PID | [TED-0007](../devices/TED-0007.md) |
 | Bliss | 2 | 2023-09 | Current | Complete system — base station, built-in PID + external XLR | [TED-0030](../devices/TED-0030.md) |
 | Fusion | 2 | 2023-09 | Current | Complete system — base station, dual PID / dual coils | [TED-0031](../devices/TED-0031.md) |
-| MOAB | 3 | 2024-04 | Current | Complete system — kit (16 mm coil + Mercury diffuser) | — (not yet modeled) |
+| MOAB | 3 | 2024-04 | Current | Complete system — station (25 mm axial coil + built-in PID) | [TED-0032](../devices/TED-0032.md) |
 | Vmax / Vmax Injector / Mercury | 3+ | 2024–present | Current | Heater head — current cordless diffusers (successors to Mary/Jane) | — (not yet modeled) |
 
 ## Airstream family (integrated)
 
 | Model | Gen | Release | Status | Component role | Record |
 | --- | --- | --- | --- | --- | --- |
-| Airstream | 1 | 2024-11 | Current | Complete system — all-in-one (integrated coil + PID + vapor path) | — (not yet modeled) |
+| Airstream | 1 | 2024-11 | Current | Complete system — all-in-one (integrated coil + PID + vapor path) | [TED-0033](../devices/TED-0033.md) |
 
 ## Component roles at a glance
 
 Per [TREF-0004](../reference/TREF-0004.md), a retailer bundle is never a model, and components stay spec-table rows unless they are substantive separately-purchasable platforms. The modeled CH catalog maps as follows:
 
 - **Heater head entities (8):** B2, B1, B0/B-Zero, F16, F22, Mary, Jane. Each names its coil/PID/bowl in the spec table as sold-separately components.
-- **Complete system entities (4):** ZenLeaf Whisper, Nova, Bliss, Fusion — each base station integrates the 25 mm axial coil and stand (Whisper requires a user-supplied external PID; Nova and Bliss carry a built-in PID, with Bliss adding an external XLR output; Fusion carries dual built-in PIDs and dual coils); compatible diffuser/banger heads are separate components.
+- **Complete system entities (6):** ZenLeaf Whisper, Nova, Bliss, Fusion, MOAB, and the Airstream — each base station integrates the 25 mm axial coil and stand (Whisper requires a user-supplied external PID; Nova, Bliss, and MOAB carry a built-in PID, with Bliss adding an external XLR output; Fusion carries dual built-in PIDs and dual coils; the Airstream adds an integrated vapor path); compatible diffuser/banger heads are separate components.
 - **Bundle rule applied:** the "FlowerPot B2 Standard Essentials Bundle" and "B-Zero bundle" are retail SKUs of the B2 / B0 models — referenced as source notes on their pages, never separate entities (rule TAX-05).
-- **Not yet modeled:** legacy pre-ball heads (Showerhead, Vrod, FlowerPot Ball, Screen Baller), the community B-rod mod, the MOAB kit, the Airstream, and the current Vmax/Mercury diffuser heads.
+- **Not yet modeled:** legacy pre-ball heads (Showerhead, Vrod, FlowerPot Ball, Screen Baller), the community B-rod mod, and the current Vmax/Vmax Injector/Mercury diffuser heads.
 
 ## Relation conventions
 
