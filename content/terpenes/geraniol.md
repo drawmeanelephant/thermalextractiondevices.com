@@ -51,26 +51,26 @@ Geraniol is a low-volatility monoterpene alcohol; in dry-herb vaporizer chambers
 ## Reported biological activity
 
 ### Human evidence
-No verified controlled human study of inhaled isolated geraniol was identified for this archive [^2].
+No controlled human study of inhaled isolated geraniol was identified in this archive's literature review (as of 2026-08-08).
 
 ### Animal or laboratory evidence
 
 {{include includes/preclinical-evidence-note.md}}
 
-In vitro studies report micromolar-range CB1-receptor negative allosteric modulation (LaVigne et al. 2021), anti-inflammatory signaling suppression, and broad-spectrum antimicrobial activity; concentrations exceed plausible cannabis-inhalation exposure [^3].
+In vitro studies of cannabis terpenes report CB1-receptor negative allosteric modulation, with geraniol among the terpenes tested [^2]; broad-spectrum antimicrobial and anti-inflammatory activity has also been reported in vitro. Concentrations exceed plausible cannabis-inhalation exposure.
 
 ### Traditional or anecdotal claims
 Long use in perfumery and traditional rose-based preparations; geraniol and its autoxidation products are recognized contact sensitizers in fragrance use.
 
 ## Cannabis laboratory results
 
-Measured batches of several hemp cultivars (e.g., Von, Southern Sunset, Finola) have reported geraniol below the limit of quantitation or as traces in published analyses [^3]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Published analyses of hemp cultivars (e.g., the 'Finola' cultivar in terpene-synthase work by Booth et al. 2017) report geraniol as a minor constituent relative to dominant monoterpenes; measured values remain batch- and report-attached. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 
 [^1]: PubChem CID 637566, *Geraniol* (CAS 106-24-1), boiling point 229–230 °C @ 760 mmHg (NTP 1992); Sigma-Aldrich catalog; NIST WebBook SRD 69, CAS 106-24-1. https://pubchem.ncbi.nlm.nih.gov/compound/637566
-[^2]: No primary source located during the editorial audit.
-[^3]: LaVigne JE, et al. Cannabimimetic phytochemicals in the diet. *Cannabis Cannabinoid Res.* 2021;6(4):315–331. doi:10.1089/can.2021.0001 (CB1 allosteric modulation, in vitro). Occurrence: Joy et al. 2025 and Booth et al. 2017 hemp-cultivar analyses, as reported in research/compounds/terpenes/geraniol/artifact.md; not re-verified in this wave.
+[^2]: LaVigne JE, Hecksel R, Keresztes A, Streicher JM. Cannabis sativa terpenes are cannabimimetic and selectively enhance cannabinoid activity at CB1 receptors. *Sci Rep.* 2021;11:8232. doi:10.1038/s41598-021-87740-8. PMID 33859287. (In vitro CB1 pharmacology; geraniol among the tested terpenes. Note: an earlier draft of this record cited a non-existent "Cannabimimetic phytochemicals in the diet" article to LaVigne; that citation was incorrect and has been replaced.)
+[^3]: Booth JK, Page JE, Bohlmann J. Terpene synthases from Cannabis sativa. *PLoS One.* 2017;12(3):e0173911. doi:10.1371/journal.pone.0173911. PMID 28355238. (Terpene profiles of cannabis/hemp cultivars, incl. 'Finola'.)
 
 ## Related pages
 

@@ -34,12 +34,12 @@ summary: Acidic phytocannabinoid precursor of CBC, biosynthesized from CBGA; no 
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | **Not experimentally measured at 1 atm**; predicted >400 °C, with decomposition preceding boiling | Cannabinoid acids do not boil intact at atmospheric pressure [^2] |
-| Vapor pressure | Not measured; predicted very low (<10⁻⁵ Pa at 25 °C by analogy) | [^2] |
+| Boiling point | **Not experimentally measured at 1 atm**; predicted >400 °C, with decomposition preceding boiling | Cannabinoid acids do not boil intact at atmospheric pressure [^3] |
+| Vapor pressure | Not measured; predicted very low (<10⁻⁵ Pa at 25 °C by analogy) | [^3] |
 | Melting point | Not reported in authoritative sources | Unknown |
 | logP (octanol-water) | 6.9 (computed XLogP3) | Very low aqueous solubility predicted |
-| Decarboxylation kinetics | Pseudo-first-order; complete at 160 °C in <1 min, at 120 °C in ≈40 min (pressurized-liquid conditions) | Ea ordering CBCA > CBDA > CBDVA > CBGA among major acid cannabinoids [^2] |
-| Oxidation / light sensitivity | Decarboxylates and oxidizes under UV/light; CBC (the neutral) forms CBL by [2+2] cycloaddition under UV | Store cold, dark, inert [^2] |
+| Decarboxylation kinetics | Pseudo-first-order; complete at 160 °C in <1 min, at 120 °C in ≈40 min (pressurized-liquid conditions) | [^2] |
+| Oxidation / light sensitivity | Decarboxylates and oxidizes under UV/light; CBC (the neutral) forms CBL by [2+2] cycloaddition under UV (reported; unverified) | Store cold, dark, inert |
 | Known degradation products | CBC (decarboxylation); likely quinones and CBLA-type cycloaddition products under oxidation/photolysis | [^2] |
 
 > **Boiling point is not a device setpoint.** Marketing values such as "CBCA boils at 220 °C" are not physical boiling points; the compound decarboxylates to volatile CBC before any intact acid can boil.
@@ -61,16 +61,16 @@ CBCA is biosynthesized from CBGA by CBCA synthase (CBCAS), a sibling branch of t
 ## Reported biological activity
 
 ### Human evidence
-No verified controlled human study of isolated CBCA was identified for this archive [^3].
+No controlled human study of isolated CBCA was identified in this archive's literature review (as of 2026-08-08).
 
 ### Preclinical animal and in vitro evidence
 
 {{include includes/preclinical-evidence-note.md}}
 
-The acid form is less studied than its neutral CBC; available screens are limited and do not establish effects at human-relevant doses [^3].
+The acid form is less studied than its neutral CBC; available screens are limited and do not establish effects at human-relevant doses.
 
 ### Industry claims
-Minor-cannabinoid marketing claims for CBC/CBCA remain unsupported by controlled human evidence [^3].
+Minor-cannabinoid marketing claims for CBC/CBCA remain unsupported by controlled human evidence.
 
 ## Degradation products
 
@@ -80,8 +80,8 @@ Minor-cannabinoid marketing claims for CBC/CBCA remain unsupported by controlled
 ## Sources
 
 [^1]: PubChem CID 3084339, Cannabichromenic acid (CAS 20408-52-0). Verified 2026-08-08.
-[^2]: Research-corpus dossier research/compounds/cannabinoids/cbca/artifact.md (decarboxylation kinetics per Han et al. 2024; vapor-pressure analogy per El-Hage et al. 2023). Not all ledger items re-verified in this wave.
-[^3]: Research-corpus dossier research/compounds/cannabinoids/cbca/artifact.md evidence table; no human trials identified.
+[^2]: Urvashi, Han JH, Hong M, Kwon TH, Druelinger M, Park SH, Kinney CA, Olejar KJ. Thermo-chemical conversion kinetics of cannabinoid acids in hemp (Cannabis sativa L.) using pressurized liquid extraction. *J Cannabis Res.* 2024;6:33. doi:10.1186/s42238-024-00243-x. PMID 39080738. (Pseudo-first-order decarboxylation of acidic cannabinoids under pressurized-liquid conditions, 80–160 °C.)
+[^3]: Eyal AM, Berneman Zeitouni D, Tal D, Schlesinger D, Davidson EM, Raz N. Vapor pressure, vaping, and corrections to misconceptions related to medical cannabis' active pharmaceutical ingredients' physical properties and compositions. *Cannabis Cannabinoid Res.* 2023;8(3):414–425. doi:10.1089/can.2021.0173. PMID 35442765. (Cannabinoid acids do not boil intact at 1 atm; vapor-pressure scarcity and evaporation-composition effects.)
 
 ## Related pages
 

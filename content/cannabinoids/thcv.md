@@ -34,17 +34,17 @@ summary: Propyl-side-chain homologue of Δ9-THC; no measured atmospheric boiling
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | **Not experimentally measured for pure THCV at 1 atm**; predicted ≈425–430 °C, with decomposition preceding boiling. Blog claims of "THCV boils at 220 °C" confuse vaporizer chamber temperature with a thermodynamic boiling point [^2] |
-| Boiling point (reduced pressure) | ≈200 °C at 0.02 Torr (short-path distillation, estimated) | By analogy to THC vacuum-distillation data [^2] |
-| Vapor pressure | Not directly measured; expected same order of magnitude as THC (5.24×10⁻⁷ Torr at 20 °C to 1.97×10⁻¹ Torr at 180 °C) | Slightly higher than THC due to lower molecular mass [^2] |
+| Boiling point | **Not experimentally measured for pure THCV at 1 atm**; predicted ≈425–430 °C, with decomposition preceding boiling. Blog claims of "THCV boils at 220 °C" confuse vaporizer chamber temperature with a thermodynamic boiling point [^5] |
+| Boiling point (reduced pressure) | ≈200 °C at 0.02 Torr (short-path distillation, estimated; not independently verified) | By analogy to THC vacuum-distillation data |
+| Vapor pressure | Not directly measured; expected same order of magnitude as Δ9-THC (measured ≈2.6×10⁻⁵ Pa at 25 °C to ≈0.22 Pa at 121 °C) | Slightly higher than THC due to lower molecular mass [^2] |
 | Melting point | Not reported in authoritative sources | Likely amorphous/semi-solid at room temperature |
 | logP (octanol-water) | ≈5.5–6.0 (estimated) | Propyl chain lowers logP vs. THC |
 | Water solubility | Practically insoluble | Soluble in ethanol, methanol, hydrocarbons, CO₂ |
-| Thermal decomposition | Begins ≈150–180 °C; accelerated above 200 °C; THCVA decarboxylation complete ≈110–130 °C | [^2] |
-| Oxidation / light sensitivity | High; surface oxidation rapid on air exposure; UV accelerates | Store opaque, inert [^2] |
-| Known degradation products | Propyl-CBN-type analogs (C19), quinones, polymeric material (oxidation); not fully characterized | [^2] |
+| Thermal decomposition | Begins ≈150–180 °C; accelerated above 200 °C; THCVA decarboxylation complete ≈110–130 °C | [^3][^4] |
+| Oxidation / light sensitivity | High; surface oxidation rapid on air exposure; UV accelerates | Store opaque, inert |
+| Known degradation products | Propyl-CBN-type analogs (C19), quinones, polymeric material (oxidation); not fully characterized | [^4] |
 
-> **Boiling point is not a device setpoint.** "THCV boils at 220 °C" is incorrect — it confuses vaporizer chamber temperature with a thermodynamic boiling point. The true normal boiling point exceeds 400 °C, and the compound decomposes before boiling at 1 atm.
+> **Boiling point is not a device setpoint.** "THCV boils at 220 °C" is incorrect — it confuses vaporizer chamber temperature with a thermodynamic boiling point [^5]. The predicted normal boiling point exceeds 400 °C, and the compound decomposes before boiling at 1 atm.
 
 ## Thermal-extraction context
 
@@ -59,16 +59,16 @@ THCV is a minor cannabinoid in most measured chemotypes, elevated in certain Afr
 ## Reported biological activity
 
 ### Human evidence
-No verified controlled human study of inhaled isolated THCV was identified for this archive [^3].
+No controlled human study of inhaled isolated THCV was identified in this archive's literature review (as of 2026-08-08).
 
 ### Preclinical animal and in vitro evidence
 
 {{include includes/preclinical-evidence-note.md}}
 
-Preclinical studies report THCV as a CB1 antagonist/neutral antagonist at low doses with receptor-activity switching at higher concentrations; appetite-suppressant claims derive from animal work and small mechanistic studies, not established human clinical effects [^3].
+Preclinical studies report THCV as a CB1 and CB2 receptor antagonist [^6]; appetite-suppressant claims derive from animal work and small mechanistic studies, not established human clinical effects.
 
 ### Industry claims
-"THCV suppresses appetite" and "THCV is the diet weed" are marketing framings exceeding the current evidence; no controlled human study establishes these effects [^3].
+"THCV suppresses appetite" and "THCV is the diet weed" are marketing framings exceeding the current evidence; no controlled human study establishes these effects.
 
 ## Degradation products
 
@@ -77,8 +77,11 @@ Preclinical studies report THCV as a CB1 antagonist/neutral antagonist at low do
 ## Sources
 
 [^1]: PubChem CID 93147, Tetrahydrocannabivarin (CAS 31262-37-0). Verified 2026-08-08.
-[^2]: Research-corpus dossier research/compounds/cannabinoids/thcv/artifact.md (boiling-point correction; vapor-pressure analogy to THC per Lovestead & Bruno 2017). Not all ledger items re-verified in this wave.
-[^3]: Research-corpus dossier research/compounds/cannabinoids/thcv/artifact.md evidence table; no human trials identified.
+[^2]: Lovestead TM, Bruno TJ. Determination of cannabinoid vapor pressures to aid in vapor phase detection of intoxication. *Forensic Chem.* 2017;5:79–85. doi:10.1016/j.forc.2017.06.003. PMID 29266138. (Measured Δ9-THC and CBD vapor pressures; THCV itself not measured.)
+[^3]: Wang M, Wang YH, Avula B, Radwan MM, Wanas AS, van Antwerp J, Parcher JF, ElSohly MA, Khan IA. Decarboxylation study of acidic cannabinoids: a novel approach using ultra-high-performance supercritical fluid chromatography/photodiode array-mass spectrometry. *Cannabis Cannabinoid Res.* 2016;1(1):262–271. doi:10.1089/can.2016.0020. PMID 28861498. (Acidic-cannabinoid decarboxylation kinetics, incl. THCVA-type acids.)
+[^4]: García-Valverde MT, Sánchez-Carnerero Callado C, Díaz-Liñán MC, et al. Effect of temperature in the degradation of cannabinoids: from a brief residence in the gas chromatography inlet port to a longer period in thermal treatments. *Front Chem.* 2022;10:1038729. doi:10.3389/fchem.2022.1038729.
+[^5]: Eyal AM, Berneman Zeitouni D, Tal D, Schlesinger D, Davidson EM, Raz N. Vapor pressure, vaping, and corrections to misconceptions related to medical cannabis' active pharmaceutical ingredients' physical properties and compositions. *Cannabis Cannabinoid Res.* 2023;8(3):414–425. doi:10.1089/can.2021.0173. PMID 35442765.
+[^6]: Thomas A, Stevenson LA, Wease KN, Price MR, Baillie G, Ross RA, Pertwee RG. Evidence that the plant cannabinoid Δ9-tetrahydrocannabivarin is a cannabinoid CB1 and CB2 receptor antagonist. *Br J Pharmacol.* 2005;146(6):917–926. doi:10.1038/sj.bjp.0706414. PMID 16205722. (In vitro receptor pharmacology.)
 
 ## Related pages
 

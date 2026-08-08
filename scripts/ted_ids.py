@@ -225,14 +225,17 @@ def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) ->
             record["id"] = f"{collection}/{candidate}"
             records.append(record)
 
+    # Preserve existing canonical IDs (id-policy immutability): a pending
+    # satellite whose current entity ID is already a valid form ID in this
+    # collection keeps it (the map's legacy_id is the *prior* identity, not the
+    # canonical one). Reservation happens in a first pass over ALL pending
+    # records so that a newly allocated ID can never steal a number that an
+    # existing satellite already holds (which would renumber it), regardless
+    # of file sort order.
+    reserved_forms: dict[str, dict[str, str]] = {}  # collection -> form -> source
     for record in sorted(pending, key=lambda item: str(item["source"])):
         collection = str(record["collection"])
         used = used_by_collection.setdefault(collection, set())
-        # Preserve existing canonical IDs (id-policy immutability): a pending
-        # satellite whose current entity ID is already a valid form ID in this
-        # collection keeps it (the map's legacy_id is the *prior* identity, not
-        # the canonical one). Only genuinely new records are allocated, so
-        # inserting files never renumbers existing satellites.
         existing = str(record["current_id"] or "")
         if existing.startswith(collection + "/"):
             existing_form = existing[len(collection) + 1:]
@@ -242,10 +245,26 @@ def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) ->
                 and existing_form not in used
             ):
                 used.add(existing_form)
-                record["form_id"] = existing_form
-                record["id"] = existing
-                records.append(record)
-                continue
+                reserved_forms.setdefault(collection, {})[existing_form] = str(record["source"])
+
+    for record in sorted(pending, key=lambda item: str(item["source"])):
+        collection = str(record["collection"])
+        used = used_by_collection.setdefault(collection, set())
+        existing = str(record["current_id"] or "")
+        kept_form = None
+        if existing.startswith(collection + "/"):
+            candidate_form = existing[len(collection) + 1:]
+            if (
+                ID_PATTERN.fullmatch(candidate_form)
+                and re.search(r"(?:^|-)[0-9]{4}(?:-|$)", candidate_form)
+                and reserved_forms.get(collection, {}).get(candidate_form) == str(record["source"])
+            ):
+                kept_form = candidate_form
+        if kept_form is not None:
+            record["form_id"] = kept_form
+            record["id"] = f"{collection}/{kept_form}"
+            records.append(record)
+            continue
         candidate = allocate_form_id(collection, used)
         used.add(candidate)
         record["form_id"] = candidate
