@@ -12,6 +12,9 @@ cd "$ROOT"
 echo "==> Validating Thermal Extraction Devices form IDs"
 python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl
 
+echo "==> Auditing device records against the Device Architecture Taxonomy"
+python3 scripts/audit_device_taxonomy.py "$CONTENT_DIR" --vocab metadata/device-taxonomy.json
+
 echo "==> Running Boris graph diagnostics"
 CHECK_REPORT=$(mktemp "${TMPDIR:-/tmp}/ted-boris-check.XXXXXX")
 trap 'rm -f "$CHECK_REPORT"' EXIT
