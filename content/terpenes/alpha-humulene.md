@@ -50,7 +50,7 @@ Clinical evidence for isolated human oral or vaporized humulene administration i
 
 {{include includes/preclinical-evidence-note.md}}
 
-Animal inflammation models report topical and systemic anti-inflammatory markers; the claim remains uncited in this archive [^2].
+In a murine model of allergic airway inflammation, α-humulene administered orally or by aerosol reduced eosinophil infiltration and markers such as IL-5 and LTB4 [^2].
 
 ### Traditional or anecdotal claims
 Associated with traditional hoppy medicinal infusions.
@@ -62,7 +62,7 @@ Refer to [Lab Results](../lab-results.md) for batch data.
 ## Sources
 
 [^1]: The 264 °C atmospheric value is from secondary literature and is not confirmed by NIST, whose α-humulene (CAS 6753-98-6) record lists only a reduced-pressure boiling point of 396.2 K (≈123 °C) at 0.013 bar. https://webbook.nist.gov/cgi/cbook.cgi?ID=C6753986&Mask=4
-[^2]: No primary source located during the editorial audit; requires identification and verification.
+[^2]: Rogerio AP, Andrade EL, Leite DF, Figueiredo CP, Calixto JB. Preventive and therapeutic anti-inflammatory properties of the sesquiterpene α-humulene in experimental airways allergic inflammation. *Br J Pharmacol.* 2009;158(4):1074–1087. doi:10.1111/j.1476-5381.2009.00177.x. PMID 19438512.
 
 ## Related pages
 
