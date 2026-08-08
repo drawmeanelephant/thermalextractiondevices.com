@@ -168,13 +168,15 @@ manifest without touching anything.
   after confirming no importer run raced it; the digest guard will flag
   manual edits.
 
-## Reconciliation note (2026-08-05)
+## Current integration note (2026-08-08)
 
-This repository's `main` (as visible from the worktree) does not contain the
-California DCC ingestion commit `3628c641`; that commit lives in a repository
-outside the sandbox and is currently unreachable. Until a rebase onto the
-California-containing `main` completes, Massachusetts content must NOT be
-published. All Massachusetts files here are uncommitted and test-only.
+The California DCC pipeline and Massachusetts ingestion implementation are
+both present on `main`. Massachusetts still has zero live generated pages:
+fixture and synthetic records remain guarded from publication. Before the
+first live Massachusetts sync, reconcile global ID allocation and decide
+whether California is migrated into the shared state adapter contract or kept
+as a documented legacy path. Track the current decision and owner in
+`docs/status.md` and `docs/status/states/massachusetts.md`.
 
 ## What is intentionally not generated
 
@@ -187,5 +189,6 @@ published. All Massachusetts files here are uncommitted and test-only.
 * Numeric action limits — these must be confirmed against current regulation
   text before republishing.
 * Raw coordinates, EIN/TIN, emails, phones, street addresses, agent records.
-* `dcc_sync.py`-style duplicate workflows — there is exactly one canonical
-  command (`state_ingest.py`).
+* California's existing `dcc_sync.py` workflow is not silently removed. Its
+  relationship to the shared `state_ingest.py` command is an open architecture
+  decision tracked in `docs/roadmap.md` and `docs/status.md`.

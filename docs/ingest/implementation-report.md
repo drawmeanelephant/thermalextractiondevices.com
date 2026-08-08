@@ -1,6 +1,12 @@
 # Massachusetts CCC Ingestion — Implementation Report
 
-Status: **implemented (test-only) · not integrated** · Date: 2026-08-05
+> Historical implementation snapshot from 2026-08-05. For current integration
+> status, see `docs/status.md` and `docs/status/states/massachusetts.md`. The
+> report's baseline statements about California reachability and uncommitted
+> work describe the environment at the time of that report, not the current
+> `main` branch.
+
+Status: **historical snapshot: implemented (test-only) · not integrated** · Date: 2026-08-05
 Generator: `state_ingest-0.1` (schema v1)
 
 ## 0. Executive summary
