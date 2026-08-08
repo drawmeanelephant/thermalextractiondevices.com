@@ -44,8 +44,8 @@ The derived layer is **not** built into the site until real batch data exists (s
 | Cultivar label | `cultivars/TCUL-*` | A *label*, not a chemical identity |
 | Producer | `organizations/TORG-*` | Licensed/registered producer or brand owner |
 | Commercial product | `products/TPRD-*` | SKU/package tied to a producer |
-| Batch | `lab-results/TLAB-*` | Batch-level COA record |
-| Laboratory report | `lab-results/TLAB-*` | The COA itself (report and batch are one record for now) |
+| Batch | producer batch identifier (`batch_id`) | The commercial batch; a natural key that stays stable across retests. One batch may map to several reports |
+| Laboratory report | `lab-results/TLAB-*` (`lab_report_id`) | The COA document; report identity is **distinct** from batch identity — retests, corrected reports, multiple panels, and reports from different laboratories are separate reports of one batch |
 | Testing laboratory | `testing-laboratories/TSTL-*` | Accreditations and method panels |
 | Measured analytes | `cannabinoids/TCBN-*`, `terpenes/TTRP-*` | Canonical compound records |
 | Dataset snapshot | `datasets/TDTS-*` | Bulk COA datasets, dated and source-traceable |
@@ -108,11 +108,13 @@ A **batch profile** is the unit of truth. Representation in JSON (schema: `metad
 
 ```text
 BatchProfile {
-  batch_id, lab_report_id, producer_id, product_id,
-  cultivar_labels: [label, ...],          # as printed; never collapsed
-  jurisdiction, sample_type,              # flower, extract, concentrate, …
-  basis,                                  # dry-weight | as-received
-  decarb_convention,                      # native | total-potential (e.g., THCA×0.877+THC)
+  batch_id,                              # producer batch identifier (natural key)
+  lab_report_id,                         # canonical report record: lab-results/TLAB-XXXX
+  producer_id, product_id,               # canonical ids, or JSON null when unknown
+  cultivar_labels: [label, ...],         # as printed; never collapsed
+  jurisdiction, sample_type,             # flower, extract, concentrate, …
+  basis,                                 # dry-weight | as-received
+  decarb_convention,                     # native | total-potential (e.g., THCA×0.877+THC)
   harvest_date?, report_date,
   analytes: [ AnalyteMeasurement, ... ]
 }
@@ -128,9 +130,11 @@ AnalyteMeasurement {
 
 Rules:
 
-- **One row per compound per batch.** No denormalized cultivar×compound matrices in the raw layer.
+- **One row per compound per report.** No denormalized cultivar×compound matrices in the raw layer.
+- **Batch identity and report identity are distinct fields.** `batch_id` is the producer/operator batch identifier (stable across retests); `lab_report_id` is the canonical report record (`lab-results/TLAB-XXXX`). A single batch may have retests, corrected reports, multiple panels, or reports from different laboratories — each is a separate report sharing `batch_id`.
+- **`producer_id` and `product_id` support JSON `null`** (unknown), never the literal string `"null"`.
 - **`censoring` is mandatory.** A numeric `value` requires `censoring == numeric`.
-- **Basis and units must be consistent within a batch**; cross-batch comparison requires explicit basis normalization (dry-weight), never implicit.
+- **Units are per-analyte and may legitimately differ within a batch** (e.g. % w/w cannabinoids, mg/g terpenes, ppm pesticides, ug/g heavy metals). The model does **not** reject mixed units; comparison/composition is only performed after explicit normalization into a compatible analyte subset (common unit and basis). Cross-batch comparison additionally requires explicit basis normalization (dry-weight), never implicit.
 - **`decarb_convention` is mandatory** for cannabinoid profiles because GC-total vs LC-native numbers are not comparable.
 - **Compound identity keys on canonical entity IDs**, never on display names, so acid/neutral and isomer distinctions survive.
 
@@ -146,7 +150,7 @@ Rules:
 | `below_loq` | Quantified but below the reliable quantitation limit | `censoring=below_loq`, `loq` set | Range-bounded value; never a zero |
 | `numeric` | Fully quantified | `value` required | Direct use |
 
-- **No silent imputation.** Converting <LOD/<LOQ to 0 (or to LOD/2, or to LOQ) is a **data-product decision** that must be labeled on every derived output. The default in `scripts/cultivar_profiles.py` is to *refuse* implicit substitution and require an explicit `zero_strategy` argument.
+- **No silent imputation.** Converting <LOD/<LOQ to 0 (or to LOD/2, or to LOQ) is a **data-product decision** that must be labeled on every derived output. **No substitution routine exists in v1:** `scripts/cultivar_profiles.py` never imputes a zero, and zero-replacement (e.g. true Aitchison multiplicative replacement with closure correction and LOD/LOQ awareness) is deferred to the future analysis engine, where it must be an explicit, documented, dataset-labeled choice.
 - Derived summaries report **censorship rates** alongside any statistic (`n_tested`, `n_detected`, `n_below_loq`, `n_not_tested`) so a 0.02% mean with 90% <LOQ is visibly different from a 0.02% mean with 90% quantified.
 - Future work: Kaplan–Meier-style or MLE censored estimators for label-level summaries when sample counts justify them (n ≥ 30 per label per the co-occurrence artifact's minimum-subgroup guidance).
 
@@ -174,7 +178,7 @@ Verbal labels ("consistent", "moderately variable", "highly heterogeneous") are 
 ## 7. Distance and normalization
 
 - **Compositional data discipline:** terpene and cannabinoid abundances are compositions (parts of a whole). Raw Euclidean distance on untransformed percentages is misleading. The model normalizes to dry-weight basis, then supports centered-log-ratio (CLR) transformation for distances (Aitchison geometry).
-- **Zero handling:** CLR requires positive values. The implementation exposes an explicit `zero_strategy` parameter (`multiplicative_replacement_<delta>` is the suggested default when a strategy must be chosen) and refuses to guess.
+- **Zero handling:** CLR requires positive values. Zero-replacement is deferred to the future analysis engine (no substitution exists in v1); when implemented it must be an explicit, documented, dataset-labeled strategy (e.g. proper multiplicative replacement with closure correction and LOD/LOQ bounds) — never a silent guess.
 - Co-detection structure (Jaccard on detection indicators) is kept separate from abundance structure — the two answer different questions.
 
 ---
@@ -204,7 +208,7 @@ Verbal labels ("consistent", "moderately variable", "highly heterogeneous") are 
 | --- | --- |
 | Schema design document | This document |
 | Normalized profile schema | `metadata/cultivar-batch-profile.schema.json` |
-| Minimal implementation | `scripts/cultivar_profiles.py` (profile model, censoring, validation, censorship summary, explicit zero-handling, similarity primitive) |
+| Minimal implementation | `scripts/cultivar_profiles.py` (profile model, censoring, hard/soft validation split, censorship summary, similarity primitive; zero-replacement deliberately absent) |
 | Tests | `tests/test_cultivar_profiles.py` |
 | Analysis engine (clustering, entropy, variance partition) | **Deferred** until real batch data exists (n ≥ 30 per label) |
 

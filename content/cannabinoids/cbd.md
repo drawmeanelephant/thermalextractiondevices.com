@@ -27,21 +27,21 @@ summary: Neutral phytocannabinoid formed from CBDA by decarboxylation; no true a
 
 ### Identity notes
 
-- **CBD vs. CBDA**: GC with hot injectors decarboxylates CBDA to CBD, inflating apparent CBD values; LC methods distinguish the acid and neutral forms [^2].
-- **CBD vs. THC isomers**: At GC injector temperatures ≥250 °C, CBD can thermally cyclize to Δ9-THC and Δ8-THC; split injection at ≈200 °C is recommended to avoid artifactual THC [^2].
+- **CBD vs. CBDA**: GC with hot injectors decarboxylates CBDA to CBD, inflating apparent CBD values; LC methods distinguish the acid and neutral forms [^3].
+- **CBD vs. THC isomers**: At GC injector temperatures ≥250 °C, CBD can thermally cyclize to Δ9-THC and Δ8-THC; split injection at ≈200 °C is recommended to avoid artifactual THC [^2][^3].
 
 ## Physical properties
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
 | Melting point | ≈66 °C (also reported 62–63 °C for the α-form) | Pure compound; polymorph-dependent [^1] |
-| Boiling point | **No true boiling point at 1 atm** — thermal decomposition precedes boiling. Reported "vaporization range" 160–180 °C is not a boiling point | Calculated/extrapolated atmospheric values ≈425–464 °C are never reached intact [^1] |
-| Vapor pressure | 6.31×10⁻⁶ mmHg at 20 °C; ≈0.345 mmHg at 180 °C (calculated estimates) | Antoine-type estimates; no fully experimental curve [^1] |
+| Boiling point | **No true boiling point at 1 atm** — thermal decomposition precedes boiling. Reported "vaporization range" 160–180 °C is not a boiling point | Calculated/extrapolated atmospheric values ≈425–464 °C are never reached intact [^5] |
+| Vapor pressure | Measured ≈10⁻³–10⁻¹ Pa over 61–121 °C (PLOT-cryo headspace); ambient values are model predictions | First experimental CBD vapor-pressure data; uncertainty ≈13.5 % [^4] |
 | Water solubility | <1 µg/mL (practically insoluble) | pH-dependent; phenolic pKa ≈9.1 |
 | logP (octanol-water) | ≈6.3 (experimental) | Highly lipophilic |
-| Thermal decomposition onset | ≈150–160 °C in air; cyclization to Δ9/Δ8-THC at GC-injector temperatures ≥200 °C | Significant degradation at ≥200 °C [^2] |
-| Oxidation behavior | High sensitivity; phenolic groups oxidize to quinones; light and air accelerate | Degrades to CBN and related oxidation products [^2] |
-| Known degradation products | Δ9-THC (thermal cyclization), Δ8-THC (isomerization), CBN (oxidation), CBE, HU-331 (quinone) | [^2] |
+| Thermal decomposition onset | ≈150–160 °C in air; cyclization to Δ9/Δ8-THC at GC-injector temperatures ≥200 °C | Significant degradation at ≥200 °C [^2][^3] |
+| Oxidation behavior | High sensitivity; phenolic groups oxidize to quinones; light and air accelerate | Degrades to CBN and related oxidation products [^3] |
+| Known degradation products | Δ9-THC (thermal cyclization), Δ8-THC (isomerization), CBN (oxidation), CBE, HU-331 (quinone) | [^3] |
 
 > **Boiling point is not a device setpoint.** The "160–180 °C" figure circulating in vaporizer marketing is a matrix-evaporation/vaporization range, not a thermodynamic boiling point. Device behavior must be established from vapor-pressure curves and per-device empirical testing, never from a boiling-point table.
 
@@ -49,37 +49,37 @@ summary: Neutral phytocannabinoid formed from CBDA by decarboxylation; no true a
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-CBD volatilizes from botanical matrix through vapor-pressure-driven evaporation, not bulk boiling. Measured recovery from dry-herb vaporizers is typically partial (tens of percent of available CBD), and higher chamber temperatures increase both volatilization and the yield of degradation products (Δ9-THC, Δ8-THC, CBN). Device chamber temperature is not sample temperature; conduction/convection lag can put the sample 20–50 °C below setpoint [^2].
+CBD volatilizes from botanical matrix through vapor-pressure-driven evaporation, not bulk boiling. Recovery from dry-herb vaporizers is typically partial, and higher chamber temperatures increase both volatilization and the yield of degradation products (Δ9-THC, Δ8-THC, CBN) [^3]. Device chamber temperature is not sample temperature; conduction/convection lag can put the sample below setpoint.
 
 ## Cannabis occurrence
 
 Measured values are attached to batches and reports, not to cultivar names as universal claims:
 
-- Measured hemp flower batches (CBD-dominant chemotypes) have reported 100–200 mg/g (10–20% w/w) of CBDA plus CBD, with neutral CBD typically 1–5% after decarboxylation [^3].
-- Measured drug-type (THC-dominant) flower batches have reported <1% CBDA plus CBD, often 0.1–0.5% [^3].
-- CBD is the neutral decarboxylation product of CBDA; fresh flower carries predominantly the acid form [^2].
+- High-CBD hemp flower cultivars have reported combined CBDA plus CBD in the ~10–20% w/w range in published analyses (representative, batch-attached; e.g., Stack et al. 2023 characterized 32 high-CBD cultivars) [^6].
+- Measured drug-type (THC-dominant) flower batches in legal-market COA datasets report <1% CBDA plus CBD, often 0.1–0.5% [^7].
+- CBD is the neutral decarboxylation product of CBDA; fresh flower carries predominantly the acid form [^8].
 
 ## Biosynthesis and processing
 
-CBD is biosynthesized as CBDA via CBGA (cannabigerolic acid) through CBDAS (CBDA synthase), then decarboxylates to CBD upon heating (≈105–120 °C, tens of minutes). The CBDAS/THCAS allele balance determines the CBD:THCA chemotype ratio; Type III (hemp) chemotypes are CBD-dominant [^2].
+CBD is biosynthesized as CBDA via CBGA (cannabigerolic acid) through CBDAS (CBDA synthase), then decarboxylates to CBD upon heating (≈105–120 °C, tens of minutes) [^8]. The CBDAS/THCAS allele balance determines the CBD:THCA chemotype ratio; Type III (hemp) chemotypes are CBD-dominant [^9].
 
 ## Reported biological activity
 
 ### Human clinical evidence
-Randomized controlled trials of **purified pharmaceutical CBD (Epidiolex)** report reduced seizure frequency in Dravet syndrome, Lennox-Gastaut syndrome, and tuberous sclerosis complex at 10–50 mg/kg/day oral. These results apply to purified pharmaceutical CBD, not to inhaled whole-plant material, and are not generalizable to cannabis use [^4].
+Randomized controlled trials of **purified pharmaceutical CBD (Epidiolex)** report reduced seizure frequency in Dravet syndrome [^10], Lennox-Gastaut syndrome [^11], and tuberous sclerosis complex [^12] at 10–50 mg/kg/day oral. These results apply to purified pharmaceutical CBD, not to inhaled whole-plant material, and are not generalizable to cannabis use. An acute randomized study of oral CBD also reported reduced anxiety during simulated public speaking in treatment-naïve social-phobia patients [^13].
 
 ### Human observational evidence
-Observational studies of cannabis users associate higher CBD:THC ratios with lower self-reported anxiety/paranoia; this is correlational, not causal [^4].
+Some observational studies of cannabis users report an association between higher CBD:THC ratios and lower self-reported anxiety/paranoia; this is correlational, not causal.
 
 ### Preclinical animal and in vitro evidence
 
 {{include includes/preclinical-evidence-note.md}}
 
-In vitro studies report CBD modulation of TRPV1, 5-HT1A, CB1 (negative allosteric modulation), and inhibition of CYP3A4/2C19/2C9 at micromolar concentrations. Human plasma concentrations after typical oral or inhaled doses are roughly 0.03–0.35 µM — far below the 1–30 µM used in most mechanistic assays — so direct translation to cannabis-inhalation effects is not supported [^4]. Preclinical inhalation models report greater pulmonary inflammatory response to CBD aerosol than to nicotine aerosol; human data are lacking [^4].
+In vitro studies report CBD modulation of TRPV1, 5-HT1A, CB1 (negative allosteric modulation), and inhibition of CYP3A4/2C19/2C9 at micromolar concentrations (peer-reviewed review: Ibeas Bih et al. 2015 [^14]). Human plasma concentrations after typical oral or inhaled doses are typically nanomolar-to-sub-micromolar per published PK reviews [^15] — far below the 1–30 µM used in most mechanistic assays — so direct translation to cannabis-inhalation effects is not supported. In vitro aerosol studies report inflammatory responses to CBD-containing aerosols; human inhalation data are lacking.
 
 ### Industry and traditional claims
 
-"Full-spectrum is more effective (entourage effect)" and "CBD is non-psychoactive" are marketing simplifications with insufficient controlled evidence; the stomach-acid CBD→THC conversion claim is not demonstrated in humans [^5].
+"Full-spectrum is more effective (entourage effect)" and "CBD is non-psychoactive" are marketing simplifications with insufficient controlled evidence; the stomach-acid CBD→THC conversion claim is not demonstrated in humans.
 
 ## Degradation products
 
@@ -89,10 +89,20 @@ In vitro studies report CBD modulation of TRPV1, 5-HT1A, CB1 (negative allosteri
 ## Sources
 
 [^1]: PubChem CID 644019, Cannabidiol (CAS 13956-29-1); NIST WebBook SRD 69, CAS 13956-29-1. Verified 2026-08-08.
-[^2]: Research-corpus dossier research/compounds/cannabinoids/cbd/artifact.md (thermal degradation, GC artifacts, vapor pressure); primary sources in its source ledger: García-Valverde et al. 2022 (Front Chem), Tsujikawa et al. 2022 (J Chromatogr A), El-Hage et al. 2023 (PMC10249740). Not all ledger items re-verified in this wave.
-[^3]: Occurrence ranges as reported in the CBD dossier from measured COA and published datasets (hemp and drug-type flower); representative values, not universal cultivar statements.
-[^4]: Epidiolex Phase III RCTs (Devinsky et al.; Thiele et al.; French et al.), CBD anxiety RCT, and pharmacokinetic studies as catalogued in the CBD dossier claim ledger; human plasma concentration caveat from the same ledger.
-[^5]: Unsupported-popular-claims review, CBD dossier §13 and §15; excluded from this record as claims.
+[^2]: Tsujikawa K, Okada Y, Segawa H, Yamamuro T, Kuwayama K, Kanamori T, Iwata YT. Thermal decomposition of CBD to Δ9-THC during GC-MS analysis: a potential cause of Δ9-THC misidentification. *Forensic Sci Int.* 2022;337:111366. doi:10.1016/j.forsciint.2022.111366. PMID 35728413.
+[^3]: García-Valverde MT, Sánchez-Carnerero Callado C, Díaz-Liñán MC, et al. Effect of temperature in the degradation of cannabinoids: from a brief residence in the gas chromatography inlet port to a longer period in thermal treatments. *Front Chem.* 2022;10:1038729. doi:10.3389/fchem.2022.1038729.
+[^4]: Lovestead TM, Bruno TJ. Determination of cannabinoid vapor pressures to aid in vapor phase detection of intoxication. *Forensic Chem.* 2017;5:79–85. doi:10.1016/j.forc.2017.06.003. PMID 29266138.
+[^5]: Eyal AM, Berneman Zeitouni D, Tal D, Schlesinger D, Davidson EM, Raz N. Vapor pressure, vaping, and corrections to misconceptions related to medical cannabis' active pharmaceutical ingredients' physical properties and compositions. *Cannabis Cannabinoid Res.* 2023;8(3):414–425. doi:10.1089/can.2021.0173. PMID 35442765.
+[^6]: Stack GM, Carlson CH, Toth JA, Philippe G, Crawford JL, Hansen JL, Viands DR, Rose JKC, Smart LB. Correlations among morphological and biochemical traits in high-cannabidiol hemp (Cannabis sativa L.). *Plant Direct.* 2023;7(6):e503. doi:10.1002/pld3.503. PMID 37347078.
+[^7]: Jikomes N, Zoorob M. The cannabinoid content of legal cannabis in Washington State varies systematically across testing facilities and popular consumer products. *Sci Rep.* 2018;8:13090. doi:10.1038/s41598-018-22755-2.
+[^8]: Wang M, Wang YH, Avula B, Radwan MM, Wanas AS, van Antwerp J, Parcher JF, ElSohly MA, Khan IA. Decarboxylation study of acidic cannabinoids: a novel approach using ultra-high-performance supercritical fluid chromatography/photodiode array-mass spectrometry. *Cannabis Cannabinoid Res.* 2016;1(1):262–271. doi:10.1089/can.2016.0020. PMID 28861498.
+[^9]: de Meijer EPM, Bagatta M, Carboni A, Crucitti P, Moliterni VMC, Ranalli P, Mandolino G. The inheritance of chemical phenotype in Cannabis sativa L. *Genetics.* 2003;163(1):335–346. doi:10.1093/genetics/163.1.335. PMID 12586720.
+[^10]: Devinsky O, Cross JH, Laux L, et al. Trial of Cannabidiol for Drug-Resistant Seizures in the Dravet Syndrome. *N Engl J Med.* 2017;376(21):2011–2020. doi:10.1056/NEJMoa1611618. PMID 28538134.
+[^11]: Thiele EA, Marsh ED, French JA, et al. Cannabidiol in patients with seizures associated with Lennox-Gastaut syndrome (GWPCARE4): a randomised, double-blind, placebo-controlled phase 3 trial. *Lancet.* 2018;391(10125):1085–1096. doi:10.1016/S0140-6736(18)30136-3. PMID 29395273.
+[^12]: Thiele EA, Bebin EM, Bhathal H, et al. Add-on Cannabidiol Treatment for Drug-Resistant Seizures in Tuberous Sclerosis Complex: a Placebo-Controlled Randomized Clinical Trial. *JAMA Neurol.* 2021;78(3):285–292. doi:10.1001/jamaneurol.2020.4607. PMID 33346789.
+[^13]: Bergamaschi MM, Queiroz RHC, Chagas MHN, et al. Cannabidiol reduces the anxiety induced by simulated public speaking in treatment-naïve social phobia patients. *Neuropsychopharmacology.* 2011;36(6):1219–1226. doi:10.1038/npp.2011.6. PMID 21307846.
+[^14]: Ibeas Bih C, Chen T, Nunn AVW, Bazelot M, Dallas M, Whalley BJ. Molecular targets of cannabidiol in neurological disorders. *Neurotherapeutics.* 2015;12(4):699–730. doi:10.1007/s13311-015-0377-3. PMID 26264914. (Peer-reviewed review of CBD's molecular targets.)
+[^15]: Millar SA, Stone NL, Yates AS, O'Sullivan SE. A systematic review on the pharmacokinetics of cannabidiol in humans. *Front Pharmacol.* 2018;9:1365. doi:10.3389/fphar.2018.01365. PMID 30534073.
 
 ## Related pages
 

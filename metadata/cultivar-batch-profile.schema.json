@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://thermalextractiondevices.com/metadata/cultivar-batch-profile.schema.json",
   "title": "Normalized Cultivar Batch Analyte Profile",
-  "description": "Normalized representation of one cannabis batch's laboratory analyte measurements. A batch profile is the unit of truth for connecting cultivar labels to measured chemistry. Censoring states (nd, below_lod, below_loq, not_tested) are never collapsed or silently imputed as zero. See docs/graph/cultivar-chemotype-model.md.",
+  "description": "Normalized representation of one cannabis batch's laboratory analyte measurements. A batch profile is the unit of truth for connecting cultivar labels to measured chemistry. Censoring states (nd, below_lod, below_loq, not_tested) are never collapsed or silently imputed as zero. Batch identity (batch_id, the producer's batch identifier) and report identity (lab_report_id, the canonical lab-results/TLAB-XXXX report record) are distinct: one batch may have retests, corrected reports, multiple panels, or reports from different laboratories. Analyte measurements carry their own units; mixed units within a batch are allowed and are only compared/composed after explicit normalization into a compatible analyte subset. See docs/graph/cultivar-chemotype-model.md.",
   "type": "object",
   "required": [
     "batch_id",
@@ -19,22 +19,41 @@
   "properties": {
     "batch_id": {
       "type": "string",
-      "description": "Canonical batch identifier, e.g. lab-results/TLAB-XXXX.",
-      "pattern": "^lab-results/TLAB-[0-9]{4}$"
+      "minLength": 1,
+      "description": "Producer/operator batch identifier (natural key as printed on the product or provided by the producer). Stable across retests; one batch may be covered by several laboratory reports."
     },
     "lab_report_id": {
       "type": "string",
-      "description": "Certificate of Analysis identifier as issued by the testing laboratory."
+      "description": "Canonical archive record id for the laboratory report (COA), e.g. lab-results/TLAB-0101. Distinct from batch_id: one batch may have retests, corrected reports, multiple panels, or reports from different laboratories.",
+      "pattern": "^lab-results/TLAB-[0-9]{4}$"
     },
     "producer_id": {
-      "type": "string",
-      "description": "Canonical producer organization id, e.g. organizations/TORG-XXXX, or null when unknown.",
-      "pattern": "^(organizations/TORG-[0-9]{4}|null)$"
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Canonical producer organization id, e.g. organizations/TORG-0001.",
+          "pattern": "^organizations/TORG-[0-9]{4}$"
+        },
+        {
+          "type": "null",
+          "description": "Null when the producer is unknown."
+        }
+      ],
+      "description": "Canonical producer organization id, e.g. organizations/TORG-XXXX, or null when unknown. Must be actual JSON null, never the string \"null\"."
     },
     "product_id": {
-      "type": "string",
-      "description": "Canonical commercial product id, e.g. products/TPRD-XXXX, or null when unknown.",
-      "pattern": "^(products/TPRD-[0-9]{4}|null)$"
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Canonical commercial product id, e.g. products/TPRD-0001.",
+          "pattern": "^products/TPRD-[0-9]{4}$"
+        },
+        {
+          "type": "null",
+          "description": "Null when the product is unknown."
+        }
+      ],
+      "description": "Canonical commercial product id, e.g. products/TPRD-XXXX, or null when unknown. Must be actual JSON null, never the string \"null\"."
     },
     "cultivar_labels": {
       "type": "array",
@@ -76,7 +95,7 @@
     "record_kind": {
       "type": "string",
       "enum": ["verified", "demonstration", "unverified"],
-      "description": "verified = real COA; demonstration = sample/placeholder record that must be excluded from derived statistics."
+      "description": "verified = real COA; demonstration = sample/placeholder record that must be excluded from derived statistics; unverified = real-looking but unverified record, also excluded from derived statistics. Derived statistics use only record_kind == verified."
     },
     "harvest_date": {
       "type": ["string", "null"],
@@ -88,6 +107,7 @@
     },
     "analytes": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/definitions/analyteMeasurement"
       }
@@ -114,11 +134,12 @@
         },
         "value": {
           "type": ["number", "null"],
-          "description": "Required and numeric only when censoring == numeric; otherwise null."
+          "description": "Required and numeric only when censoring == numeric; otherwise must be null."
         },
         "unit": {
           "type": "string",
-          "enum": ["mg/g", "% w/w", "% w/v", "mg/mL", "ppm", "ppb", "ug/g", "other"]
+          "enum": ["mg/g", "% w/w", "% w/v", "mg/mL", "ppm", "ppb", "ug/g", "other"],
+          "description": "Unit of measurement for this analyte. A batch may contain multiple units (e.g. % w/w cannabinoids, mg/g terpenes, ppm pesticides); measurements are only compared/composed after explicit normalization into a compatible analyte subset."
         },
         "censoring": {
           "type": "string",
@@ -140,7 +161,82 @@
         "quantitation_note": {
           "type": ["string", "null"]
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "censoring": {
+                "const": "numeric"
+              }
+            },
+            "required": ["censoring"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "number"
+              }
+            },
+            "required": ["value"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "censoring": {
+                "not": {
+                  "const": "numeric"
+                }
+              }
+            },
+            "required": ["censoring"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "censoring": {
+                "const": "below_lod"
+              }
+            },
+            "required": ["censoring"]
+          },
+          "then": {
+            "properties": {
+              "lod": {
+                "type": "number"
+              }
+            },
+            "required": ["lod"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "censoring": {
+                "const": "below_loq"
+              }
+            },
+            "required": ["censoring"]
+          },
+          "then": {
+            "properties": {
+              "loq": {
+                "type": "number"
+              }
+            },
+            "required": ["loq"]
+          }
+        }
+      ]
     }
   }
 }
