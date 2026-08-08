@@ -65,6 +65,8 @@ Notes and judgment calls:
 | TED-0029 ZenLeaf Whisper | "Smallest cordless base station, BYO external PID" | `complete system` (entity created 2026-08-08; base station = stand + coil, PID user-supplied) |
 | TED-0030 ZenLeaf Bliss | "Base station with built-in PID plus external XLR output" | `complete system` (entity created 2026-08-08) |
 | TED-0031 ZenLeaf Fusion | "Largest base station, dual PID, dual 25 mm coils" | `complete system` (entity created 2026-08-08) |
+| TED-0032 ZenLeaf MOAB | "Compact third-gen station, 25 mm axial coil + built-in PID" | `complete system` (entity created 2026-08-08) |
+| TED-0033 Airstream | "Integrated all-in-one with built-in vapor path" | `complete system` (entity created 2026-08-08) |
 
 Recommendations:
 
