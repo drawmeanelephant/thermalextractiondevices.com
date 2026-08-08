@@ -55,6 +55,7 @@ Notes and judgment calls:
 | Record | Current framing | Component role |
 | --- | --- | --- |
 | TED-0004 B1 | "Wired, high-airflow ball-assisted convection head" | `heater head` |
+| TED-0028 B2 | "Dual-use (flower + concentrates) head with concentrate dish" | `heater head` (entity created 2026-08-08; discontinued c. 2024) |
 | TED-0005 B0 / B-Zero | "single-piece injector ball-vape head" | `heater head` |
 | TED-0006 F16 | "Machined injector ball-vape head" | `heater head` |
 | TED-0025 F22 | "Machined diffuser ball-vape head" | `heater head` (entity created 2026-08-08) |
