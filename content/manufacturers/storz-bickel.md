@@ -4,7 +4,7 @@ title: "Storz & Bickel GmbH"
 parent: manufacturers
 status: published
 tags: ["manufacturer", "storz-bickel", "germany", "medical-device"]
-relations: [relates_to=devices/TED-0003]
+relations: [relates_to=devices/TED-0003, relates_to=devices/TED-0034]
 summary: German hardware manufacturer specializing in certified medical and consumer thermal extractors.
 ---
 
@@ -47,6 +47,7 @@ summary: German hardware manufacturer specializing in certified medical and cons
 
 ## Related Devices
 
+- [Volcano Classic Balloon Desktop](../devices/TED-0034.md)
 - [Mighty+ Thermal Extractor](../devices/mighty-plus.md)
 
 ## Sources
