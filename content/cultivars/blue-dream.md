@@ -35,3 +35,10 @@ summary: Overview index for the Blue Dream genetic lineage and an illustrative s
 - [D-Limonene](../terpenes/d-limonene.md)
 - [α-Pinene](../terpenes/alpha-pinene.md)
 - [β-Caryophyllene](../terpenes/beta-caryophyllene.md)
+
+## Provenance & Sources
+
+The lineage details above (Blueberry × Haze) are widely reported across secondary and community references and are consistent with DJ Short's own description of his "Azure Haze" cross as "the same cross as the Blue Dream"; they are not independently verified genetics. Per the archive's [cultivar identity framework](../reference/cultivar-name-vs-chemovar.md), cultivar names do not fix chemical composition, and breeder-attributed pedigrees are claims that can conflict across sources.
+
+- DJ Short Seeds (djgenetics.com), "Azure Haze": describes a Silver Haze mother clone crossed with the "famous Blueberry male" to create "the same cross as the Blue Dream." https://www.djgenetics.com/strains/azure-haze/ (accessed 2026-08-08)
+- No single first-party breeder page for the "Blue Dream" name itself was located for this archive; the Santa Cruz, California origin is a secondary-account claim.
