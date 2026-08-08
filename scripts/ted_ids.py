@@ -14,6 +14,7 @@ from pathlib import Path
 DEFAULT_PREFIX = {
     "affected-products": "TAFP",
     "botanicals": "TBOT",
+    "cannabinoids": "TCBN",
     "changelog": "TCHG",
     "contaminants": "TCNT",
     "cultivars": "TCUL",
@@ -41,6 +42,7 @@ DEFAULT_PREFIX = {
 FORM_PREFIXES = {
     "affected-products": ("TAFP",),
     "botanicals": ("TBOT",),
+    "cannabinoids": ("TCBN",),
     "changelog": ("TCHG",),
     "contaminants": ("TCNT",),
     "cultivars": ("TCUL",),
@@ -226,6 +228,24 @@ def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) ->
     for record in sorted(pending, key=lambda item: str(item["source"])):
         collection = str(record["collection"])
         used = used_by_collection.setdefault(collection, set())
+        # Preserve existing canonical IDs (id-policy immutability): a pending
+        # satellite whose current entity ID is already a valid form ID in this
+        # collection keeps it (the map's legacy_id is the *prior* identity, not
+        # the canonical one). Only genuinely new records are allocated, so
+        # inserting files never renumbers existing satellites.
+        existing = str(record["current_id"] or "")
+        if existing.startswith(collection + "/"):
+            existing_form = existing[len(collection) + 1:]
+            if (
+                ID_PATTERN.fullmatch(existing_form)
+                and re.search(r"(?:^|-)[0-9]{4}(?:-|$)", existing_form)
+                and existing_form not in used
+            ):
+                used.add(existing_form)
+                record["form_id"] = existing_form
+                record["id"] = existing
+                records.append(record)
+                continue
         candidate = allocate_form_id(collection, used)
         used.add(candidate)
         record["form_id"] = candidate
