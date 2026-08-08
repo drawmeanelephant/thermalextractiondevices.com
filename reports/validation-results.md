@@ -1,6 +1,10 @@
 # Validation Results
 
-Status: **PASS** — all gates clean as of this run.
+> Historical validation snapshot. This report predates the current California
+> data collections and the roadmap/status coordination layer. For the current
+> baseline, see docs/status.md and rerun the commands below.
+
+Status: **historical PASS** — all gates were clean as of the recorded run.
 
 ## Commands executed
 

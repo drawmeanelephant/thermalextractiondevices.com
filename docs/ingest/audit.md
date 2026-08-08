@@ -1,5 +1,8 @@
 # Ingestion Audit — Repository State vs. Task Assumptions
 
+> Historical audit snapshot from 2026-08-05. Current repository state and
+> active follow-up work are tracked in `docs/status.md`.
+
 Status: **completed** · Date: 2026-08-05 · Author: Freebuff ingestion agent
 
 This document is the first deliverable of the Massachusetts Cannabis Control

@@ -15,6 +15,26 @@ please read `README.md`, `rules.md`, and `AGENTS.md` before starting.
 5. **Open a pull request** describing what changed, what evidence the
    content relies on, and which validation commands you ran.
 
+## Parallel work and coordination
+
+The strategic direction lives in `docs/roadmap.md`. The current implementation
+snapshot lives in `docs/status.md`, with independently owned state or workstream
+lanes under `docs/status/states/`.
+
+When working in parallel:
+
+* Claim or use the relevant state/workstream lane before editing it.
+* Keep the top-level status matrix concise; put detailed evidence in the
+  owned lane file.
+* Do not use the roadmap as a daily task log.
+* Add one append-only `content/changelog/TCHG-XXXX.md` record for a meaningful
+  merged change or durable architectural decision.
+* Do not allocate competing changelog IDs on parallel branches. Use a
+  reservation in `docs/status.md` or ask the integrator to allocate the ID at
+  merge time.
+* Include the status-lane path, changelog ID or reservation, blockers, next
+  action, and exact validation results in the pull request body.
+
 ## Required validation (all must pass)
 
 ```sh
