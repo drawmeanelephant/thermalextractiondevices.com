@@ -62,6 +62,9 @@ Notes and judgment calls:
 | TED-0026 Mary | "Cordless standard (22 mm female) diffuser head" | `heater head` (entity created 2026-08-08) |
 | TED-0027 Jane | "Cordless injector (18 mm male) diffuser head" | `heater head` (entity created 2026-08-08) |
 | TED-0007 ZenLeaf Nova | "Cordless wireless ball-vape base station with built-in PID" | `complete system` (base station = stand + coil + PID) |
+| TED-0029 ZenLeaf Whisper | "Smallest cordless base station, BYO external PID" | `complete system` (entity created 2026-08-08; base station = stand + coil, PID user-supplied) |
+| TED-0030 ZenLeaf Bliss | "Base station with built-in PID plus external XLR output" | `complete system` (entity created 2026-08-08) |
+| TED-0031 ZenLeaf Fusion | "Largest base station, dual PID, dual 25 mm coils" | `complete system` (entity created 2026-08-08) |
 
 Recommendations:
 
