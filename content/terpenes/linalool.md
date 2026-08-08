@@ -52,7 +52,7 @@ An inhalation study using physiological and sensory measurements documented seda
 
 {{include includes/preclinical-evidence-note.md}}
 
-Rodent assays report central nervous system depressant and anticonvulsant potential; these claims remain uncited in the archive [^3].
+Inhaled linalool showed anxiolytic properties in the light/dark test in mice, increased social interaction, and decreased aggressive behavior [^3]. The CNS-depressant and anticonvulsant potential reported for higher-dose rodent assays remains without a located primary source in this archive.
 
 ### Traditional or anecdotal claims
 Longstanding use in floral teas and sleep hygiene rituals.
@@ -65,7 +65,7 @@ Check [Lab Results](../lab-results.md) for quantifiable levels.
 
 [^1]: NIST Chemistry WebBook, SRD 69, *Linalool* (CAS 78-70-6): normal boiling point 471.75–471.8 K (≈198.6 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C78706&Mask=4
 [^2]: Sugawara Y, Hara C, Tamura K, et al. Sedative effect on humans of inhalation of essential oil of linalool: sensory evaluation and physiological measurements using optically active linalools. *Anal Chim Acta.* 1998;365(1–3):293–299. doi:10.1016/S0003-2670(97)00639-9.
-[^3]: No primary source located during the editorial audit for the rodent CNS-depressant/anticonvulsant claims; requires identification and verification.
+[^3]: Linck VM, da Silva AL, Figueiró M, Caramão EB, Moreno PRH, Elisabetsky E. Effects of inhaled linalool in anxiety, social interaction and aggressive behavior in mice. *Phytomedicine.* 2010;17(8–9):679–683. doi:10.1016/j.phymed.2009.10.002. PMID 19962290.
 
 ## Related pages
 

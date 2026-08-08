@@ -18,7 +18,7 @@ summary: Overview of the Durban Poison South African landrace lineage popularize
 
 ## Genetic Identity & Origin
 
-- **Primary Breeder**: Dutch Passion (originally imported landrace selection)
+- **Primary Breeder**: Dutch Passion (landrace selection inbred from South African genetics)
 - **Lineage**: South African Sativa Landrace (Durban port region)
 - **Classification**: Pure Sativa Landrace selection
 - **Common Primary Terpene Descriptors**: [Terpinolene](../terpenes/terpinolene.md), [β-Myrcene](../terpenes/beta-myrcene.md), [α-Pinene](../terpenes/alpha-pinene.md)
@@ -33,3 +33,12 @@ Imported from South Africa in the 1970s and acclimated to European outdoor and i
   - [Terpinolene Record](../terpenes/terpinolene.md)
   - [β-Myrcene Record](../terpenes/beta-myrcene.md)
   - [α-Pinene Record](../terpenes/alpha-pinene.md)
+
+## Provenance & Sources
+
+The lineage and origin details above are first-party claims from the named breeder's published documentation, not independently verified genetics. Per the archive's [cultivar identity framework](../reference/cultivar-name-vs-chemovar.md), cultivar names do not fix chemical composition, and breeder-attributed pedigrees are claims that can conflict across sources.
+
+- Dutch Passion, "Durban Poison" strain page: states the seeds "come originally from South Africa and were inbred over many years during the 70's" and describes the variety as a pure landrace sativa-dominant type. https://dutch-passion.us/cannabis-seeds/durban-poison (accessed 2026-08-08)
+
+> [!NOTE]
+> The specific import timeline and the role of individual breeders in bringing Durban Poison to the Netherlands are described differently across secondary and community accounts; only the first-party attribution above is relied on here.

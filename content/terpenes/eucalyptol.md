@@ -45,13 +45,13 @@ Fresh, minty, camphoraceous, cooling sensory character.
 ## Reported biological activity
 
 ### Human evidence
-A placebo-controlled double-blind trial found that oral cineole (1,8-cineole) improved symptoms and cough frequency in patients with acute bronchitis [^2]. The study evaluated oral capsules, not inhalation from a vaporizer.
+A placebo-controlled double-blind trial found that oral cineole (1,8-cineole) improved symptoms and cough frequency in patients with acute bronchitis [^2]. A separate double-blind trial in COPD patients found that oral cineole (200 mg, three times daily) added to standard therapy reduced exacerbations, dyspnea, and improved lung function [^3]. Both studies evaluated oral capsules, not inhalation from a vaporizer.
 
 ### Animal or laboratory evidence
 
 {{include includes/preclinical-evidence-note.md}}
 
-Preclinical studies report inhibition of inflammatory cytokine signaling and anti-spasmodic airway activity; these claims remain uncited in the archive [^3].
+Peer-reviewed reviews of eucalyptus-oil pharmacology summarize anti-inflammatory, antimicrobial, and respiratory-relief activity attributed largely to 1,8-cineole in animal and cell models [^4]. The underlying experiments are predominantly preclinical; human data are oral-route clinical trials, not inhaled vaporizer studies.
 
 ### Traditional or anecdotal claims
 Longstanding use in respiratory vapor inhalations and chest rubs.
@@ -64,7 +64,8 @@ Check [Lab Results](../lab-results.md) for detected levels.
 
 [^1]: NIST Chemistry WebBook, SRD 69, *Eucalyptol / 1,8-Cineole* (CAS 470-82-6) phase-change data: normal boiling point 449.5 ± 0.3 K (≈176.4 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C470826&Mask=4
 [^2]: Fischer J, Dethlefsen U. Efficacy of cineole in patients suffering from acute bronchitis: a placebo-controlled double-blind trial. *Cough.* 2013;9:25. doi:10.1186/1745-9974-9-25. PMID 24261680.
-[^3]: No primary source located during the editorial audit for the airway anti-spasmodic and cytokine claims; requires identification and verification.
+[^3]: Worth H, Schacher C, Dethlefsen U. Concomitant therapy with Cineole (Eucalyptole) reduces exacerbations in COPD: a placebo-controlled double-blind trial. *Respir Res.* 2009;10:69. doi:10.1186/1465-9921-10-69. PMID 19624838.
+[^4]: El Shiekh RA, et al. Therapeutic applications of eucalyptus essential oils. *Inflammopharmacology.* 2024. doi:10.1007/s10787-024-01588-8. PMID 39499358. (Peer-reviewed review.)
 
 ## Related pages
 

@@ -51,7 +51,7 @@ Isolated human trials are currently lacking.
 
 {{include includes/preclinical-evidence-note.md}}
 
-In vitro research reports antioxidant activity and growth inhibition in selected cancer cell lines; these claims remain uncited in the archive [^2].
+In cultured primary rat neurons and N2a neuroblastoma cells, terpinolene increased total antioxidant capacity at 10–50 mg/L and reduced cell proliferation at 50–200 mg/L — concentrations well above plausible cannabis inhalation exposure [^2]. In mice, inhaled terpinolene reduced locomotor activity in an open-field test, an effect attributed to nasal absorption of the compound [^3].
 
 ### Traditional or anecdotal claims
 Frequently noted by consumers in connection with distinct sensory profiles.
@@ -63,7 +63,8 @@ Check [Lab Results](../lab-results.md) for records.
 ## Sources
 
 [^1]: NIST Chemistry WebBook, SRD 69, *Terpinolene* (CAS 586-62-9) phase-change data: normal boiling point 458 ± 3 K (≈184.9 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C586629&Mask=4
-[^2]: No primary source located during the editorial audit; requires identification and verification.
+[^2]: Aydin E, Türkez H, Taşdemir Ş. Anticancer and antioxidant properties of terpinolene in rat brain cells. *Arh Hig Rada Toksikol.* 2013;64(3):415–424. doi:10.2478/10004-1254-64-2013-2365. PMID 24084350.
+[^3]: Ito K, Ito M. The sedative effect of inhaled terpinolene in mice and its structure-activity relationships. *J Nat Med.* 2013;67(4):833–837. PMID 23339024.
 
 ## Related pages
 

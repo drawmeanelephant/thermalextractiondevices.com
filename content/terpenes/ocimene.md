@@ -51,7 +51,7 @@ No rigorous human clinical studies evaluating isolated vaporized ocimene exist t
 
 {{include includes/preclinical-evidence-note.md}}
 
-Laboratory screens report antifungal and anti-inflammatory properties; these claims remain uncited in the archive [^2].
+In rodent and cell models, ocimene reduced inflammatory signaling and protected against NSAID (indomethacin)-induced gastric ulceration, with analgesic activity in formalin and acetic-acid pain assays [^2]. These are preclinical observations at non-inhalation doses; antifungal claims remain without a located primary source in this archive.
 
 ### Traditional or anecdotal claims
 Herbal tea component recognized in traditional perfumery and pest defense.
@@ -63,7 +63,7 @@ See [Lab Results](../lab-results.md) for batch data.
 ## Sources
 
 [^1]: The 176 °C figure is a predicted/estimated atmospheric value; NIST WebBook (CAS 13877-91-3) contains no phase-change data for β-ocimene. https://webbook.nist.gov/cgi/cbook.cgi?ID=C13877913&Units=SI
-[^2]: No primary source located during the editorial audit; requires identification and verification.
+[^2]: Attenuation of nonsteroidal anti-inflammatory drug-induced gastric ulcers by ocimene. *ACS Pharmacol Transl Sci.* 2025. doi:10.1021/acsptsci.4c00639. PMID 40109750.
 
 ## Related pages
 
