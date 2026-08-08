@@ -52,17 +52,22 @@ Notes and judgment calls:
 
 ## 3. Ball-vape component roles (recommended)
 
-| Record | Current framing | Recommended component role |
+| Record | Current framing | Component role |
 | --- | --- | --- |
 | TED-0004 B1 | "Wired, high-airflow ball-assisted convection head" | `heater head` |
 | TED-0005 B0 / B-Zero | "single-piece injector ball-vape head" | `heater head` |
 | TED-0006 F16 | "Machined injector ball-vape head" | `heater head` |
+| TED-0025 F22 | "Machined diffuser ball-vape head" | `heater head` (entity created 2026-08-08) |
+| TED-0026 Mary | "Cordless standard (22 mm female) diffuser head" | `heater head` (entity created 2026-08-08) |
+| TED-0027 Jane | "Cordless injector (18 mm male) diffuser head" | `heater head` (entity created 2026-08-08) |
 | TED-0007 ZenLeaf Nova | "Cordless wireless ball-vape base station with built-in PID" | `complete system` (base station = stand + coil + PID) |
 
 Recommendations:
 
 1. **Add an explicit "Component Role" spec row** to each ball-vape page naming `heater head` or `complete system` (this also clears advisory ADV-01). The pages already state role in their summaries; make it a table row for consistency. **✅ Applied 2026-08-08**: Component Role rows added to TED-0004/0005/0006 (`heater head`) and TED-0007 (`complete system`), with matching `heater-head` / `complete-system` tags and explicit "heater head" / "complete system" language in each summary and family row.
 2. **Do not create new entities for CH coils, PIDs, bowls, or stands.** The 20 mm coil, CH/Auber PID, Shovelhead bowl, and injector bowls are components; they stay spec-table rows on the head pages. Only the Nova is a separate platform entity (a complete system).
+
+   **✅ Applied 2026-08-08**: substantive, separately-purchasable heads that previously existed only as manufacturer-page rows were promoted to entities per the model — F22 (TED-0025), Mary (TED-0026), Jane (TED-0027) — each with a Component Role row, `heater-head` tag, and explicit role language. No coil/PID/bowl/stand entities were created, and no bundle was promoted to a model.
 3. **Never promote retailer bundles to models.** Bundles referenced on existing pages (e.g., the B-Zero bundle, B2 bundle) are source notes for the model they repackage; keep them as citations, not entities.
 
 ## 4. Recommended tag changes (small, optional)
