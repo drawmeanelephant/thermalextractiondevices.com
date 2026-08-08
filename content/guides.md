@@ -20,3 +20,4 @@ All satellite records in this collection follow the form identifier schema `guid
 - [[guides/TGDE-0003|How to Read Cultivar Pages]]
 - [[guides/TGDE-0004|Manufacturer Research Queue (Draft Editorial Backlog)]]
 - [[guides/TGDE-0005|Reading a Cannabis Certificate of Analysis]]
+- [[guides/TGDE-0006|Cannabis Hardware Family Lineage]]
