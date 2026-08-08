@@ -16,6 +16,7 @@ This platform maintains technical specifications, engineering schematics, safety
 ## Technical Collections
 
 - **[Terpenes](terpenes.md)**: Volatile terpene profiles, boiling point references, and physical properties (`terpenes/TTRP-XXXX`).
+- **[Cannabinoids](cannabinoids.md)**: Phytocannabinoid identity, physical properties, and thermal degradation context (`cannabinoids/TCBN-XXXX`).
 - **[Botanicals](botanicals.md)**: Non-cannabis plant species sharing volatile terpene chemistry (`botanicals/TBOT-XXXX`).
 - **[Cultivars](cultivars.md)**: Genetic lineage indices and cultivar overviews (`cultivars/TCUL-XXXX`).
 - **[Products](products.md)**: Commercial producer products and packaged offerings (`products/TPRD-XXXX`).
