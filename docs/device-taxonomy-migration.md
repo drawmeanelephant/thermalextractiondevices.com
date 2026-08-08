@@ -46,8 +46,8 @@ The corpus was built before this taxonomy existed, but it is largely consistent 
 Notes and judgment calls:
 
 - **TED-0015 Switch² carries both `desktop` and `portable` tags.** That is legitimate — the unit is a portable battery e-rig marketed for desktop-style use — and the taxonomy's form-factor descriptors are not mutually exclusive. Keep both tags; do not "fix" this into a contradiction.
-- **TED-0012/0013 (Vapman):** pages describe heating as "hybrid conduction/convection/radiant" but tag only `butane`/`manual`. Per the taxonomy, add the heating-mechanism tag `hybrid` (and optionally `radiant` is not required as a separate tag since hybrid covers the combination; the spec row already names radiant explicitly).
-- **TED-0002 (M7):** power row names "butane torch or electromagnetic induction heater" — that is the `torch` + `induction heater` dual-power case the taxonomy documents. The page currently tags neither; adding `torch` would make the classification explicit.
+- **TED-0012/0013 (Vapman):** pages describe heating as "hybrid conduction/convection/radiant" and now tag `hybrid` (heating mechanism). `radiant` is not required as a separate tag since hybrid covers the combination; the spec row already names radiant explicitly.
+- **TED-0002 (M7):** power row names "butane torch or electromagnetic induction heater" — that is the `torch` + `induction heater` dual-power case the taxonomy documents. The page now tags `torch`; the `induction-heater` power tag remains optional.
 - **TED-0021/0022 (IOLITE/WISPR):** the butane tank is a self-contained fuel source (catalytic), not an open torch. The taxonomy classifies this as power `torch` with heat-generation `indirect flame`; the pages already use `butane` + `catalytic` tags, which map cleanly.
 
 ## 3. Ball-vape component roles (recommended)
@@ -80,12 +80,12 @@ Recommendations:
 
 | Record | Change |
 | --- | --- |
-| TED-0002 M7 | add `torch` (power) tag |
-| TED-0012, TED-0013 | add `hybrid` (heating mechanism) tag |
+| TED-0002 M7 | add `torch` (power) tag | **✅ applied 2026-08-08** |
+| TED-0012, TED-0013 | add `hybrid` (heating mechanism) tag | **✅ applied 2026-08-08** |
 | TED-0004, TED-0005, TED-0006 | add `heater-head` component tag | **✅ applied 2026-08-08** |
 | TED-0007 | add `complete-system` component tag | **✅ applied 2026-08-08** |
 
-These are **recommendations only**; none are required for the audit to pass. Apply them opportunistically when a page is next edited for content reasons, to avoid churning stable pages. The ball-vape rows are applied; the M7 `torch` tag and the Vapman `hybrid` tags remain outstanding.
+These are **recommendations only**; none are required for the audit to pass. Apply them opportunistically when a page is next edited for content reasons, to avoid churning stable pages. **All rows in the table above are now applied (2026-08-08).**
 
 ## 5. Rules that must never be violated (enforced)
 
