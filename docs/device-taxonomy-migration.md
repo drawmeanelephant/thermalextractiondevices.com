@@ -1,6 +1,6 @@
 # Device Taxonomy — Migration Recommendations
 
-**Status:** Plan · **Standard:** `content/reference/TREF-0004.md` (Device Architecture Taxonomy) · **Scope:** all existing `content/devices/*.md` records (24 pages, TED-0001…TED-0024) and the `devices` trunk.
+**Status:** Plan — ball-vape component-role recommendations applied 2026-08-08 · **Standard:** `content/reference/TREF-0004.md` (Device Architecture Taxonomy) · **Scope:** all existing `content/devices/*.md` records (24 pages, TED-0001…TED-0024) and the `devices` trunk.
 
 This document audits the current device corpus against the five orthogonal axes and the ball-vape component model, and recommends concrete changes. It complements `metadata/device-taxonomy.json` and `scripts/audit_device_taxonomy.py`.
 
@@ -61,7 +61,7 @@ Notes and judgment calls:
 
 Recommendations:
 
-1. **Add an explicit "Component Role" spec row** to each ball-vape page naming `heater head` or `complete system` (this also clears advisory ADV-01). The pages already state role in their summaries; make it a table row for consistency.
+1. **Add an explicit "Component Role" spec row** to each ball-vape page naming `heater head` or `complete system` (this also clears advisory ADV-01). The pages already state role in their summaries; make it a table row for consistency. **✅ Applied 2026-08-08**: Component Role rows added to TED-0004/0005/0006 (`heater head`) and TED-0007 (`complete system`), with matching `heater-head` / `complete-system` tags and explicit "heater head" / "complete system" language in each summary and family row.
 2. **Do not create new entities for CH coils, PIDs, bowls, or stands.** The 20 mm coil, CH/Auber PID, Shovelhead bowl, and injector bowls are components; they stay spec-table rows on the head pages. Only the Nova is a separate platform entity (a complete system).
 3. **Never promote retailer bundles to models.** Bundles referenced on existing pages (e.g., the B-Zero bundle, B2 bundle) are source notes for the model they repackage; keep them as citations, not entities.
 
@@ -71,10 +71,10 @@ Recommendations:
 | --- | --- |
 | TED-0002 M7 | add `torch` (power) tag |
 | TED-0012, TED-0013 | add `hybrid` (heating mechanism) tag |
-| TED-0004, TED-0005, TED-0006 | add `heater-head` component tag |
-| TED-0007 | add `complete-system` component tag |
+| TED-0004, TED-0005, TED-0006 | add `heater-head` component tag | **✅ applied 2026-08-08** |
+| TED-0007 | add `complete-system` component tag | **✅ applied 2026-08-08** |
 
-These are **recommendations only**; none are required for the audit to pass. Apply them opportunistically when a page is next edited for content reasons, to avoid churning stable pages.
+These are **recommendations only**; none are required for the audit to pass. Apply them opportunistically when a page is next edited for content reasons, to avoid churning stable pages. The ball-vape rows are applied; the M7 `torch` tag and the Vapman `hybrid` tags remain outstanding.
 
 ## 5. Rules that must never be violated (enforced)
 
