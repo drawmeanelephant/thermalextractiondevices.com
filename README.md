@@ -76,5 +76,7 @@ zero category-4 data). Key documents:
 * `CONTRIBUTING.md` — contribution workflow and validation gates
 * `DATA_SOURCES.md` — data provenance and correction/takedown policy
 * `PRIVACY.md` — data classification (what may be published)
+* `docs/roadmap.md` — long-term product and data-model direction
+* `docs/status.md` — current implementation status and parallel-work lanes
 * `docs/` — audit config, artifact storage, history-cleanup plan,
   pre-publication checklist
