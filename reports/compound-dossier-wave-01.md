@@ -108,6 +108,18 @@ python3 scripts/audit_markdown_links.py content
 - `research/compounds/cannabinoids/cbda/source/2026-08-08-perplexity.md`
 - `research/_index/manifest.jsonl` (index verification)
 
+## Provenance remediation (2026-08-08, post-review)
+
+All research-corpus artifact citations (`research/compounds/.../artifact.md`) that had served as the *published evidentiary endpoint* for material claims were replaced with directly verified primary sources, per the repository rule `research → source ledger → primary source → site claim`:
+
+- **Thermal/degradation chemistry**: Wang et al. 2016 (Cannabis Cannabinoid Res, PMID 28861498) for decarboxylation kinetics; Dussy et al. 2005 (Forensic Sci Int, PMID 15734104) for THCA-A GC conversion; García-Valverde et al. 2022 (Front Chem) and Tsujikawa et al. 2022 (Forensic Sci Int, PMID 35728413) for thermal degradation / GC cyclization; Urvashi & Han et al. 2024 (J Cannabis Res) for pressurized-liquid decarb kinetics.
+- **Vapor pressure / boiling-point corrections**: Lovestead & Bruno 2017 (Forensic Chem, PMID 29266138) for the measured CBD/Δ9-THC vapor pressures; the "El-Hage et al. 2023 (PMC10249740)" reference used by several pages was **corrected** to its actual authors, **Eyal et al. 2023** (Cannabis Cannabinoid Res, PMID 35442765).
+- **Biological claims**: Nadal et al. 2017 (Br J Pharmacol), Ruhaak et al. 2011 (Biol Pharm Bull), Thomas et al. 2005 (Br J Pharmacol, THCV), Hill et al. 2012 (Br J Pharmacol, CBDV), Devinsky 2017 / Thiele 2018 / Thiele 2021 (Epidiolex RCTs), Bergamaschi 2011 (anxiety RCT), Ibeas Bih 2015 and Millar 2018 (reviews, class stated).
+- **Occurrence ranges**: Jikomes & Zoorob 2018 (Sci Rep) for legal-market flower; Stack et al. 2023 (Plant Direct) for high-CBD hemp; ranges reworded as representative/batch-attached.
+- **Geraniol**: corrected the garbled "LaVigne et al. 2021 (Cannabis Cannabinoid Res)" citation to the actual LaVigne et al. 2021 Sci Rep paper (PMID 33859287); occurrence re-sourced to Booth et al. 2017 (PLoS One).
+- **Removed**: the temporally unstable "THCA flower is federally legal" industry framing (replaced with a chemistry-scoped statement); the "Not all ledger items re-verified in this wave" caveat no longer applies because ledger items now cite their primary sources directly.
+- Claims that could not be verified against a primary source were softened or explicitly marked uncertain (e.g., THCA-B melting point, CBCA CBL photoproduct).
+
 ## Suggested next work
 
 - Wave 2 compounds: THC, CBN, CBC, THCVA, CBDVA, CBGVA (source-only folders), plus CBDA/CBDVA artifact normalization.
