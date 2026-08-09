@@ -38,7 +38,12 @@ from scripts.ingest.core import ChangeReport, IngestError, utc_now  # noqa: E402
 from scripts.ingest.fetch import Fetcher, FixtureFetcher  # noqa: E402
 from scripts.ingest.ids import NaturalKeyRegistry  # noqa: E402
 from scripts.ingest.storage import ArtifactStore  # noqa: E402
-from scripts.ingest.validation import assert_clean, scan_directory, validate_relations  # noqa: E402
+from scripts.ingest.validation import (  # noqa: E402
+    assert_clean,
+    collect_entity_ids,
+    scan_directory,
+    validate_relations,
+)
 
 GENERATED_COLLECTIONS = [
     "jurisdictions", "licenses", "organizations", "testing-laboratories",
@@ -110,6 +115,11 @@ def main() -> int:
     store = _new_store(args, state)
     registry_path = store.durable_root / "id-map.json"
     registry = NaturalKeyRegistry(registry_path, ma.ID_PREFIXES, ma.ID_COLLECTIONS)
+    if not args.fixtures_only:
+        # Massachusetts shares the canonical collections with California and
+        # editorial content. Seed the allocator from the combined content tree
+        # so newly allocated IDs never collide with existing entities.
+        registry.seed_from_entity_ids(collect_entity_ids(ROOT / "content"))
 
     if args.report_only:
         return _report_only(args, store, ma)

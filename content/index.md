@@ -47,6 +47,22 @@ Source-traceable records derived from California Department of Cannabis Control 
 
 ---
 
+## Massachusetts CCC Data Collections
+
+Source-traceable records derived from Massachusetts Cannabis Control Commission (CCC) open data (license tracker, testing results, public health and safety advisories, testing laboratories, contaminants, requirements, and aggregate datasets). See the [Massachusetts Cannabis Data Landscape](jurisdictions/TJUR-0003.md) overview.
+
+- **[Jurisdictions](jurisdictions.md)**: State-level jurisdiction profiles (`jurisdictions/TJUR-XXXX`).
+- **[Licenses](licenses.md)**: Aggregate license counts and licensing summaries (`licenses/TLIC-XXXX`).
+- **[Organizations](organizations.md)**: Licensed organizations and advisory-connected licensees (`organizations/TORG-XXXX`).
+- **[Testing Laboratories](testing-laboratories.md)**: Massachusetts Independent Testing Laboratories (`testing-laboratories/TSTL-XXXX`).
+- **[Safety Advisories](safety-advisories.md)**: CCC public health and safety advisories, with the Commission's own terminology preserved (`safety-advisories/TSAD-XXXX`).
+- **[Contaminants](contaminants.md)**: Contaminant classes regulated under cannabis testing (`contaminants/TCNT-XXXX`).
+- **[Datasets](datasets.md)**: Dated, source-traceable dataset snapshots and aggregate reporting surfaces (`datasets/TDTS-XXXX`).
+- **[Requirements](requirements.md)**: Regulatory requirements and testing panels (`requirements/TREQ-XXXX`).
+- **[Affected Products](affected-products.md)**: Normalized package-level records from public health advisories (`affected-products/TAFP-XXXX`).
+
+---
+
 ## Archival & Graph Architecture
 
 This repository is compiled statically using **Boris** and deployed continuously to Cloudflare Pages.

@@ -1,5 +1,12 @@
 # Ingestion Audit — Repository State vs. Task Assumptions
 
+> ⚠️ **Superseded (2026-08-09).** The audit was run against a stale baseline
+> and concluded that California DCC ingestion did not exist. The current
+> repository does contain the California pipeline (commit `3628c64`,
+> `scripts/dcc_ingest.py` / `dcc_sync.py`, `data/dcc/`, and the committed
+> California collections). Massachusetts v2 was built on top of that combined
+> tree — see [`reports/massachusetts-ingestion-v2.md`](../../reports/massachusetts-ingestion-v2.md).
+
 Status: **completed** · Date: 2026-08-05 · Author: Freebuff ingestion agent
 
 This document is the first deliverable of the Massachusetts Cannabis Control
