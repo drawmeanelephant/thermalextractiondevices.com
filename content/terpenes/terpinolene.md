@@ -4,7 +4,7 @@ title: "Terpinolene"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpene", "herbal"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A complex monoterpene featuring piney, floral, herbal, and citrus notes.
 ---
 

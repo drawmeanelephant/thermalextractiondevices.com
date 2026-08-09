@@ -4,7 +4,7 @@ title: "Blueberry Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "indica-dominant", "dutch-passion", "dj-short", "genetics"]
-relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0007]
+relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0007, relates_to=reference/TREF-0002]
 summary: Overview of the Blueberry genetic lineage developed by DJ Short and popularized by Dutch Passion.
 ---
 

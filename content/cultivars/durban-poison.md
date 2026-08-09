@@ -4,7 +4,7 @@ title: "Durban Poison Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "sativa", "dutch-passion", "landrace", "genetics"]
-relations: [relates_to=terpenes/TTRP-0012, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0003]
+relations: [relates_to=terpenes/TTRP-0012, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0003, relates_to=reference/TREF-0002]
 summary: Overview of the Durban Poison South African landrace lineage popularized by Dutch Passion.
 ---
 

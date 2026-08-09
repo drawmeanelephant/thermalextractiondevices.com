@@ -4,7 +4,7 @@ title: "Cannabidivarin (CBDV)"
 parent: cannabinoids
 status: published
 tags: ["cannabinoid", "phytocannabinoid", "neutral", "propyl-homologue"]
-relations: [relates_to=cannabinoids/TCBN-0002]
+relations: [relates_to=cannabinoids/TCBN-0002, relates_to=reference/TREF-0003]
 summary: Propyl-side-chain homologue of CBD; no measured atmospheric boiling point because decomposition precedes boiling.
 ---
 

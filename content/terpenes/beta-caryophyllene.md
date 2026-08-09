@@ -4,7 +4,7 @@ title: "β-Caryophyllene"
 parent: terpenes
 status: published
 tags: ["terpene", "sesquiterpene", "spicy"]
-relations: [relates_to=botanicals/TBOT-0002]
+relations: [relates_to=botanicals/TBOT-0002, relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A bicyclic sesquiterpene reported to bind the CB2 receptor in receptor-binding assays.
 ---
 

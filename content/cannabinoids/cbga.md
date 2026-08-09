@@ -4,7 +4,7 @@ title: "Cannabigerolic Acid (CBGA)"
 parent: cannabinoids
 status: published
 tags: ["cannabinoid", "phytocannabinoid", "acid", "precursor"]
-relations: [relates_to=cannabinoids/TCBN-0005, relates_to=cannabinoids/TCBN-0001, relates_to=cannabinoids/TCBN-0002, relates_to=cannabinoids/TCBN-0003, relates_to=cannabinoids/TCBN-0007]
+relations: [relates_to=cannabinoids/TCBN-0005, relates_to=cannabinoids/TCBN-0001, relates_to=cannabinoids/TCBN-0002, relates_to=cannabinoids/TCBN-0003, relates_to=cannabinoids/TCBN-0007, relates_to=reference/TREF-0003]
 summary: Shared biosynthetic precursor of the major cannabinoid acids; no measured atmospheric boiling point because decarboxylation precedes boiling.
 ---
 

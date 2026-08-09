@@ -4,7 +4,7 @@ title: "Δ9-Tetrahydrocannabivarin (THCV)"
 parent: cannabinoids
 status: published
 tags: ["cannabinoid", "phytocannabinoid", "neutral", "propyl-homologue"]
-relations: [relates_to=cannabinoids/TCBN-0007]
+relations: [relates_to=cannabinoids/TCBN-0007, relates_to=reference/TREF-0003]
 summary: Propyl-side-chain homologue of Δ9-THC; no measured atmospheric boiling point because decomposition precedes boiling.
 ---
 

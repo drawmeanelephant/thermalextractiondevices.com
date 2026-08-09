@@ -4,7 +4,7 @@ title: "Sabinene"
 parent: terpenes
 status: published
 tags: ["terpene", "bicyclic-monoterpene", "spicy"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A bicyclic monoterpene with spicy woody-citrus character and a verified NIST boiling point of ≈164 °C at 101.325 kPa.
 ---
 

@@ -4,7 +4,7 @@ title: "Ocimene"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpene", "sweet"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: An acyclic monoterpene prized for sweet, herbal, and woody floral fragrance.
 ---
 

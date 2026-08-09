@@ -4,7 +4,7 @@ title: "Linalool"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpenoid", "floral"]
-relations: [relates_to=botanicals/TBOT-0003]
+relations: [relates_to=botanicals/TBOT-0003, relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A monoterpene alcohol with a sweet, floral, lavender scent profile.
 ---
 

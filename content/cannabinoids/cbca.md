@@ -4,7 +4,7 @@ title: "Cannabichromenic Acid (CBCA)"
 parent: cannabinoids
 status: published
 tags: ["cannabinoid", "phytocannabinoid", "acid"]
-relations: [relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0002]
+relations: [relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0002, relates_to=reference/TREF-0003]
 summary: Acidic phytocannabinoid precursor of CBC, biosynthesized from CBGA; no measured atmospheric boiling point because decarboxylation precedes boiling.
 ---
 

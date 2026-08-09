@@ -4,7 +4,7 @@ title: "Storz & Bickel Mighty+ Portable Thermal Extractor"
 parent: devices
 status: published
 tags: ["device", "portable", "hybrid", "session", "direct-draw", "storz-bickel"]
-relations: [relates_to=manufacturers/TMFR-0003]
+relations: [relates_to=manufacturers/TMFR-0003, relates_to=guides/TGDE-0001]
 summary: Portable hybrid conduction/convection thermal extractor from Storz & Bickel.
 ---
 

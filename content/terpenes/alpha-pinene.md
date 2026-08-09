@@ -4,7 +4,7 @@ title: "α-Pinene"
 parent: terpenes
 status: published
 tags: ["terpene", "bicyclic-monoterpene", "pine"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A bicyclic monoterpene responsible for distinct pine forest aromas.
 ---
 

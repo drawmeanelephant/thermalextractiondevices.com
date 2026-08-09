@@ -4,7 +4,7 @@ title: "Valencene"
 parent: terpenes
 status: published
 tags: ["terpene", "sesquiterpene", "citrus"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003, relates_to=botanicals/TBOT-0001]
 summary: A bicyclic sesquiterpene with sweet orange-citrus character; measured boiling point 123 °C at 11 mmHg, 274 °C at 760 mmHg.
 ---
 
