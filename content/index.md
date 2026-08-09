@@ -33,14 +33,21 @@ This platform maintains technical specifications, engineering schematics, safety
 
 ---
 
-## California DCC Data Collections
+## Cannabis Regulation & Public Data
 
-Source-traceable records derived from California Department of Cannabis Control data (license registry, testing laboratories, recalls, contaminants, requirements, and aggregate datasets). See the [California DCC Data Landscape](datasets/TDTS-0004.md) overview.
+Verified jurisdiction profiles and source-traceable regulatory records. The [Jurisdictions](jurisdictions.md) catalog covers all 50 U.S. states, Washington, D.C., U.S. territories, the federal context, and an international country layer, each with authority, program status, data surface, and provenance.
 
-- **[Jurisdictions](jurisdictions.md)**: State-level jurisdiction profiles (`jurisdictions/TJUR-XXXX`).
+**Deep-data implementations** — jurisdictions with dedicated ingestion pipelines and published data records:
+
+- **California (DCC)**: license registry, testing laboratories, recalls, contaminants, requirements, and aggregate datasets derived from California Department of Cannabis Control data. See the [California DCC Data Landscape](datasets/TDTS-0004.md) overview.
+- **Massachusetts (CCC)**: the reference state adapter (`scripts/ingest/states/massachusetts.py`) with a verified open-data catalog; live ingestion pending a privacy-safe sync.
+
+Related regulatory collections:
+
+- **[Jurisdictions](jurisdictions.md)**: U.S. state/territory/federal and international jurisdiction profiles (`jurisdictions/TJUR-XXXX`).
 - **[Licenses](licenses.md)**: Aggregate license counts and licensing summaries (`licenses/TLIC-XXXX`).
 - **[Organizations](organizations.md)**: Licensed organizations and recall-involved businesses (`organizations/TORG-XXXX`).
-- **[Testing Laboratories](testing-laboratories.md)**: California testing laboratory license records (`testing-laboratories/TSTL-XXXX`).
+- **[Testing Laboratories](testing-laboratories.md)**: Testing laboratory license records (`testing-laboratories/TSTL-XXXX`).
 - **[Recalls](recalls.md)**: Cannabis recall notices and safety enforcement records (`recalls/TRCL-XXXX`).
 - **[Contaminants](contaminants.md)**: Contaminant classes regulated under cannabis testing (`contaminants/TCNT-XXXX`).
 - **[Datasets](datasets.md)**: Dated, source-traceable dataset snapshots and aggregate reporting surfaces (`datasets/TDTS-XXXX`).
