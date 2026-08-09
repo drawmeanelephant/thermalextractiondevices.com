@@ -1,0 +1,91 @@
+---
+id: jurisdictions/TJUR-0038
+title: "Oregon (Jurisdiction Profile)"
+parent: jurisdictions
+status: published
+tags: ["jurisdiction", "oregon", "united-states", "regulatory", "deep-data-candidate"]
+relations: []
+summary: "Jurisdiction profile for Oregon: OLCC/OHA split regulation, daily-updated license data on data.oregon.gov, structured recall notices, no public per-batch chemistry."
+---
+
+# Oregon (Jurisdiction Profile)
+
+{{include includes/jurisdiction-legal-disclaimer.md}}
+
+## Jurisdiction Identity
+
+| Field | Value |
+| --- | --- |
+| State | Oregon (OR) |
+| Country | United States |
+| Primary cannabis authorities | Oregon Liquor and Cannabis Commission (OLCC, adult use); Oregon Health Authority (OHA, testing laboratories/medical) |
+| Official websites | https://www.oregon.gov/olcc/ ; https://www.oregon.gov/oha/ph/diseasesconditions/chronicdisease/medicalmarijuanaprogram/ |
+| Open-data portal | https://data.oregon.gov |
+| Last verified | 2026-08-09 |
+
+## Current Cannabis Framework
+
+| Dimension | Status |
+| --- | --- |
+| Adult-use possession | Permitted (21+; up to 2 oz in public, more at home) |
+| Adult-use commercial sales | Operational (since October 2015) |
+| Medical cannabis | Regulated program (1998) |
+| Home cultivation | Permitted (up to 4 plants per household) |
+| Hemp relationship | Hemp regulated separately by the Oregon Department of Agriculture |
+
+## Regulatory Overview
+
+Oregon legalized adult use under Measure 91 (2014), with retail sales from October 2015. The OLCC licenses adult-use businesses; the OHA licenses and oversees testing laboratories (OAR 333-007) and the medical program. Oregon publishes a structured product-recall notice page and daily-updated license data on data.oregon.gov, but no public per-batch chemistry.
+
+## Regulator History
+
+- **1998**: Medical marijuana program established (Measure 67).
+- **2014**: Measure 91 legalizes adult use; OLCC licensing from 2016.
+- **2015**: First adult-use retail sales (October 2015).
+- **Present**: OLCC (adult use) + OHA (labs/medical) split; OAR 333-007 testing rules.
+
+## Licensing Categories
+
+OLCC: producer (cultivator tiers), processor, wholesaler, retailer, and research license categories. OHA licenses testing laboratories.
+
+## Testing Laboratory Framework
+
+- **Rules**: OAR 333-007 (OHA); OLCC rules; failed results must be reported to OHA/ODA.
+- **Contaminant limits**: OAR 333-007 panels (pesticides, arsenic, mold, heavy metals).
+- **Lab registry**: OHA licensed testing laboratories page.
+- **Public results**: Not public per-batch (results go to regulators; a 2017 state audit questioned testing reliability).
+
+## Data Surface
+
+| Data surface | Available? | Official source | Machine-readable? | Notes |
+| --- | --- | --- | --- | --- |
+| License registry | yes | data.oregon.gov: OLCC Cannabis Business Licenses & Endorsements `h9xu-m9mv` | partial | Socrata story view over a table (metadata reports daily publishing); export endpoints intermittently 500 |
+| Testing-laboratory registry | yes | OHA licensed testing laboratories page | no | Published list |
+| Laboratory testing rules | yes | OAR 333-007 | no | Codified testing regulations |
+| Contaminant/action limits | yes | OAR 333-007 panels | no | Set in regulation |
+| Recalls/advisories | yes | OLCC Product Recall Notices | no | Structured page; pesticide/arsenic/mold/heavy-metal recalls 2021–2024 verified |
+| Product/package identifiers | unknown | — | — | Not confirmed as publicly exposed |
+| COAs/batch results | no public source located | — | — | Results are regulatory-only |
+| Sales data | yes | data.oregon.gov: OLCC Marijuana Market Data `qutr-cyzn` | yes | Socrata |
+| Plant inventory | partial | Cannabis Theft `bsfq-7e4y` | yes | Theft/loss reporting dataset |
+| Open-data downloads | yes | data.oregon.gov | yes | Socrata SODA/CSV (story views need resolution) |
+| Traceability | yes | METRC | no | Seed-to-sale |
+
+## Data-Ingestion Opportunities
+
+1. **License data** (`h9xu-m9mv`): daily publishing frequency; resolve the Socrata story view (embedded table `tableId 20469928`) before treating as tabular.
+2. **Product Recall Notices** page → recall entities preserving the regulator's "Product Recall Notice" terminology.
+3. Market data, theft, and minor-decoy datasets on Socrata.
+4. No chemistry — ingest license/market surfaces only.
+
+## Sources & Provenance
+
+- **Statutory framework**: Measure 91 (2014, adult use); Measure 67 (1998, medical); OAR 333-007.
+- **Regulators**: OLCC — https://www.oregon.gov/olcc/ ; OHA — https://www.oregon.gov/oha/ph/diseasesconditions/chronicdisease/medicalmarijuanaprogram/pages/laboratories.aspx
+- **Recalls**: https://www.oregon.gov/olcc/pages/product-recalls.aspx (verified 2026-08-08).
+- **Open data**: data.oregon.gov (views verified 2026-08-08; `docs/state-expansion-roadmap.md` §3.4).
+- **Retrieval date**: 2026-08-09
+
+## Graph Connections
+
+No existing repository entities are linked to Oregon. Future license/recall/dataset records generated by an Oregon adapter should add `relates_to=jurisdictions/TJUR-0038`.
