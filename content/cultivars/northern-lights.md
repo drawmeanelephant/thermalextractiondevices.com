@@ -27,6 +27,8 @@ summary: Historical overview of the Northern Lights genetic lineage stabilized b
 
 Northern Lights is one of the most influential foundational Indica strains in modern cannabis breeding. Sensi Seeds stabilized and redeveloped several phenotypes (most notably Northern Lights #5) that became core building blocks for countless modern hybrids. Accounts that the line originated on the U.S. Pacific Northwest coast and was brought to the Netherlands in the 1980s come from secondary and community sources, not from Sensi Seeds' own product documentation.
 
+**First-party source**: [Sensi Seeds — Northern Lights](https://sensiseeds.com/en/cannabis-seeds/sensi-seeds/northern-lights) (retrieved 2026-08-09). Machine record: `CLM-0008`.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:
