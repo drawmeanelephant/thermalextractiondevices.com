@@ -73,6 +73,31 @@ PARCEL_RE = re.compile(
 PERSONAL_PATH_RE = re.compile(
     r"(?:/Users/[^/\s]+|(?<![A-Za-z0-9.:])/home/[^/\s]+|C:\\Users\\[^\\\s]+|file:///|~/[^/\s]+)"
 )
+# Functional/role mailboxes. PRIVACY.md category 4 prohibits "personal email
+# addresses ... of individuals or private premises"; a role mailbox is by
+# definition neither. On published archive content these are the manufacturer
+# contacts a hardware reference is expected to carry — including product-safety
+# recall contacts — so they are category 5 (maintainer sign-off), not a
+# publication blocker. Raw ingest payloads under data/ are deliberately excluded:
+# 96.5% of the emails there are personal-looking licensee addresses.
+ROLE_MAILBOX_RE = re.compile(
+    r"\b(?:support|service|services|info|sales|contact|help|helpdesk|recall|recalls"
+    r"|repair|repairs|customerservice|customer_service|customercare|privacy|security"
+    r"|press|media|legal|admin|hello|orders|order|warranty|office|inquiries|enquiries"
+    r"|abuse|postmaster|webmaster|noreply|no-reply)@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}",
+    re.IGNORECASE,
+)
+
+
+def _is_business_contact_path(rel_path: str) -> bool:
+    """Published archive content, where business contacts are expected and curated."""
+    return rel_path.startswith("content/")
+
+
+def _is_manufacturer_path(rel_path: str) -> bool:
+    """Manufacturer records, where a registered business address is expected."""
+    return rel_path.startswith("content/manufacturers/")
+
 SECRET_PATTERNS: List[Tuple[str, re.Pattern, str]] = [
     ("aws-access-key", re.compile(r"\bAKIA[0-9A-Z]{16}\b"), "Amazon AWS access key id"),
     ("aws-secret-key", re.compile(r"\b(?:aws_secret_access_key|awsSecretAccessKey)\s*[:=]\s*['\"]?[A-Za-z0-9/+=]{20,}"), "Amazon AWS secret key"),
@@ -128,11 +153,26 @@ def _scan_text(text: str, rel_path: str, config: Dict[str, Any],
     coord_allow = allow.get("coordinates", [])
     tax_allow = allow.get("tax_ids", [])
 
+    business_ctx = _is_business_contact_path(rel_path)
+
     for line_number, line in enumerate(text.splitlines(), start=1):
+        role_on_line = business_ctx and ROLE_MAILBOX_RE.search(line) is not None
         # Emails
         for match in EMAIL_RE.finditer(line):
             email = match.group(0)
             if any(token in email for token in email_allow):
+                continue
+            if business_ctx and ROLE_MAILBOX_RE.match(email):
+                # PRIVACY.md category 5, not category 4: a functional mailbox
+                # (support@, recall@, service@) on published archive content is a
+                # business contact for an identifiable business, not an
+                # individual's personal address. Needs maintainer sign-off, not a
+                # publication block.
+                findings.append(Finding(
+                    code="REV-001", severity="medium",
+                    message="business contact on published content — requires maintainer sign-off (PRIVACY.md category 5)",
+                    path=rel_path, line=line_number, detail=email,
+                ))
                 continue
             findings.append(Finding(
                 code="PII-001", severity="high",
@@ -143,6 +183,15 @@ def _scan_text(text: str, rel_path: str, config: Dict[str, Any],
         for match in PHONE_RE.finditer(line):
             if any(token in match.group(0) for token in phone_allow):
                 continue
+            if role_on_line:
+                # A phone sharing a line with a functional mailbox is that
+                # business's contact line (PRIVACY.md category 5).
+                findings.append(Finding(
+                    code="REV-001", severity="medium",
+                    message="business contact on published content — requires maintainer sign-off (PRIVACY.md category 5)",
+                    path=rel_path, line=line_number, detail=match.group(0),
+                ))
+                continue
             findings.append(Finding(
                 code="PII-002", severity="high",
                 message="phone number pattern in tracked content",
@@ -151,6 +200,16 @@ def _scan_text(text: str, rel_path: str, config: Dict[str, Any],
         # Street addresses
         for match in ADDRESS_RE.finditer(line):
             if any(token in match.group(0) for token in address_allow):
+                continue
+            if _is_manufacturer_path(rel_path):
+                # A manufacturer record's registered business address is neither
+                # an individual nor a private premises (PRIVACY.md category 4);
+                # it is category 5 business detail.
+                findings.append(Finding(
+                    code="REV-001", severity="medium",
+                    message="business address on a manufacturer record — requires maintainer sign-off (PRIVACY.md category 5)",
+                    path=rel_path, line=line_number, detail=match.group(0),
+                ))
                 continue
             findings.append(Finding(
                 code="PII-003", severity="high",
