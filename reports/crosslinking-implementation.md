@@ -135,10 +135,11 @@ Lovestead & Bruno 2017; Wang 2016; García-Valverde 2022; Jikomes 2018; Eyal
 | Markdown link audit | PASS — all local Markdown links resolve |
 
 Notes: the local run of `ted-build.sh`'s history scan reports pre-existing
-PII-001 history findings from full-clone history (commits by `beau@boorman.tech`
-reachable from other branches); CI and Cloudflare deploy use shallow checkouts
-(`actions/checkout@v4` default `fetch-depth: 1`), so they never see them, and
-they predate this change. The tree-level audits for this change are clean.
+PII-001 history findings from full-clone history (email addresses in commits
+reachable from other branches of a full clone); CI and Cloudflare deploy use
+shallow checkouts (`actions/checkout@v4` default `fetch-depth: 1`), so they
+never see them, and they predate this change. The tree-level audits for this
+change are clean.
 
 ## 10. Honest limitations and future scaling
 
