@@ -1,19 +1,21 @@
 # COA Data Model — Migration Path
 
-**Status:** Plan (no verified COA content exists in the archive yet) · **Scope:** how existing Blue Dream / sample COA content is handled, and how real laboratory reports (starting with Massachusetts CCC testing data) enter the durable model.
+**Status:** Plan with a first verified record · **Scope:** how existing Blue Dream / sample COA content is handled, and how real laboratory reports (starting with Massachusetts CCC testing data) enter the durable model.
 
 ---
 
-## 1. Current archive state (verified this wave)
+## 1. Current archive state
 
 | Record | Kind | Notes |
 | --- | --- | --- |
 | `lab-results/TLAB-0001` | demonstration | Sample COA "Buckeye Relief Blue Dream Batch 123" — laboratory, producer, batch id, and all quantitative values are **illustrative sample data**; the page itself carries `includes/demo-sample-record-warning.md` and `includes/unavailable-report-disclosure.md` |
 | `products/TPRD-0001` | demonstration | Sample product page for the same demo COA |
 | `cultivars/TCUL-0001` | label record | Blue Dream cultivar overview; label, not chemistry |
-| `testing-laboratories/TSTL-*`, `organizations/TORG-*` | verified | California DCC license-derived records |
+| `lab-results/TLAB-0002` | **verified** | **First verified COA** — InfiniteCAL (CA) report for Powered By Plants "Dragonberry 750ml (10mg)", batch 250410-37-002; full provenance (official TagLeaf verification URL, PDF sha256, retrieval date, upstream id, parser version). Built by `scripts/coa_verify_example.py`; see `docs/coa-data-model.md` §9.2 |
+| `products/TPRD-0002` | **verified** | Product record for the same beverage, linked to TLAB-0002 |
+| `testing-laboratories/TSTL-*`, `organizations/TORG-*` | verified | California DCC license-derived records (TLAB-0002 reuses `TSTL-0006` / `TORG-0006`, InfiniteCAL San Diego) |
 
-The `content/lab-results.md` trunk describes the collection as "Archive of verified batch-level Certificates of Analysis" — but no verified COA exists yet. The only satellite is the demonstration record, which is explicitly excluded from derived-layer statistics by the `record_kind` discipline shared with the cultivar chemotype model.
+The `content/lab-results.md` trunk describes the collection as "Archive of verified batch-level Certificates of Analysis" — the first verified satellite (TLAB-0002) now exists alongside the demonstration record, which remains explicitly excluded from derived-layer statistics by the `record_kind` discipline shared with the cultivar chemotype model.
 
 ---
 
@@ -27,6 +29,8 @@ The `content/lab-results.md` trunk describes the collection as "Archive of verif
 ---
 
 ## 3. Path A — first verified report (any jurisdiction)
+
+> **Status:** exercised once by `lab-results/TLAB-0002` (a real InfiniteCAL CA COA, `scripts/coa_verify_example.py`). The steps below remain the canonical path; the walk-through is a hand-transcribed first pass, so a couple of formalities were simplified (the PDF snapshot lives at its public CDN URL with a recorded sha256 rather than in `var/…`, and no `datasets/TDTS-*` row was created). Full Path A compliance for bulk ingestion should add those two steps.
 
 1. **Ingest the source artifact.** A real COA (PDF/CSV from a laboratory or regulator open-data portal) is captured as an immutable raw snapshot in the state ingest working area (`var/…`), checksummed, and registered in a dated dataset record (`datasets/TDTS-*` pattern).
 2. **Allocate identities.** `NaturalKeyRegistry` allocates `lab-results/TLAB-XXXX` (report), reuses or allocates `testing-laboratories/TSTL-*` (laboratory), `organizations/TORG-*` (producer), `products/TPRD-*` (product) where they exist; unknown producers/products stay `null` in the model rather than being invented.
