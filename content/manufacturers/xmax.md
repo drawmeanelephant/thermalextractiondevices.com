@@ -38,7 +38,7 @@ summary: Shenzhen vapor hardware manufacturer (est. 2000) whose primary consumer
 
 ## Repairability & Warranty Terms
 
-- **Warranty Duration**: Typically 1-year limited warranty on electronics (batteries excluded from normal degradation); some models carry 2-year coverage; concentrate atomizers 6 months (per official support pages and research corpus). [^2][^3]
+- **Warranty Duration**: Typically 1-year limited warranty on electronics (batteries excluded from normal degradation); some models carry 2-year coverage; concentrate atomizers 6 months (per official support pages; verify the current model terms before relying on them). [^2][^3]
 - **Service & Repair**: RMA requires serial number + scratch-off security code and proof of purchase; opening the device voids warranty. [^3]
 - **Recalls**: No public CPSC / EU RAPEX recalls found as of the 2026-08-08 verification pass. [^2]
 
@@ -51,4 +51,4 @@ summary: Shenzhen vapor hardware manufacturer (est. 2000) whose primary consumer
 
 [^1]: TopGreen Technology, official "About Us" (TOPGREEN US CORPORATION; established 2000; "Primary services: XMAX/XVAPE Aromatherapy Diffuser"; Southern California HQ; Shenzhen address). https://www.topgreen-tech.com/aboutus.htm
 [^2]: TopGreen Technology, official product catalog and support pages (XMAX and XVape product lines; warranty policy). https://www.topgreen-tech.com/ · https://www.topgreen-tech.com/oid1750975/SUPPORT.htm
-[^3]: Research corpus — TopGreen (XMAX) device-lineage export (identity verified 2026-08-08 against topgreen-tech.com; per-model spec minutiae subject to ingestion-level review against manufacturer manuals). research/devices/manufacturers/xmax/
+[^3]: No publicly reachable primary source is currently cited for the remaining details in this footnote. The details remain approximate or unverified and are not treated as verified archive facts.

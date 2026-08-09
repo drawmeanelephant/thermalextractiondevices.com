@@ -5,9 +5,9 @@ status: published
 tags: ["changelog"]
 ---
 
-# Design & System Changelog
+# Archive & Data-Model Changelog
 
-Historical record of modifications across thermal extraction device systems.
+Historical record of archive, content-model, and documented publication changes. It is not a field-service or firmware release log.
 
 Records follow the form identifier schema `changelog/TCHG-XXXX`.
 

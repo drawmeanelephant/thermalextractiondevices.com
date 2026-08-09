@@ -66,6 +66,16 @@ class ArtifactStore:
         """Immutable snapshot path: ``raw/<slug>/<sha256><ext>``."""
         return self.raw_dir / slug / f"{sha256}{ext}"
 
+    def portable_artifact_location(self, path: Path) -> str:
+        """Return a stable, non-machine-specific artifact location.
+
+        Durable manifests are committed and may be inspected from any
+        checkout.  Never serialize the local working directory into them;
+        expose the documented default artifact namespace instead.
+        """
+        relative = Path(path).relative_to(self.working_root)
+        return (Path("var") / "ingest" / f"{self.state}-ccc" / relative).as_posix()
+
     def snapshot_exists(self, slug: str, sha256: str, ext: str = ".csv") -> bool:
         return self.raw_snapshot_path(slug, sha256, ext).is_file()
 
@@ -107,7 +117,7 @@ class ArtifactStore:
             "column_schema": columns or [],
             "importer_version": self.importer_version,
             "normalization_schema_version": self.schema_version,
-            "artifact_location": str(raw_path),
+            "artifact_location": self.portable_artifact_location(raw_path),
             "source_disclaimer": disclaimer,
             "source_clarification_or_correction": clarification,
             "prior_snapshot_checksum": (prior or {}).get("raw_sha256"),

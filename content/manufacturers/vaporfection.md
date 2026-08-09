@@ -19,7 +19,7 @@ summary: Florida vapor hardware company (viVape and miVape glass-on-glass device
 | Legal Entity | Vaporfection International, Inc. [^1] |
 | Headquarters | Florida, USA [^1] |
 | Operating Principle | Forced-air convection desktop and portable vaporizers with glass vapor paths (Vapor Glass™) and touchscreen control (Vapor Touch™) |
-| Foundation Year | 2003 per research-corpus exports; **not independently confirmed** — the earliest primary evidence located is the 2011 patent application and the viVape pre-order (2011) [^1][^4] |
+| Foundation Year | 2003 per unpublished notes; **not independently confirmed** — the earliest primary evidence located is the 2011 patent application and the viVape pre-order (2011) [^1][^4] |
 | Status | Acquired by **MedBox, Inc.** (purchase agreement 22 Mar 2013, closed 1 Apr 2013, ~$7.6M assumed value; wholly owned subsidiary) [^1][^2]; brand dormant since ~2016–2017 |
 
 ## Official Product Families

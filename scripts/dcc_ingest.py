@@ -3,15 +3,16 @@
 
 Pipeline (per the project spec):
 
-    fetch -> archive raw -> validate source schema -> normalize -> compare with
+    fetch -> checksum private source -> validate source schema -> normalize -> compare with
     previous snapshot -> generate Markdown -> validate Boris graph -> build all
     publication surfaces -> change report
 
 Source policy: the Looker Studio dashboard interface is treated as an
-undocumented and potentially unstable source. Every retrieval is archived as an
-immutable dated snapshot with full provenance (source URL, retrieval timestamp,
-data-through date, query parameters, raw response, checksums, generator and
-schema versions). The workflow FAILS WITHOUT PUBLISHING when any guard trips.
+undocumented and potentially unstable source. Every retrieval is checksummed
+with full provenance (source URL, retrieval timestamp, data-through date, query
+parameters, source-payload hashes, generator and schema versions), while raw
+and normalized payloads remain in private, unpublished storage. The workflow
+FAILS WITHOUT PUBLISHING when any guard trips.
 
 Generated pages are static Markdown (Apex dialect) compiled by Boris. No
 embeds, no client JavaScript, no dashboard iframes.
@@ -202,19 +203,11 @@ def normalize_license(record: dict) -> dict:
         "authority": clean(record.get("licensingAuthority")),
         "business_legal_name": clean(record.get("businessLegalName")),
         "business_dba": clean(record.get("businessDbaName")),
-        "business_owner": clean(record.get("businessOwnerName")),
         "business_structure": clean(record.get("businessStructure")),
         "activity": clean(record.get("activity")),
-        "premise_street": clean(record.get("premiseStreetAddress")),
         "premise_city": clean(record.get("premiseCity")),
         "premise_state": clean(record.get("premiseState")),
         "premise_county": clean(record.get("premiseCounty")),
-        "premise_zip": clean(record.get("premiseZipCode")),
-        "business_email": clean(record.get("businessEmail")),
-        "business_phone": clean(record.get("businessPhone")),
-        "parcel_number": clean(record.get("parcelNumber")),
-        "premise_latitude": record.get("premiseLatitude"),
-        "premise_longitude": record.get("premiseLongitude"),
         "data_refreshed_at": clean(record.get("dataRefreshedDate")),
     }
 
@@ -473,27 +466,19 @@ def fetch_glossary_changelog_date() -> str:
 
 def archive_dataset(dataset_id: str, raw_files: list[tuple[str, str]],
                     normalized, metadata: dict, data_root: Path) -> dict:
-    dataset_dir = data_root / dataset_id
-    dated_dir = dataset_dir / RETRIEVAL_DATE
-    ensure_dir(dated_dir)
+    """Record checksums without persisting source payloads in the repository.
+
+    The caller may use an ignored/private cache for re-runs, but the tracked
+    repository boundary contains only aggregate Markdown plus provenance
+    metadata. ``data_root`` remains in the signature for compatibility with
+    the existing pipeline call sites.
+    """
     raw_checksums = {}
     for filename, content in raw_files:
-        target = dated_dir / filename
-        if target.exists():
-            # Immutable dated snapshots: never overwrite the first archived copy.
-            data = target.read_bytes()
-        else:
-            data = content if isinstance(content, bytes) else content.encode("utf-8")
-            target.write_bytes(data)
+        data = content if isinstance(content, bytes) else content.encode("utf-8")
         raw_checksums[filename] = sha256_bytes(data)
     norm_json = json.dumps(normalized, indent=2, ensure_ascii=False)
-    (dated_dir / "normalized.json").write_text(norm_json, encoding="utf-8")
     normalized_checksum = sha256_text(norm_json)
-    write_json(dataset_dir / "latest.json", {
-        "dataset": dataset_id,
-        "retrieval_date": RETRIEVAL_DATE,
-        "normalized": normalized,
-    })
     return {
         "dataset": dataset_id,
         "source_urls": metadata.get("source_urls", []),
@@ -501,7 +486,8 @@ def archive_dataset(dataset_id: str, raw_files: list[tuple[str, str]],
         "retrieval_date": RETRIEVAL_DATE,
         "data_through": metadata.get("data_through", ""),
         "query_params": metadata.get("query_params", {}),
-        "raw_files": raw_checksums,
+        "storage": "private-unpublished",
+        "source_payloads": raw_checksums,
         "raw_checksum": sha256_text("".join(sorted(raw_checksums.values()))),
         "normalized_checksum": normalized_checksum,
         "normalized_rows": len(normalized) if isinstance(normalized, list) else None,
@@ -798,7 +784,7 @@ def gen_dataset_license(records_dir: Path, data_root: Path, licenses: list[dict]
                         manifest: dict) -> list[Path]:
     entry = manifest["license-registry"]
     entity_id = f"datasets/{DATASET_IDS['license-registry']}"
-    raw_checks = ", ".join(f"`{name}` {digest[:12]}…" for name, digest in entry["raw_files"].items())
+    raw_checks = ", ".join(f"`{name}` {digest[:12]}…" for name, digest in entry["source_payloads"].items())
     body = frontmatter(
         entity_id, f"DCC License Registry Dataset — {RETRIEVAL_DATE}", "datasets",
         ["dataset", "licenses", "california"],
@@ -817,14 +803,14 @@ def gen_dataset_license(records_dir: Path, data_root: Path, licenses: list[dict]
 | Retrieval timestamp | {entry['retrieval_timestamp']} |
 | Data-through date | {entry.get('data_through') or 'see raw'} |
 | Rows | {len(licenses):,} |
-| Raw checksums | {raw_checks} |
+| Source payload checksums | {raw_checks} |
 | Normalized checksum | {entry['normalized_checksum'][:12]}… |
 
 ## Retrieval Parameters
 
 - Endpoint: `GET {CANNA_API}/licenses/filteredSearch`
 - Parameters: `pageSize=1000`, `pageNumber=1..N`
-- Archive: `data/dcc/license-registry/{RETRIEVAL_DATE}/raw.json` + `normalized.json`
+- Payload storage: private and unpublished; source payload hashes are retained in the repository manifest.
 
 ## Interface Stability Note
 
@@ -832,8 +818,8 @@ The license search API is exposed by the DCC's public license-lookup application
 ([search.cannabis.ca.gov](https://search.cannabis.ca.gov)) and is **undocumented**.
 It paginates via `pageNumber` (not `page`) and returns at most 1,000 rows per
 request. This archive treats it as potentially unstable: every retrieval is
-archived with checksums, and the sync fails without publishing if the response
-shape changes.
+captured with checksums, while raw and normalized payloads remain private and
+unpublished. The sync fails without publishing if the response shape changes.
 
 """
     body += provenance_block(DCC_SEARCH_URL, "2026-08-04", "synced", entity_id)
@@ -869,13 +855,13 @@ the retrieval attempt, and the current extraction status.
 - Dashboard page: {info['page']}
 - Interface type: Google Looker Studio embed (undocumented)
 - Extraction status: **unstable / not implemented**
-- Raw archive: `data/dcc/{dashboard_id}/{RETRIEVAL_DATE}/raw.html` (checksummed)
+- Payload storage: private and unpublished; the source response is represented by checksums in the repository manifest.
 - Glossary changelog date: {methodology_date or 'not extracted'}
 
 > [!IMPORTANT] Source instability
 > The DCC publishes this report only as a Looker Studio embed. No documented API or
-> downloadable dataset exists as of {RETRIEVAL_DATE}. The archive preserves the raw
-> embed response and will not render numbers it cannot source-trace. Harvest and
+> downloadable dataset exists as of {RETRIEVAL_DATE}. The archive retains the source
+> response privately and will not render numbers it cannot source-trace. Harvest and
 > sales generation remains aggregate-only until the entity model is proven.
 
 """
@@ -917,14 +903,12 @@ def gen_testing_labs(records_dir: Path, labs: list[dict], org_ids: dict[str, str
 | Expiration date | {lab['expiration_date'] or '—'} |
 | Business structure | {lab['business_structure'] or '—'} |
 
-## Premises
+## Premises (coarse location)
 
 | Field | Value |
 | --- | --- |
-| Street | {lab['premise_street'] or '—'} |
 | City | {city} |
 | County | {county} |
-| ZIP | {lab['premise_zip'] or '—'} |
 
 ## Graph Connections
 
@@ -935,7 +919,7 @@ def gen_testing_labs(records_dir: Path, labs: list[dict], org_ids: dict[str, str
 ## Source
 
 - Official source: [DCC Cannabis Unified License Search](https://search.cannabis.ca.gov)
-- Raw snapshot: `data/dcc/testing-labs/{RETRIEVAL_DATE}/`
+- Source payload: retained in private, unpublished storage; provenance hashes are recorded in the DCC manifest.
 
 """
         body += provenance_block(DCC_SEARCH_URL, lab["data_refreshed_at"][:10], "synced", entity_id)
@@ -1212,9 +1196,9 @@ Every generated page carries a standard provenance footer:
 
 <dl>
 <dt>Official source</dt><dd>The exact URL the data was retrieved from.</dd>
-<dt>Retrieval date</dt><dd>When the snapshot was captured (immutable dated archive).</dd>
+<dt>Retrieval date</dt><dd>When the source response was captured.</dd>
 <dt>Data-through date</dt><dd>The latest date the source reports data for.</dd>
-<dt>Checksums</dt><dd>SHA-256 of raw and normalized payloads in the source manifest.</dd>
+<dt>Checksums</dt><dd>SHA-256 of private raw and normalized payloads recorded in the source manifest.</dd>
 <dt>Generator version</dt><dd>scripts/dcc_ingest.py version that produced the record.</dd>
 <dt>Stable entity ID</dt><dd>The Boris graph identity, e.g. <code>datasets/TDTS-0001</code>.</dd>
 </dl>
@@ -1222,15 +1206,15 @@ Every generated page carries a standard provenance footer:
 ## Definitions
 
 <dl>
-<dt>Raw snapshot</dt><dd>Immutable copy of the source response under <code>data/dcc/&lt;dataset&gt;/&lt;date&gt;/</code>.</dd>
-<dt>Normalized snapshot</dt><dd>Validated, schema-shaped derivative of the raw response.</dd>
+<dt>Raw snapshot</dt><dd>Private, unpublished copy of the source response.</dd>
+<dt>Normalized snapshot</dt><dd>Private, unpublished validated derivative of the source response.</dd>
 <dt>Aggregate record</dt><dd>A page summarizing counts or trends, not individual entities.</dd>
 <dt>Entity record</dt><dd>A page for one meaningful entity (laboratory, recall, contaminant, organization).</dd>
 </dl>
 
 ## Current Sync Status
 
-- [x] License registry fetched and archived
+- [x] License registry fetched; payload retained privately and provenance recorded
 - [x] Active testing laboratories extracted
 - [x] Recall index captured across all pages
 - [x] Representative recall details parsed
@@ -1363,7 +1347,12 @@ def write_reports(data_root: Path, manifest: dict, changes: list[dict]) -> None:
     for issue in guards_issues:
         change_report += f"- FAIL: {issue}\n"
     if not guards_issues:
-        change_report += "No guards tripped; pipeline proceeded to publication.\n"
+        change_report += (
+            "No guards tripped during the source refresh. Raw and normalized "
+            "payloads were handled as private, unpublished artifacts; the "
+            "repository publication boundary retains only aggregate content "
+            "plus provenance metadata.\n"
+        )
 
     change_report += "\n## Dataset changes vs previous snapshot\n\n"
     for change in changes:
@@ -1398,17 +1387,23 @@ The project brief suggested nested content layouts such as
 the collection from the FIRST path segment of a source file, so nested satellite
 dirs would mislabel entity identities. Content collections are therefore flat
 (`datasets/TDTS-0001.md`, `licenses/TLIC-0001.md`, `recalls/TRCL-0001.md`, ...)
-while the ARCHIVE layout keeps the requested nested shape:
-`data/dcc/<dataset>/<retrieval-date>/raw.*`.
+Source payloads are retained in private, unpublished storage; no raw archive
+layout is present in the public repository.
 
 ## Normalized license fields (schema 1.0)
 
 license_number, license_status, license_term, license_type, license_designation,
 issue_date, expiration_date, authority_id, authority, business_legal_name,
-business_dba, business_owner, business_structure, activity, premise_street,
-premise_city, premise_state, premise_county, premise_zip, business_email,
-business_phone, parcel_number, premise_latitude, premise_longitude,
-data_refreshed_at.
+business_dba, business_structure, activity, premise_city, premise_state,
+premise_county, data_refreshed_at.
+
+## Redacted source fields
+
+The ingestion boundary removes or keeps private the following licensee-entered
+fields before any normalized record is written to a tracked path: owner identity,
+street address, postal code, email, phone, parcel/cadastral identifiers, and
+latitude/longitude coordinates. The public site retains only the coarse
+regulatory facts needed for source-attributed aggregate and entity pages.
 
 ## Enum drift tracking
 
@@ -1425,6 +1420,8 @@ def write_manifest(data_root: Path, manifest: dict) -> None:
         "script_version": SCRIPT_VERSION,
         "retrieval_timestamp": RETRIEVAL_TS,
         "dcc_warning": DCC_WARNING,
+        "publication_boundary": "Only this manifest, the schema report, and sync reports are tracked in the repository. Raw and normalized payloads are retained in private, unpublished storage and are not served by Boris.",
+        "payload_storage": "private-unpublished",
         "datasets": manifest,
     })
 

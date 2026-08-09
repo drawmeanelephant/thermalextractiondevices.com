@@ -1,21 +1,23 @@
-# Pre-Publication Checklist
+# Publication Hardening Checklist
 
-Run every item before making this repository public. Items marked **[BLOCKER]**
-must be resolved first. This checklist is the authoritative gate; the
-public-release audit (`scripts/audit_public_release.py`) automates the
-mechanical parts, but human sign-off is required on the judgment items.
+The repository and site are already public. Run every item before calling the
+publication surface fully hardened. Items marked **[BLOCKER]** remain release
+gates. The public-release audit (`scripts/audit_public_release.py`) automates
+the mechanical parts, but human sign-off is required on judgment items.
 
 ## 0. Blockers — resolve before anything else
 
 - [ ] **[BLOCKER] Licensing decision made.** Choose and commit a real license
       (see `LICENSE.md`). The repository is currently unlicensed (all rights
       reserved by default).
-- [ ] **[BLOCKER] Security contact is real.** Replace the placeholder
-      `security@example.com` in `SECURITY.md` with a monitored mailbox, and
-      enable GitHub private security advisories.
-- [ ] **[BLOCKER] No category-4 data anywhere.** Run
+- [ ] **[BLOCKER] Private security reporting is enabled and tested.** Confirm
+      the repository's GitHub Security-tab private advisory flow is available;
+      `SECURITY.md` intentionally does not invent a mailbox or response SLA.
+- [ ] **[BLOCKER] No category-4 data in the in-scope publication tree.** Run
       `python3 scripts/audit_sensitive_content.py --config docs/audit-config.json`
-      — must report zero findings in both the tree and history.
+      and disposition findings. The Massachusetts implementation lane is
+      explicitly excluded from this pass and remains a reported blocker until
+      its owner handles it.
 - [ ] **[BLOCKER] Human review of flagged records.** Review every `REV-001`
       finding (producer/manufacturer/lab content, draft research queue) and
       confirm each record is accurate, evidenced, and safe to publish under
@@ -24,10 +26,11 @@ mechanical parts, but human sign-off is required on the judgment items.
 ## 1. Automated audits (all must pass)
 
 - [ ] `python3 scripts/audit_public_release.py --config docs/audit-config.json`
-      → exit 0 — **currently exits 1**: 172,562 blocking findings (PII in
-      `data/dcc/**`). Resolve the `data/` disposition first.
+      → exit 0 — current-tree California DCC payloads were removed; history
+      and excluded Massachusetts findings still require disposition.
 - [ ] `python3 scripts/audit_sensitive_content.py --config docs/audit-config.json`
-      → exit 0 — currently fails for the same reason.
+      → exit 0 for the in-scope tree; report excluded Massachusetts findings
+      separately rather than modifying that lane here.
 - [ ] `python3 scripts/audit_large_files.py --config docs/audit-config.json`
       → no giant tracked files, no duplicate dataset blobs, no
       external-storage candidates that should not exist
@@ -44,23 +47,19 @@ mechanical parts, but human sign-off is required on the judgment items.
 - [ ] `git log --all` shows only intended history; no commit message or
       author/committer email leaks a personal address (noreply identities
       are acceptable).
-- [ ] **[BLOCKER] Decide the disposition of `data/dcc/**`** — the tracked
-      registry datasets (≈88 MiB on disk, 64 MiB in history) contain
-      business emails, phones, owner names, parcel numbers, and premises
-      coordinates. Options: move raw/normalized payloads to private
-      external artifact storage and keep only manifests in git, strip PII
-      at ingest, or obtain consent for republication. Do not make the
-      repository public while this is unresolved.
+- [x] **[BLOCKER] Current-tree disposition of `data/dcc/**` recorded** — raw
+      and normalized payloads are removed from tracked paths; the manifest,
+      schema note, and sync report remain; ingest code uses private/unpublished
+      storage and redacts sensitive fields.
 - [ ] No blob above the 5 MiB threshold reachable from any ref
-      (`python3 scripts/audit_large_files.py`) — currently FALSE: three
-      license-registry blobs exceed it.
-- [ ] No duplicate dataset copies (`previous.json` ≡ dated `normalized.json`
-      for license-registry, recalls-index, and testing-labs) — currently
-      FALSE; deduplicate or point `previous` at the dated file.
+      (`python3 scripts/audit_large_files.py`) — historical DCC blobs remain
+      until the separate history-cleanup plan is executed.
+- [x] Duplicate current-tree DCC payload copies removed; private cache state
+      is ignored and not a publication artifact.
 - [ ] History cleanup decided (`docs/history-cleanup-plan.md`) — only if
       `data/` PII is to be removed from history.
-- [ ] Repository visibility is still **private** (this checklist does not
-      change visibility).
+- [x] Repository visibility is public; this checklist does not change
+      visibility.
 
 ## 3. Content & provenance
 
@@ -103,5 +102,6 @@ mechanical parts, but human sign-off is required on the judgment items.
 
 ---
 
-*When every box is checked, remove the repository's private visibility
-setting per the owner's process. This repository has not been made public.*
+*When every remaining blocker is checked, record the maintainer sign-off and
+date here. This checklist does not authorize history rewriting, force-pushes,
+or changes to the excluded Massachusetts lane.*

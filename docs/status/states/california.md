@@ -9,25 +9,27 @@ Branch: main
 
 California Department of Cannabis Control licensing, laboratory, recall,
 contaminant, requirements, and dataset records currently represented under
-content/ and data/dcc/.
+content/ and the redacted `data/dcc/` provenance boundary.
 
 ## Implementation state
 
 - Adapter: scripts/dcc_ingest.py and scripts/dcc_sync.py.
 - Canonical command: California currently follows the legacy DCC path; the
   relationship to scripts/state_ingest.py remains an architectural decision.
-- Live snapshot: California DCC snapshots are present under data/dcc/.
+- Live snapshot: source payloads are retained privately; no raw or normalized
+  DCC snapshot is tracked in the public repository.
 - Generated content: jurisdiction, license, organization, testing laboratory,
   recall, contaminant, dataset, and requirements collections are present.
-- Durable artifacts: data/dcc/ contains raw, normalized, manifest, schema, and
-  sync-report material.
+- Durable artifacts: `data/dcc/manifest.json`, `schema-report.md`, and sync
+  reports are tracked; raw and normalized payloads are private/unpublished.
 - Fixtures and tests: California regression coverage must be preserved while
   the shared state architecture is reconciled.
 
 ## Blockers
 
-- Public release is blocked until the privacy and storage disposition for
-  data/dcc/ is decided.
+- Public release remains blocked by historical DCC payloads, licensing and
+  security-process decisions, and the explicitly excluded Massachusetts audit
+  findings. The current DCC tree disposition is private/unpublished storage.
 - Cross-state ID allocation and the canonical CLI are not yet unified.
 
 ## Next action
