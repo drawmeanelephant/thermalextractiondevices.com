@@ -154,11 +154,15 @@ the provenance shape, and is unmistakably labeled:
 
 ## 7. Remaining blockers
 
-1. **Public-release audit on pre-existing files.** `./bin/validate_graph.sh`
-   passes, but the full release audit (`audit_public_release.py`, invoked by
-   `cloudflare-build.sh`) still reports pre-existing blocking findings on
-   `data/dcc/*` license-registry PII and other base-state files, exactly as on
-   `main` before this wave. This wave adds no new audit findings.
+1. **Public-release audit git-history baseline.** `ted-build.sh` now runs the
+   release audit unconditionally (main's publication-hardening wave removed the
+   `SKIP_RELEASE_AUDIT` bypass and resolved the old `data/dcc/*` PII block). In
+   a full-depth clone the audit reports 48 HIGH `PII-001 <history>` findings
+   from pre-existing commits (e.g. `beau@boorman.tech`); this reproduces
+   **identically on clean `main`** (verified: same 130 findings / 52 high on
+   both trees, 0 on this wave's files) and is invisible to CI's shallow clone.
+   The documented cleanup path is `reports/publication-hardening.md` +
+   `docs/history-cleanup-plan.md`; no history rewrite is authorized here.
 2. **Massachusetts merge blocker (concurrent work).** The MA pipeline remains
    fixture-only and merge-blocked by its own guards; out of scope here.
 3. **Analysis engine** (graded pooling, censored-data estimators, uncertainty
@@ -167,13 +171,19 @@ the provenance shape, and is unmistakably labeled:
    record, so THC rows map to `compound_id: null` (existing open question).
 5. **Cultivar claim-resolution corpus** — alias tables for confident
    `resolved` claims are future work; claims stay `unresolved` until then.
+   Note: main's cultivar-identity wave (`metadata/cultivar-claims.jsonl`,
+   `docs/cultivar-identity-model.md`) is the content-level claim registry;
+   `CultivarClaim` in this COA model is the in-record representation of those
+   claims (resolution grade on a batch/product). The two are complementary
+   layers of one concept, not competing schemas.
 
 ---
 
 ## 8. Recommended ingestion sequence
 
-1. Resolve the pre-existing release-audit blockers (DCC PII hygiene) so
-   `cloudflare-build.sh` passes without bypass — independent of this model.
+1. Resolve the remaining release-audit git-history baseline (see blocker 1,
+   `docs/history-cleanup-plan.md`) so the full-depth local gate and any
+   non-shallow CI pass cleanly — independent of this model.
 2. Land the first **verified** COA from any jurisdiction via Path A
    (snapshot → checksum → `TDTS-*` → canonical `TLAB-XXXX` → publish), which
    exercises provenance requirements against real data.
@@ -200,7 +210,10 @@ python3 scripts/audit_coa_content.py content --map metadata/id-map.jsonl → 0 e
 ./bin/validate_graph.sh                                                → pass (see below)
 ```
 
-Note: `bin/validate_graph.sh` itself does not run the public-release audit;
-the documented `SKIP_RELEASE_AUDIT=1` bypass is only needed for
-`cloudflare-build.sh` on the pre-existing DCC findings, which reproduce
-identically on `main`.
+The release audit runs inside `scripts/ted-build.sh` (invoked by
+`validate_graph.sh`) with no bypass now that main removed `SKIP_RELEASE_AUDIT`.
+In a full-depth clone it fails on the pre-existing `<history>` PII baseline
+(48 HIGH, identical on clean `main`; see blocker 1). All other gate steps pass
+and CI's shallow clone is unaffected. Post-rebase totals: 254 tests OK
+(6 skipped), ted_ids validates 415 pages, COA audit 0/0, markdown links
+resolve, Boris graph clean, Cantilever build + HTML ID checks green.
