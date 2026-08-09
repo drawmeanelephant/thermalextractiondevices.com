@@ -341,11 +341,13 @@ _define(DatasetDef(
     large=True,
     required_columns=["DATE", "ANALYTE/TEST ID", "RESULT", "TESTPASSED"],
     column_types={"DATE": "date", "RESULT": "number"},
-    key_columns=["DATE", "METRC ID", "ANALYTE/TEST ID", "LAB PERFORMING THE TEST", "RESULT"],
-    # The source's columns are not a true primary key (identical packages,
-    # analytes, and values legitimately recur); duplicate keys warn, never
-    # fail, for this large dataset. Full-row duplicates are still rejected.
-    duplicate_key_policy="warn",
+    # The CCC dataset repeats (package, analyte, value) rows for distinct
+    # source tags, so row identity requires METRC SOURCE TAG and the
+    # NOTES/COMMENTS carrier (the Commission stores "<LOD (...)" there while
+    # RESULT collapses to 0.0). With these columns the key is a true primary
+    # key; duplicate keys fail closed instead of being warned away.
+    key_columns=["DATE", "METRC ID", "ANALYTE/TEST ID", "LAB PERFORMING THE TEST",
+                 "RESULT", "METRC SOURCE TAG", "NOTES/COMMENTS"],
     normalizer="testing",
     clarification="Data updated 2026-03-19 per CCC testing-data update notice.",
 ))
@@ -364,9 +366,10 @@ _define(DatasetDef(
     large=True,
     required_columns=["Date", "Analyte/Test ID", "Result", "TestPassed"],
     column_types={"Date": "date", "Result": "number"},
-    key_columns=["Date", "METRC ID", "Analyte/Test ID", "Lab performing the test", "Result"],
-    # See testing_2025: source columns are not a true primary key.
-    duplicate_key_policy="warn",
+    # Same row-identity requirement as testing_2025: distinct source tags and
+    # test IDs distinguish otherwise identical rows, making this a true key.
+    key_columns=["Date", "METRC ID", "Analyte/Test ID", "Lab performing the test",
+                 "Result", "METRC source tag", "Test ID"],
     normalizer="testing_2024",
     clarification="File republished 2026-04-15 (filename suffix 20260415).",
 ))
