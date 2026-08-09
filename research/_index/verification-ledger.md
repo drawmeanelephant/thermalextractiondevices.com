@@ -290,3 +290,64 @@ The 9 subjects left `partially-verified` after the Priority-2-remainder pass wer
 - **→ partially-verified:** none remain — all previously-partial subjects were promoted in the second entity-confirmation pass.
 - **Left `unverified`:** Pharmacopeia (Inhalater) and US Cannabis Regulatory Data Availability — no verification performed/possible in this pass; documented in queue_notes.
 - Remaining uncertainty: per-model spec minutiae (unchanged policy); defunct-brand legal entities (FlashVap/Purple Days; VaporBlunt period attribution); founding-year discrepancies (Hamilton 2012 vs 2018; Smono 2009); stale dataset counts (terpene-co-occurrence, as-of 2024).
+
+---
+
+# Priority-3 + Remaining Priority-2 Verification Pass (2026-08-08, fourth pass)
+
+**Scope:** the last 19 `unverified` manifest records — the 2 remaining Priority-2 subjects (Pharmacopeia/Inhalater, US Cannabis Regulatory Data Availability) and 16 Priority-3 subjects (6 manufacturers/devices, 1 meta-research record, and 9 cannabis chemistry/cultivar framework records; Smiss has two records). This closes the queue: **all 195 manifest records are now `primary-sources-verified`.**
+**Method:** same as prior passes — material claims traced to primary/authoritative sources (official sites and manuals, archived official pages, government trademark/regulatory records, SEC/EDGAR filings, peer-reviewed literature), not to the Perplexity reports' own ledgers. Identity-review subjects (Smiss/Flowermate, TopGreen XMAX/XVape) were checked against first-party and government sources; the two previously-documented-but-unverified P2 subjects were verified this pass.
+
+## Priority-2 subjects (previously left unverified)
+
+### Pharmacopeia Inc. (Inhalater) → primary-sources-verified
+- **Verified:** the official archived Inhalater site (web.archive.org, inhalater.com, 68 captures 2008–2023) states on its about page: "Located in Montreal, Quebec, Canada, **Pharmacor Technologies was founded in 2009**" — the Inhalater vaporizer is made by **Pharmacor Technologies (Montreal)**. The export's "Pharmacopeia Inc." name is a conflation with the Ligand-acquired biotech Pharmacopeia Inc. (a separate company). Corroborated by Medical Jane ("Inhalater is a wholly owned subsidiary of Pharmacor Technologies") and a 2014 period article ("Montreal-based company Pharmacor").
+- **Caveats (labeled, not blocking):** (a) the official site was selling Inhalater devices as early as **July 2008** (2008 Wayback capture), predating the 2009 founding claim; (b) the export's family tree missed the official **5S and 6S models** sold 2016–17 (2017 Wayback capture; site last captured 2023).
+- **Not re-verified:** per-model specs; export's uncertain-spec flags remain open.
+
+### US Cannabis Regulatory Data Availability → primary-sources-verified
+- **Verified (5 Tier-1 state claims, first-party):** **NV** — Cannabis Compliance Board lab library / Metrc test data 2020–present (ccb.nv.gov); **ME** — Office of Cannabis Policy open-data testing portal (maine.gov/dafs/ocp/open-data/adult-use/testing-data); **NY** — OCM license data on data.ny.gov (Socrata, jskf-tt3q); **VT** — Cannabis Control Board registered-product/data portals (ccb.vermont.gov); **CO** — MED/CDPHE cannabis testing surveillance program (2025 results).
+- **Not re-verified:** Tier-2/3 state claims and the rank ordering of remaining jurisdictions (the artifact's analytic ranking is preserved as analytic, not verified fact).
+
+## Priority-3 manufacturers / devices
+
+| Subject | Result | Primary sources consulted |
+| --- | --- | --- |
+| FlytLab | ✅ primary-sources-verified | Official flytlab.com/about-us: founded 2013 (2 Boston + 2 NY brothers), first tradeshow 2015, line H2FLO/FUSE/LIFT/ST!K/CTRL 2.0, 1-year warranty; ⚠ summary-only export (full deliverable not in corpus) |
+| Tronian | ✅ primary-sources-verified | Official Milatron manual (tronian.com PDF) + tronian.com store locator: Thermodyne Systems, Toronto (11 Progress Ave #17, M1P 4S7) & Thermodyne Systems GmbH, Stuttgart (Esperantostr. 8b, 70197); Globe Newswire 2022-12-20 umbrella confirmation; brand-founded-2018 claim secondary (TVape) |
+| Smiss Technology Co., Ltd. (×2 records) | ✅ primary-sources-verified (identity resolved) | **Canadian Trade-marks Journal Vol. 65 No. 3340 (2018-10-31, publications.gc.ca)** records a Flowermate trademark application by Smiss Technology Co., Ltd.; Smiss's own LinkedIn posts Flowermate products and lists www.flowermate.com; smisstech.com confirms 2012 incorporation. 2009 R&D-start year not independently confirmed; no separate "Shenzhen Flowermate Technology Co., Ltd." entity located — treat Flowermate as a Smiss brand |
+| TopGreen Technology (XMAX) | ✅ primary-sources-verified (identity resolved) | topgreen-tech.com/aboutus.htm (official): TOPGREEN US CORPORATION, Southern California, est. 2000, "Primary services: XMAX/XVAPE"; Shenzhen HQ (Chongqing Rd, Bao'an) matches export |
+| XVape (TopGreen Technology) | ✅ primary-sources-verified (identity resolved) | Same official TopGreen site: XMAX and XVape are distinct consumer brands of one manufacturer; keep as separate brand subjects |
+| Mig Vapor LLC | ✅ primary-sources-verified | VaporFi official blog page "Vaporfi Is the Exclusive Home for Mig Vapor" (live); Pompano Beach FL identity corroborated (LeadIQ, Yelp); discontinuation ~2020–21 consistent with VaporFi transition; ⚠ **ledger defects** documented below |
+| Goboof Products Limited (Alfa) | ✅ primary-sources-verified (caveats) | Medical Jane: "Manufactured By: Goboof; Manufactured In: Ireland; Designed In: Dublin"; Alfa brand + 2-yr warranty (alfagoboof.com, official Facebook); 2014 manual (Goboof Products Ltd copyright). **Not independently re-verified:** CRO 525630 and Castle D Enterprises successor (CRO portal blocks automated access; successor attribution rests on VapeCritic); ⚠ garbled registered-address field ("Carlow, Co. Dublin" — Carlow ≠ Co. Dublin) — resolve at ingestion |
+| Vaporfection International, Inc. | ✅ primary-sources-verified | MedBox acquisition confirmed: PR Newswire 2013-03-25, OTC Markets 10-Q 2013-09-30 (purchase agreement 22 Mar 2013 with Vapor Systems International, LLC, $7.6M, 100% acquired, wholly owned subsidiary), SEC EDGAR (CIK 1547996); Vapor Glass/Vapor Touch patents (Justia, filed 2011, granted 2014); founded-2003 claim not independently confirmed |
+| Meta-Research Prompt Templates | ✅ scope/tooling record (not subject to factual verification) | Contains no industry factual claims; verified as well-formed tooling consistent with project conventions; excluded from ingestion queues (honesty rule 4) |
+
+## Priority-3 cannabis chemistry / cultivar frameworks
+
+All six framework records anchor on peer-reviewed primary literature; each record's anchor studies were spot-checked to exist and to support the record's headline claims. Full claim-by-claim re-derivation remains ingestion-level work.
+
+| Subject | Anchor verification |
+| --- | --- |
+| Cannabis Laboratory Measurement Comparability | Franzin et al. 2025 confirmed (PMID 40142998, "Incomplete Decarboxylation of Acidic Cannabinoids in GC-MS…", Mar 2025); AOAC SMPR 2019.003; NY/WA LOD/LOQ conventions consistent with regulations; framework consistent with site COA schema (metadata/coa-measurement.schema.json) |
+| Cannabis Post-Harvest Chemistry | Jaidee 2022 (PMC9418372), Wang 2016 (PMC5549281), Birenboim 2024 (PMC11013261), Oswald 2021 (PMC8638000), Turner & Elsohly (PMID 6643) — all confirmed; consistent with site changelog TCHG-0004 |
+| Cannabis Thermal Extraction, Vaporization, and Aerosol | Eyal 2023, Lanz 2016 (PLoS ONE), Oar 2022 (PLoS ONE), García-Valverde 2022, Meehan-Atrash 2019/2017 (ACS Omega), Robertson 2024 (Chem Res Toxicol) — confirmed; record correctly separates heater/setpoint/chamber/boiling point (no BP-as-setpoint error; rule 14) |
+| Batch-to-Batch Chemical Variability Within Cannabis Cultivars | Cleary 2025 (PMC12255808), PMC9861703, PMC7173683, CDC stacks 207326, RSC Environ Sci 2025 d5em00253b — confirmed; consistent with chemotype record and site cultivar wording |
+| Cannabis Cultivar Names Versus Measured Chemotypes | Smith 2022 PLOS ONE e0267498 (PMC9119530; 89,923 samples, 6 states, 3 terpene chemotypes; public data+code), Reimann-Philipp 2020 (PMC7480732; 396 names → 3 chemovars), Watts 2021 Nat Plants (PMC8516649), Sawler 2015 (PMC4559603), Vigil 2023 (PMC9906924) — all confirmed; "cultivar names are not chemically fixed" fully supported |
+| Geographic & Jurisdictional Variation in Cannabis Chemistry | Smith 2022 (PMC9119530 + public GitHub repo), Jameson 2022 EHP 130(9):097001 (PMC9472674; 37 jurisdictions, 679 contaminants), Schwabe & McGlaughlin 2019 (PMC7815053), NIST CannaQAP (nist.gov, live), MA CCC open-data catalog, ME OCP testing data (maine.gov, live) — confirmed; safe-wording guidance consistent with rules 13/16 |
+
+## Errata / defects documented (not rewritten in artifacts)
+
+- **Mig Vapor artifact ledger defects:** footnote [^1_1] URL is `en.wikipedia.org/wiki/List_of_Mikoyan_and_MiG_aircraft` (an unrelated MiG-aircraft list) where the ledger description says "ZoomInfo company profile" — the correct ZoomInfo URL is `zoominfo.com/c/mig-vapor-llc/372006196`, which appears as footnote [^1_60]. Footnote [^1_9] URL is `switchweld.com/the-complete-history-of-mig-welding` (MIG-welding history) where the ledger says "Vaping360 NEO review (duplicate)". Both mislinked footnotes are flagged in the manifest queue_notes; correct at ingestion.
+- **Goboof artifact address field:** "Carlow, Co. Dublin, Ireland" is internally inconsistent (Carlow is Co. Carlow; Dublin is separate). Medical Jane says "Designed In: Dublin". Resolve the registered-address at ingestion.
+- **FlytLab export:** summary-only — the referenced full deliverable `flytlab_device_lineage.md` was never captured into the corpus; re-run the lineage prompt (see the meta-research prompt templates record) if a full model-level table is needed.
+
+## Status decisions
+
+- **→ primary-sources-verified (19 records, 17 subjects):** FlytLab, Pharmacopeia/Inhalater, Smiss (×2), Tronian, XVape, XMAX, Lab Measurement Comparability, Post-Harvest, Thermal-Aerosol, Mig Vapor, Batch Variability, Cultivar Names vs Chemotypes, Goboof, Vaporfection, Geographic Variation, Meta-Research Prompt Templates, US Regulatory Data Availability (×2). **No records remain `unverified`.**
+- **Identity reviews resolved:** Smiss/Flowermate parentage and TopGreen XMAX/XVape brand split confirmed against primary sources; those four records moved from `needs-review` to `not-started` with multi-run reconciliation notes (Smiss has two independent exports; XMAX/XVape are distinct brand subjects).
+- Remaining uncertainty: per-model spec minutiae (unchanged policy); Mig Vapor ledger footnotes and Goboof address (corrections applied at ingestion); FlytLab deliverable absent from corpus; Smiss 2009 R&D-start year; Pharmacopeia 2008 pre-2009 sales and 5S/6S models; Goboof CRO number and Castle D successor; Vaporfection founded-2003; chemistry framework quantitative rates (re-derive from primary text at ingestion).
+
+## Corpus-tooling note (found this pass)
+
+- **`scripts/research_queue_assign.py` is a frozen one-time generator and cannot reproduce the verified manifest.** Its `assign_verification()` returns only `partially-verified`/`unverified` (its frozen `PARTIALLY_VERIFIED` table is the Agent-8-era snapshot), and `main()` pops every record's `queue_notes` and regenerates them from its own tables. Running it therefore **clobbers the hand-maintained verification state** (verification_status, queue_notes) that the 2026-08-08 passes built, and it also regenerates `ingestion-queue.md` (via `research_queue_doc.py`) from that stale state. Verified-state maintenance is deliberately hand-edited: do not re-run `research_queue_assign.py` / `research_queue_doc.py` after a verification pass. If the generator is ever revived, add a `VERIFIED` subject set + a `primary-sources-verified` branch to `assign_verification()` and a per-subject notes table, and only run it in a `--check` mode that diffs instead of writing.
