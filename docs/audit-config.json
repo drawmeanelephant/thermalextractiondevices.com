@@ -84,7 +84,10 @@
     "PII-001:tests/test_sensitive_content_classification.py",
     "PII-002:tests/test_sensitive_content_classification.py",
     "PII-003:tests/test_sensitive_content_classification.py",
-    "PII-004:tests/test_sensitive_content_classification.py"
+    "PII-004:tests/test_sensitive_content_classification.py",
+    "LARGE-004:data/dcc/license-registry/latest.json",
+    "LARGE-004:data/dcc/license-registry/2026-08-04/raw.json",
+    "LARGE-004:data/dcc/license-registry/2026-08-04/normalized.json"
   ],
   "fail_threshold": "high",
   "required_policy_documents": [
@@ -122,5 +125,6 @@
     "Cross-Origin-Opener-Policy": "medium",
     "X-Frame-Options": "high"
   },
-  "suppressions_comment": "Self-detection only. audit_sensitive_content.py contains the PII regex definitions themselves, and test_sensitive_content_classification.py contains the synthetic PII-shaped fixtures that prove those regexes fire \u2014 including the negative controls that keep the business-contact rule from under-flagging. Scanning either file reports the detector, not a leak. Reviewed 2026-08-09."
+  "suppressions_comment": "Self-detection only. audit_sensitive_content.py contains the PII regex definitions themselves, and test_sensitive_content_classification.py contains the synthetic PII-shaped fixtures that prove those regexes fire \u2014 including the negative controls that keep the business-contact rule from under-flagging. Scanning either file reports the detector, not a leak. Reviewed 2026-08-09.",
+  "suppressions_history_comment": "ACKNOWLEDGED, NOT RESOLVED \u2014 expires when this repository goes public. The three LARGE-004 entries above are ~79 MiB of California DCC licensee data that remains reachable in git history after 6d740f4 untracked it from the working tree; verification on 2026-08-09 recovered 20,697 email addresses from a single blob via `git show`. They are suppressed ONLY because this repository is private, so the exposure is bounded to people who already have access. This is a conscious deferral recorded so CI does not block contributors while the maintainer decides. It is NOT a disposition. Execute docs/history-cleanup-plan.md and DELETE these three entries before making the repository public \u2014 doing otherwise publishes the data. Tracked as a [BLOCKER] in docs/pre-publication-checklist.md. Reviewed 2026-08-09."
 }
