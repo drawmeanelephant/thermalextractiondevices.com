@@ -57,7 +57,7 @@ the CRA [adult-use verification search](https://aca-prod.accela.com/LARA/Cap/Cap
 
 The CRA's [Sampling and Testing Technical Guidance v5.2](https://www.michigan.gov/cra/-/media/Project/Websites/cra/bulletin/5Technical/Sampling_and_Testing-_Technical_Guidance_for_Marijuana_Products_694124_7.pdf?rev=8e1a89c3519f4ff89889f66a38930f8c), revised September 23, 2024, is unusually specific. It requires or addresses cannabinoid potency, foreign matter, microbial screening, chemical residues, heavy metals, residual solvents, water activity, mycotoxins, target analytes, product homogeneity, and beverage pH. It requires results to be reported as pass/fail in Metrc and on the COA, while retaining `<LOQ` semantics rather than treating them as zero.
 
-See the [Michigan testing requirements record](../requirements/TREQ-0003.md) and the normalized [testing requirements data](../datasets/TDTS-0024.md) for product-category differences and numeric limits.
+See the [Michigan testing requirements record](../requirements/TREQ-0003.html) and the normalized [testing requirements data](../datasets/TDTS-0024.html) for product-category differences and numeric limits.
 
 ## Testing Laboratories
 
@@ -66,9 +66,9 @@ publish a complete machine-readable laboratory directory. This pass identified
 three first-party laboratory records and deliberately labels their coverage as a
 discovery sample:
 
-- [PSI Labs](../testing-laboratories/TSTL-0029.md)
-- [ACT Laboratories — Michigan](../testing-laboratories/TSTL-0030.md)
-- [Reassure Labs](../testing-laboratories/TSTL-0031.md)
+- [PSI Labs](../testing-laboratories/TSTL-0029.html)
+- [ACT Laboratories — Michigan](../testing-laboratories/TSTL-0030.html)
+- [Reassure Labs](../testing-laboratories/TSTL-0031.html)
 
 ## Recalls, Advisories, and Enforcement
 
@@ -78,9 +78,9 @@ The three representative recall records below demonstrate product, licensee,
 license-number, reason, consumer-instruction, and analyte linkage where the
 notice names one.
 
-- [House Brands Distro / Top Smoke vape recall](../recalls/TRCL-0007.md)
-- [Sky Cannabis / Motor City Cannacarts and RIPZ recall](../recalls/TRCL-0008.md)
-- [BLOOM / Exhale Systems recall](../recalls/TRCL-0009.md)
+- [House Brands Distro / Top Smoke vape recall](../recalls/TRCL-0007.html)
+- [Sky Cannabis / Motor City Cannacarts and RIPZ recall](../recalls/TRCL-0008.html)
+- [BLOOM / Exhale Systems recall](../recalls/TRCL-0009.html)
 
 CRA enforcement documents also show that investigations may compare invoices,
 COAs, and Metrc inventory. That makes the COA-to-batch relationship important
