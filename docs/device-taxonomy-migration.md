@@ -1,6 +1,6 @@
 # Device Taxonomy — Migration Recommendations
 
-**Status:** Plan — ball-vape component-role recommendations applied 2026-08-08 · delivery-mode tags applied 2026-08-08 · operating-mode tags applied 2026-08-08 · **Standard:** `content/reference/TREF-0004.md` (Device Architecture Taxonomy) · **Scope:** all existing `content/devices/*.md` records (33 pages, TED-0001…TED-0033) and the `devices` trunk.
+**Status:** Plan — ball-vape component-role recommendations applied 2026-08-08 · delivery-mode tags applied 2026-08-08 · operating-mode tags applied 2026-08-08 · Cannabis Hardware corpus completed 2026-08-08 · **Standard:** `content/reference/TREF-0004.md` (Device Architecture Taxonomy) · **Scope:** all existing `content/devices/*.md` records (45 pages, TED-0001…TED-0045) and the `devices` trunk.
 
 This document audits the current device corpus against the five orthogonal axes and the ball-vape component model, and recommends concrete changes. It complements `metadata/device-taxonomy.json` and `scripts/audit_device_taxonomy.py`.
 
@@ -111,6 +111,14 @@ Recommendations:
 
    **✅ Applied 2026-08-08**: substantive, separately-purchasable heads that previously existed only as manufacturer-page rows were promoted to entities per the model — F22 (TED-0025), Mary (TED-0026), Jane (TED-0027) — each with a Component Role row, `heater-head` tag, and explicit role language. No coil/PID/bowl/stand entities were created, and no bundle was promoted to a model.
 3. **Never promote retailer bundles to models.** Bundles referenced on existing pages (e.g., the B-Zero bundle, B2 bundle) are source notes for the model they repackage; keep them as citations, not entities.
+
+   **✅ Completed 2026-08-08 (Cannabis Hardware corpus)**: the remaining substantive, separately-purchasable platforms were promoted to entities — the current ZenLeaf diffuser heads VMAX (TED-0044), VMAX Injector (TED-0045), and Mercury (TED-0036); the pre-ball FlowerPot heads Showerhead (TED-0037) and Vrod (TED-0038); the first two ball-vape generations, the Baller (TED-0039) and Screen Baller (TED-0040); the Zion base station (TED-0041); and the cordless 20 mm-coil heads Pulse (TED-0042) and Swift (TED-0043). A sweep of the manufacturer's full ZenLeaf (34 products) and FlowerPot (43 products) collections found no further unmodeled platform. The exclusions are recorded in `content/guides/cannabis-hardware-family-lineage.md` under "Deliberately not modeled": the Clampy coil post (3513, `stand` component), the Clampy kit (8067, TAX-05), the Titanium Coil Cover (3585, accessory), the community B-rod mod (not a manufacturer product), and the remaining coils, PIDs, bowls, posts, screens, handles, sleeves, cases, and bangers.
+
+   **Part 3408 — two roles across time.** The Screen Baller SKU survived its own model name: it was relisted as the "22mm Baller Diffuser" and is sold today as the "22mm 'Standard' Diffuser", and the archived B-2 assembly listing shows it shipping *inside* the B-2 as a component. The archive records both facts — TED-0040 documents the generation-2 model, and the current SKU is treated as a component of later head assemblies. Future records should follow this pattern rather than forcing a single classification onto a part whose role changed.
+
+   **Source-attribution hazard.** Cannabis Hardware renames and repurposes Shopify listings, so an archived page's title and its body copy can describe different products. The 2021-10-22 snapshot titled "B-2 Head Assembly" carries the *Baller's* description and the Baller/Vrod ball figures; both were initially adopted as B-2 specifications and were corrected on 2026-08-08. Verify that an archived page's body copy actually describes the product named in its title before citing it.
+
+   **Boris caps `relations` at 16 per page (`max_relation_count`, boris/0.8.1).** The manufacturer record used to carry a reciprocal `relates_to` for every device; at 23 Cannabis Hardware records that list exceeded the cap and failed the build with `EFRONTMATTER: relations exceeds maximum relation count`. The reciprocal list was redundant — every device already carries `relates_to=manufacturers/TMFR-XXXX` — so `TMFR-0004` now relates only to the family lineage guide and the taxonomy standard, and the device links live in its prose tables (validated by `scripts/audit_markdown_links.py`). **Do not re-add a per-device relation list to a manufacturer page**; it does not scale past 16 devices and adds no graph information.
 
 ## 4. Recommended tag changes (small, optional)
 
