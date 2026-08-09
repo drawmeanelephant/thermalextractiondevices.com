@@ -30,14 +30,18 @@ transcription can be re-audited against the source hash.
 
 Usage:
     python3 scripts/coa_verify_example.py            # model walk (print only)
-    python3 scripts/coa_verify_example.py --write    # also write the content page
+    python3 scripts/coa_verify_example.py --write    # also write the lab-results page
+    python3 scripts/coa_verify_example.py --snapshot # Path A: checksum PDF into var/,
+                                                     # write datasets/TDTS-0022 record
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -75,6 +79,16 @@ DOCUMENT_HASH = "863b356de58bfa0d2cb77fde1784dc227a4fe30579c349d19dec6654de6f126
 RETRIEVAL_DATE = "2026-08-09"
 PARSER_VERSION = "coa-verify-example/1.0"
 UPSTREAM_RECORD_ID = "ICC-250410-37-002"
+
+# Path A compliance (docs/graph/coa-migration.md §3): the immutable raw
+# snapshot lives in the git-ignored ingest working area, checksummed; the
+# dataset record (committed) references it. The public CDN URL is the durable
+# public copy.
+SNAPSHOT_PATH = ROOT / "var" / "ingest" / "coa-verify" / "raw" \
+    / "2026-08-09" / f"{UPSTREAM_RECORD_ID}.pdf"
+DATASET_ID = "datasets/TDTS-0022"
+DATASET_SLUG = "coa-snapshot/infinitecal-ICC-250410-37-002"
+RETRIEVAL_TIMESTAMP = "2026-08-09"
 
 # Canonical compound records that exist for the analytes on this COA
 # (metadata/id-map.jsonl). Analytes without a record keep compound_id = null.
@@ -452,10 +466,102 @@ Every value on this page traces to the source above: AnalyteResult → LabReport
 """
 
 
+def snapshot_pdf() -> Path:
+    """Download the source PDF into var/ and verify its sha256 (Path A).
+
+    Idempotent: if the file already exists with the recorded hash it is left
+    untouched; a hash mismatch raises so an immutable snapshot is never
+    silently overwritten.
+    """
+    if SNAPSHOT_PATH.exists():
+        existing = hashlib.sha256(SNAPSHOT_PATH.read_bytes()).hexdigest()
+        if existing == DOCUMENT_HASH:
+            print(f"snapshot already present and verified: {SNAPSHOT_PATH}")
+            return SNAPSHOT_PATH
+        raise SystemExit(
+            f"snapshot exists with hash {existing}, expected {DOCUMENT_HASH}; "
+            "refusing to overwrite an immutable snapshot"
+        )
+    SNAPSHOT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    request = urllib.request.Request(
+        SOURCE_PDF, headers={"User-Agent": "Mozilla/5.0 (coa-verify-example/1.0)"}
+    )
+    with urllib.request.urlopen(request, timeout=60) as response:
+        data = response.read()
+    digest = hashlib.sha256(data).hexdigest()
+    if digest != DOCUMENT_HASH:
+        raise SystemExit(
+            f"downloaded bytes hash {digest}, expected {DOCUMENT_HASH}; "
+            "refusing to write an unverified snapshot"
+        )
+    SNAPSHOT_PATH.write_bytes(data)
+    print(f"snapshot verified and written: {SNAPSHOT_PATH}")
+    return SNAPSHOT_PATH
+
+
+def render_dataset_page(rec: CoaRecord) -> str:
+    """Render the datasets/TDTS-0022 record for the raw snapshot."""
+    snapshot_rel = SNAPSHOT_PATH.relative_to(ROOT).as_posix()
+    return f"""---
+id: datasets/TDTS-0022
+title: "COA Snapshot — Dragonberry 750ml (10mg) Batch 250410-37-002 (2026-08-09)"
+parent: datasets
+status: published
+tags: ["dataset", "coa", "lab-results", "california"]
+relations: [relates_to=lab-results/TLAB-0002, relates_to=products/TPRD-0002, relates_to=testing-laboratories/TSTL-0006, relates_to=jurisdictions/TJUR-0001]
+summary: "Dated raw snapshot of the verified InfiniteCAL COA for Powered By Plants Dragonberry 750ml (10mg) batch 250410-37-002, checksummed in the ingest working area."
+---
+
+# COA Snapshot Dataset — Dragonberry 750ml (10mg) Batch 250410-37-002
+
+Raw snapshot of the laboratory report transcribed by
+`lab-results/TLAB-0002`, captured under Path A of `docs/graph/coa-migration.md`:
+immutable PDF archived in the git-ignored ingest working area, checksummed,
+and registered here.
+
+## Dataset Identity
+
+| Field | Value |
+| --- | --- |
+| Dataset | `{DATASET_SLUG}` |
+| Schema version | 1.0 |
+| Generator | scripts/coa_verify_example.py (parser `{PARSER_VERSION}`) |
+| Retrieval timestamp | {RETRIEVAL_TIMESTAMP} |
+| Artifacts | 1 PDF (4 pages, 78 KB) |
+| Raw checksums | `{UPSTREAM_RECORD_ID}.pdf` `{DOCUMENT_HASH}` |
+| Derived record | [lab-results/TLAB-0002](../lab-results/TLAB-0002.md) |
+| Product | [products/TPRD-0002](../products/TPRD-0002.md) |
+
+## Retrieval Parameters
+
+- Official verification endpoint: `{SOURCE_URL}` (HTTP 200 at retrieval)
+- Source document (public copy): `{SOURCE_PDF}`
+- Archive (working area, git-ignored): `{snapshot_rel}`
+- Batch / Lot / Sample: 250410-37-002 / ICC-250410 / {UPSTREAM_RECORD_ID}
+- Laboratory: Infinite Chemical Analysis Labs (CA), license C8-0000047-LIC
+- Report produced: 2025-07-11 · sample collected 2025-04-10
+
+## Source & Provenance
+
+- **Official source**: {SOURCE_URL}
+- **Jurisdiction**: California, United States
+- **Retrieval date**: {RETRIEVAL_TIMESTAMP}
+- **Source-data caveat**: Laboratory reports are self-published by the
+  laboratory/brand; the archive verifies retrievability and hashes the
+  artifact but cannot certify the underlying measurements.
+- **Record status**: synced
+- **Generator**: scripts/coa_verify_example.py v1.0 (schema 1.0)
+- **Stable entity ID**: datasets/TDTS-0022
+"""
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--write", action="store_true",
                         help="write content/lab-results/TLAB-0002.md")
+    parser.add_argument("--snapshot", action="store_true",
+                        help="Path A: checksum the PDF into var/ and write "
+                             "content/datasets/TDTS-0022.md")
     args = parser.parse_args()
 
     rec = record()
@@ -493,10 +599,16 @@ def main() -> int:
     payload["measurements"] = [payload["measurements"][i] for i in (0, 1, 10)]
     print(json.dumps(payload, indent=2, ensure_ascii=False))
 
+    if args.snapshot:
+        snapshot_pdf()
+        dataset_target = ROOT / "content" / "datasets" / "TDTS-0022.md"
+        dataset_target.write_text(render_dataset_page(rec), encoding="utf-8")
+        print(f"wrote {dataset_target.relative_to(ROOT)}")
+
     if args.write:
         target = ROOT / "content" / "lab-results" / "TLAB-0002.md"
         target.write_text(render_page(rec), encoding="utf-8")
-        print(f"\nwrote {target.relative_to(ROOT)}")
+        print(f"wrote {target.relative_to(ROOT)}")
     return 0
 
 
