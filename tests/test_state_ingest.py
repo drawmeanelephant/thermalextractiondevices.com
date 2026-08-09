@@ -157,6 +157,53 @@ class EndToEndTestCase(unittest.TestCase):
             entries = store.read_manifest()["datasets"]["licenses"]
             self.assertEqual(len(entries), 1)
 
+    def test_deterministic_regeneration_is_byte_identical(self):
+        """Given the same fixtures and store, two full runs must produce
+        byte-identical generated content (stable IDs, no wall-clock text)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+
+            def snapshot_tree(root: Path) -> dict[str, str]:
+                return {p.relative_to(root).as_posix(): p.read_text(encoding="utf-8")
+                        for p in sorted(root.rglob("*.md"))}
+
+            def run_once() -> dict[str, str]:
+                store = ArtifactStore("massachusetts", base / "var", base / "data")
+                registry = NaturalKeyRegistry(base / "data" / "id-map.json",
+                                              ID_PREFIXES, ID_COLLECTIONS)
+                sync = MassachusettsSync(
+                    fetch=FixtureFetcher(FIXTURES), store=store, registry=registry,
+                    content_root=base / "content", fixtures_only=True,
+                    allow_fixture_content=True,
+                )
+                report = ChangeReport(state="massachusetts", run_id="r", started_at="x")
+                for slug in DATASETS:
+                    sync.run_dataset(slug, report)
+                advisories = sync.discover_advisories()
+                sync.generate_content(report, advisories)
+                registry.save()
+                return snapshot_tree(base / "content")
+
+            first = run_once()
+            second = run_once()
+            self.assertEqual(first, second)
+            self.assertGreater(len(first), 50)
+
+    def test_applications_details_publishes_counts_only(self):
+        """The PII-laden application-detail dataset may only surface aggregate
+        counts in generated content, never its raw rows."""
+        with tempfile.TemporaryDirectory() as tmp:
+            sync, report = run_fixture_sync(tmp)
+            aggregate = sync.aggregates.get("applications_details", {})
+            self.assertGreater(aggregate.get("rows", 0), 0)
+            self.assertIn("by_status", aggregate)
+            self.assertNotIn("data", aggregate)  # raw rows never aggregated
+            # The generated dataset pages must not contain source row values.
+            text = "".join(p.read_text(encoding="utf-8")
+                            for p in (sync.content_root / "datasets").glob("*.md"))
+            self.assertNotIn("BUSINESS_EMAIL", text)
+            self.assertNotIn("EIN_TIN", text)
+
 
 if __name__ == "__main__":
     unittest.main()

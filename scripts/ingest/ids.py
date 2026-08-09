@@ -17,7 +17,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
-from typing import Optional
+from typing import Iterable, Optional
 
 from .core import IdCollisionError, IdMappingChangedError, write_json
 
@@ -155,6 +155,29 @@ class NaturalKeyRegistry:
             _canonical(payload).encode("utf-8")
         ).hexdigest()
         write_json(self.path, payload)
+
+    # ------------------------------------------------------- existing entities
+    def seed_from_entity_ids(self, entity_ids: Iterable[str]) -> None:
+        """Raise per-entity-type allocation counters so new IDs never collide
+        with entities already present in a combined content tree.
+
+        Only exact ``<collection>/<PREFIX>-NNNN`` forms bump the counter for
+        the matching registered entity type; malformed or unrelated IDs are
+        ignored. This lets a second state adapter (e.g. Massachusetts) share
+        the same canonical collections as the first (California) without
+        reusing a single numeric ID.
+        """
+        for raw in entity_ids:
+            entity_id = str(raw).strip()
+            match = re.match(r"^([^/]+)/([A-Z]+)-(\d{4})$", entity_id)
+            if not match:
+                continue
+            collection, prefix, number = match.groups()
+            for entity_type, col in self.collections.items():
+                if col == collection and self.prefixes.get(entity_type) == prefix:
+                    self._allocated[entity_type] = max(
+                        self._allocated.get(entity_type, 0), int(number)
+                    )
 
     # ------------------------------------------------------------------ query
     def entity_id(self, entity_type: str, natural_key: str) -> Optional[str]:

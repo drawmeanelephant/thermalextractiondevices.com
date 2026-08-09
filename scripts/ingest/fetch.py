@@ -41,9 +41,11 @@ class FetchResult:
     data: Optional[bytes] = None
 
 
-def _content_type_ok(declared: str, accepted: tuple[str, ...]) -> bool:
+def _content_type_ok(declared: str, accepted: tuple[str, ...], *, allow_html: bool = False) -> bool:
     declared = declared.split(";", 1)[0].strip().lower()
     if declared in _HTML_TYPES:
+        if allow_html:
+            return True
         raise ContentTypeError(
             f"endpoint returned HTML ({declared!r}); expected one of {accepted}"
         )
@@ -67,6 +69,7 @@ class Fetcher:
         timeout: float = 60.0,
         user_agent: str = DEFAULT_USER_AGENT,
         accepted_types: tuple[str, ...] = ("text/csv", "application/csv", "application/json"),
+        allow_html: bool = False,
         progress: Optional[Callable[[int, int], None]] = None,
     ):
         self.retries = max(1, retries)
@@ -74,6 +77,7 @@ class Fetcher:
         self.timeout = timeout
         self.user_agent = user_agent
         self.accepted_types = accepted_types
+        self.allow_html = allow_html
         self.progress = progress
 
     def _open(self, url: str):
@@ -99,7 +103,7 @@ class Fetcher:
         """Fetch a full payload into memory (small/medium files only)."""
         with self._open_with_retries(url) as response:
             content_type = response.headers.get("Content-Type", "")
-            if not _content_type_ok(content_type, self.accepted_types):
+            if not _content_type_ok(content_type, self.accepted_types, allow_html=self.allow_html):
                 raise ContentTypeError(
                     f"GET {url}: content-type {content_type!r} not accepted "
                     f"(expected {self.accepted_types})"
@@ -138,7 +142,7 @@ class Fetcher:
         try:
             with self._open_with_retries(url) as response:
                 content_type = response.headers.get("Content-Type", "")
-                if not _content_type_ok(content_type, self.accepted_types):
+                if not _content_type_ok(content_type, self.accepted_types, allow_html=self.allow_html):
                     raise ContentTypeError(
                         f"GET {url}: content-type {content_type!r} not accepted "
                         f"(expected {self.accepted_types})"
@@ -177,6 +181,32 @@ class Fetcher:
         if result.data is None:
             raise IngestError(f"fetch_bytes did not retain payload for {url}")
         return result.data.decode(encoding, errors="replace")
+
+    def probe(self, url: str, sample_bytes: int = 8192) -> FetchResult:
+        """Open a URL, read a small sample, then close immediately.
+
+        Verifies an endpoint resolves and serves the expected content type
+        without downloading the whole payload. Some servers ignore Range
+        requests and would otherwise stream multi-hundred-MB files; reading a
+        bounded sample and closing avoids that.
+        """
+        with self._open_with_retries(url) as response:
+            content_type = response.headers.get("Content-Type", "")
+            if not _content_type_ok(content_type, self.accepted_types, allow_html=self.allow_html):
+                raise ContentTypeError(
+                    f"GET {url}: content-type {content_type!r} not accepted "
+                    f"(expected {self.accepted_types})"
+                )
+            data = response.read(sample_bytes)
+            return FetchResult(
+                url=url,
+                content_type=content_type.split(";", 1)[0].strip(),
+                size_bytes=len(data),
+                sha256=hashlib.sha256(data).hexdigest(),
+                status_code=getattr(response, "status", 200),
+                last_modified=response.headers.get("Last-Modified"),
+                data=data,
+            )
 
 
 def decode_utf8_sig(data: bytes) -> str:
