@@ -7,7 +7,7 @@ tags: ["specs", "engineering"]
 
 # Technical Specifications
 
-Technical specifications and measured parameters for thermal extraction devices, where official manufacturer data is available.
+Technical specifications and measured parameters for thermal extraction devices, where an official or otherwise identified source supports the value. This collection is not a certification register and does not imply calibration or pressure-performance validation.
 
 Records follow the form identifier schema `specs/TSPEC-XXXX`.
 

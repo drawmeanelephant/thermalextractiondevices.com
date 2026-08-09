@@ -60,7 +60,7 @@ All satellite records in this collection follow the form identifier schema `terp
 
 ## Measured occurrence in cannabis flower
 
-The table below summarizes the strongest peer-reviewed **measured** concentrations located for each compound in the research dossiers, footnoted to the primary source of each figure. These describe what has been measured in laboratory analyses — they are not cultivar marketing claims, and no cultivar name is chemically fixed. Batch-level quantitations recorded from Certificates of Analysis live in [Lab Results](lab-results.md).
+The table below summarizes the strongest peer-reviewed **measured** concentrations located in the cited primary literature and source notes, with each figure footnoted to its primary source where available. These describe what has been measured in laboratory analyses — they are not cultivar marketing claims, and no cultivar name is chemically fixed. Batch-level quantitations recorded from Certificates of Analysis live in [Lab Results](lab-results.md).
 
 | Terpene | Typical measured concentration in cannabis | Basis (material & method) | Source |
 | --- | --- | --- | --- |

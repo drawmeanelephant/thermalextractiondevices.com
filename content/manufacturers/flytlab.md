@@ -35,7 +35,7 @@ summary: Los Angeles–based hardware brand (founded 2013) producing 510 batteri
 ## Repairability & Warranty Terms
 
 - **Warranty Duration**: 1-year limited warranty on hardware; batteries excluded from normal degradation (per official warranty page). [^3]
-- **Service & Repair**: Batteries are non-replaceable across the line (per manufacturer FAQ); no published firmware update process; no CE/FCC/RoHS certification filings were located in the research corpus. [^2][^3]
+- **Service & Repair**: Batteries are non-replaceable across the line (per manufacturer FAQ); no published firmware update process; no CE/FCC/RoHS certification filings were located in the public sources reviewed for this record. [^2][^3]
 
 ## Related Devices
 

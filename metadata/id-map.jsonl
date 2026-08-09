@@ -99,7 +99,6 @@
 {"collection": "guides", "form_id": "TGDE-0006", "id": "guides/TGDE-0006", "legacy_id": "guides/TGDE-0006", "parent": "guides", "role": "satellite", "source": "guides/cannabis-hardware-family-lineage.md", "title": "Cannabis Hardware Family Lineage"}
 {"collection": "guides", "form_id": "TGDE-0002", "id": "guides/TGDE-0002", "legacy_id": "guides/TGDE-0002", "parent": "guides", "role": "satellite", "source": "guides/cultivar-page-apex-specimen.md", "title": "Cultivar Page Apex Specimen"}
 {"collection": "guides", "form_id": "TGDE-0003", "id": "guides/TGDE-0003", "legacy_id": "guides/TGDE-0003", "parent": "guides", "role": "satellite", "source": "guides/how-to-read-cultivar-pages.md", "title": "How to Read Cultivar Pages"}
-{"collection": "guides", "form_id": "TGDE-0004", "id": "guides/TGDE-0004", "legacy_id": "guides/TGDE-0004", "parent": "guides", "role": "satellite", "source": "guides/manufacturer-research-queue.md", "title": "Manufacturer Research Queue"}
 {"collection": "guides", "form_id": "TGDE-0005", "id": "guides/TGDE-0005", "legacy_id": "guides/TGDE-0005", "parent": "guides", "role": "satellite", "source": "guides/reading-a-cannabis-coa.md", "title": "Reading a Cannabis Certificate of Analysis"}
 {"collection": "index", "form_id": null, "id": "index", "legacy_id": "index", "parent": null, "role": "trunk", "source": "index.md", "title": "Thermal Extraction Devices"}
 {"collection": "jurisdictions", "form_id": null, "id": "jurisdictions", "legacy_id": "jurisdictions", "parent": null, "role": "trunk", "source": "jurisdictions.md", "title": "Jurisdictions"}
@@ -178,7 +177,6 @@
 {"collection": "reference", "form_id": "TREF-0002", "id": "reference/TREF-0002", "legacy_id": "reference/TREF-0002", "parent": "reference", "role": "satellite", "source": "reference/cultivar-name-vs-chemovar.md", "title": "Cultivar Name, Product Name, and Chemovar"}
 {"collection": "reference", "form_id": "TREF-0003", "id": "reference/TREF-0003", "legacy_id": "reference/TREF-0003", "parent": "reference", "role": "satellite", "source": "reference/evidence-labels-and-claim-grammar.md", "title": "Evidence Labels and Claim Grammar"}
 {"collection": "releases", "form_id": null, "id": "releases", "legacy_id": "releases", "parent": null, "role": "trunk", "source": "releases.md", "title": "Releases"}
-{"collection": "releases", "form_id": "TREL-0001", "id": "releases/TREL-0001", "legacy_id": "releases/TREL-0001", "parent": "releases", "role": "satellite", "source": "releases/TREL-0001.md", "title": "TREL-0001 Firmware Release v1.0.0"}
 {"collection": "requirements", "form_id": null, "id": "requirements", "legacy_id": "requirements", "parent": null, "role": "trunk", "source": "requirements.md", "title": "Requirements"}
 {"collection": "requirements", "form_id": "TREQ-0001", "id": "requirements/TREQ-0001", "legacy_id": "requirements/TREQ-0001", "parent": "requirements", "role": "satellite", "source": "requirements/TREQ-0001.md", "title": "California Cannabis Testing Requirements (DCC)"}
 {"collection": "safety", "form_id": null, "id": "safety", "legacy_id": "safety", "parent": null, "role": "trunk", "source": "safety.md", "title": "Safety & Compliance"}

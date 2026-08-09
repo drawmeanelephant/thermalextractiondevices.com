@@ -22,7 +22,7 @@ summary: Irish dry-herb vaporizer company (designed in Dublin, manufactured in I
 | Operational Period | ~2014–~2019 (active sales); Castle D Enterprises Ltd (trading as Alfa Vaporizers) is reported to have assumed sales/service responsibility c. 2020 [^2] |
 
 > [!NOTE]
-> An Irish CRO registration number (525630) and the Castle D Enterprises Ltd successor arrangement are asserted in research-corpus exports; the CRO record could not be independently re-verified in the 2026-08-08 pass (the Irish CRO portal blocks automated access) and the successor attribution rests on secondary (reviewer) reporting. Treat both as uncorroborated until verified against the CRO register.
+> An Irish CRO registration number (525630) and the Castle D Enterprises Ltd successor arrangement are asserted in unpublished notes; the CRO record could not be independently re-verified in the 2026-08-08 pass (the Irish CRO portal blocks automated access) and the successor attribution rests on secondary (reviewer) reporting. Treat both as uncorroborated until verified against the CRO register.
 
 ## Official Product Families
 
@@ -46,5 +46,5 @@ summary: Irish dry-herb vaporizer company (designed in Dublin, manufactured in I
 ## Sources
 
 [^1]: Medical Jane, "Alfa Vaporizer from Goboof (Review)" ("Manufactured By: Goboof; Manufactured In: Ireland; Designed In: Dublin"; release July 2014). https://www.medicaljane.com/review/goboof-alfa-a-easy-to-use-portable-vaporizer/
-[^2]: VapeCritic, Goboof Alfa review (2-year warranty; Castle D Enterprises takeover of service; HI-temperature discrepancy). https://vapecritic.com/goboof-alfa/ · Research corpus — Goboof artifact. research/devices/manufacturers/goboof/artifact.md
+[^2]: VapeCritic, Goboof Alfa review (2-year warranty; Castle D Enterprises takeover of service; HI-temperature discrepancy). https://vapecritic.com/goboof-alfa/ Remaining details previously supported only by unpublished notes are approximate or unverified and are not treated as independently confirmed.
 [^3]: Goboof Products Ltd, "Goboof Alfa Compact Dry Herb User Manual" (© 2014; oven construction, LO/MID/HI temperatures, dial positions, charging, 2-year warranty). Hosted at Manuals+ / ManualsLib.

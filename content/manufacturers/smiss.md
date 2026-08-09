@@ -19,7 +19,7 @@ summary: Shenzhen ODM/OEM vapor hardware manufacturer (est. 2012) whose consumer
 | Legal Entity | Smiss Technology Co., Ltd. (Shenzhen) — official site: "SMISS Technology Co., Ltd. ('SMISS') was established in 2012" [^1] |
 | Headquarters | Bao'an District, Shenzhen, Guangdong, China [^1] |
 | Operating Principle | ODM/OEM manufacturer for e-cigarette/ENDS devices, CBD/THC atomization, dry-herb vaporizers, HNB devices, and e-liquid; consumer dry-herb brand **Flowermate** |
-| Foundation Year | 2012 (formal incorporation, per official site). A "2009 R&D start" appears in research-corpus exports but is **not independently confirmed** and is not asserted here [^1] |
+| Foundation Year | 2012 (formal incorporation, per official site). A "2009 R&D start" appears in unpublished notes but is **not independently confirmed** and is not asserted here [^1] |
 
 **Brand relationship (Flowermate).** Flowermate is the consumer dry-herb brand of Smiss Technology Co., Ltd. The Canadian Trade-marks Journal (Vol. 65, No. 3340, 2018-10-31) records a Flowermate trademark application by Smiss Technology Co., Ltd. [^2]. The corporate name "Shenzhen Flowermate Technology Co., Ltd." used in some third-party material was not confirmed as a distinct legal entity; this record treats Flowermate as a Smiss brand. [^3]
 
@@ -37,7 +37,7 @@ summary: Shenzhen ODM/OEM vapor hardware manufacturer (est. 2012) whose consumer
 
 ## Repairability & Warranty Terms
 
-- **Warranty Duration**: Typically 1-year limited (2 years on some models, e.g., V5.0S Pro); batteries 90 days to 6 months depending on model (per research corpus; verify against current official warranty pages at ingestion). [^4]
+- **Warranty Duration**: Typically 1-year limited (2 years on some models, e.g., V5.0S Pro); batteries 90 days to 6 months depending on model (verify against current official warranty pages before relying on these terms). [^4]
 - **Service & Repair**: Removable-battery models (V5 Nano, Slick) support user battery replacement; other models have non-user-replaceable packs.
 
 ## Related Devices
@@ -49,4 +49,4 @@ summary: Shenzhen ODM/OEM vapor hardware manufacturer (est. 2012) whose consumer
 [^1]: SMISS Technology Co., Ltd., official site ("established in 2012"; ODM/OEM scope; TempSure™ platform; quality systems). https://www.smisstech.com/
 [^2]: Canadian Intellectual Property Office, Trade-marks Journal Vol. 65 No. 3340 (2018-10-31) — Flowermate trademark application by Smiss Technology Co., Ltd., 3/F, West of Building E, Hua Chuang Da. https://publications.gc.ca/collections/collection_2018/isde-ised/RG42-2-65-3340-eng.pdf
 [^3]: Flowermate, official store and product pages (current catalog; V5 Nano hybrid heating; removable 18650). https://flowermate.com/ · https://flowermate.com/product/v5-nano/
-[^4]: Research corpus — Smiss Technology / Flowermate device-lineage exports (identity verified 2026-08-08; per-model spec minutiae subject to ingestion-level review against manufacturer manuals). research/devices/manufacturers/smiss/
+[^4]: No publicly reachable primary source is currently cited for the remaining details in this footnote. The details remain approximate or unverified and are not treated as verified archive facts.

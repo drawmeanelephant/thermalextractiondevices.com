@@ -71,7 +71,7 @@ Trace in Italian hemp cultivars (≤0.4 g/100 g of hydrodistilled essential oil)
 
 [^1]: PubChem CID 9855795, *Valencene* (CAS 4630-07-3): boiling point 123 °C @ 11 mm Hg; Sigma-Aldrich catalog: bp 274 °C (lit.); NIST WebBook SRD 69, CAS 4630-07-3, lists no phase-change data. https://pubchem.ncbi.nlm.nih.gov/compound/9855795
 [^2]: No primary source located during the editorial audit.
-[^3]: Research-corpus dossier (research/compounds/terpenes/valencene/): anti-allergic (RBL-2H3 mast cells), anti-inflammatory (mouse, i.p.), antimicrobial assays; topical skin-protection study. Not translated to cannabis inhalation; not re-verified in this wave.
+[^3]: No publicly reachable primary source is currently cited for the remaining details in this footnote. The details remain approximate or unverified and are not treated as verified archive facts.
 [^4]: Mazzara E, et al. A Comprehensive Phytochemical Analysis of Terpenes, Polyphenols and Cannabinoids, and Micromorphological Characterization of 9 Commercial Varieties of *Cannabis sativa* L. *Plants.* 2022;11(7):891. doi:10.3390/plants11070891.
 
 ## Related pages
