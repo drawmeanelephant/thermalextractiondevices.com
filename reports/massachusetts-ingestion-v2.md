@@ -63,9 +63,13 @@ Answers to the audit questions:
   `scripts/state_ingest.py`): the allocator now seeds per-collection counters
   from the combined content tree, so Massachusetts IDs start above California's
   maxima instead of colliding (`TJUR-0001` stays California; Massachusetts is
-  `TJUR-0002`, first MA lab `TSTL-0019`, first MA dataset `TDTS-0005`, …).
+  `TJUR-0022`, first MA lab `TSTL-0019`, first MA dataset `TDTS-0005`, …).
   This was the single most important v2 fix: the unseeded allocator would have
   written Massachusetts pages over California's `TJUR-0001`, `TDTS-0001`, etc.
+  (After merging `main`'s jurisdiction expansion, Massachusetts adopted
+  `TJUR-0022` — the number `main`'s scaffold had reserved for the state — and
+  the data-landscape page moved to `TJUR-0075`, above main's scaffold max;
+  see §15.)
 * **Trunk preservation** (`_write_trunks`): existing trunk pages are preserved;
   only the missing trunks (`safety-advisories.md`, `affected-products.md`) are
   created, so California/editorial trunk copy is never clobbered.
@@ -196,7 +200,7 @@ fail numeric coercion). `TESTPASSED` is kept verbatim (`True`/`False`).
 
 | Entity | Count | Notes |
 | --- | --- | --- |
-| Jurisdictions | 2 (MA) | `jurisdictions/TJUR-0002` Massachusetts, `TJUR-0003` Data Landscape |
+| Jurisdictions | 2 (MA) | `jurisdictions/TJUR-0022` Massachusetts, `TJUR-0075` Data Landscape |
 | Licenses | 29 (MA) | 1 overview + 28 advisory-connected licenses (numbers match the tracker) |
 | Organizations | 40 (MA) | 10 active ITLs + advisory-connected legal entities (deduplicated by legal name) |
 | Testing laboratories | 10 (MA) | The 10 active Independent Testing Laboratories from the current tracker |
@@ -205,7 +209,7 @@ fail numeric coercion). `TESTPASSED` is kept verbatim (`True`/`False`).
 | Safety advisories | 3 (MA) | The 3 current CCC public health and safety advisories (2025-02-03 ×2, 2025-08-06) |
 | Affected products | 5 (MA) | Representative package pages (capped, deterministic selection with cultivar labels) |
 | Contaminants | 8 (MA) | THC, THCA, Arsenic, Cadmium, Lead, Mercury, Total Yeast and Mold, Coliforms |
-| Reference | 1 (MA) | Privacy & excluded-field specification (`reference/TREF-0004`) |
+| Reference | 1 (MA) | Privacy & excluded-field specification (`reference/TREF-0005`) |
 
 ## 11. Deferred entities (deliberately not modeled)
 
@@ -270,7 +274,35 @@ scope for this task.
 files**. No California page, dataset, or ID changed; `metadata/id-map.jsonl`
 validates unchanged for the pre-existing 166 records.
 
-## 14. Remaining gaps
+## 14. Post-review reconciliation with `main` (2026-08-09)
+
+While preparing the pull request, `main` had advanced 89 commits past this
+branch's base, including PR #22's full U.S. jurisdiction scaffold. Three
+Massachusetts IDs collided with allocations made on `main`:
+
+* `jurisdictions/TJUR-0002` — `main` had assigned it to Alabama; Massachusetts
+  renumbered to **`TJUR-0022`**, the ID `main`'s scaffold already reserved for
+  Massachusetts (the scaffold stub `jurisdictions/massachusetts.md` was
+  replaced by this pipeline's real page at `jurisdictions/TJUR-0022.md`).
+* `jurisdictions/TJUR-0003` — `main` had assigned it to Alaska; the
+  Massachusetts data-landscape hub renumbered to **`TJUR-0075`** (above main's
+  scaffold max of TJUR-0074).
+* `reference/TREF-0004` — `main` had created it as the Device Architecture
+  Taxonomy; the Massachusetts privacy specification renumbered to
+  **`TREF-0005`**.
+
+All other Massachusetts collections were already above `main`'s maxima
+(licenses `TLIC-0002+`, organizations `TORG-0023+`, testing laboratories
+`TSTL-0019+`, datasets `TDTS-0005+`, contaminants `TCNT-0009+`, requirements
+`TREQ-0002`, advisories and affected products are MA-only), so no further
+renumbering was needed. External references were updated (`content/index.md`,
+the `safety-advisories`/`affected-products` trunks, `metadata/id-map.jsonl`,
+`docs/jurisdiction-coverage.md`). The privacy gate was also scoped to
+Massachusetts-generated pages and hardened against two scanner false positives
+(judicial "Court" prose, legal citations like `MCL 333.27901`). California
+content is untouched; the merged tree re-validates cleanly.
+
+## 15. Remaining gaps
 
 * The catalog's Industry-Report R scripts have no stable direct URLs.
 * Same-day identical retests can still collide under the partial testing key —

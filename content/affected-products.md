@@ -11,4 +11,4 @@ Normalized package-level records from public health advisories, kept as machine 
 
 Records in this collection use the form identifier schema `affected-products/TAFP-XXXX`.
 
-> Massachusetts data is compiled by the state ingestion pipeline; see [[jurisdictions/TJUR-0002|Massachusetts]] for provenance.
+> Massachusetts data is compiled by the state ingestion pipeline; see [[jurisdictions/TJUR-0022|Massachusetts]] for provenance.
