@@ -279,6 +279,16 @@ derived statistics by `record_kind`. It demonstrates:
 cross-lab THC spread 0.0–3.26 %) through `decode_result`,
 `from_massachusetts_normalized`, and `comparability_grade`.
 
+**The first verified record** — `lab-results/TLAB-0002` — is a real published
+COA walked through the model end to end by `scripts/coa_verify_example.py`:
+InfiniteCAL (CA) report for Powered By Plants "Dragonberry 750ml (10mg)"
+(batch 250410-37-002, produced 2025-07-11). It exercises the full chain
+(compound ← analyte result ← report ← batch/product ← source document):
+numeric + ND + `<LOQ` + calculated rows, the per-package `mg/pkg` unit escape
+hatch, LOD/LOQ fidelity, method overrides (UHPLC-DAD / ICP-MS / GC-MS / PCR),
+and provenance (official TagLeaf verification URL, PDF sha256, retrieval
+date, upstream id, parser version).
+
 ---
 
 ## 10. Ingestion expectations
