@@ -27,6 +27,8 @@ summary: Overview of the Mazar-i-Sharif Afghan genetic lineage stabilized by Dut
 
 Renamed from "Mazar-i-Sharif" in 1997, Dutch Passion improved this classic Afghan resin producer by crossing the northern Afghan landrace with Skunk #1, yielding improved yields and intense earthy hash aromas.
 
+**First-party source**: [Dutch Passion — Mazar](https://dutch-passion.com/en/cannabis-seeds/mazar) (retrieved 2026-08-09). Machine records: `CLM-0011`, `CLM-0012`.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:

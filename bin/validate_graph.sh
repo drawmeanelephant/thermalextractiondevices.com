@@ -18,6 +18,9 @@ python3 scripts/audit_device_taxonomy.py "$CONTENT_DIR" --vocab metadata/device-
 echo "==> Auditing device records against the record-completeness floor"
 python3 scripts/audit_record_completeness.py "$CONTENT_DIR" --vocab metadata/device-taxonomy.json
 
+echo "==> Validating cultivar identity claim registry"
+python3 scripts/validate_cultivar_claims.py --root "$CONTENT_DIR" --claims metadata/cultivar-claims.jsonl
+
 echo "==> Running Boris graph diagnostics"
 CHECK_REPORT=$(mktemp "${TMPDIR:-/tmp}/ted-boris-check.XXXXXX")
 trap 'rm -f "$CHECK_REPORT"' EXIT

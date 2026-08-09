@@ -27,6 +27,8 @@ summary: Historical overview of the Skunk #1 genetic baseline created by Sacred 
 
 Developed by Sam "the Skunkman" in the 1970s (per Sensi Seeds' own history) and refined in the Netherlands by Sensi Seeds, Skunk #1 set the global baseline for hybrid vigor, rapid flowering, and pungent musky aroma. The "Sacred Seeds (California)" corporate attribution is from community and secondary accounts and is not asserted by Sensi Seeds' own documentation.
 
+**First-party source**: [Sensi Seeds — Skunk #1](https://sensiseeds.com/en/cannabis-seeds/sensi-seeds/skunk-1) (retrieved 2026-08-09); the Sacred Seeds / Sam the Skunkman attribution is documented in Sensi Seeds' own [blog](https://sensiseeds.com/en/blog/sam-the-skunkman-the-evolution-of-hybrids/). Machine record: `CLM-0006`.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:
