@@ -3,7 +3,7 @@ id: devices/TED-0003
 title: "Storz & Bickel Mighty+ Portable Thermal Extractor"
 parent: devices
 status: published
-tags: ["device", "portable", "hybrid", "storz-bickel"]
+tags: ["device", "portable", "hybrid", "session", "direct-draw", "storz-bickel"]
 relations: [relates_to=manufacturers/TMFR-0003]
 summary: Portable hybrid conduction/convection thermal extractor from Storz & Bickel.
 ---
