@@ -22,6 +22,18 @@ the mechanical parts, but human sign-off is required on judgment items.
       finding (producer/manufacturer/lab content, draft research queue) and
       confirm each record is accurate, evidenced, and safe to publish under
       `PRIVACY.md` categories.
+- [ ] **[BLOCKER] Category-4 data removed from git *history*, not just the tree.**
+      Verified 2026-08-09: the DCC registry payloads were untracked in `6d740f4`
+      but **no history rewrite was performed**, so ~79 MiB across four blobs is
+      still reachable — `git show <commit-before-6d740f4>:data/dcc/license-registry/latest.json`
+      returns the full payload, from which **20,697 email addresses** were
+      recovered during verification. `LARGE-004` grades this `high`, and the
+      three findings are currently **suppressed by explicit, dated acknowledgement**
+      in `docs/audit-config.json` on the sole grounds that this repository is
+      private. **Making the repository public without first executing
+      `docs/history-cleanup-plan.md` and deleting those three suppression entries
+      publishes the data.** Removing the suppressions is part of this item, not
+      optional cleanup.
 
 ## 1. Automated audits (all must pass)
 
