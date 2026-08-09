@@ -15,9 +15,13 @@ summary: An acyclic monoterpene prized for sweet, herbal, and woody floral fragr
 | Property | Value |
 | --- | --- |
 | Preferred name | β-Ocimene |
-| CAS number | 13877-91-3 |
+| IUPAC name | 3,7-dimethylocta-1,3,6-triene (β-ocimene) |
+| CAS number | 13877-91-3 (β-ocimene, unspecified E/Z) |
+| PubChem CID | 18756 [^3] |
 | Chemical family | Acyclic Monoterpene |
 | Molecular formula | C10H16 |
+| Molecular mass | 136.23 g/mol |
+| Stereochemistry | α- and β-ocimene are position isomers kept as distinct identities (α-ocimene: CAS 6874-44-8). β-Ocimene additionally exists as (E)/(Z) geometric isomers, e.g. (3E)-trans-β-ocimene (CAS 3779-61-1); this record covers β-ocimene, CAS 13877-91-3 |
 
 ## Aroma and sensory character
 
@@ -58,12 +62,14 @@ Herbal tea component recognized in traditional perfumery and pest defense.
 
 ## Cannabis laboratory results
 
-See [Lab Results](../lab-results.md) for batch data.
+Measured as (E)-β-ocimene at 191–1,382 µg/g dry weight in four of six cultivars (not detected in the remaining two), with extreme plant-to-plant variation; typically <5% of total terpenes [^4]. See [Lab Results](../lab-results.md) for batch data.
 
 ## Sources
 
 [^1]: The 176 °C figure is a predicted/estimated atmospheric value; NIST WebBook (CAS 13877-91-3) contains no phase-change data for β-ocimene. https://webbook.nist.gov/cgi/cbook.cgi?ID=C13877913&Units=SI
 [^2]: Attenuation of nonsteroidal anti-inflammatory drug-induced gastric ulcers by ocimene. *ACS Pharmacol Transl Sci.* 2025. doi:10.1021/acsptsci.4c00639. PMID 40109750.
+[^3]: PubChem CID 18756, *β-Ocimene* (CAS 13877-91-3). https://pubchem.ncbi.nlm.nih.gov/compound/18756
+[^4]: Booth JK, et al. Terpene synthases and terpene variation in *Cannabis sativa*. *Plant Physiol.* 2020;184(1):130–147. PMID 32591428; Joy N, et al. A Validated GC-MS Method for Major Terpenes Quantification in *Cannabis sativa* L. Essential Oil. 2025. PMC12670203; PMID 40042239.
 
 ## Related pages
 
