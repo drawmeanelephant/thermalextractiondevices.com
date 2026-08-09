@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import csv
 import datetime as _dt
+import email.utils
 import io
 import json
 import re
@@ -54,6 +55,7 @@ class SchemaSpec:
     row_collapse_threshold: float = 0.5       # fail if rows < threshold * prior
     min_rows: int = 1                         # fail if normalized output smaller
     key_columns: list[str] = field(default_factory=list)   # natural-key columns
+    duplicate_key_policy: str = "fail"        # "fail" raises; "warn" reports
 
     def check_headers(self, headers: list[str]) -> None:
         missing = [col for col in self.required if col not in headers]
@@ -173,17 +175,57 @@ def parse_json_bytes(data: bytes) -> list[dict]:
     return payload
 
 
-def check_duplicate_keys(rows: Iterable[dict], key_columns: list[str], label: str) -> None:
+def check_duplicate_keys(
+    rows: Iterable[dict], key_columns: list[str], label: str, *, policy: str = "fail"
+) -> list[str]:
+    """Detect duplicate natural keys.
+
+    With ``policy="fail"`` (default) a duplicate raises
+    :class:`DuplicateKeyError`. With ``policy="warn"`` the count is returned
+    as a warning instead — used for large source datasets whose columns are
+    not a true primary key (e.g. testing results where the same package,
+    analyte, and value legitimately recur).
+    """
     if not key_columns:
-        return
+        return []
     seen = set()
+    duplicate_keys = set()
     for row in rows:
         key = tuple(str(row.get(col, "") or "") for col in key_columns)
         if key in seen:
-            raise DuplicateKeyError(
-                f"{label}: duplicate primary key {key} across {key_columns}"
-            )
+            duplicate_keys.add(key)
         seen.add(key)
+    if not duplicate_keys:
+        return []
+    message = (
+        f"{label}: {len(duplicate_keys)} duplicate key(s) across {key_columns} "
+        f"(e.g. {next(iter(duplicate_keys))}); verify against the source — "
+        "these columns are not a true primary key in the source data"
+    )
+    if policy == "warn":
+        return [message]
+    raise DuplicateKeyError(message)
+
+
+def check_fully_duplicate_rows(rows: Iterable[dict], label: str) -> list[str]:
+    """Fail closed when a source repeats an entire row.
+
+    Used for large datasets whose columns are not a true primary key: partial
+    duplicates are legitimate, but an exact repeat of every column indicates
+    corruption or a mangled export.
+    """
+    seen = set()
+    duplicates = 0
+    for row in rows:
+        key = tuple(sorted((k, str(v or "")) for k, v in row.items()))
+        if key in seen:
+            duplicates += 1
+        seen.add(key)
+    if duplicates:
+        raise DuplicateKeyError(
+            f"{label}: {duplicates} fully duplicate row(s) in source payload"
+        )
+    return []
 
 
 def check_row_collapse(spec: SchemaSpec, current: int, prior: Optional[int]) -> list[str]:
@@ -244,5 +286,54 @@ def check_date_regression(
             )
         warnings.append(
             f"reported dates moved backward {days} days ({prior} -> {new})"
+        )
+    return warnings
+
+
+def parse_http_date(value: Optional[str]) -> Optional[_dt.date]:
+    """Parse an HTTP ``Last-Modified`` value (e.g. ``Fri, 10 Apr 2026 …``)."""
+    if not value:
+        return None
+    try:
+        parsed = email.utils.parsedate_to_datetime(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+    if parsed is None:
+        return None
+    return parsed.date()
+
+
+def check_source_staleness(
+    prior_source_updated: Optional[str],
+    new_source_updated: Optional[str],
+    *,
+    tolerance_days: int = 30,
+    has_clarification: bool = False,
+) -> list[str]:
+    """Guard against an older upstream copy replacing a newer verified snapshot.
+
+    Compares the source file's own update date (e.g. HTTP ``Last-Modified``)
+    with the previously accepted snapshot's recorded update date. When the
+    incoming payload claims to be older than the accepted snapshot by more
+    than ``tolerance_days`` the sync fails closed (so an obsolete
+    pre-correction release of a corrected dataset cannot silently become the
+    latest record) unless the dataset carries a recognized source
+    clarification/correction notice.
+    """
+    warnings: list[str] = []
+    prior = parse_http_date(prior_source_updated)
+    new = parse_http_date(new_source_updated)
+    if not prior or not new:
+        return warnings
+    if new < prior:
+        days = (prior - new).days
+        if days > tolerance_days and not has_clarification:
+            raise DateRegressionError(
+                f"source file date moved backward {days} days "
+                f"({prior} -> {new}); refusing to replace a newer verified "
+                "snapshot with an older upstream copy"
+            )
+        warnings.append(
+            f"source file date moved backward {days} days ({prior} -> {new})"
         )
     return warnings
