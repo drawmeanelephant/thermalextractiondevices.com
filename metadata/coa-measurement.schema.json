@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://thermalextractiondevices.com/metadata/coa-measurement.schema.json",
   "title": "Durable COA & Laboratory Measurement Record",
-  "description": "Durable archive-facing representation of one laboratory report (COA): the report document, its batch/lot/package, and every analyte measurement with full censoring, unit, method, and comparability metadata. Result states (numeric, nd, below_lod, below_loq, zero, missing, not_tested) are distinct and are never collapsed or silently imputed as zero. Reported values are preserved verbatim (reported_value/reported_unit); value/unit carry the normalized representation with an audited conversion. Batch identity (batch_id) and report identity (report_id, lab-results/TLAB-XXXX) are distinct: one batch may have retests, corrected reports, multiple panels, or reports from different laboratories. See docs/graph/coa-lab-data-model.md and docs/graph/coa-migration.md.",
+  "description": "Durable archive-facing representation of one laboratory report (COA): the report document, its batch/lot/package, and every analyte measurement with full censoring, unit, method, and comparability metadata. Result states (numeric, nd, below_lod, below_loq, zero, missing, not_tested, invalid) are distinct and are never collapsed or silently imputed as zero. Reported values are preserved verbatim (reported_value/reported_unit); value/unit carry the normalized representation with an audited conversion. Batch identity (batch_id) and report identity (report_id, lab-results/TLAB-XXXX) are distinct: one batch may have retests, corrected reports, multiple panels, or reports from different laboratories. Cultivar claims (cultivar_claims) carry the printed label plus an explicit resolution grade; provenance ties the report to its source document/endpoint. See docs/coa-data-model.md, docs/graph/coa-lab-data-model.md and docs/graph/coa-migration.md.",
   "type": "object",
   "required": ["schema_version", "report", "batch", "measurements"],
   "properties": {
@@ -94,6 +94,10 @@
           "format": "date",
           "description": "Date the sample was collected/received, when the report states it."
         },
+        "sample_id": {
+          "type": "string",
+          "description": "The laboratory's own sample identifier as printed, when provided."
+        },
         "laboratory": {
           "oneOf": [
             {"$ref": "#/definitions/laboratory"},
@@ -103,6 +107,23 @@
         "jurisdiction": {
           "type": "string",
           "description": "Regulatory jurisdiction of the report, e.g. CA, MA. Enables jurisdiction-stratified analysis."
+        },
+        "license_references": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Regulator license references: canonical licenses/TLIC-XXXX ids when archive records exist, else natural license numbers as printed."
+        },
+        "test_panels": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Panels the report covers, e.g. cannabinoid, terpene, pesticide, heavy-metal, microbial, mycotoxin, residual-solvent. Unknown panels are preserved verbatim."
+        },
+        "provenance": {
+          "oneOf": [
+            {"$ref": "#/definitions/sourceProvenance"},
+            {"type": "null"}
+          ],
+          "description": "Retrieval metadata tying the report to its source document/endpoint. Verified records require at least one of source_url / document_hash / upstream_record_id."
         },
         "method": {
           "oneOf": [
@@ -149,6 +170,10 @@
           "type": "string",
           "description": "State traceability package tag (e.g. Metrc METRC SOURCE TAG) when the source system provides one."
         },
+        "lot_number": {
+          "type": "string",
+          "description": "Producer lot number as printed, when distinct from batch_id."
+        },
         "producer_id": {
           "oneOf": [
             {"type": "string", "pattern": "^organizations/TORG-[0-9]{4}$"},
@@ -167,6 +192,11 @@
           "type": "array",
           "items": {"type": "string"},
           "description": "Cultivar labels exactly as printed; never collapsed or canonicalized at ingest."
+        },
+        "cultivar_claims": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/cultivarClaim"},
+          "description": "Interpreted cultivar claims for this batch: printed label plus resolution grade and optional canonical cultivars/TCUL-XXXX target. May be empty; resolution is never forced."
         },
         "sample_type": {
           "type": "string",
@@ -197,6 +227,16 @@
         "harvest_date": {
           "type": ["string", "null"],
           "format": "date"
+        },
+        "production_date": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Production date as printed, when the source provides one; optional and never required."
+        },
+        "package_date": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Package date as printed, when the source provides one; optional and never required."
         }
       }
     },
@@ -230,8 +270,8 @@
         },
         "state": {
           "type": "string",
-          "enum": ["numeric", "nd", "below_lod", "below_loq", "zero", "missing", "not_tested"],
-          "description": "numeric = fully quantified; nd = not detected; below_lod / below_loq = censored below a limit; zero = explicit zero as printed (flagged for review, never conflated with nd or missing); missing = blank result field; not_tested = absent from the panel."
+          "enum": ["numeric", "nd", "below_lod", "below_loq", "zero", "missing", "not_tested", "invalid"],
+          "description": "numeric = fully quantified; nd = not detected; below_lod / below_loq = censored below a limit; zero = explicit zero as printed (flagged for review, never conflated with nd or missing); missing = blank result field; not_tested = absent from the panel; invalid = result string present but unparseable (preserved verbatim, never conflated with nd or zero)."
         },
         "value": {
           "type": ["number", "null"],
@@ -270,6 +310,10 @@
             {"type": "null"}
           ],
           "description": "Audit trail for converting reported_value/reported_unit into value/unit. Null when no conversion was applied."
+        },
+        "calculation_formula": {
+          "type": ["string", "null"],
+          "description": "When set, this measurement is a report-derived calculated quantity (e.g. Total THC = d9-THC + THCA x 0.877) and the formula is retained verbatim. Calculated quantities are not independent chemical compounds and should not carry a compound_id."
         }
       },
       "allOf": [
@@ -386,6 +430,65 @@
         "pt_z_score": {
           "type": ["number", "null"],
           "description": "Most recent proficiency-testing z-score for this analyte; |z| >= 3 is unsatisfactory (ISO 13528)."
+        }
+      }
+    },
+    "cultivarClaim": {
+      "type": "object",
+      "required": ["label", "resolution"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Cultivar label exactly as printed (e.g. \"Blue Dream\", \"GG4\", \"GMO\"). Never canonicalized."
+        },
+        "resolution": {
+          "type": "string",
+          "enum": ["resolved", "tentative", "ambiguous", "unresolved"],
+          "description": "resolved = confidently one cultivar; tentative = leaning toward one; ambiguous = matches several possibilities; unresolved = no canonical target. Resolution is never forced."
+        },
+        "cultivar_id": {
+          "oneOf": [
+            {"type": "string", "pattern": "^cultivars/TCUL-[0-9]{4}$"},
+            {"type": "null"}
+          ],
+          "description": "Canonical cultivars/TCUL-XXXX id when the claim resolves (resolved requires it); null otherwise."
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^cultivars/TCUL-[0-9]{4}$"},
+          "description": "The several canonical possibilities when the label is ambiguous."
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceProvenance": {
+      "type": "object",
+      "description": "Retrieval metadata tying a report to its source document/endpoint. Verified records require at least one of source_url / document_hash / upstream_record_id.",
+      "properties": {
+        "source_url": {
+          "type": "string"
+        },
+        "document_hash": {
+          "type": "string",
+          "description": "sha256 hex digest of the source artifact when computed."
+        },
+        "retrieval_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "upstream_record_id": {
+          "type": "string",
+          "description": "Upstream record id (dataset row key, COA number, portal id) as printed by the source."
+        },
+        "parser_version": {
+          "type": "string",
+          "description": "Parser/import version that produced this record, for reprocessing audits."
+        },
+        "retrieval_note": {
+          "type": "string"
         }
       }
     },
