@@ -200,7 +200,8 @@
         },
         "sample_type": {
           "type": "string",
-          "enum": ["flower", "trim", "kief", "hash", "rosin", "resin", "extract", "distillate", "infused", "unknown"]
+          "enum": ["flower", "trim", "kief", "hash", "rosin", "resin", "extract", "distillate", "infused", "edible", "unknown"],
+          "description": "Matrix class. 'edible' covers liquid and solid consumables (e.g. beverages); 'infused' covers infused flower; 'unknown' when the source does not state one."
         },
         "matrix_detail": {
           "type": "string",
@@ -364,7 +365,7 @@
       "properties": {
         "instrument_technique": {
           "type": "string",
-          "enum": ["HPLC-DAD", "UPLC-DAD", "LC-MS", "LC-MS/MS", "GC-FID", "GC-MS", "GC-MS/MS", "HS-GC-MS", "HS-GC-FID", "other", "unknown"]
+          "enum": ["HPLC-DAD", "UHPLC-DAD", "UPLC-DAD", "LC-MS", "LC-MS/MS", "GC-FID", "GC-MS", "GC-MS/MS", "HS-GC-MS", "HS-GC-FID", "ICP-MS", "ICP-OES", "PCR", "ELISA", "other", "unknown"]
         },
         "derivatization": {
           "type": ["boolean", "null"],

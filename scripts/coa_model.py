@@ -105,6 +105,7 @@ class ReportingBasis(str, Enum):
 
 class InstrumentTechnique(str, Enum):
     HPLC_DAD = "HPLC-DAD"
+    UHPLC_DAD = "UHPLC-DAD"
     UPLC_DAD = "UPLC-DAD"
     LC_MS = "LC-MS"
     LC_MS_MS = "LC-MS/MS"
@@ -113,6 +114,10 @@ class InstrumentTechnique(str, Enum):
     GC_MS_MS = "GC-MS/MS"
     HS_GC_MS = "HS-GC-MS"
     HS_GC_FID = "HS-GC-FID"
+    ICP_MS = "ICP-MS"      # heavy-metal panels
+    ICP_OES = "ICP-OES"    # heavy-metal panels
+    PCR = "PCR"            # microbial panels (qPCR/real-time PCR)
+    ELISA = "ELISA"        # mycotoxin immunoassay panels
     OTHER = "other"
     UNKNOWN = "unknown"
 
