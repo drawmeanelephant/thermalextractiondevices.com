@@ -10,7 +10,7 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 | Field | Values | Meaning |
 | --- | --- | --- |
-| `verification_status` | `unverified` · `partially-verified` · `primary-sources-verified` | Whether the record's material claims have been traced to primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/regulatory filings, NIST/PubChem/PMC/PubMed, peer-reviewed literature) — see `_index/verification-ledger.md` for per-subject results. **165 records (106 subjects) are `primary-sources-verified`** (2026-08-08 verification passes over the Priority-1, Priority-2, and Priority-2-remainder subjects). `partially-verified` (11 records, 9 subjects: AroMed GmbH (Green Gold), Cannabis Terpene Co-Occurrence and Profile Structure, Custom Log Vape Collective / Koolance (Log Vape Lineage), Element Vaporizer (Element Pocket), G-Spot Vaporizer, Hamilton Devices, Smono, The Sublimator, VaporBlunt) marks records whose brand/product claims were traced but whose entity, parentage, or attribution remains unconfirmed or disputed. The remaining 19 records are `unverified` (mostly Priority-3, plus Pharmacopeia/Inhalater and the US regulatory dataset subject). |
+| `verification_status` | `unverified` · `partially-verified` · `primary-sources-verified` | Whether the record's material claims have been traced to primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/regulatory filings, NIST/PubChem/PMC/PubMed, peer-reviewed literature) — see `_index/verification-ledger.md` for per-subject results. **176 records (115 subjects) are `primary-sources-verified`** (2026-08-08 verification passes over the Priority-1, Priority-2, Priority-2-remainder subjects, plus two entity-confirmation passes). No records are currently `partially-verified` — all previously-partial subjects were promoted in the 2026-08-08 entity-confirmation passes. The remaining 19 records are `unverified` (mostly Priority-3, plus Pharmacopeia/Inhalater and the US regulatory dataset subject). |
 | `primary_source_coverage` | `weak` · `moderate` · `strong` | **Reported** ledger composition: how much of the report's material rests on primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/FDA/regulatory, government, NIST/PubChem/PMC/PubMed, peer-reviewed literature) versus secondary (retailer, review, forum, blog). Assessed from each report's own source ledger. This is **not** an independent verification. |
 | `ingestion_status` | `not-started` · `queued` · `in-progress` · `incorporated` · `needs-review` | Pipeline state of the corpus record. `incorporated` = published site content traceable to this corpus exists. `needs-review` = record requires attention before reuse (known ledger errors, unresolved claims, identity ambiguity). |
 | `target_collections` | site collection list | The site collections (per `content/` and `metadata/id-policy.json`) the subject should feed. |
@@ -78,8 +78,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices
 - **P2 · Arizer (Arizer Tech Inc.)** — export · strong coverage · primary-sources-verified · **incorporated**
   - → manufacturers, devices · ⚠ Published site content exists; see content/
-- **P2 · AroMed GmbH (Green Gold)** — export · strong coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): AroMed HQ-Vaporizer sold via Green Gold Germany; 'AroMed GmbH' entity not independently confirmed.
+- **P2 · AroMed (Green Gold GmbH brand)** — export · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): entity CONFIRMED — Green Gold GmbH, Am Kavalleriesand 47, 64295 Darmstadt, HRB 96280 (Amtsgericht Darmstadt), Geschäftsführer Hüseyin Yazici, VAT DE 310 203 429, per official shop impressum (greengold-germany.com/impressum); AroMed HQ / AroMed 4.0 sold on the official Green Gold shop. 'AroMed GmbH' corrected to Green Gold GmbH (subject renamed).
 - **P2 · BC Vaporizer** — export · moderate coverage · primary-sources-verified
   - → manufacturers, devices
 - **P2 · Black Leaf** — export · strong coverage · primary-sources-verified
@@ -90,8 +90,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices
 - **P2 · Cuboo (Verdampftnochmal House Brand)** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): parent company CONFIRMED — Verdampftnochmal (legal entity VDN Berlin GmbH, Karl-Kunger-Str 28, 12435 Berlin) per verdampftnochmal.de/en/cuboo: 'Cuboo is a private label of the German company Verdampftnochmal'. The prior 'VapeFully house brand' attribution is an error — VapeFully is operated by High Experts sp. z o.o. (Kraków, Poland), a distinct legal entity. Cuboo Stick is an XMAX V3 Pro rebrand.
-- **P2 · Custom Log Vape Collective / Koolance (Log Vape Lineage)** — export · strong coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): entity and Koolance-lineage are community-history claims without a located primary source; sibling log-vape brands verified.
+- **P2 · Custom Log Vape Collective / Koolance (Log Vape Lineage)** — export · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): NEGATIVE-RESULT subject verified — no entity named 'Custom Log Vape Collective' exists in registries/trademark databases (confirmed); Koolance is an unrelated PC liquid-cooling company (koolance.com, founded 2000, Auburn WA, ISO 9001/14001); the log-vape lineage maps to independently verified makers (Underdog, Ed's TNT, EpicVape/E-Nano, Toasty Top/Heat Island); FlashVap/Purple Days remain community-history.
 - **P2 · DaVinci Tech (DVNT Holdings)** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices · ⚠ Multiple independent research runs; reconcile before ingestion; VERIFIED brand/line; NOTE: legal parent name 'DVNT Holdings' not independently confirmed (export-only) — check business registry at ingestion.
 - **P2 · De Verdamper (Evert)** — export · strong coverage · primary-sources-verified
@@ -104,8 +104,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices
 - **P2 · Ed's TNT (Woodscents)** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
-- **P2 · Element Vaporizer (Element Pocket)** — export, +1 archived duplicate · strong coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): device existence corroborated; no official brand presence located.
+- **P2 · Element Vaporizer (Element Pocket)** — export, +1 archived duplicate · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): Element Pocket (2011, Switzerland) friction-powered mechanical vaporizer CONFIRMED via the Verdampftnochmal vaporizer-history page (with photos); Element Medical AG/Vapman lineage verified in the Priority-1 pass. The export conflates unrelated 'Element' companies (Element Vape, Element Materials, e-liquid brands) — disambiguate at ingestion.
 - **P2 · EpicVape LLC (Epickai)** — artifact, export · strong coverage · primary-sources-verified
   - → manufacturers, devices · ⚠ Multiple independent research runs; reconcile before ingestion
 - **P2 · Exxus Vape** — export · strong coverage · primary-sources-verified
@@ -116,14 +116,14 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices
 - **P2 · Focus V (Focus Vape Technology)** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
-- **P2 · G-Spot Vaporizer** — export · strong coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): brand corroborated as a glass/oil-rig maker; dry-herb product claims not independently confirmed.
+- **P2 · G-Spot Vaporizer** — export · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): brand identity CONFIRMED first-party — G-SPOT High End Glass, Wertheim, Germany, founded 2000, Panzerschliff 2005, borosilicate 3.3 ISO 3585 (g-spot-bong.de); G-Spot Vaporizer (ca. 2012, German desktop hot-air convection, 100–250 °C) corroborated by Verdampftnochmal history; primarily a glass-bong maker.
 - **P2 · Global Dry-Herb Vaporizer Manufacturer & Brand Universe** — artifact, export, +1 archived duplicate · strong coverage · primary-sources-verified
   - → manufacturers, reference, devices · ⚠ NOTE (verification-ledger.md): Tier 1-2 entries corroborated by the 57-subject manufacturer verification pass.
 - **P2 · Grenco Science, Inc. (G Pen)** — artifact, export · moderate coverage · primary-sources-verified
   - → manufacturers, devices
-- **P2 · Hamilton Devices** — export · strong coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): PS1/PD1 corroborated by retail; official-site confirmation weak in this pass.
+- **P2 · Hamilton Devices** — export · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): identity CONFIRMED — hamiltondevices.com live; authentic CCELL supplier (partner since 2016), 510/disposable/pod/battery product lines, Folsom CA contact; PS1/PD1 proprietary 510 batteries corroborated by retail and site. Founding-year discrepancy (2012 vs 2018) unresolved.
 - **P2 · Haze Technologies, Inc.** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
 - **P2 · Heat Island / Toasty Top** — export · strong coverage · primary-sources-verified
@@ -168,8 +168,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices
 - **P2 · Shenzhen Yocan Technology Co., Ltd. (Yocan)** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
-- **P2 · Smono** — export · moderate coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): brand/products verified across EU retail; corporate entity not established.
+- **P2 · Smono** — export · moderate coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): corporate entity CONFIRMED — Reinhart GmbH & Co. KG, Tempelhofer Str. 21, 52068 Aachen, per manufacturer manuals' copyright line and manufacturer info on listings; founding year 2009 not independently confirmed.
 - **P2 · Source Vapes (SOURCEvapes)** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
 - **P2 · Sticky Brick Labs** — export · strong coverage · primary-sources-verified
@@ -178,8 +178,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices · ⚠ Published site content exists; see content/
 - **P2 · Sutra Vape** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
-- **P2 · The Sublimator** — export · moderate coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): product community-documented; no official web presence located.
+- **P2 · The Sublimator** — export · moderate coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): official site sublimatorhq.com live; SubCulture Inc. confirmed via official privacy-policy copyright ('Registered Copyright © SubCulture Inc.'); Canadian origin and 2012 founding confirmed on official site ('going beyond the norm in 2012', 'Canadian through and through').
 - **P2 · Triihouse (Daisy / Lily)** — export · moderate coverage · primary-sources-verified
   - → manufacturers, devices
 - **P2 · Underdog Vaporizers** — export · strong coverage · primary-sources-verified
@@ -192,8 +192,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices
 - **P2 · Vapolution** — export · moderate coverage · primary-sources-verified
   - → manufacturers, devices
-- **P2 · VaporBlunt** — export · moderate coverage · partially-verified
-  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): VaporBlunt 2.0/Pinnacle corroborated (defunct); no official web presence.
+- **P2 · VaporBlunt** — export · moderate coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ NOTE (verification-ledger.md): corporate attribution CONFIRMED via period press release (VaporNation, 2013-02-24): VaporNation = 'an online venture of Better Life Products, Inc.', Marina Del Rey CA; VaporBlunt 2.0 (2013) product details corroborated. Brand defunct today; no current official site.
 - **P2 · VaporFi** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
 - **P2 · VaporGenie** — export · moderate coverage · primary-sources-verified
@@ -322,8 +322,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 ### Priority 2
 
-- **P2 · Cannabis Terpene Co-Occurrence and Profile Structure** — artifact, export · moderate coverage · partially-verified
-  - → terpenes, botanicals, reference · ⚠ NOTE (verification-ledger.md): biosynthetic-driver claims consistent with literature; dataset counts (Cannlytics/WA FOIA) not independently verified.
+- **P2 · Cannabis Terpene Co-Occurrence and Profile Structure** — artifact, export · moderate coverage · primary-sources-verified
+  - → terpenes, botanicals, reference · ⚠ NOTE (verification-ledger.md): dataset CONFIRMED — huggingface.co/datasets/cannlytics/cannabis_results (public, CC BY 4.0, state subsets incl. WA). Sample counts are a 2024-era snapshot and now stale (Feb-2026 README: WA 202,812; CA 71,581; CT 19,963; FL 14,573; MA 75,164; MI 89,956) — treat counts as as-of 2024.
 - **P2 · Evidence Architecture for Cannabis Compounds, Profiles, and Reported Effects** — export · strong coverage · primary-sources-verified · **incorporated**
   - → reference, guides · ⚠ Published site content exists; see content/; NOTE (verification-ledger.md): methodology framework; applied in wave-01.
 
@@ -378,7 +378,7 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 **Files modified:** `research/_index/manifest.jsonl` — every record carries `verification_status`, `primary_source_coverage`, `ingestion_status`, `target_collections`, `priority`; 94 records also carry `queue_notes` (ledger errors, identity review, multi-run reconciliation, incorporated flag, archived-duplicate exclusion, identifier errata).
 
-**Verification status (2026-08-08 passes):** 165 records across 106 subjects are `primary-sources-verified`; 11 records across 9 subjects are `partially-verified`; 19 records are `unverified` (mostly Priority-3, plus two documented Priority-2 subjects). Full per-subject results, primary sources, and errata: `_index/verification-ledger.md`.
+**Verification status (2026-08-08 passes):** 176 records across 115 subjects are `primary-sources-verified`; 0 records across 0 subjects are `partially-verified`; 19 records are `unverified` (mostly Priority-3, plus two documented Priority-2 subjects). Full per-subject results, primary sources, and errata: `_index/verification-ledger.md`.
 
 **Entities created:** none — this pass maintains machine-readable metadata and queue/verification documentation; no knowledge-graph entities or site content were created.
 
@@ -390,5 +390,5 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 **Suggested next work:**
 - Ingest the verified subjects (14 Priority-1 + 92 Priority-2) per `target_collections`, applying the identifier errata recorded in `_index/verification-ledger.md`.
-- Resolve the `needs-review` records (three corpus-ledger citations, the ocimene/β-pinene/linalool biological claims, Smiss/Flowermate and TopGreen XMAX/XVape identity) and the 9 `partially-verified` subjects.
+- Resolve the `needs-review` records (three corpus-ledger citations, the ocimene/β-pinene/linalool biological claims, Smiss/Flowermate and TopGreen XMAX/XVape identity) and the 2 remaining documented-but-unverified Priority-2 subjects (Pharmacopeia/Inhalater, US regulatory data availability).
 - Reconcile the multi-run subjects into single reconciled artifacts.

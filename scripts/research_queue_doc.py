@@ -99,6 +99,13 @@ def main():
     n_u_rec = sum(1 for r in recs if r["verification_status"] == "unverified")
     partial_names = ", ".join(sorted(s for s, st in subj_status.items() if st == "partially-verified"))
     n_notes = sum(1 for r in recs if r.get("queue_notes"))
+    if n_p_subj:
+        partial_clause = (f"`partially-verified` ({n_p_rec} records, {n_p_subj} subjects: {partial_names}) "
+                          "marks records whose brand/product claims were traced but whose entity, "
+                          "parentage, or attribution remains unconfirmed or disputed. ")
+    else:
+        partial_clause = "No records are currently `partially-verified` — all previously-partial " \
+                         "subjects were promoted in the 2026-08-08 entity-confirmation passes. "
 
     lines = []
     lines.append("# Research Corpus Ingestion Queue")
@@ -119,8 +126,8 @@ def main():
     lines.append("| Field | Values | Meaning |")
     lines.append("| --- | --- | --- |")
     lines.append("| `verification_status` | `unverified` · `partially-verified` · `primary-sources-verified` | Whether the record's material claims have been traced to primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/regulatory filings, NIST/PubChem/PMC/PubMed, peer-reviewed literature) — see `_index/verification-ledger.md` for per-subject results. "
-                 f"**{n_v_rec} records ({n_v_subj} subjects) are `primary-sources-verified`** (2026-08-08 verification passes over the Priority-1, Priority-2, and Priority-2-remainder subjects). "
-                 f"`partially-verified` ({n_p_rec} records, {n_p_subj} subjects: {partial_names}) marks records whose brand/product claims were traced but whose entity, parentage, or attribution remains unconfirmed or disputed. "
+                 f"**{n_v_rec} records ({n_v_subj} subjects) are `primary-sources-verified`** (2026-08-08 verification passes over the Priority-1, Priority-2, Priority-2-remainder subjects, plus two entity-confirmation passes). "
+                 f"{partial_clause}"
                  f"The remaining {n_u_rec} records are `unverified` (mostly Priority-3, plus Pharmacopeia/Inhalater and the US regulatory dataset subject). |")
     lines.append("| `primary_source_coverage` | `weak` · `moderate` · `strong` | **Reported** ledger composition: how much of the report's material rests on primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/FDA/regulatory, government, NIST/PubChem/PMC/PubMed, peer-reviewed literature) versus secondary (retailer, review, forum, blog). Assessed from each report's own source ledger. This is **not** an independent verification. |")
     lines.append("| `ingestion_status` | `not-started` · `queued` · `in-progress` · `incorporated` · `needs-review` | Pipeline state of the corpus record. `incorporated` = published site content traceable to this corpus exists. `needs-review` = record requires attention before reuse (known ledger errors, unresolved claims, identity ambiguity). |")
@@ -241,7 +248,8 @@ def main():
                  "`_index/verification-ledger.md`.")
     lines.append("- Resolve the `needs-review` records (three corpus-ledger citations, the "
                  "ocimene/β-pinene/linalool biological claims, Smiss/Flowermate and TopGreen "
-                 "XMAX/XVape identity) and the 9 `partially-verified` subjects.")
+                 "XMAX/XVape identity) and the 2 remaining documented-but-unverified Priority-2 "
+                 "subjects (Pharmacopeia/Inhalater, US regulatory data availability).")
     lines.append("- Reconcile the multi-run subjects into single reconciled artifacts.")
     lines.append("")
 
