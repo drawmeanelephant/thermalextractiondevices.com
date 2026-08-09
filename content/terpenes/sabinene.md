@@ -17,7 +17,7 @@ summary: A bicyclic monoterpene with spicy woody-citrus character and a verified
 | Preferred name | Sabinene |
 | IUPAC name | 4-methylene-1-(propan-2-yl)bicyclo[3.1.0]hexane |
 | CAS number | 3387-41-5 |
-| PubChem CID | 18818 |
+| PubChem CID | 18818 [^4] |
 | Chemical family | Bicyclic Monoterpene |
 | Molecular formula | C10H16 |
 | Molecular mass | 136.23 g/mol |
@@ -65,13 +65,15 @@ Pepper and juniper preparations used traditionally for circulation and digestion
 
 ## Cannabis laboratory results
 
-Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Trace-level: ≤0.005 mg/g dry weight in dried flower (chemotype I) and lower in chemotype III, per a pooled literature survey [^5]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 
 [^1]: NIST Chemistry WebBook, SRD 69, *Bicyclo[3.1.0]hexane, 4-methylene-1-(1-methylethyl)-* (CAS 3387-41-5) phase-change data: boiling temperatures 436.7 K (Aldrich 1990) and 437 K (Wallach 1906). https://webbook.nist.gov/cgi/cbook.cgi?ID=C3387415&Mask=4
 [^2]: No primary source located during the editorial audit.
 [^3]: Research-corpus dossier (research/compounds/terpenes/sabinene/): antimicrobial/antioxidant/antiangiogenic assays in vitro; LPS-neuroinflammation mouse study (oral). Not translated to cannabis inhalation; not re-verified in this wave.
+[^4]: PubChem CID 18818, *Sabinene* (CAS 3387-41-5). https://pubchem.ncbi.nlm.nih.gov/compound/18818
+[^5]: Chacon FT, Raup-Konsavage WM, Vrana KE, Kellogg JJ. Secondary Terpenes in *Cannabis sativa* L.: Synthesis and Synergy. *Biomedicines.* 2022;10(12):3142. doi:10.3390/biomedicines10123142. PMID 36551898.
 
 ## Related pages
 

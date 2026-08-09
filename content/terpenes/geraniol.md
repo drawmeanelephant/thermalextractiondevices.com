@@ -64,13 +64,14 @@ Long use in perfumery and traditional rose-based preparations; geraniol and its 
 
 ## Cannabis laboratory results
 
-Published analyses of hemp cultivars (e.g., the 'Finola' cultivar in terpene-synthase work by Booth et al. 2017) report geraniol as a minor constituent relative to dominant monoterpenes; measured values remain batch- and report-attached. Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Published peer-reviewed analyses place geraniol at trace or below-quantification levels: not detected or trace in Finola hemp (Booth et al. 2017) [^3], and below the LOQ in two US hemp cultivars using a validated hydrodistillation/GC-MS method [^4]. Marketing sources claim elevated geraniol in specific cultivars, but no batch-level peer-reviewed data substantiate this. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 
 [^1]: PubChem CID 637566, *Geraniol* (CAS 106-24-1), boiling point 229–230 °C @ 760 mmHg (NTP 1992); Sigma-Aldrich catalog; NIST WebBook SRD 69, CAS 106-24-1. https://pubchem.ncbi.nlm.nih.gov/compound/637566
 [^2]: LaVigne JE, Hecksel R, Keresztes A, Streicher JM. Cannabis sativa terpenes are cannabimimetic and selectively enhance cannabinoid activity at CB1 receptors. *Sci Rep.* 2021;11:8232. doi:10.1038/s41598-021-87740-8. PMID 33859287. (In vitro CB1 pharmacology; geraniol among the tested terpenes. Note: an earlier draft of this record cited a non-existent "Cannabimimetic phytochemicals in the diet" article to LaVigne; that citation was incorrect and has been replaced.)
 [^3]: Booth JK, Page JE, Bohlmann J. Terpene synthases from Cannabis sativa. *PLoS One.* 2017;12(3):e0173911. doi:10.1371/journal.pone.0173911. PMID 28355238. (Terpene profiles of cannabis/hemp cultivars, incl. 'Finola'.)
+[^4]: Joy N, et al. A Validated GC-MS Method for Major Terpenes Quantification in *Cannabis sativa* L. Essential Oil. 2025. PMC12670203; PMID 40042239.
 
 ## Related pages
 
