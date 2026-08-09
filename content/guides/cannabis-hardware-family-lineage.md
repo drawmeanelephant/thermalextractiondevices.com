@@ -56,8 +56,8 @@ Cannabis Hardware (2009–present; formerly NewVape)
 │   │   ├─ MOAB (built-in PID; restyled "X Pattern" 2025-10) → TED-0032
 │   │   └─ Mercury (second-generation female diffuser) → TED-0036
 │   └─ Fourth-generation heads (2025-09)
-│       ├─ VMAX (standard, quartz-lined) → TED-0034
-│       └─ VMAX Injector (male, convection-focused) → TED-0035
+│       ├─ VMAX (standard, quartz-lined) → TED-0044
+│       └─ VMAX Injector (male, convection-focused) → TED-0045
 │
 └─ Airstream Family — integrated all-in-one wireless (2024-11)
     └─ Airstream (built-in coil + PID, integrated vapor path) → TED-0033
@@ -99,8 +99,8 @@ The archive therefore records 3408 in two roles across time, and says so plainly
 | Zion | 3 | Listed 2024-03-28 | Listed; all variants unavailable (2026-08-08) | Complete system — BYO PID, 20 mm or 25 mm coil | [TED-0041](../devices/TED-0041.md) |
 | MOAB | 3 | 2024-04; "X Pattern" standalone listing 2025-10-08 | Current | Complete system — 25 mm axial coil + built-in PID | [TED-0032](../devices/TED-0032.md) |
 | Mercury | 3 | Listed 2024-04-02 | Current | Heater head — second-generation female diffuser | [TED-0036](../devices/TED-0036.md) |
-| VMAX | 4 | Listed 2025-09-23 | Current | Heater head — standard, quartz-lined | [TED-0034](../devices/TED-0034.md) |
-| VMAX Injector | 4 | Listed 2025-09-23 | Current | Heater head — injector, convection-focused | [TED-0035](../devices/TED-0035.md) |
+| VMAX | 4 | Listed 2025-09-23 | Current | Heater head — standard, quartz-lined | [TED-0044](../devices/TED-0044.md) |
+| VMAX Injector | 4 | Listed 2025-09-23 | Current | Heater head — injector, convection-focused | [TED-0045](../devices/TED-0045.md) |
 
 ### Engineering revision: the Rev 2 heat-deflector plate
 

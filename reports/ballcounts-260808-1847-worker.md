@@ -158,7 +158,7 @@ $ git status --porcelain -- content/devices/TED-0004.md content/devices/TED-0005
 ```
 
 (The full unfiltered `git status --porcelain` at the time of this report also shows
-`TED-0007.md`, `TED-0029.md`–`TED-0032.md`, `TREF-0004.md` modified and `TED-0034/35/36/
+`TED-0007.md`, `TED-0029.md`–`TED-0032.md`, `TREF-0004.md` modified and `TED-0044/35/36/
 41/42/43.md` plus three other workers' report files untracked — all of these are sibling
 workers' concurrent changes on this shared branch, not mine. Confirmed via `git diff --stat
 -- content/reference/TREF-0004.md`, which shows 24 insertions/1 deletion I did not make.)

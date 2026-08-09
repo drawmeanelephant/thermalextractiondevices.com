@@ -172,7 +172,7 @@ $ git status --porcelain -- content/devices/TED-0037.md content/devices/TED-0038
 never previously existed), confirming I made no modification to any pre-existing file. The
 full repo `git status --porcelain` also shows modifications to `TED-0004/0005/0006/0007/0025/
 0026/0027/0028/0029/0030/0031/0032` and `reference/TREF-0004.md`, and new files
-`TED-0034/0035/0036/0041/0042/0043` — all of these are other workers' in-progress changes on
+`TED-0044/0035/0036/0041/0042/0043` — all of these are other workers' in-progress changes on
 this shared branch, not mine; I did not touch any of them.
 
 **Live HTTP status checks (2026-08-08):**
