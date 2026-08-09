@@ -8,6 +8,7 @@ These documents were produced during the scientific/technical/legal/editorial re
 | [unresolved-claims.md](unresolved-claims.md) | Every claim left unresolved, with needed source and recommended action |
 | [source-manifest.md](source-manifest.md) | Primary sources added/attributed across the audit |
 | [terminology-consistency.md](terminology-consistency.md) | Standardized evidence and claim terminology |
+| [cultivar-identity-implementation.md](cultivar-identity-implementation.md) | Provenance-aware cultivar identity architecture and claim registry |
 | [validation-results.md](validation-results.md) | Commands run and their results |
 
 ## Scope guardrails honored

@@ -27,6 +27,8 @@ summary: Historical overview of the Jack Herer genetic lineage developed by Sens
 
 Created by Sensi Seeds in the Netherlands from Haze, Northern Lights #5, and Shiva Skunk genetics, and named in honor of cannabis activist Jack Herer, this cultivar combines a complex tropical Sativa aroma with dense resin production derived from its Northern Lights and Skunk ancestral lines. Sensi Seeds' own history describes the breeding work as beginning in the 1980s; third-party accounts date the commercial release to the mid-1990s.
 
+**First-party source**: [Sensi Seeds — Jack Herer](https://sensiseeds.com/en/cannabis-seeds/sensi-seeds/jack-herer) (retrieved 2026-08-09). Machine record: `CLM-0007`.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:
