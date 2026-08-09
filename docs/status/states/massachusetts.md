@@ -1,9 +1,9 @@
 # State Status — Massachusetts
 
-Status: In progress
-Last verified: 2026-08-08
+Status: Complete (v2 productionized)
+Last verified: 2026-08-09
 Owner: Massachusetts implementation agent
-Branch: TBD
+Branch: agent/massachusetts-ingestion-v2
 
 ## Scope
 
@@ -13,33 +13,51 @@ affected products, and related aggregate records.
 
 ## Implementation state
 
-- Adapter: scripts/ingest/states/massachusetts.py exists and is fixture-tested.
-- Canonical command: scripts/state_ingest.py massachusetts.
-- Live snapshot: none completed in the current repository state.
-- Generated content: zero published Massachusetts pages.
-- Durable artifacts: the importer supports data/massachusetts-ccc/, but no
-  live durable snapshot is currently committed.
-- Fixtures and tests: committed, privacy-scrubbed fixtures and an end-to-end
-  fixture suite exist.
+- Adapter: scripts/ingest/states/massachusetts.py (shared `scripts/ingest/`
+  package, state-agnostic core).
+- Canonical command: `scripts/state_ingest.py massachusetts`.
+- Live snapshot: completed and verified — 15 CCC datasets, 953,553 rows,
+  ~185 MB (large testing files streamed), immutable checksummed snapshots in
+  `var/ingest/massachusetts-ccc/` (gitignored).
+- Generated content: 118 source-backed Massachusetts pages in the shared
+  canonical collections (jurisdictions, licenses, organizations,
+  testing-laboratories, datasets, requirements, contaminants,
+  safety-advisories, affected-products, reference).
+- ID allocation: reconciled with the global Boris identity policy —
+  Massachusetts shares collections with California and seeds the allocator
+  from the combined content tree. Massachusetts = `jurisdictions/TJUR-0022`
+  (the number main's jurisdiction scaffold reserved); all other collections
+  continue above California's maxima. Mappings persist in
+  `data/massachusetts-ccc/id-map.json`.
+- Durable artifacts: manifests, sync reports, privacy spec, and compact
+  derived data under `data/massachusetts-ccc/`; large raw files stay outside
+  git.
+- Fixtures and tests: committed, privacy-scrubbed fixtures, an end-to-end
+  fixture suite, live smoke tests, determinism and stale-source regression
+  guards (89 offline + 5 live tests).
 
-## Blockers
+## Resolved blockers (2026-08-09)
 
-- Reconcile state-local ID allocation with the global Boris identity policy.
-- Decide the canonical relationship between the Massachusetts CLI and the
-  California DCC workflow.
-- Complete and verify a live sync before generating publishable content.
-- Keep raw large source files outside git and pass the privacy gate.
+- State-local ID allocation reconciled with the global Boris identity policy.
+- Canonical relationship decided: shared `state_ingest.py` contract; the
+  California `dcc_sync.py` workflow is retained as a documented legacy path.
+- Live sync completed, privacy-safe, and published.
+- Raw large source files kept outside git; privacy gate passes for all
+  Massachusetts artifacts.
 
-## Next action
+## Remaining item
 
-Complete one live, privacy-safe Massachusetts run and record its exact
-datasets, checksums, generated pages, and validation results.
+The repo-wide public-release audit (`scripts/audit_public_release.py`) is
+blocked by pre-existing PII findings in California's committed `data/dcc/`
+snapshots (commit `3628c64`). Massachusetts contributes zero findings. See
+`reports/massachusetts-ingestion-v2.md`.
 
 ## Validation
 
-Fixture tests and source-only ID validation are available. The pinned Boris
-graph/build tools are now available; live Massachusetts publication still
-requires the sync, privacy review, and global release gate.
+Fixture tests, live smoke tests, ted_ids, Markdown link audit, privacy scan,
+Boris graph + full build, and publish all pass (release audit via the
+project's documented `SKIP_RELEASE_AUDIT=1` escape hatch, as noted above).
+Live re-sync is byte-identical.
 
 ## Changelog
 

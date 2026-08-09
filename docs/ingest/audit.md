@@ -1,7 +1,12 @@
 # Ingestion Audit — Repository State vs. Task Assumptions
 
-> Historical audit snapshot from 2026-08-05. Current repository state and
-> active follow-up work are tracked in `docs/status.md`.
+> ⚠️ **Superseded (2026-08-09).** The audit was run against a stale baseline
+> and concluded that California DCC ingestion did not exist. The current
+> repository does contain the California pipeline (commit `3628c64`,
+> `scripts/dcc_ingest.py` / `dcc_sync.py`, `data/dcc/`, and the committed
+> California collections). Massachusetts v2 was built on top of that combined
+> tree — see [`reports/massachusetts-ingestion-v2.md`](../../reports/massachusetts-ingestion-v2.md).
+> Active follow-up work is tracked in `docs/status.md`.
 
 Status: **completed** · Date: 2026-08-05 · Author: Freebuff ingestion agent
 

@@ -4,7 +4,7 @@ title: "Ohio Medical Cannabis: Permitted Forms and Vaporization Rules"
 parent: law-and-use
 status: published
 tags: ["law", "ohio", "regulations", "vaporization"]
-relations: []
+relations: [relates_to=jurisdictions/TJUR-0036]
 summary: Legal rules governing authorized administration methods, combustion prohibitions, and vaporization standards in Ohio.
 ---
 

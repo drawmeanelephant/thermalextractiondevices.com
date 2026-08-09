@@ -71,6 +71,34 @@ class IdRegistryTestCase(unittest.TestCase):
             reloaded = NaturalKeyRegistry(path, PREFIXES, COLLECTIONS)
             self.assertEqual(reloaded.label_for("dataset", "x"), "Human label")
 
+    def test_seed_avoids_collision_with_existing_entities(self):
+        """A second state sharing the collections must not reuse numeric IDs
+        already taken by existing content (e.g. California's committed pages)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "id-map.json"
+            registry = NaturalKeyRegistry(path, PREFIXES, COLLECTIONS)
+            registry.seed_from_entity_ids([
+                "datasets/TDAT-0001", "datasets/TDAT-0004",   # existing CA datasets
+                "licenses/TLIC-0001",                          # existing CA license
+                "jurisdictions/TJUR-0001",                     # existing CA jurisdiction
+                "datasets",                                    # trunk; ignored
+                "not-an-id",                                   # malformed; ignored
+                "safety-advisories/TSAD-0009",                 # registered advisory type
+            ])
+            self.assertEqual(registry.id_for("dataset", "MA:licenses"), "datasets/TDAT-0005")
+            self.assertEqual(registry.id_for("license", "MA:lic:x"), "licenses/TLIC-0002")
+            # Registered types are bumped by seeding too.
+            self.assertEqual(registry.id_for("advisory", "MA:adv:y"), "safety-advisories/TSAD-0010")
+
+    def test_seed_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "id-map.json"
+            registry = NaturalKeyRegistry(path, PREFIXES, COLLECTIONS)
+            existing = ["datasets/TDAT-0001", "datasets/TDAT-0004"]
+            registry.seed_from_entity_ids(existing)
+            registry.seed_from_entity_ids(existing)
+            self.assertEqual(registry.id_for("dataset", "x"), "datasets/TDAT-0005")
+
 
 if __name__ == "__main__":
     unittest.main()

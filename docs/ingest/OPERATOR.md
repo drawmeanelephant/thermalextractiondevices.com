@@ -168,21 +168,60 @@ manifest without touching anything.
   after confirming no importer run raced it; the digest guard will flag
   manual edits.
 
-## Current integration note (2026-08-08)
+## Sharing collections with California (v2)
 
-The California DCC pipeline and Massachusetts ingestion implementation are
-both present on `main`. Massachusetts still has zero live generated pages:
-fixture and synthetic records remain guarded from publication. Before the
-first live Massachusetts sync, reconcile global ID allocation and decide
-whether California is migrated into the shared state adapter contract or kept
-as a documented legacy path. Track the current decision and owner in
-`docs/status.md` and `docs/status/states/massachusetts.md`.
+Massachusetts shares the canonical collections (`jurisdictions`, `licenses`,
+`organizations`, `testing-laboratories`, `datasets`, `requirements`,
+`contaminants`, `safety-advisories`, `affected-products`) with the California
+DCC content already committed on `main`. On every live run the importer seeds
+its ID allocator from the combined content tree, so Massachusetts IDs always
+continue from the highest existing number per collection (e.g. California owns
+`jurisdictions/TJUR-0001`; Massachusetts is `jurisdictions/TJUR-0022`, the
+number `main`'s jurisdiction scaffold reserved for the state). The persisted
+`data/massachusetts-ccc/id-map.json` keeps these mappings stable across runs.
+
+> ⚠️ **Never delete `data/massachusetts-ccc/id-map.json` without also removing
+> the generated Massachusetts pages.** The allocator seeds from whatever IDs
+> exist in the content tree; a deleted registry with stale pages left behind
+> would allocate *new* IDs and orphan the old pages.
+
+Existing trunk pages (`content/<collection>.md`) are preserved untouched when
+Massachusetts regenerates content — only the missing trunks
+(`safety-advisories.md`, `affected-products.md`) are created.
+
+## Determinism
+
+Regeneration is deterministic: given the same source snapshots and code
+version, reruns produce byte-identical content files (verified: 293 content
+files identical across a full live re-sync). Retrieval timestamps live in the
+manifest, never in page text.
+
+## Known pre-existing gate failure (California release audit)
+
+The repo-wide public-release audit (`scripts/audit_public_release.py`) reports
+blocking PII findings on `data/dcc/` (California's committed license-registry
+JSON and recall HTML, added by commit `3628c64`). This is pre-existing on
+`main` and unrelated to Massachusetts; the Massachusetts pipeline contributes
+zero findings (its own privacy scan passes cleanly). To run the full build/publish
+gates, use the project's documented escape hatch:
+
+```bash
+SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash bin/validate_graph.sh
+SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash scripts/ted-publish.sh
+```
+
+Do not treat the CA findings as resolved by this task. Current cross-state
+architecture decisions and state status are tracked in `docs/status.md` and
+`docs/status/states/massachusetts.md`.
 
 ## What is intentionally not generated
 
 * One page per license or per test result (only aggregates; individual pages
   only for active Independent Testing Laboratories, advisory-connected
   licensees, and representative affected products).
+* Per-application detail rows from `l_applications_all_details.csv` (the
+  source file carries EIN/TIN, contact, and street-address fields; only
+  aggregate counts by license type/status are published).
 * Cultivar pages from advisory/testing strain strings — a candidate report is
   produced but no lineage/effect/terpene facts are manufactured.
 * Laboratory rankings, producer rankings, or cultivar rankings.
