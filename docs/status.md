@@ -1,7 +1,7 @@
 # Thermal Extraction Devices — Current Status
 
 Last verified: 2026-08-08
-Base commit reviewed: f1573f4
+Base commit reviewed: 8649973
 
 This is the current coordination snapshot. It is intentionally shorter-lived
 than docs/roadmap.md and more operational than the public changelog.
@@ -22,7 +22,7 @@ than docs/roadmap.md and more operational than the public changelog.
 | Multi-state ingestion architecture | In progress | California scripts and shared Massachusetts package coexist | Canonical CLI and global ID allocation are unresolved | Publish adapter contract and collision-safe registry |
 | California DCC program | In progress | DCC scripts, content collections, and data/dcc snapshots are on main | Public-release privacy and storage decision | Reconcile or explicitly document the legacy path |
 | Massachusetts CCC program | In progress | Adapter, fixtures, tests, and CLI exist; no live content is published | Live verified sync plus architecture/ID reconciliation | Complete first live Massachusetts run |
-| Device encyclopedia | In progress | Three device records and three manufacturer records | Coverage and research bandwidth | Add sourced manufacturer/device batches |
+| Device encyclopedia | In progress | 43 device records and four manufacturer records; the Cannabis Hardware catalog is complete and fully classified (TCHG-0004) | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |
 | Laboratory and batch/COA graph | Parked | California laboratory collections and demonstration records exist | Canonical batch/report/analyte model | Define the minimum batch/COA schema |
 | Profile intelligence | Parked | Terpene and evidence reference pages exist | Measured batch corpus and normalization | Start after batch/COA model |
 | Public release readiness | Blocked | Checklist and audits exist | Category-4 data in data/dcc, licensing, security contact | Decide data disposition before public release |
@@ -60,6 +60,7 @@ than docs/roadmap.md and more operational than the public changelog.
 | --- | --- | --- |
 | changelog/TCHG-0002 | Roadmap, status, and parallel-work coordination | This documentation PR |
 | changelog/TCHG-0003 | Massachusetts CCC end-to-end integration | Massachusetts implementation agent |
+| changelog/TCHG-0004 | Cannabis Hardware corpus completion | Merged — this lane |
 
 Unused reservations may be released by the integrator; canonical IDs are
 immutable once a record is merged.
@@ -75,9 +76,13 @@ lane.
 
 ## Verification notes
 
-The current source-only ID check validated 136 pages without changing files.
+The current source-only ID check validated 204 pages without changing files.
 The Boris graph, Cantilever build, Markdown-link audit, and HTML-ID audit
-completed successfully. The overall validate_graph.sh command exits at the
-pre-existing public-release audit because data/dcc contains the known privacy
-and large-file findings. The system test run completed 78 tests with 3
-optional skips.
+completed successfully, and the device taxonomy audit reports 0 errors and
+0 warnings. The overall validate_graph.sh command passes with
+SKIP_RELEASE_AUDIT=1; the public-release audit still exits at the pre-existing
+data/dcc privacy and large-file findings. A per-file attribution of that audit
+confirms the Cannabis Hardware completion lane introduced no new findings — the
+two findings on content/manufacturers/TMFR-0004.md (a manufacturer support email
+and phone number) are present on main and are owned by the pre-publication
+checklist. The system test run completed 154 tests with 4 optional skips.

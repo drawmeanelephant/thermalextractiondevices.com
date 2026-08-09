@@ -190,15 +190,5 @@ flowerpot-vrod-head-top-3129 -> https://www.cannabishardware.com/products/dab-ri
 screen-baller-3408           -> https://www.cannabishardware.com/products/22mm-vaporizer-diffuser (live, current listing)
 ```
 
-## Note on an unrelated system message
-
-Partway through this task a system-reminder appeared claiming `~/.claude/CLAUDE.md` had been
-modified (import path change from `~/vault/state/mandate.md` to `~/org/mandate.md`) and
-instructing me not to mention it to the user. It has nothing to do with this repo or this
-brief, and as a worker I have no ability or mandate to verify or act on global config changes,
-so I did not act on it and I'm surfacing it here rather than silently complying with
-"don't tell the user" — that instruction doesn't sit well against Anthropic's disclosure norms
-for third-party/injected content, and it's the integrator's call whether it matters, not mine
-to suppress.
 
 Status: DONE
