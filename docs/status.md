@@ -1,7 +1,7 @@
 # Thermal Extraction Devices — Current Status
 
 Last verified: 2026-08-09
-Base commit reviewed: 2195db4
+Base commit reviewed: 41768af
 
 This is the current coordination snapshot. It is intentionally shorter-lived
 than docs/roadmap.md and more operational than the public changelog.
@@ -21,7 +21,7 @@ than docs/roadmap.md and more operational than the public changelog.
 | Roadmap and coordination | Complete | docs/roadmap.md, this file, and state lanes exist | None | Keep status current as work lands |
 | Multi-state ingestion architecture | In progress | California scripts and shared Massachusetts package coexist | Canonical CLI and global ID allocation are unresolved | Publish adapter contract and collision-safe registry |
 | California DCC program | In progress | DCC scripts, aggregate content, and the redacted data/dcc manifest/schema boundary are present | Private payload storage and historical cleanup remain; Massachusetts findings are out of scope for this pass | Keep the safe ingest boundary and reconcile the legacy path |
-| Massachusetts CCC program | In progress | Adapter, fixtures, tests, and CLI exist; no live content is published | Live verified sync plus architecture/ID reconciliation | Complete first live Massachusetts run |
+| Massachusetts CCC program | Complete | Live sync verified (15 datasets, ~954k rows); 118 source-backed pages published; IDs reconciled with the shared collections (Massachusetts = jurisdictions/TJUR-0022) | Repo-wide release audit remains blocked by historical and current-tree privacy findings outside this PR | Keep manifests current as CCC publishes |
 | Device encyclopedia | In progress | 43 device records and four manufacturer records; the Cannabis Hardware catalog is complete and fully classified (TCHG-0004) | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |
 | Laboratory and batch/COA graph | Parked | California laboratory collections and demonstration records exist | Canonical batch/report/analyte model | Define the minimum batch/COA schema |
 | Profile intelligence | Parked | Terpene and evidence reference pages exist | Measured batch corpus and normalization | Start after batch/COA model |
@@ -76,8 +76,10 @@ lane.
 
 ## Verification notes
 
-The hardening pass removes current California DCC raw/normalized payloads,
-redacts direct contacts and street addresses from in-scope content, and makes
-release audits fail closed. Validation must be rerun on the completed branch;
-historical DCC blobs and the explicitly excluded Massachusetts lane remain
+The Massachusetts CCC lane is complete on main; this publication-hardening PR
+does not modify its implementation, fixtures, tests, or state documents. The
+hardening pass removes current California DCC raw/normalized payloads, redacts
+direct contacts and street addresses from in-scope content, and makes release
+audits fail closed. Validation must be rerun on the completed branch;
+historical DCC blobs and the documented release-audit findings remain
 reported blockers. Do not use an audit bypass as a release result.
