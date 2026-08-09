@@ -40,3 +40,8 @@ data/dcc/cache/
 # Only small durable records under data/<jurisdiction>-ccc/ are committed.
 var/
 .tools/
+
+# --- Internal support & research ---
+SUPPORT/
+research/
+
