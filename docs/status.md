@@ -1,7 +1,7 @@
 # Thermal Extraction Devices — Current Status
 
-Last verified: 2026-08-09
-Base commit reviewed: 41768af
+Last verified: 2026-08-08
+Base commit reviewed: 8649973
 
 This is the current coordination snapshot. It is intentionally shorter-lived
 than docs/roadmap.md and more operational than the public changelog.
@@ -20,12 +20,12 @@ than docs/roadmap.md and more operational than the public changelog.
 | --- | --- | --- | --- | --- |
 | Roadmap and coordination | Complete | docs/roadmap.md, this file, and state lanes exist | None | Keep status current as work lands |
 | Multi-state ingestion architecture | In progress | California scripts and shared Massachusetts package coexist | Canonical CLI and global ID allocation are unresolved | Publish adapter contract and collision-safe registry |
-| California DCC program | In progress | DCC scripts, aggregate content, and the redacted data/dcc manifest/schema boundary are present | Private payload storage and historical cleanup remain; Massachusetts findings are out of scope for this pass | Keep the safe ingest boundary and reconcile the legacy path |
-| Massachusetts CCC program | Complete | Live sync verified (15 datasets, ~954k rows); 118 source-backed pages published; IDs reconciled with the shared collections (Massachusetts = jurisdictions/TJUR-0022) | Repo-wide release audit remains blocked by historical and current-tree privacy findings outside this PR | Keep manifests current as CCC publishes |
+| California DCC program | In progress | DCC scripts, content collections, and data/dcc snapshots are on main | Public-release privacy and storage decision | Reconcile or explicitly document the legacy path |
+| Massachusetts CCC program | Complete | Live sync verified (15 datasets, ~954k rows); 118 source-backed pages published; IDs reconciled with the shared collections (Massachusetts = jurisdictions/TJUR-0022) | Repo-wide release audit is blocked by pre-existing `data/dcc/` findings (see reports/massachusetts-ingestion-v2.md) | Keep manifests current as CCC publishes |
 | Device encyclopedia | In progress | 43 device records and four manufacturer records; the Cannabis Hardware catalog is complete and fully classified (TCHG-0004) | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |
 | Laboratory and batch/COA graph | Parked | California laboratory collections and demonstration records exist | Canonical batch/report/analyte model | Define the minimum batch/COA schema |
 | Profile intelligence | Parked | Terpene and evidence reference pages exist | Measured batch corpus and normalization | Start after batch/COA model |
-| Public release readiness | Blocked | Checklist, release gates, and hardening reports exist | Historical DCC payloads, licensing, security-process confirmation, and excluded Massachusetts findings | Complete maintainer decisions and history cleanup |
+| Public release readiness | Blocked | Checklist and audits exist | Category-4 data in data/dcc, licensing, security contact | Decide data disposition before public release |
 
 ## Immediate priorities
 
@@ -76,10 +76,25 @@ lane.
 
 ## Verification notes
 
-The Massachusetts CCC lane is complete on main; this publication-hardening PR
-does not modify its implementation, fixtures, tests, or state documents. The
-hardening pass removes current California DCC raw/normalized payloads, redacts
-direct contacts and street addresses from in-scope content, and makes release
-audits fail closed. Validation must be rerun on the completed branch;
-historical DCC blobs and the documented release-audit findings remain
-reported blockers. Do not use an audit bypass as a release result.
+The current source-only ID check validated 204 pages without changing files.
+The Boris graph, Cantilever build, Markdown-link audit, and HTML-ID audit
+completed successfully, and the device taxonomy audit reports 0 errors and
+0 warnings. The public-release audit still exits at the pre-existing
+data/dcc privacy and large-file findings. A per-file attribution of that audit
+confirms the Cannabis Hardware completion lane introduced no new findings. The
+system test run completed 154 tests with 4 optional skips.
+
+## Publication hardening update
+
+Verified 2026-08-09 against main commit `41768af` and the publication-
+hardening commits on this branch. This PR removes current California DCC raw
+and normalized payloads, redacts direct contacts and street addresses from
+in-scope content, removes internal provenance paths from published content,
+and makes release audits fail closed. It does not modify the Massachusetts
+implementation, fixtures, tests, or state documents. The remaining release
+blockers are reachable historical DCC blobs and metadata, the documented
+human-review findings, licensing/security-process decisions, and the
+repo-wide audit findings carried by the Massachusetts lane.
+
+Validation must be rerun on the completed branch. Do not use an audit bypass as
+a release result.
