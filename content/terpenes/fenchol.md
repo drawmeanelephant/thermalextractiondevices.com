@@ -17,7 +17,7 @@ summary: A bicyclic monoterpene alcohol with camphoraceous fennel-pine character
 | Preferred name | Fenchol (fenchyl alcohol) |
 | IUPAC name | 1,3,3-trimethylbicyclo[2.2.1]heptan-2-ol |
 | CAS number | 1632-73-1 |
-| PubChem CID | 15406 |
+| PubChem CID | 15406 [^4] |
 | Chemical family | Bicyclic Monoterpene Alcohol |
 | Molecular formula | C10H18O |
 | Molecular mass | 154.25 g/mol |
@@ -62,13 +62,15 @@ Used in traditional preparations of fennel and basil for digestive and respirato
 
 ## Cannabis laboratory results
 
-Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Reported at 0.028–1.09 mg/g dry weight in dried flower across chemotypes I–III in a pooled literature survey [^5]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 
 [^1]: PubChem CID 15406, *Fenchol* (boiling point 201.00–202.00 °C @ 760.00 mm Hg); The Good Scents Company, fenchol 1632-73-1; NIST WebBook SRD 69, CAS 1632-73-1. https://webbook.nist.gov/cgi/cbook.cgi?ID=C1632731
 [^2]: No primary source located during the editorial audit.
 [^3]: Research-corpus dossier (research/compounds/terpenes/fenchol/): TRPA1 antagonism, FFAR2 agonism, and antimicrobial/antioxidant assays conducted in vitro at micromolar concentrations or in essential-oil matrices; not translated to cannabis inhalation. Claims not independently re-verified in this wave.
+[^4]: PubChem CID 15406, *Fenchol* (CAS 1632-73-1). https://pubchem.ncbi.nlm.nih.gov/compound/15406
+[^5]: Chacon FT, Raup-Konsavage WM, Vrana KE, Kellogg JJ. Secondary Terpenes in *Cannabis sativa* L.: Synthesis and Synergy. *Biomedicines.* 2022;10(12):3142. doi:10.3390/biomedicines10123142. PMID 36551898.
 
 ## Related pages
 

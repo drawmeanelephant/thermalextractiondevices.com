@@ -15,9 +15,13 @@ summary: A volatile monoterpene found in cannabis, hops, lemongrass, and bay lea
 | Property | Value |
 | --- | --- |
 | Preferred name | β-Myrcene |
+| IUPAC name | 7-methyl-3-methylideneocta-1,6-diene |
 | CAS number | 123-35-3 |
+| PubChem CID | 31253 [^4] |
 | Chemical family | Acyclic Monoterpene |
 | Molecular formula | C10H16 |
+| Molecular mass | 136.23 g/mol |
+| Stereochemistry | No chiral centers |
 
 ## Aroma and sensory character
 
@@ -60,13 +64,15 @@ Widely cited in folk practices (e.g., lemongrass tea) for relaxing qualities.
 
 ## Cannabis laboratory results
 
-Refer to batch-specific COA records under [Lab Results](../lab-results.md) where β-myrcene quantitations are recorded.
+Frequently the dominant monoterpene in cannabis flower: measured at 5.85–8.62 mg/g dry weight in two US hemp cultivars by validated GC-MS of hydrodistilled oil, and among the dominant terpenes across chemotypes [^5]. Refer to batch-specific COA records under [Lab Results](../lab-results.md) where β-myrcene quantitations are recorded.
 
 ## Sources
 
 [^1]: NIST Chemistry WebBook, SRD 69, *β-Myrcene* (CAS 123-35-3) phase-change data: normal boiling point 440.2 K (≈167 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C123353&Mask=4
 [^2]: Rao VSN, Menezes AMS, Viana GSB. Effect of myrcene on nociception in mice. *J Pharm Pharmacol.* 1990;42(12):877–878. doi:10.1111/j.2042-7158.1990.tb07046.x. PMID 1983154.
 [^3]: McDougall JJ, McKenna M. Anti-Inflammatory and Analgesic Properties of the Cannabis Terpene Myrcene in Rat Adjuvant Monoarthritis. *Int J Mol Sci.* 2022;23(14):7891. doi:10.3390/ijms23147891.
+[^4]: PubChem CID 31253, *β-Myrcene* (CAS 123-35-3). https://pubchem.ncbi.nlm.nih.gov/compound/31253
+[^5]: Joy N, et al. A Validated GC-MS Method for Major Terpenes Quantification in *Cannabis sativa* L. Essential Oil. 2025. PMC12670203; PMID 40042239; Booth JK, et al. Terpene synthases and terpene variation in *Cannabis sativa*. *Plant Physiol.* 2020;184(1):130–147. PMID 32591428.
 
 ## Related pages
 

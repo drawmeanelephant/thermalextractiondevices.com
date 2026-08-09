@@ -1,6 +1,13 @@
 # Thermal Extraction Devices — Research Corpus
 
-Normalized, provenance-preserving research library for **thermalextractiondevices.com**. Built from 195 Perplexity deep-research Markdown exports and structured artifacts (research date: 2026-08-08).
+Normalized, provenance-preserving research library for **thermalextractiondevices.com**. Built from 195 research records — 142 Perplexity deep-research exports, 44 structured artifacts, and 9 archived-redundant files (research date: 2026-08-08).
+
+> **Packaging note:** only `README.md` and the `_index/` files below are tracked in git. The
+> 195 corpus files themselves (e.g., `compounds/terpenes/<slug>/`, `devices/…`) are kept
+> out-of-band in the main worktree and hash-verified against `_index/manifest.jsonl`; see
+> `reports/research-corpus-quality-audit.md` (finding M-2) and `reports/terpene-research-audit.md`.
+> Content pages that cite `research/…` paths are referencing this corpus, which downstream
+> agents must mirror from the main worktree to resolve.
 
 ## Directory conventions
 
