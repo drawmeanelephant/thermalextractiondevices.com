@@ -41,7 +41,8 @@ data/dcc/cache/
 var/
 .tools/
 
-# --- Internal support & research ---
-SUPPORT/
-research/
+# Research corpus bulk files (only README.md and _index/ are committed)
+research/*
+!research/README.md
+!research/_index/
 
