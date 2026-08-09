@@ -29,6 +29,9 @@ Before executing any substantive changes:
    * `metadata/id-policy.json`
 3. When editing or creating content, inspect nearby records to maintain voice and layout consistency.
 4. Preserve unrelated work in progress.
+5. Read `docs/status.md` for the current operational state before changing project architecture, ingestion, publishing, or Boris integration.
+6. When changing Boris integration, validation wrappers, relationship rendering, ID machinery, or project-local compiler workarounds, read `reports/boris-workaround-retirement-map.md` before proposing or deleting machinery.
+7. Historical dogfood reports record evidence from the Boris version tested at the time. Do not treat an old Boris limitation as a current compiler contract without reproducing it against the Boris version currently in use.
 
 ---
 
@@ -67,6 +70,7 @@ Boris enforces a **closed and constrained** frontmatter schema.
 
 * **No Framework Substitutions**: Do not replace or supplement Boris with Astro, Next.js, Hugo, Eleventy, Gatsby, Vite, React, Vue, Svelte, or any other static site generator.
 * **Archival & Technical Voice**: Content updates must respect the high-precision thermal engineering archive tone and documentation standards.
+* Prefer deleting or shrinking a TED workaround when Boris gains the generic primitive that caused it. Do not move TED-specific regulatory, evidence, provenance, scientific, or epistemic semantics into Boris merely to reduce project-local code.
 
 ---
 

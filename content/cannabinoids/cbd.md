@@ -106,7 +106,7 @@ In vitro studies report CBD modulation of TRPV1, 5-HT1A, CB1 (negative allosteri
 
 ## Related pages
 
-- [Cannabinoids Index](../cannabinoids.md)
-- [CBDA Record](cbda.md) (direct acid precursor)
-- [CBGA Record](cbga.md) (biosynthetic precursor)
-- [THCA Record](thca.md) (competitive biosynthetic branch)
+- [Cannabinoids Index](../cannabinoids.html)
+- [CBDA Record](TCBN-0003.html) (direct acid precursor)
+- [CBGA Record](TCBN-0006.html) (biosynthetic precursor)
+- [THCA Record](TCBN-0007.html) (competitive biosynthetic branch)

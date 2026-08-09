@@ -11,7 +11,7 @@ summary: "Jurisdiction profiles: verified baseline pages for all 50 U.S. states,
 
 Cannabis regulation and public-data profiles for United States states, territories, the federal context, and international countries.
 
-Each profile records the responsible authority, program status (adult use, medical, home cultivation, hemp), the official regulatory data surface, and source provenance with retrieval dates. **Not legal advice** — see the shared [jurisdiction disclaimer](includes/jurisdiction-legal-disclaimer.md) note on every page.
+Each profile records the responsible authority, program status (adult use, medical, home cultivation, hemp), the official regulatory data surface, and source provenance with retrieval dates. **Not legal advice** — see the shared jurisdiction disclaimer note on every page.
 
 Satellite records in this collection follow the form identifier schema `jurisdictions/TJUR-XXXX`. Content quality status is tracked in the internal report `reports/jurisdiction-quality-status.md` (project management only; not a legal rating). Refresh scheduling is tracked in `reports/jurisdiction-refresh-queue.md`.
 
