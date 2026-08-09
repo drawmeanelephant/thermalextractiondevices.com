@@ -68,7 +68,7 @@ Reported at 0.028–1.09 mg/g dry weight in dried flower across chemotypes I–I
 
 [^1]: PubChem CID 15406, *Fenchol* (boiling point 201.00–202.00 °C @ 760.00 mm Hg); The Good Scents Company, fenchol 1632-73-1; NIST WebBook SRD 69, CAS 1632-73-1. https://webbook.nist.gov/cgi/cbook.cgi?ID=C1632731
 [^2]: No primary source located during the editorial audit.
-[^3]: Research-corpus dossier (research/compounds/terpenes/fenchol/): TRPA1 antagonism, FFAR2 agonism, and antimicrobial/antioxidant assays conducted in vitro at micromolar concentrations or in essential-oil matrices; not translated to cannabis inhalation. Claims not independently re-verified in this wave.
+[^3]: No publicly reachable primary source is currently cited for the remaining details in this footnote. The details remain approximate or unverified and are not treated as verified archive facts.
 [^4]: PubChem CID 15406, *Fenchol* (CAS 1632-73-1). https://pubchem.ncbi.nlm.nih.gov/compound/15406
 [^5]: Chacon FT, Raup-Konsavage WM, Vrana KE, Kellogg JJ. Secondary Terpenes in *Cannabis sativa* L.: Synthesis and Synergy. *Biomedicines.* 2022;10(12):3142. doi:10.3390/biomedicines10123142. PMID 36551898.
 

@@ -2,16 +2,13 @@
 
 ## Reporting a vulnerability
 
-**Pre-publication note:** this repository is not yet public. Until it is,
-route reports through the repository owner's private channel. The contact
-address below is a **placeholder** — it must be replaced with a real,
-monitored mailbox before public release (blocker in the pre-publication
-checklist).
+This repository is public. Use GitHub's private vulnerability-reporting flow
+from the repository's **Security** tab when it is available. Do not include
+secrets or sensitive exploit details in a public issue.
 
 | Channel | Address / route |
 | --- | --- |
-| Private security mailbox (placeholder — REPLACE) | `security@example.com` |
-| GitHub private advisory (once public) | repository → Security → *Report a vulnerability* |
+| Private security report | repository → Security → *Report a vulnerability* |
 
 Please do **not** open a public issue for a security defect. Provide:
 
@@ -19,8 +16,9 @@ Please do **not** open a public issue for a security defect. Provide:
 2. The affected file(s)/commit(s) and reproduction steps.
 3. Any suggested fix.
 
-Reports are acknowledged within 5 business days. Non-security issues belong
-in the issue tracker.
+There is no published response-time SLA. Non-security issues belong in the
+issue tracker; if private reporting is unavailable, contact the repository
+owner through an authenticated GitHub channel before disclosing details.
 
 ## Supported versions
 

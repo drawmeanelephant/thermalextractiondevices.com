@@ -16,7 +16,6 @@ env:
   BORIS_REPOSITORY: https://github.com/drawmeanelephant/boris.git
   BORIS_BRANCH: afterparty
   BORIS_JOBS: 1
-  SKIP_RELEASE_AUDIT: 1
 
 jobs:
   build-and-deploy:

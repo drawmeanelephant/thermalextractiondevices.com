@@ -4,7 +4,7 @@ Scope: locate and address industrial-process placeholder content (closed-loop re
 
 ## Disposition rule applied
 
-Because `status: draft` still renders pages into the published HTML site (verified: the pre-existing `guides/TGDE-0004` draft page is emitted to `dist/`), "quarantine as draft" is not a viable way to stop placeholder pages from being published. The in-repo ways to stop publication are **deletion** or **replacement with in-scope content**.
+Because `status: draft` still renders pages into the published HTML site, "quarantine as draft" is not a viable way to stop placeholder pages from being published. The in-repo ways to stop publication are **deletion** or **replacement with in-scope content**. The former `guides/TGDE-0004` backlog fixture was subsequently deleted and its ID retired.
 
 **ID-allocation constraint discovered during execution:** `scripts/ted_ids.py` anchors each collection's canonical sequence on its prefix-matched anchor file (e.g., `guides/TGDE-0001.md`, `reference/TREF-0001.md`, `devices/TED-0001.md`). Deleting an anchor file silently renumbers the collection's remaining satellites. For collections with prefix-matched satellites still present, the anchor was therefore **replaced with genuine in-scope content** rather than deleted. Collections whose only satellite was the anchor (specs, safety) deleted cleanly with no renumbering.
 
@@ -37,7 +37,7 @@ Deleting `TSPEC-0001` and `TSAFE-0001` leaves numeric gaps in those sequences (s
 
 ## Disposition of remaining `status: draft` pages
 
-- `guides/TGDE-0004` (Manufacturer Research Queue): retained — it is a genuine, in-scope editorial backlog item, not an industrial placeholder, and is explicitly labeled as a draft/backlog page.
+- `guides/TGDE-0004` (Manufacturer Research Queue): retired during publication hardening because an editorial backlog is not a public guide; the identifier must not be reused.
 
 ## Not deleted (in-scope placeholders replaced with sourced content)
 

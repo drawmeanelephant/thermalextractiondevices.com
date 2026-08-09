@@ -58,7 +58,9 @@ from ..schema import (
     SchemaSpec,
     check_date_regression,
     check_duplicate_keys,
+    check_fully_duplicate_rows,
     check_row_collapse,
+    check_source_staleness,
     parse_csv_bytes,
     read_csv_rows,
     stream_csv,
@@ -157,6 +159,7 @@ ID_PREFIXES = {
     "jurisdiction": "TJUR", "license": "TLIC", "organization": "TORG",
     "testing_laboratory": "TSTL", "contaminant": "TCNT", "dataset": "TDTS",
     "requirement": "TREQ", "safety_advisory": "TSAD", "affected_product": "TAFP",
+    "reference": "TREF",
 }
 
 ID_COLLECTIONS = {
@@ -164,7 +167,7 @@ ID_COLLECTIONS = {
     "organization": "organizations", "testing_laboratory": "testing-laboratories",
     "contaminant": "contaminants", "dataset": "datasets",
     "requirement": "requirements", "safety_advisory": "safety-advisories",
-    "affected_product": "affected-products",
+    "affected_product": "affected-products", "reference": "reference",
 }
 
 
@@ -231,6 +234,7 @@ class DatasetDef:
     required_columns: list = field(default_factory=list)
     column_types: dict = field(default_factory=dict)
     key_columns: list = field(default_factory=list)
+    duplicate_key_policy: str = "fail"
     disclaimer: str = DISCLAIMER
     clarification: str = ""
     normalizer: str = "identity"
@@ -243,6 +247,7 @@ class DatasetDef:
             required=self.required_columns,
             column_types=self.column_types,
             key_columns=self.key_columns,
+            duplicate_key_policy=self.duplicate_key_policy,
         )
 
     def check_headers(self, headers: list[str]) -> None:
@@ -336,7 +341,13 @@ _define(DatasetDef(
     large=True,
     required_columns=["DATE", "ANALYTE/TEST ID", "RESULT", "TESTPASSED"],
     column_types={"DATE": "date", "RESULT": "number"},
-    key_columns=["DATE", "METRC ID", "ANALYTE/TEST ID", "LAB PERFORMING THE TEST", "RESULT"],
+    # The CCC dataset repeats (package, analyte, value) rows for distinct
+    # source tags, so row identity requires METRC SOURCE TAG and the
+    # NOTES/COMMENTS carrier (the Commission stores "<LOD (...)" there while
+    # RESULT collapses to 0.0). With these columns the key is a true primary
+    # key; duplicate keys fail closed instead of being warned away.
+    key_columns=["DATE", "METRC ID", "ANALYTE/TEST ID", "LAB PERFORMING THE TEST",
+                 "RESULT", "METRC SOURCE TAG", "NOTES/COMMENTS"],
     normalizer="testing",
     clarification="Data updated 2026-03-19 per CCC testing-data update notice.",
 ))
@@ -355,7 +366,10 @@ _define(DatasetDef(
     large=True,
     required_columns=["Date", "Analyte/Test ID", "Result", "TestPassed"],
     column_types={"Date": "date", "Result": "number"},
-    key_columns=["Date", "METRC ID", "Analyte/Test ID", "Lab performing the test", "Result"],
+    # Same row-identity requirement as testing_2025: distinct source tags and
+    # test IDs distinguish otherwise identical rows, making this a true key.
+    key_columns=["Date", "METRC ID", "Analyte/Test ID", "Lab performing the test",
+                 "Result", "METRC source tag", "Test ID"],
     normalizer="testing_2024",
     clarification="File republished 2026-04-15 (filename suffix 20260415).",
 ))
@@ -452,6 +466,26 @@ _define(DatasetDef(
     description="Diverse Business Enterprise application totals by industry.",
     required_columns=["INDUSTRY", "DBE", "TOTAL"],
     normalizer="identity",
+))
+_define(DatasetDef(
+    slug="applications_details",
+    title="Marijuana Establishment License Applications - Approved, Pending, Re-Opened",
+    csv_url=_res("l_applications_all_details", "csv"),
+    json_url=_res("l_applications_all_details", "json"),
+    format="csv",
+    reporting_period="point-in-time snapshot",
+    source_last_updated="2026-07 (per catalog)",
+    description=(
+        "Application detail rows (approved, pending, re-opened) for adult-use "
+        "marijuana establishment licenses. The source file also carries "
+        "EIN/TIN, business contact, and street-address fields; those columns "
+        "are excluded from every generated page and never published. Only "
+        "aggregate counts by license type and status are rendered."
+    ),
+    required_columns=["BUSINESS_NAME", "LICENSE_NUMBER", "LICENSE_TYPE", "LICENSE_STATUS"],
+    key_columns=["LICENSE_NUMBER"],
+    normalizer="applications_details",
+    clarification="Aggregate application totals are also published as a_applications_all.",
 ))
 _define(DatasetDef(
     slug="agents_gender",
@@ -558,6 +592,20 @@ def normalize_license_mtc(row: dict) -> dict:
     out["program"] = _clean(row.get("INDUSTRY"))
     out["status"] = _clean(row.get("LICENSE_STATUS"))
     out["license_type"] = _clean(row.get("LICENSE_TYPE"))
+    return out
+
+
+def normalize_applications_details(row: dict) -> dict:
+    """Normalize one application-detail row (PII-laden source file).
+
+    The normalized artifact keeps source fields for fidelity (working dir
+    only); generated pages publish only the derived public fields below.
+    """
+    out = dict(row)
+    out["legal_name"] = _clean(row.get("BUSINESS_NAME"))
+    out["license_number"] = _clean(row.get("LICENSE_NUMBER"))
+    out["license_type"] = _clean(row.get("LICENSE_TYPE"))
+    out["status"] = _clean(row.get("LICENSE_STATUS") or row.get("APPROVED_LICENSE_STAGE"))
     return out
 
 
@@ -697,6 +745,7 @@ NORMALIZERS = {
     "identity": lambda row: dict(row),
     "license": normalize_license,
     "license_mtc": normalize_license_mtc,
+    "applications_details": normalize_applications_details,
     "testing": normalize_testing,
     "testing_2024": normalize_testing_2024,
     "sales": normalize_sales,
@@ -831,6 +880,14 @@ def aggregate_simple(rows: list[dict], *_, **__) -> dict:
     return {"rows": len(rows), "data": rows}
 
 
+def aggregate_applications_details(rows: list[dict]) -> dict:
+    """Counts only; the source rows carry PII and are never rendered."""
+    by_type = Counter(r.get("license_type") or "Unknown" for r in rows)
+    by_status = Counter(r.get("status") or "Unknown" for r in rows)
+    return {"rows": len(rows), "by_type": dict(by_type.most_common()),
+            "by_status": dict(by_status.most_common())}
+
+
 AGGREGATORS = {
     "licenses": aggregate_licenses,
     "testing_2025": aggregate_testing,
@@ -840,6 +897,7 @@ AGGREGATORS = {
     "mtc_sales": aggregate_sales,
     "price_per_gram": aggregate_price,
     "plant_activity": aggregate_activity,
+    "applications_details": aggregate_applications_details,
 }
 
 # ---------------------------------------------------------------------------
@@ -906,19 +964,64 @@ def discover_advisory_urls(fetcher) -> list[str]:
     return urls
 
 
+def _sentence_window(text: str, index: int, *, max_before: int = 300, max_after: int = 480) -> str:
+    """Return a clean text window around ``index``, bounded by sentence
+    boundaries so published extracts never start or end mid-word."""
+    if not text or index < 0:
+        return ""
+    start = 0
+    for sep_pos in (text.rfind(". ", 0, index), text.rfind("! ", 0, index),
+                    text.rfind("? ", 0, index), text.rfind("\n", 0, index)):
+        if sep_pos > start:
+            start = sep_pos + 2
+    if index - start > max_before:
+        start = max(0, index - max_before)
+        space = text.rfind(" ", 0, start)
+        if space >= 0:
+            start = space + 1
+    end = len(text)
+    for sep in (". ", "! ", "? "):
+        pos = text.find(sep, index + 1)
+        if 0 <= pos < end:
+            end = pos + 2
+    if end - index > max_after:
+        end = index + max_after
+    return text[start:end].strip()
+
+
 def parse_advisory_page(html: str, url: str) -> dict:
     """Parse one advisory post into a structured record."""
     body = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S)
     text = _html.unescape(re.sub(r"<[^>]+>", " ", body))
     text = re.sub(r"\s+", " ", text).strip()
 
-    # Preserve the Commission's exact term in the archived title.
-    title_match = re.search(r"Public Health and Safety Advisory(?:\s*[:|-]\s*)?(.*?)(?:\||$)", text)
-    title = _clean(title_match.group(0)) if title_match else url.rsplit("/", 2)[-2]
+    # Anchor on the page's own <h1> so titles and dates never come from the
+    # nav or "related posts" sections that also mention other advisories.
+    h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", body, flags=re.S)
+    h1_text = _clean(_html.unescape(re.sub(r"<[^>]+>", " ", h1_match.group(1)))) if h1_match else ""
+    if "public health and safety advisory" in h1_text.lower():
+        idx = h1_text.lower().find("public health and safety advisory")
+        title = h1_text[idx:]
+        last_pipe = title.rfind("|")
+        if last_pipe >= 0:
+            title = title[:last_pipe].strip()
+    else:
+        title_match = re.search(r"Public Health and Safety Advisory(?:\s*[:|-]\s*)?(.*?)(?:\||$)", text)
+        title = _clean(title_match.group(0)) if title_match else url.rsplit("/", 2)[-2]
+    title = _clean(title)
 
     date_match = re.search(r"\|\s*(January|February|March|April|May|June|July|August|"
-                           r"September|October|November|December)\s+\d{1,2},\s+\d{4}", text)
+                           r"September|October|November|December)\s+\d{1,2},\s+\d{4}", h1_text) \
+        or re.search(r"\|\s*(January|February|March|April|May|June|July|August|"
+                     r"September|October|November|December)\s+\d{1,2},\s+\d{4}", text)
     advisory_date = parse_date(date_match.group(0).lstrip("| ").strip()) if date_match else None
+
+    # Keyword searches below operate on the article body only (everything
+    # after </h1>), so nav boilerplate and related-post lists never match.
+    h1_end = body.find("</h1>")
+    article = body[h1_end + 5:] if h1_end >= 0 else body
+    article = _html.unescape(re.sub(r"<[^>]+>", " ", article))
+    article = re.sub(r"\s+", " ", article).strip()
 
     ranges = {}
     for label, pattern in (("sold_between", r"sold between\s+(.+?)(?:\.|;)"),
@@ -930,30 +1033,25 @@ def parse_advisory_page(html: str, url: str) -> dict:
                 ranges[label] = [d.isoformat() for d in parsed]
 
     concern = ""
-    lowered = text.lower()
+    lowered = article.lower()
     # Prefer the substantive sentence over nav/title boilerplate.
     for phrase in ("acceptable testing limits", "summary suspension order",
                    "unapproved pesticides", "presence of yeast and mold"):
         index = lowered.find(phrase)
         if index >= 0:
-            concern = text[max(0, index - 160): index + 380].strip()
+            concern = _sentence_window(article, index)
             break
     if not concern:
         for keyword in ("contaminated", "potentially contaminated"):
-            index = lowered.find(keyword, 1500)
+            index = lowered.find(keyword)
             if index >= 0:
-                concern = text[max(0, index - 120): index + 320].strip()
+                concern = _sentence_window(article, index)
                 break
-    # Trim a leading fragment so the published concern starts at a sentence.
-    if concern:
-        boundary = concern.rfind(". ", 0, 120)
-        if boundary >= 0:
-            concern = concern[boundary + 2:].strip()
 
     instructions = ""
-    index = text.lower().find("destroy")
+    index = article.lower().find("destroy")
     if index >= 0:
-        instructions = text[max(0, index - 160): index + 340].strip()
+        instructions = _sentence_window(article, index)
 
     products = []
     licensees = []
@@ -1093,6 +1191,15 @@ class MassachusettsSync:
             run.change = change.summary
 
             if run.status == "fetched":
+                # Prefer the source file's own Last-Modified header (the value
+                # actually served by the CCC) and fail closed if an older
+                # upstream copy would replace a newer verified snapshot.
+                source_updated = result.last_modified or spec.source_last_updated
+                warnings.extend(check_source_staleness(
+                    (prior or {}).get("source_last_updated"),
+                    source_updated,
+                    has_clarification=bool(spec.clarification),
+                ))
                 self.store.record_snapshot(
                     slug, url,
                     raw_sha256=raw_sha,
@@ -1101,7 +1208,7 @@ class MassachusettsSync:
                     size_bytes=result.size_bytes,
                     retrieved_at=utc_now(),
                     reporting_period=spec.reporting_period,
-                    source_last_updated=spec.source_last_updated,
+                    source_last_updated=source_updated,
                     disclaimer=spec.disclaimer,
                     clarification=spec.clarification,
                     row_count=len(normalized_rows),
@@ -1167,7 +1274,13 @@ class MassachusettsSync:
         spec.check_headers(headers)
         warnings.extend(spec.check_types(raw_rows))
         # Duplicate-primary-key guard runs on raw rows so source column names apply.
-        check_duplicate_keys(raw_rows, spec.key_columns, spec.slug)
+        warnings.extend(check_duplicate_keys(
+            raw_rows, spec.key_columns, spec.slug,
+            policy=spec.duplicate_key_policy,
+        ))
+        if spec.duplicate_key_policy == "warn":
+            # Non-keyed large datasets: exact full-row repeats still fail.
+            warnings.extend(check_fully_duplicate_rows(raw_rows, spec.slug))
         prior = self.store.latest_snapshot(spec.slug) or {}
         warnings.extend(check_row_collapse(spec.schema_spec(), len(normalized_rows),
                                            prior.get("row_count")))
@@ -1203,10 +1316,19 @@ class MassachusettsSync:
             fixture = self.fetch.fixture_root / "advisories.json"
             if fixture.is_file():
                 return json.loads(fixture.read_text(encoding="utf-8"))
-        urls = discover_advisory_urls(self.fetch)
+        # The advisories portal is an HTML page; the default CSV/JSON fetcher
+        # rejects it by design, so use an HTML-capable fetcher for discovery.
+        fetcher = self.fetch
+        if not isinstance(fetcher, FixtureFetcher):
+            fetcher = Fetcher(
+                allow_html=True,
+                timeout=getattr(self.fetch, "timeout", 60),
+                user_agent=getattr(self.fetch, "user_agent", None) or DEFAULT_USER_AGENT,
+            )
+        urls = discover_advisory_urls(fetcher)
         advisories = []
         for url in urls:
-            html = self.fetch.fetch_text(url)
+            html = fetcher.fetch_text(url)
             advisories.append(parse_advisory_page(html, url))
         return advisories
 
@@ -1222,8 +1344,9 @@ class MassachusettsSync:
         self._advisories = advisories
         self._preallocate_ids(advisories)
         pages: list[str] = []
+        # The jurisdiction page filters its relations by target-file existence,
+        # so it is written last, after every entity it links to exists.
         pages += self._write_trunks()
-        pages += self._write_jurisdiction_pages()
         pages += self._write_dataset_pages()
         pages += self._write_licensing_pages()
         pages += self._write_lab_pages()
@@ -1232,8 +1355,9 @@ class MassachusettsSync:
         pages += self._write_requirement_pages()
         pages += self._write_advisory_pages(advisories)
         pages += self._write_affected_product_pages(advisories)
-        pages += self._write_privacy_spec_page()
-        pages += self._write_landscape_page(advisories)
+        pages += self._write_jurisdiction_pages()
+        pages.append(self._write_privacy_spec_page())
+        pages.append(self._write_landscape_page(advisories))
         self._write_durable_artifacts(advisories)
         report.pages_generated = list(dict.fromkeys(pages))
         return pages
@@ -1245,6 +1369,7 @@ class MassachusettsSync:
         for slug in (
             "licenses", "testing_2024", "testing_2025", "sales_gross",
             "sales_deliveries", "price_per_gram", "mtc_sales", "plant_activity",
+            "applications_details",
         ):
             spec = DATASETS[slug]
             self._entity_id("dataset", f"MA:dataset:{slug}", label=spec.title)
@@ -1316,6 +1441,15 @@ class MassachusettsSync:
                     body: str) -> str:
         path = self.content_root / rel_path
         path.parent.mkdir(parents=True, exist_ok=True)
+        if path.is_file():
+            existing = path.read_text(encoding="utf-8", errors="replace")
+            existing_id = re.search(r"^id:\s*(.+?)\s*$", existing, flags=re.M)
+            if existing_id and existing_id.group(1).strip().strip('"') != entity_id:
+                raise IngestError(
+                    f"refusing to overwrite {rel_path}: existing id "
+                    f"{existing_id.group(1).strip()!r} differs from {entity_id!r} "
+                    "(would clobber non-Massachusetts content)"
+                )
         fm = frontmatter(title=title, entity_id=entity_id, parent=parent,
                          tags=tags, relations=relations)
         path.write_text(fm + "\n\n" + body + "\n", encoding="utf-8")
@@ -1323,16 +1457,26 @@ class MassachusettsSync:
 
     # ----------------------------------------------------------------- trunks
     def _write_trunks(self) -> list[str]:
-        """Trunk pages live at the content root (``content/<collection>.md``)."""
+        """Trunk pages live at the content root (``content/<collection>.md``).
+
+        Existing trunk pages are preserved untouched: the canonical collections
+        are shared with California and editorial content, and their trunk copy
+        already describes the archive. Only trunks that do not exist yet
+        (``safety-advisories``, ``affected-products``) are created.
+        """
         pages = []
         for collection, (title, description, prefix) in TRUNKS.items():
             rel = f"{collection}.md"
+            if (self.content_root / rel).is_file():
+                continue
+            ma_entity = self._entity_id("jurisdiction", "massachusetts",
+                                        label="Massachusetts")
             body = (
                 h1(title) + "\n\n" + description + "\n\n"
                 + f"Records in this collection use the form identifier schema "
                   f"`{collection}/{prefix}-XXXX`."
                 + "\n\n> Massachusetts data is compiled by the state ingestion "
-                  "pipeline; see [[jurisdictions/TJUR-0001|Massachusetts]] for provenance."
+                  f"pipeline; see [[{ma_entity}|Massachusetts]] for provenance."
             )
             self._write_page(rel, entity_id=collection, title=title, parent=None,
                              tags=[collection, "trunk"], relations=[], body=body)
@@ -1401,6 +1545,7 @@ class MassachusettsSync:
         ordering = [
             "licenses", "testing_2024", "testing_2025", "sales_gross",
             "sales_deliveries", "price_per_gram", "mtc_sales", "plant_activity",
+            "applications_details",
         ]
         for slug in ordering:
             pages.append(self._write_dataset_record_page(slug))
@@ -1468,6 +1613,15 @@ class MassachusettsSync:
         elif slug == "plant_activity":
             lines += [table(["Facility type", "Months recorded"],
                             [[k, str(len(v))] for k, v in aggregates.get("by_facility_month", {}).items()])]
+        elif slug == "applications_details":
+            lines += [table(["License type", "Applications"],
+                            [[k, str(v)] for k, v in aggregates.get("by_type", {}).items()])]
+            lines += ["", table(["Status", "Applications"],
+                                [[k, str(v)] for k, v in aggregates.get("by_status", {}).items()])]
+            lines.append(
+                "\nOnly aggregate counts are published; the source file's "
+                "EIN/TIN, contact, and street-address fields are excluded."
+            )
         return lines
 
     def _write_corrections_page(self) -> str:
@@ -2088,8 +2242,11 @@ class MassachusettsSync:
 
     # ------------------------------------------------------------ privacy spec
     def _write_privacy_spec_page(self) -> str:
-        entity = "reference/TREF-0004"
-        rel = "reference/TREF-0004.md"
+        entity = self._entity_id(
+            "reference", "MA:ref:privacy-spec",
+            label="Massachusetts Ingestion: Privacy and Excluded-Field Specification",
+        )
+        rel = f"reference/{entity.rsplit('/', 1)[-1]}.md"
         body = [h1("Massachusetts Ingestion: Privacy and Excluded-Field Specification")]
         body.append(
             "Generated pages from Massachusetts official data publish only "

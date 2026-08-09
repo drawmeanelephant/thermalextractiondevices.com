@@ -7,7 +7,7 @@ tags: ["safety", "hazards", "compliance"]
 
 # Safety & Compliance
 
-Operational safety guidance for thermal extraction devices, including handling, cleaning, and avoiding thermal injury or combustion hazards.
+Source-supported safety guidance for thermal extraction devices, including handling, cleaning, and avoiding thermal injury or combustion hazards. No record here should be read as a pressure rating, operating guarantee, or substitute for the current manufacturer or regulator notice.
 
 Records follow the form identifier schema `safety/TSAFE-XXXX`.
 

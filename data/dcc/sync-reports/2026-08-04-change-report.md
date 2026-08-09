@@ -8,7 +8,9 @@
 
 - Guards tripped: 0
 
-No guards tripped; pipeline proceeded to publication.
+No guards tripped during the source refresh. Raw and normalized payloads were
+handled as private, unpublished artifacts; the repository publication boundary
+retains only aggregate content plus the manifest, schema note, and this report.
 
 ## Dataset changes vs previous snapshot
 

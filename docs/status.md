@@ -21,7 +21,7 @@ than docs/roadmap.md and more operational than the public changelog.
 | Roadmap and coordination | Complete | docs/roadmap.md, this file, and state lanes exist | None | Keep status current as work lands |
 | Multi-state ingestion architecture | In progress | California scripts and shared Massachusetts package coexist | Canonical CLI and global ID allocation are unresolved | Publish adapter contract and collision-safe registry |
 | California DCC program | In progress | DCC scripts, content collections, and data/dcc snapshots are on main | Public-release privacy and storage decision | Reconcile or explicitly document the legacy path |
-| Massachusetts CCC program | In progress | Adapter, fixtures, tests, and CLI exist; no live content is published | Live verified sync plus architecture/ID reconciliation | Complete first live Massachusetts run |
+| Massachusetts CCC program | Complete | Live sync verified (15 datasets, ~954k rows); 118 source-backed pages published; IDs reconciled with the shared collections (Massachusetts = jurisdictions/TJUR-0022) | Repo-wide release audit is blocked by pre-existing `data/dcc/` findings (see reports/massachusetts-ingestion-v2.md) | Keep manifests current as CCC publishes |
 | Device encyclopedia | In progress | 43 device records and four manufacturer records; the Cannabis Hardware catalog is complete and fully classified (TCHG-0004) | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |
 | Laboratory and batch/COA graph | Parked | California laboratory collections and demonstration records exist | Canonical batch/report/analyte model | Define the minimum batch/COA schema |
 | Profile intelligence | Parked | Terpene and evidence reference pages exist | Measured batch corpus and normalization | Start after batch/COA model |
@@ -79,10 +79,22 @@ lane.
 The current source-only ID check validated 204 pages without changing files.
 The Boris graph, Cantilever build, Markdown-link audit, and HTML-ID audit
 completed successfully, and the device taxonomy audit reports 0 errors and
-0 warnings. The overall validate_graph.sh command passes with
-SKIP_RELEASE_AUDIT=1; the public-release audit still exits at the pre-existing
+0 warnings. The public-release audit still exits at the pre-existing
 data/dcc privacy and large-file findings. A per-file attribution of that audit
-confirms the Cannabis Hardware completion lane introduced no new findings — the
-two findings on content/manufacturers/TMFR-0004.md (a manufacturer support email
-and phone number) are present on main and are owned by the pre-publication
-checklist. The system test run completed 154 tests with 4 optional skips.
+confirms the Cannabis Hardware completion lane introduced no new findings. The
+system test run completed 154 tests with 4 optional skips.
+
+## Publication hardening update
+
+Verified 2026-08-09 against main commit `41768af` and the publication-
+hardening commits on this branch. This PR removes current California DCC raw
+and normalized payloads, redacts direct contacts and street addresses from
+in-scope content, removes internal provenance paths from published content,
+and makes release audits fail closed. It does not modify the Massachusetts
+implementation, fixtures, tests, or state documents. The remaining release
+blockers are reachable historical DCC blobs and metadata, the documented
+human-review findings, licensing/security-process decisions, and the
+repo-wide audit findings carried by the Massachusetts lane.
+
+Validation must be rerun on the completed branch. Do not use an audit bypass as
+a release result.

@@ -27,6 +27,8 @@ summary: Overview of the Durban Poison South African landrace lineage popularize
 
 Imported from South Africa in the 1970s and acclimated to European outdoor and indoor cultivation by Dutch Passion, Durban Poison is celebrated for its unique sweet anise, pine, and spicy terpinolene-heavy aroma profile.
 
+**First-party source**: [Dutch Passion — Durban Poison](https://dutch-passion.com/en/cannabis-seeds/durban-poison) (retrieved 2026-08-09). Machine record: `CLM-0010`.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:

@@ -1,10 +1,14 @@
 # Massachusetts CCC Ingestion — Implementation Report
 
-> Historical implementation snapshot from 2026-08-05. For current integration
-> status, see `docs/status.md` and `docs/status/states/massachusetts.md`. The
-> report's baseline statements about California reachability and uncommitted
-> work describe the environment at the time of that report, not the current
-> `main` branch.
+> ⚠️ **Superseded (2026-08-09).** This report describes the pre-integration
+> state of the Massachusetts pipeline. Since then the reconciliation onto the
+> California-containing `main` completed, and Massachusetts v2 ingested the
+> live CCC sources and published source-backed content. See
+> [`reports/massachusetts-ingestion-v2.md`](../../reports/massachusetts-ingestion-v2.md)
+> for the current implementation report. This document's claims that
+> "California is unreachable" or that "Massachusetts is test-only" no longer
+> describe the repository; current integration status is tracked in
+> `docs/status.md` and `docs/status/states/massachusetts.md`.
 
 Status: **historical snapshot: implemented (test-only) · not integrated** · Date: 2026-08-05
 Generator: `state_ingest-0.1` (schema v1)

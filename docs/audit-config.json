@@ -1,5 +1,5 @@
 {
-  "comment": "Shared allowlist/suppression config for the public-release audits. Deep-merges over the defaults embedded in scripts/audit_common.py. Review this file whenever the audit surfaces new findings; never silence findings by deleting the config.",
+  "comment": "Shared allowlist/suppression config for the public-release audits. Deep-merges over the defaults embedded in scripts/audit_common.py. Review this file whenever the audit surfaces new findings; never silence findings by deleting the config. Allowlisted values are fabricated test fixtures (fake addresses/phone/coordinates in tests and Massachusetts ingest fixtures), the GitHub noreply committer address used for synthetic PR merge-ref commits, and '2018 Constitutional Court' (a court name, not a street address; false positive of the street-address pattern).",
   "thresholds": {
     "large_file_bytes": 5000000,
     "review_file_bytes": 1000000,
@@ -23,9 +23,9 @@
   ],
   "allowlist": {
     "emails": [
-      "@users.noreply.github.com",
       "@example.com",
       "@example.org",
+      "@users.noreply.github.com",
       "noreply@github.com",
       "beau@boorman.tech"
     ],
@@ -37,12 +37,21 @@
     ],
     "personal_paths": [],
     "phones": [
-      "555-01"
+      "555-01",
+      "617-555-0199"
     ],
     "addresses": [
-      "Constitutional Court"
+      "100 Main Street",
+      "1006 Bennington Street",
+      "123 Court Street",
+      "200 High Street",
+      "2018 Constitutional Court",
+      "Constitutional Court",
+      "682 Spring Street"
     ],
-    "coordinates": [],
+    "coordinates": [
+      "44.12345, -71.98765"
+    ],
     "tax_ids_comment": "Manufacturer product identifiers on device records (UPC/EAN barcodes and article numbers), reviewed 2026-08-08 and confirmed to be published product codes, not tax or parcel numbers. PII-005 flags any long numeric run for human review; these are the reviewed dispositions. Add an entry only after confirming the number is a manufacturer-published product identifier.",
     "tax_ids": [
       "628078802274",
@@ -62,9 +71,9 @@
     "generated_artifacts": [
       "metadata/id-map.jsonl"
     ],
-    "addresses_comment": "Reviewed false positives. 'Constitutional Court' matches the street-suffix pattern in legal citations such as 'the 2018 Constitutional Court ruling'; it is a court, not a street. Reviewed 2026-08-09. Add an entry only after confirming the match is not a real premises address.",
+    "addresses_comment": "Reviewed false positives. 'Constitutional Court' matches the street-suffix pattern in legal citations such as 'the 2018 Constitutional Court ruling'; it is a court, not a street. The remaining entries are synthetic Massachusetts test-fixture addresses. Reviewed 2026-08-09. Add an entry only after confirming the match is not a real premises address.",
     "emails_comment": "noreply@github.com and @users.noreply.github.com are GitHub-generated, non-personal addresses. beau@boorman.tech is the maintainer's own git committer identity, present in the author/committer field of every commit in this repository and already public in the GitHub commit log; it is not leaked third-party PII. Reviewed 2026-08-09.",
-    "phones_comment": "555-01xx is the NANP block reserved for fictional use; such numbers cannot be assigned to a real subscriber and appear here only in test fixtures. Reviewed 2026-08-09."
+    "phones_comment": "555-01xx is the NANP block reserved for fictional use; such numbers cannot be assigned to a real subscriber and appear here only in test fixtures. 617-555-0199 is the specific fixture instance. Reviewed 2026-08-09."
   },
   "suppressions": [
     "PII-005:scripts/audit_sensitive_content.py",
@@ -89,7 +98,6 @@
     "content/products/",
     "content/law-and-use/",
     "content/manufacturers/",
-    "content/guides/manufacturer-research-queue.md",
     "content/contaminants/",
     "content/datasets/",
     "content/jurisdictions/",

@@ -66,7 +66,7 @@ python3 scripts/audit_device_taxonomy.py content
 python3 -m unittest discover -s tests
 python3 scripts/ted_ids.py --root content --map metadata/id-map.jsonl --write
 python3 scripts/audit_markdown_links.py content
-SKIP_RELEASE_AUDIT=1 ./bin/validate_graph.sh
+./bin/validate_graph.sh
 ```
 
 Every new entity needs an id-map row (via `ted_ids.py --write`) and must build in the Boris gate.

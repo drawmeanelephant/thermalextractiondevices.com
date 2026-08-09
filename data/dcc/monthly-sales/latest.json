@@ -1,9 +1,0 @@
-{
-  "dataset": "monthly-sales",
-  "retrieval_date": "2026-08-04",
-  "normalized": {
-    "status": "unstable",
-    "archived": true,
-    "note": "Looker Studio embed preserved as raw; no numeric extraction implemented."
-  }
-}

@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "jurisdiction": "massachusetts",
+  "jurisdiction_label": "Massachusetts",
+  "research_status": "researched 2026-08-09 from 935 CMR 500.160 / 501.160 (LII mirror) and the CCC's operative Protocol (Dec 30, 2021 revision; PDF text layer)",
+  "updated_date": "2026-08-09",
+  "regulator": "Massachusetts Cannabis Control Commission (CCC)",
+  "regulator_url": "https://masscannabiscontrol.com/",
+  "governing_document": "Protocol for Sampling and Analysis of Finished Marijuana Products and Marijuana Products for Marijuana Establishments, Medical Marijuana Treatment Centers, and Colocated Marijuana Operations (implemented 2021-03-11; revised 2021-12-30), issued under M.G.L. c. 94G § 15; limits also enforced through the Metrc system of record",
+  "legal_framework": [
+    {
+      "title": "Cannabis Control Act (adult use)",
+      "citation": "M.G.L. c. 94G",
+      "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXX/Chapter94G",
+      "kind": "statute",
+      "retrieved_at": "2026-08-09",
+      "notes": "Adult-use cannabis legalization; § 15 governs the testing protocol."
+    },
+    {
+      "title": "Testing of Marijuana and Marijuana Products (adult use)",
+      "citation": "935 CMR 500.160",
+      "url": "https://www.law.cornell.edu/regulations/massachusetts/935-CMR-500-160",
+      "kind": "regulation",
+      "retrieved_at": "2026-08-09",
+      "notes": "Adopted 2018-03-23; amended 2019-11-01, 2021-01-08, 2023-10-27. Testing by Independent Testing Laboratories per the Commission's Protocol; potency variance ±10%; results valid 1 year; remediation max 2 attempts; second-ITL confirmatory reanalysis."
+    },
+    {
+      "title": "Testing of Marijuana and Marijuana Products (medical use)",
+      "citation": "935 CMR 501.160",
+      "url": "https://www.law.cornell.edu/regulations/massachusetts/935-CMR-501-160",
+      "kind": "regulation",
+      "retrieved_at": "2026-08-09",
+      "notes": "Medical-use mirror of 500.160 (adopted 2019-11-01; amended 2021-01-08, 2023-10-27). Note: the CCC took over medical-use regulation from DPH; DPH-era 105 CMR 725 is superseded for testing purposes."
+    },
+    {
+      "title": "Pesticide prohibition",
+      "citation": "935 CMR 500.120(5) and 935 CMR 501.120(5)",
+      "url": "https://www.law.cornell.edu/regulations/massachusetts/935-CMR-500-160",
+      "kind": "regulation",
+      "retrieved_at": "2026-08-09",
+      "notes": "Non-organic pesticides may not be used to cultivate marijuana; licensees must immediately report pesticide noncompliance."
+    },
+    {
+      "title": "Protocol for Sampling and Analysis of Finished Marijuana Products and Marijuana Products",
+      "citation": "CCC Protocol (implemented 2021-03-11; revised 2021-12-30)",
+      "url": "https://masscannabiscontrol.com/wp-content/uploads/2021/06/Finished-Marijuana-Products-Sampling-and-Analysis-Protocol.pdf",
+      "kind": "guidance",
+      "retrieved_at": "2026-08-09",
+      "notes": "Sets panel structure, sampling design, and the numeric limits in Exhibits 4–7. Exhibit tables are image-based in the published PDF; prose numbers transcribed below, table values flagged pending-transcription."
+    },
+    {
+      "title": "First Amended Quarantine Order Applying to Vaporizer Products",
+      "citation": "CCC First Amended Quarantine Order (issued 2019-12-12)",
+      "url": "https://masscannabiscontrol.com/",
+      "kind": "advisory",
+      "retrieved_at": "2026-08-09",
+      "notes": "Second heavy-metal screen on final vape products; VEA screen."
+    },
+    {
+      "title": "Updated Action Limits bulletins",
+      "citation": "CCC/Metrc MA_IB_0109 (2026-04-13) and MA_IB_0110 (2026-04-15)",
+      "url": "https://masscannabiscontrol.com/2026/04/bulletin-updated-action-limits-2/",
+      "kind": "advisory",
+      "retrieved_at": "2026-08-09",
+      "notes": "Metrc-encoded action limits for bile-tolerant gram-negative bacteria, total coliforms, total yeast and mold, and total viable aerobic bacteria had errors and were corrected April 2026. Evidence that Metrc 'action limit' values require independent verification."
+    },
+    {
+      "title": "Testing Protocol Recommendations Package 1",
+      "citation": "CCC bulletin 2026-04-02 (not final)",
+      "url": "https://masscannabiscontrol.com/2026/04/bulletin-recommendations-for-consideration-testing-of-marijuana-and-marijuana-products-protocol-package-1/",
+      "kind": "advisory",
+      "retrieved_at": "2026-08-09",
+      "notes": "Proposed (not final) changes: ND reported as '0' in Metrc Result with note 'ND, LOD = X'; BQL reported as '0' with note 'BQL, LOQ = X'; final-form testing for raw pre-rolls; AO#4 language incorporation."
+    }
+  ],
+  "panel": [
+    {"category": "cannabinoid", "required": true, "citation": "935 CMR 500.160(2); Protocol § 7.1", "notes": "Cannabinoid profile incl. D9-THC and CBD dry-weight %; no minimum potency standards; potency variance ±10% (935 CMR 500.160(12))."},
+    {"category": "pesticide", "required": true, "citation": "935 CMR 500.160(2); Protocol § 7.3", "notes": "Pesticide residues and plant growth regulators; 10 ppb detection threshold; non-remediable."},
+    {"category": "heavy-metal", "required": true, "citation": "935 CMR 500.160(2); Protocol § 7.2", "notes": "Arsenic, cadmium, lead, mercury; 500 µg/kg all uses / 1,000 µg/kg ingestion-only."},
+    {"category": "microbial", "required": true, "citation": "935 CMR 500.160(2); Protocol § 7.4 / Exhibit 6", "notes": "Total viable aerobic bacteria, total yeast and mold, total coliforms, bile-tolerant gram-negative bacteria (CFU/g); pathogenic E. coli and Salmonella (in 1 g)."},
+    {"category": "mycotoxin", "required": true, "citation": "935 CMR 500.160(2); Protocol § 7.4 / Exhibit 6", "notes": "Aflatoxin B1, B2, G1, G2 and ochratoxin A (µg/kg); per 935 CMR 501.000 definition."},
+    {"category": "residual-solvent", "required": true, "citation": "Protocol § 7.5 / Exhibit 7", "notes": "Required only for cannabis resins/concentrates where solvents were used; only Exhibit 7 solvents permitted; Class 1 solvents prohibited."},
+    {"category": "homogeneity", "required": true, "citation": "Protocol § 5.2", "notes": "Representative sampling by physical form and quantity; batch-level homogeneity implicit in sampling program design."},
+    {"category": "process", "required": true, "citation": "935 CMR 500.160(2); Protocol § 7.6", "notes": "Final ready-to-sell vape products screened for heavy metals (second screen) and Vitamin E Acetate."},
+    {"category": "moisture", "required": false, "citation": "Protocol", "notes": "Not part of the MA contaminant panel; moisture not listed among required analyses in the operative protocol text."},
+    {"category": "water-activity", "required": false, "citation": "Protocol", "notes": "Not part of the MA panel in the operative protocol text."}
+  ],
+  "limits": [
+    {"analyte": "Arsenic", "cas": "7440-38-2", "category": "heavy-metal", "matrix": "all-uses", "limit": "500", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Prose: 'The upper allowable limit for heavy metals in Marijuana and Marijuana products is 500 parts per billion (ppb) for all uses and 1,000 ppb for ingestion only as stated in Exhibit 4.' Per-metal exhibit detail (As/Cd/Pb/Hg split) is image-based; pending transcription."},
+    {"analyte": "Cadmium", "cas": "7440-43-9", "category": "heavy-metal", "matrix": "all-uses", "limit": "500", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4", "effective_date": "2021-12-30", "value_status": "verified", "notes": "See arsenic note."},
+    {"analyte": "Lead", "cas": "7439-92-1", "category": "heavy-metal", "matrix": "all-uses", "limit": "500", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4", "effective_date": "2021-12-30", "value_status": "verified", "notes": "See arsenic note."},
+    {"analyte": "Mercury", "cas": "7439-97-6", "category": "heavy-metal", "matrix": "all-uses", "limit": "500", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4", "effective_date": "2021-12-30", "value_status": "verified", "notes": "See arsenic note."},
+    {"analyte": "Arsenic", "cas": "7440-38-2", "category": "heavy-metal", "matrix": "ingestion-only", "limit": "1000", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4(b)", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Ingestion-only products labeled 'THIS PRODUCT HAS BEEN EVALUATED FOR IMPURITIES BASED ON ORAL CONSUMPTION ONLY. DO NOT INHALE THIS PRODUCT.'"},
+    {"analyte": "Cadmium", "cas": "7440-43-9", "category": "heavy-metal", "matrix": "ingestion-only", "limit": "1000", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4(b)", "effective_date": "2021-12-30", "value_status": "verified", "notes": ""},
+    {"analyte": "Lead", "cas": "7439-92-1", "category": "heavy-metal", "matrix": "ingestion-only", "limit": "1000", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4(b)", "effective_date": "2021-12-30", "value_status": "verified", "notes": ""},
+    {"analyte": "Mercury", "cas": "7439-97-6", "category": "heavy-metal", "matrix": "ingestion-only", "limit": "1000", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.2 / Exhibit 4(b)", "effective_date": "2021-12-30", "value_status": "verified", "notes": ""},
+    {"analyte": "Pesticide residues and plant growth regulators (any individual)", "category": "pesticide", "matrix": "all", "limit": "10", "unit": "ppb", "comparison": "≤", "citation": "Protocol § 7.3 / Exhibit 5", "effective_date": "2021-12-30", "value_status": "verified", "notes": "No individual pesticide or PGR detected above 10 ppb. Detection above LOD but below quantification limit (BQL) is also out of compliance. Pesticide failures may NOT be remediated."},
+    {"analyte": "Pesticide residues (alternative compliance)", "category": "pesticide", "matrix": "all", "limit": "5", "unit": "% of US EPA tolerance", "comparison": "≤", "citation": "Protocol § 7.3", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Laboratories unable to test at/below 10 ppb may determine compliance via ≤ 5% of the US EPA tolerance for the specific residue (40 CFR)."},
+    {"analyte": "Bifenazate", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "One of the minimum nine required analytes (miticide); numeric limit is in the image-based Exhibit 5 table."},
+    {"analyte": "Bifenthrin", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Cyfluthrin", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Etoxazole", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Imazalil", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Imidacloprid", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Myclobutanil", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Spiromesifen", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Trifloxystrobin", "category": "pesticide", "matrix": "final-plant-material", "limit": "", "unit": "", "comparison": "≤", "citation": "Protocol Exhibit 5 (minimum list)", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Minimum list; numeric limit pending."},
+    {"analyte": "Total viable aerobic bacteria (TAMC)", "category": "microbial", "matrix": "all", "limit": "", "unit": "CFU/g", "comparison": "≤", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Limit in image-based Exhibit 6 table. Metrc action-limit correction bulletin MA_IB_0109 (2026-04-13) covers TAMC for infused edible, infused non-edible, and raw plant material."},
+    {"analyte": "Total yeast and mold (TYMC)", "category": "microbial", "matrix": "all", "limit": "", "unit": "CFU/g", "comparison": "≤", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Limit in image-based Exhibit 6 table. Metrc action-limit correction bulletin MA_IB_0110 (2026-04-15) covers TYMC for non-solvent concentrates."},
+    {"analyte": "Total coliforms", "category": "microbial", "matrix": "all", "limit": "", "unit": "CFU/g", "comparison": "≤", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Limit in image-based Exhibit 6 table. Metrc correction bulletin MA_IB_0110 covers total coliforms for non-solvent concentrates."},
+    {"analyte": "Bile-tolerant gram-negative bacteria", "category": "microbial", "matrix": "all", "limit": "", "unit": "CFU/g", "comparison": "≤", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Limit in image-based Exhibit 6 table. Metrc corrections MA_IB_0109 (infused edible/non-edible, raw plant material) and MA_IB_0110 (non-solvent concentrates)."},
+    {"analyte": "Pathogenic E. coli", "category": "microbial", "matrix": "all", "limit": "", "unit": "", "comparison": "not-detected", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Not detected in a one-gram sample."},
+    {"analyte": "Salmonella spp.", "category": "microbial", "matrix": "all", "limit": "", "unit": "", "comparison": "not-detected", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Not detected in a one-gram sample."},
+    {"analyte": "Aflatoxin B1, B2, G1, G2 (total)", "category": "mycotoxin", "matrix": "all", "limit": "", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Mycotoxins include aflatoxin B1, B2, G1, G2 and ochratoxin A (935 CMR 501.000 definition); numeric limits are in the image-based Exhibit 6 table."},
+    {"analyte": "Ochratoxin A", "category": "mycotoxin", "matrix": "all", "limit": "", "unit": "µg/kg", "comparison": "≤", "citation": "Protocol § 7.4 / Exhibit 6", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Numeric limit in image-based Exhibit 6 table."},
+    {"analyte": "Class 1 solvents (benzene, carbon tetrachloride, 1,2-dichloroethane, 1,1-dichloroethene, 1,1,1-trichloroethane)", "category": "residual-solvent", "matrix": "cannabis-oil", "limit": "", "unit": "", "comparison": "prohibited", "citation": "Protocol § 7.5", "effective_date": "2021-12-30", "value_status": "verified", "notes": "May not be used in the production of any marijuana product."},
+    {"analyte": "Residual solvents (Exhibit 7 list)", "category": "residual-solvent", "matrix": "cannabis-oil", "limit": "", "unit": "mg/kg", "comparison": "≤", "citation": "Protocol § 7.5 / Exhibit 7", "effective_date": "2021-12-30", "value_status": "pending-transcription", "notes": "Upper limits in mg/kg per Exhibit 7, based on USP <467>, ICH, and AHP (2013); per-solvent values are in the image-based Exhibit 7 table. Only solvents listed in Exhibit 7 may be used; testing required only for solvents actually used."},
+    {"analyte": "Vitamin E Acetate (VEA)", "category": "process", "matrix": "vape-product", "limit": "", "unit": "", "comparison": "not-detected", "citation": "935 CMR 500.160(2); Protocol § 7.6", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Mandatory screen on final ready-to-sell vape products; passing requires no VEA detection. ≥ 1 g oil sample required."},
+    {"analyte": "Heavy metals (second screen, vape products)", "category": "process", "matrix": "vape-product", "limit": "500", "unit": "µg/kg", "comparison": "≤", "citation": "First Amended Quarantine Order (2019-12-12); 935 CMR 500.160(2); Protocol § 7.2.1", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Final vape products pass a second heavy-metal screen in addition to the standard panel."},
+    {"analyte": "D9-THC / CBD (cannabinoid profile)", "category": "cannabinoid", "matrix": "all", "limit": "", "unit": "%", "comparison": "reported", "citation": "Protocol § 7.1; 935 CMR 500.105(5)", "effective_date": "2021-12-30", "value_status": "verified", "notes": "Dry-weight percentage of D9-THC and CBD at minimum; no minimum potency standards mandated; profile must appear on product labeling."},
+    {"analyte": "Potency variance", "category": "cannabinoid", "matrix": "all", "limit": "10", "unit": "%", "comparison": "±", "citation": "935 CMR 500.160(12)", "effective_date": "2023-10-27", "value_status": "verified", "notes": "Single-servings tested for potency subject to a variance of no greater than ±10%."}
+  ],
+  "process_rules": [
+    {"topic": "Independent Testing Laboratory requirement", "rule": "No marijuana product may be sold for adult or medical use unless tested by a Commission-licensed Independent Testing Laboratory and deemed compliant with 935 CMR 500.160 / 501.160 standards.", "citation": "935 CMR 500.160(1), (11); 501.160(1), (11)", "notes": ""},
+    {"topic": "Testing validity", "rule": "Testing results valid for one year; products with testing dates in excess of one year are deemed expired and may not be dispensed until retested. Results maintained no less than one year.", "citation": "935 CMR 500.160(5)", "notes": ""},
+    {"topic": "Failure response policy", "rule": "Licensee must have a written policy for responding to results above acceptable limits, including notifying the Commission within 72 hours of non-remediable contamination and disposing of the production batch.", "citation": "935 CMR 500.160(4)", "notes": ""},
+    {"topic": "Reanalysis (second ITL confirmatory test)", "rule": "On failure, the licensee may reanalyze without remediation: reanalyze at the initial ITL; if it passes, submit a sample from the same batch to a second ITL for a Second Confirmatory Test. Passing requires the second ITL pass.", "citation": "935 CMR 500.160(13)(a)", "notes": ""},
+    {"topic": "Remediation", "rule": "A failing batch may be remediated a maximum of two times; after the second failed attempt the product may not be sold and must be disposed of. Pesticide/PGR failures may not be remediated at all (Protocol § 7.3, § 8.0).", "citation": "935 CMR 500.160(13)(b); Protocol § 7.3, § 8.0", "notes": ""},
+    {"topic": "Batch retesting", "rule": "A production batch may be retested once (resampling for follow-up testing); records of the original analysis must be retained.", "citation": "Protocol § 8.0", "notes": ""},
+    {"topic": "Solvent use restrictions", "rule": "Only solvents listed in Exhibit 7 may be used in cannabis oil production; testing required only for solvents actually used; Class 1 solvents prohibited.", "citation": "Protocol § 7.5", "notes": ""},
+    {"topic": "Exemptions", "rule": "Sale of seeds is not subject to testing provisions; clones are subject but exempt from metals testing.", "citation": "935 CMR 500.160(6), (7)", "notes": ""},
+    {"topic": "Data package", "rule": "ITL results must include case narrative (letterhead, signed), chain-of-custody, and a summary of analytical results with sample identifier, methods, analytes, result/reporting limit, qualifiers, units, and dates.", "citation": "Protocol § 8.0", "notes": "Relevant to COA normalization: qualifiers and reporting limits are expected fields."},
+    {"topic": "Metrc result reporting practice (official)", "rule": "The CCC/Metrc system of record stores below-detection results as 0.0 in the Result field with the LOD in notes; the April 2026 protocol recommendations propose standardizing this as 'ND, LOD = X' and 'BQL, LOQ = X' notes.", "citation": "MA_IB_0109/0110; CCC 2026-04-02 bulletin (proposal)", "notes": "A parser must preserve the raw ND/<LOD/<LOQ state and the LOD/LOQ value from notes rather than treating the 0.0 as a measurement."}
+  ],
+  "sources": [
+    {"name": "935 CMR 500.160 (LII mirror)", "url": "https://www.law.cornell.edu/regulations/massachusetts/935-CMR-500-160", "retrieved_at": "2026-08-09", "kind": "primary", "notes": "Full text fetched."},
+    {"name": "935 CMR 501.160 (LII mirror)", "url": "https://www.law.cornell.edu/regulations/massachusetts/935-CMR-501-160", "retrieved_at": "2026-08-09", "kind": "primary", "notes": "Full text fetched."},
+    {"name": "CCC Protocol (operative, revised 2021-12-30)", "url": "https://masscannabiscontrol.com/wp-content/uploads/2021/06/Finished-Marijuana-Products-Sampling-and-Analysis-Protocol.pdf", "retrieved_at": "2026-08-09", "kind": "primary", "notes": "PDF text layer extracted; exhibits 4–7 are image-based."},
+    {"name": "CCC Testing Protocol for Comment (2020-07-24 draft)", "url": "https://masscannabiscontrol.com/wp-content/uploads/20200724_Testing-Protocol-for-Comment.pdf", "retrieved_at": "2026-08-09", "kind": "primary", "notes": "Pre-implementation draft; exhibits also image-based."},
+    {"name": "DPH-era medical protocol (Wayback 2025-09-01 snapshot)", "url": "http://web.archive.org/web/20250901011725/https://www.mass.gov/doc/protocol-for-sampling-and-analysis-of-finished-medical-marijuana-products-and-marijuana-1/download", "retrieved_at": "2026-08-09", "kind": "primary", "notes": "Serves a DOCX whose exhibit tables are embedded images; retained as history (DPH era, superseded by 935 CMR 501.160)."},
+    {"name": "CCC Updated Action Limits bulletins", "url": "https://masscannabiscontrol.com/2026/04/bulletin-updated-action-limits-2/", "retrieved_at": "2026-08-09", "kind": "primary", "notes": "MA_IB_0109 / MA_IB_0110."},
+    {"name": "CCC Testing Protocol Recommendations Package 1", "url": "https://masscannabiscontrol.com/2026/04/bulletin-recommendations-for-consideration-testing-of-marijuana-and-marijuana-products-protocol-package-1/", "retrieved_at": "2026-08-09", "kind": "primary", "notes": "Proposals as of 2026-04-02; not final."}
+  ],
+  "gaps": [
+    "Exhibit 4 per-metal detail, Exhibit 5 per-pesticide numeric limits, Exhibit 6 microbial/mycotoxin values, and Exhibit 7 per-solvent limits are image-based in the operative protocol PDF and could not be transcribed from the text layer this pass. All are recorded as pending-transcription with their exact locations. Recommended next action: OCR the exhibit pages or obtain the source tables from the CCC.",
+    "Moisture and water activity are not required analyses in the operative MA protocol text; verify against the current (2026) protocol package before assuming MA tests either.",
+    "MA does not publish a machine-readable action-limits dataset on the Socrata endpoint used for other open data; Metrc-encoded limits had documented errors (April 2026) and are treated as unverified.",
+    "Sampling design (batch size, sample counts by physical form) is in Protocol § 5 but not fully transcribed this pass."
+  ]
+}

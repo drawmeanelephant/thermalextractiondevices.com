@@ -21,6 +21,8 @@ from scripts.coa_model import (
     ComparabilityGrade,
     ComparabilityView,
     CoaRecord,
+    CultivarClaim,
+    CultivarClaimResolution,
     DensityRequiredError,
     InstrumentTechnique,
     Laboratory,
@@ -31,6 +33,7 @@ from scripts.coa_model import (
     ReportingBasis,
     ResultState,
     RoundingRule,
+    SourceProvenance,
     UnitConversionError,
     censorship_summary,
     coa_problems,
@@ -80,12 +83,16 @@ def record(
     basis: ReportingBasis = ReportingBasis.UNKNOWN,
     report_date: str | None = None,
 ) -> CoaRecord:
+    provenance = None
+    if record_kind == RecordKind.VERIFIED:
+        provenance = SourceProvenance(source_url="https://example.invalid/coa.pdf")
     return CoaRecord(
         report=Report(
             report_id=report_id,
             report_date=report_date,
             test_date="2025-06-24",
             jurisdiction="MA",
+            provenance=provenance,
         ),
         batch=Batch(
             batch_id="tag123",
@@ -125,10 +132,14 @@ class ResultStateTest(unittest.TestCase):
         self.assertIs(state, ResultState.BELOW_LOQ)
         self.assertIsNone(value)
 
-    def test_unrecognized_string_preserved_as_missing(self):
+    def test_unrecognized_string_preserved_as_invalid(self):
         state, value, note = decode_result("TBD")
-        self.assertIs(state, ResultState.MISSING)
+        self.assertIs(state, ResultState.INVALID)
         self.assertIn("TBD", note)
+        # invalid is distinct from missing (blank field) and never carries a value
+        self.assertIs(decode_result("")[0], ResultState.MISSING)
+        with self.assertRaises(ValueError):
+            measurement(state=ResultState.INVALID, value=1.34)
 
     def test_value_contracts(self):
         # numeric requires a value
@@ -473,6 +484,201 @@ class MassachusettsAdapterTest(unittest.TestCase):
         self.assertGreaterEqual(summary["numeric"], 1)
 
 
+class CultivarClaimTest(unittest.TestCase):
+    """Cultivar claims are claims, never measurements; resolution is optional."""
+
+    def test_resolved_requires_cultivar_id(self):
+        with self.assertRaises(ValueError) as ctx:
+            CultivarClaim("Blue Dream", resolution=CultivarClaimResolution.RESOLVED)
+        self.assertIn("resolved cultivar claims require a cultivar_id", str(ctx.exception))
+
+    def test_unresolved_claim_is_legal_without_id(self):
+        claim = CultivarClaim("GMO")
+        self.assertIs(claim.resolution, CultivarClaimResolution.UNRESOLVED)
+        self.assertIsNone(claim.cultivar_id)
+        self.assertEqual(claim.to_dict()["resolution"], "unresolved")
+
+    def test_ambiguous_with_candidates(self):
+        claim = CultivarClaim(
+            "OG Kush",
+            resolution=CultivarClaimResolution.AMBIGUOUS,
+            candidate_ids=("cultivars/TCUL-0001", "cultivars/TCUL-0002"),
+            note="label applied to multiple lineages",
+        )
+        self.assertEqual(claim.to_dict()["resolution"], "ambiguous")
+        self.assertEqual(len(claim.candidate_ids), 2)
+
+    def test_bad_cultivar_id_rejected(self):
+        with self.assertRaises(ValueError):
+            CultivarClaim(
+                "Blue Dream", resolution=CultivarClaimResolution.RESOLVED,
+                cultivar_id="cultivars/TCUL-abc",
+            )
+        with self.assertRaises(ValueError):
+            CultivarClaim(
+                "X", resolution=CultivarClaimResolution.AMBIGUOUS,
+                candidate_ids=("products/TPRD-0001",),
+            )
+
+    def test_ambiguous_without_candidates_warns(self):
+        rec = CoaRecord(
+            report=Report(report_id="ma-ccc:t1", test_date="2025-06-24", jurisdiction="MA"),
+            batch=Batch(
+                batch_id="t1", record_kind=RecordKind.UNVERIFIED,
+                cultivar_claims=(
+                    CultivarClaim("OG Kush", resolution=CultivarClaimResolution.AMBIGUOUS),
+                ),
+            ),
+            measurements=(measurement(),),
+        )
+        warnings = coa_warnings(rec)
+        self.assertTrue(any("ambiguous but lists no candidate ids" in w for w in warnings))
+
+
+class BatchAndReportExtensionTest(unittest.TestCase):
+    """Optional batch identifiers/dates, report sample id / license / panels / provenance."""
+
+    def test_batch_optional_dates_and_lot_round_trip(self):
+        batch = Batch(
+            batch_id="b1", lot_number="LOT-7", metrc_tag="tag7",
+            harvest_date="2026-01-10", production_date="2026-01-15",
+            package_date="2026-01-20",
+            record_kind=RecordKind.UNVERIFIED,
+        )
+        payload = batch.to_dict()
+        self.assertEqual(payload["lot_number"], "LOT-7")
+        self.assertEqual(payload["production_date"], "2026-01-15")
+        self.assertEqual(payload["package_date"], "2026-01-20")
+
+    def test_non_iso_batch_date_warns(self):
+        rec = CoaRecord(
+            report=Report(report_id="ma-ccc:t1", test_date="2025-06-24", jurisdiction="MA"),
+            batch=Batch(
+                batch_id="t1", production_date="January 15, 2026",
+                record_kind=RecordKind.UNVERIFIED,
+            ),
+            measurements=(measurement(),),
+        )
+        warnings = coa_warnings(rec)
+        self.assertTrue(any("production_date is not an ISO date" in w for w in warnings))
+
+    def test_report_new_fields_round_trip(self):
+        report = Report(
+            report_id="lab-results/TLAB-0099",
+            sample_id="S-42",
+            license_references=("licenses/TLIC-0001",),
+            test_panels=("cannabinoid", "terpene"),
+            provenance=SourceProvenance(
+                source_url="https://example.com/coa.pdf",
+                document_hash="a" * 64,
+                retrieval_date="2026-01-02",
+                upstream_record_id="row-7",
+                parser_version="ma-ccc/1.2",
+            ),
+        )
+        payload = report.to_dict()
+        self.assertEqual(payload["sample_id"], "S-42")
+        self.assertEqual(payload["license_references"], ["licenses/TLIC-0001"])
+        self.assertEqual(payload["test_panels"], ["cannabinoid", "terpene"])
+        self.assertEqual(payload["provenance"]["document_hash"], "a" * 64)
+
+    def test_non_canonical_license_reference_warns_not_fails(self):
+        rec = CoaRecord(
+            report=Report(
+                report_id="ma-ccc:t1", test_date="2025-06-24", jurisdiction="MA",
+                license_references=("M-12345",),
+            ),
+            batch=Batch(batch_id="t1", record_kind=RecordKind.UNVERIFIED),
+            measurements=(measurement(),),
+        )
+        self.assertEqual(coa_problems(rec), [])
+        warnings = coa_warnings(rec)
+        self.assertTrue(any("license reference 'M-12345' is not a canonical" in w for w in warnings))
+
+    def test_unknown_test_panel_warns(self):
+        rec = CoaRecord(
+            report=Report(
+                report_id="ma-ccc:t1", test_date="2025-06-24", jurisdiction="MA",
+                test_panels=("radioactivity",),
+            ),
+            batch=Batch(batch_id="t1", record_kind=RecordKind.UNVERIFIED),
+            measurements=(measurement(),),
+        )
+        warnings = coa_warnings(rec)
+        self.assertTrue(any("test panel 'radioactivity' is not in the known vocabulary" in w for w in warnings))
+
+
+class ProvenanceValidationTest(unittest.TestCase):
+    """Verified records must trace to a source; unverified records warn instead."""
+
+    def test_verified_without_provenance_rejected(self):
+        with self.assertRaises(ValueError) as ctx:
+            CoaRecord(
+                report=Report(
+                    report_id="lab-results/TLAB-0102", report_date="2025-06-24",
+                    test_date="2025-06-24", jurisdiction="MA",
+                ),
+                batch=Batch(batch_id="t1", record_kind=RecordKind.VERIFIED, jurisdiction="MA"),
+                measurements=(measurement(),),
+            )
+        self.assertIn("require provenance", str(ctx.exception))
+
+    def test_verified_with_provenance_passes(self):
+        rec = record(
+            (measurement(),), record_kind=RecordKind.VERIFIED,
+            report_id="lab-results/TLAB-0101", report_date="2025-06-24",
+        )
+        self.assertEqual(coa_problems(rec), [])
+
+    def test_unverified_without_provenance_warns(self):
+        rec = record((measurement(),))
+        warnings = coa_warnings(rec)
+        # the helper injects provenance only for verified; assert the unverified
+        # record carries none and the model does not reject it
+        self.assertIsNone(rec.report.provenance)
+        self.assertEqual(coa_problems(rec), [])
+
+    def test_bad_document_hash_warns(self):
+        rec = CoaRecord(
+            report=Report(
+                report_id="ma-ccc:t1", test_date="2025-06-24", jurisdiction="MA",
+                provenance=SourceProvenance(document_hash="not-a-hash"),
+            ),
+            batch=Batch(batch_id="t1", record_kind=RecordKind.UNVERIFIED),
+            measurements=(measurement(),),
+        )
+        warnings = coa_warnings(rec)
+        self.assertTrue(any("document_hash is not a 64-char hex sha256" in w for w in warnings))
+
+
+class CalculatedQuantityTest(unittest.TestCase):
+    """Report-derived totals (Total THC etc.) are not independent compounds."""
+
+    def test_calculated_formula_retained(self):
+        m = AnalyteMeasurement(
+            compound_name="Total THC",
+            state=ResultState.NUMERIC,
+            value=21.74, unit="% w/w",
+            reported_value="21.74", reported_unit="%",
+            calculation_formula="d9-THC + THCA * 0.877",
+        )
+        self.assertEqual(m.to_dict()["calculation_formula"], "d9-THC + THCA * 0.877")
+        self.assertEqual(coa_problems(record((m,))), [])
+
+    def test_calculated_with_compound_id_warns(self):
+        m = AnalyteMeasurement(
+            compound_name="Total THC",
+            compound_id="cannabinoids/TCBN-0007",
+            state=ResultState.NUMERIC,
+            value=21.74, unit="% w/w",
+            reported_value="21.74", reported_unit="%",
+            calculation_formula="d9-THC + THCA * 0.877",
+        )
+        rec = record((m,))
+        warnings = coa_warnings(rec)
+        self.assertTrue(any("calculated quantity carries compound_id" in w for w in warnings))
+
+
 try:
     import jsonschema  # noqa: F401
     _HAS_JSONSCHEMA = True
@@ -496,6 +702,24 @@ class SchemaConsistencyTest(unittest.TestCase):
         rec = record((measurement(),))  # provisional ma-ccc: id, unverified
         payload = rec.to_dict()
         self.assert_valid(payload)
+
+    def test_schema_has_new_model_keys(self):
+        schema = json.loads(self.SCHEMA.read_text())
+        report_props = schema["definitions"]["report"]["properties"]
+        batch_props = schema["definitions"]["batch"]["properties"]
+        meas_props = schema["definitions"]["analyteMeasurement"]["properties"]
+        self.assertIn("provenance", report_props)
+        self.assertIn("sample_id", report_props)
+        self.assertIn("license_references", report_props)
+        self.assertIn("test_panels", report_props)
+        self.assertIn("lot_number", batch_props)
+        self.assertIn("production_date", batch_props)
+        self.assertIn("package_date", batch_props)
+        self.assertIn("cultivar_claims", batch_props)
+        self.assertIn("calculation_formula", meas_props)
+        self.assertIn("invalid", meas_props["state"]["enum"])
+        self.assertIn("cultivarClaim", schema["definitions"])
+        self.assertIn("sourceProvenance", schema["definitions"])
 
     @unittest.skipUnless(_HAS_JSONSCHEMA, "jsonschema package not installed")
     def test_schema_validates_real_ma_record_when_jsonschema_available(self):
@@ -527,7 +751,7 @@ class SchemaConsistencyTest(unittest.TestCase):
             for m in verified["measurements"]:
                 self.assertIn(m["state"], {
                     "numeric", "nd", "below_lod", "below_loq",
-                    "zero", "missing", "not_tested",
+                    "zero", "missing", "not_tested", "invalid",
                 })
                 if m["state"] in ("numeric", "zero"):
                     self.assertIsInstance(m["value"], (int, float))
