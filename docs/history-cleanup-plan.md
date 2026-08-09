@@ -1,31 +1,54 @@
 # Git History Cleanup Plan (NOT executed)
 
-Current state (re-audited against the California `main` base, 2026-08-09):
+> **Trigger condition 2 below is now MET (verified 2026-08-09).** The registry
+> payloads were removed from the working tree in `6d740f4` ("chore: harden public
+> publication boundary") and `data/dcc/*` was gitignored, but **no history rewrite
+> was performed**. The blobs remain fully reachable.
 
-* 8 commits; every author/committer identity is the repository owner's
-  GitHub noreply address.
-* **64.2 MiB of unique blobs** reachable from `main` (264 blobs), dominated
-  by the DCC license-registry datasets:
-  * `data/dcc/license-registry/latest.json` — 21.4 MiB
-  * `data/dcc/license-registry/2026-08-04/raw.json` — 20.9 MiB
-  * `data/dcc/license-registry/2026-08-04/normalized.json` — 20.3 MiB
-  (byte-identical to `previous.json`; git stores it once).
-* The pre-hardening base tracked ~87.6 MiB across four registry copies
-  (`raw.json`, `normalized.json`, `latest.json`, `previous.json`). This
-  hardening branch removes those current-tree copies and leaves only bounded
-  provenance metadata; it does not rewrite history.
-* **No path has ever been deleted** from the real history (the provisioning
-  scripts seen in some local snapshots never existed on `main`).
-* The datasets contain personal/regulated data (business emails, phones,
-  owner names, parcel numbers, premises addresses and coordinates) — see
-  the public-release audit report. Removing the data from history, if
-  decided, is exactly what this plan is for.
+Verified state, measured against `main` on 2026-08-09 (not estimated):
+
+| Deleted path | Size in history | Still readable? |
+| --- | --- | --- |
+| `data/dcc/license-registry/latest.json` | 20.4 MiB | yes |
+| `data/dcc/license-registry/previous.json` | 19.4 MiB | yes |
+| `data/dcc/license-registry/2026-08-04/raw.json` | 19.9 MiB | yes |
+| `data/dcc/license-registry/2026-08-04/normalized.json` | 19.4 MiB | yes |
+
+A single `git show <commit-before-6d740f4>:data/dcc/license-registry/latest.json`
+returns the full 20.4 MiB payload, from which **20,697 email addresses** were
+recovered during verification. Each of three payloads carries roughly 20,681
+licensee records with business emails, phones, owner names and premises addresses.
+**Anyone who can clone this repository can recover all of it**, regardless of the
+current working tree.
+
+Why the audits did not catch this at first:
+
+* `audit_sensitive_content.py` scans the **tracked working tree** plus commit
+  *metadata* (author/committer/message). It never reads historical blob contents,
+  so it reported the tree as clean.
+* `audit_large_files.py` did detect the deleted-but-reachable blobs, but graded
+  them `medium` — below the `high` fail threshold — so the gate passed.
+
+That combination produced the worst possible signal: `Public-release audit passed`
+while the data was one command away. `LARGE-004` now grades deleted-but-reachable
+files under `history_sensitive_paths` (default `data/`) as **high**, so the gate
+blocks until this plan is executed or the finding is consciously accepted.
+
+The datasets contain personal/regulated data (business emails, phones, owner
+names, parcel numbers, premises addresses and coordinates). Removing that data
+from history, if decided, is exactly what this plan is for.
 
 This plan has **not** been executed and must not be run without maintainer
 sign-off and a full backup. It applies if category-4 data from `PRIVACY.md`
 (owner contact details, premises coordinates) is committed in `data/` and
 maintainers later decide those datasets must not be part of the public
 repository.
+
+> **This is a history rewrite.** It changes every commit SHA from the first
+> touched commit onward, requires a force-push to `main`, and invalidates every
+> outstanding clone, branch and open pull request. Coordinate with all
+> contributors before executing, and expect GitHub to retain unreachable objects
+> afterwards — treat any exposed credential as compromised and rotate it.
 
 ---
 
