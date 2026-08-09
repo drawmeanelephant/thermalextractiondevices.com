@@ -37,10 +37,15 @@ complete verified live snapshot.
 | `a_sales_au_activityvolume.csv` | 40 | **verbatim source excerpt** | Slice of the official file. |
 | `a_applications_all.csv` | 14 | **verbatim source excerpt** | Full small dataset from the official file. |
 | `a_applications_dbe.csv` | 7 | **verbatim source excerpt** | Full small dataset from the official file. |
+| `l_applications_all_details.csv` | 20 | **redacted source excerpt** | First slice of the official application-detail file; EIN/TIN, business/mailing/establishment addresses, ZIPs, phones, emails, fee and equity-program numbers blanked. Only identity columns (legal name, license number/type/status, municipality) remain populated. |
 | `a_agents_gender.csv` | 4 | **verbatim source excerpt** | Full small dataset from the official file. |
 | `a_agents_raceethnicity.csv` | 10 | **verbatim source excerpt** | Full small dataset from the official file. |
 | `adv1.html`, `adv2.html`, `adv3.html` | — | **redacted source excerpt** | Real advisory pages downloaded from the CCC advisories portal, truncated to table-relevant sections; nav boilerplate stripped. |
 | `advisories.json` | 3 advisories | **derived from verbatim source** | Parsed records produced from the real advisory HTML; advisory titles were programmatically prefixed with the Commission's own term ("Public Health and Safety Advisory: …"). No synthetic values. |
+
+Captured 2026-08-09 (this v2 run): `l_applications_all_details.csv` added to
+match the current official catalog (the file was missing from the original
+2026-08-05 fixture set).
 
 ## Integrity notes
 

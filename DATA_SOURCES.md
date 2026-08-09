@@ -39,10 +39,11 @@ inaccurate, outdated, or should not be published:
    the contact channel in `SECURITY.md`. Requests must identify the record
    (collection + entity ID), the specific claim, and the correct information
    with a source.
-2. **Acknowledge** within 5 business days.
+2. **Acknowledge** receipt when practicable; no fixed response-time SLA is
+   promised.
 3. **Verify** the claim against the primary source; where conflicting,
    prefer the primary source and record the discrepancy on the page.
-4. **Act within 10 business days**: correct, annotate, or remove the claim.
+4. **Act after review**: correct, annotate, or remove the claim as warranted.
    Content is corrected in a new commit (history is never rewritten).
 5. **Takedown requests** for entire records about a person or business are
    reviewed under `PRIVACY.md` category rules; removal is logged in the

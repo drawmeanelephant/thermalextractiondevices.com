@@ -16,7 +16,7 @@ summary: North American vaporizer brand of Thermodyne Systems (Toronto / Stuttga
 
 | Field | Detail |
 | --- | --- |
-| Legal Entity | Tronian is a brand of **Thermodyne Systems** (manuals carry "Thermodyne Systems, 11 Progress Ave #17, Toronto, ON M1P 4S7, Canada" and "Thermodyne Systems GmbH, Esperantostr. 8b, 70197 Stuttgart, Germany") [^1][^2] |
+| Legal Entity | Tronian is a brand of **Thermodyne Systems**, with Canadian and German entities identified in official manuals [^1][^2] |
 | Headquarters | Toronto, Canada; Stuttgart, Germany (dual addresses on official manuals and the official store locator) [^1][^2] |
 | Operating Principle | Consumer vapor hardware — 510 cartridge batteries, disposable oil pens, dry-herb portables, wax pens, and vapor cups |
 | Foundation Year | Brand founded ~2018 (per TVape brand page; not dated on tronian.com — treated as secondary) [^3] |

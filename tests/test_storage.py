@@ -46,6 +46,11 @@ class StorageTestCase(unittest.TestCase):
             entries = manifest["datasets"]["licenses"]
             self.assertEqual(len(entries), 2)
             self.assertEqual(entries[1]["prior_snapshot_checksum"], "sha1")
+            self.assertEqual(
+                entries[0]["artifact_location"],
+                "var/ingest/massachusetts-ccc/raw/licenses/sha1.csv",
+            )
+            self.assertNotIn(str(Path(tmp)), entries[0]["artifact_location"])
             latest = store.latest_snapshot("licenses")
             self.assertEqual(latest["raw_sha256"], "sha2")
 

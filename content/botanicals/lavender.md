@@ -25,4 +25,4 @@ Lavender essential oil contains high proportions of volatile monoterpenoids:
 
 ## Botanical Application & Research
 
-Extensively studied for sensory calming effects and aromatherapy application.
+Recorded here for botanical and aromatic context. Traditional or aromatherapy use does not establish a therapeutic effect, medical use, or safe inhaled-vapor recommendation.

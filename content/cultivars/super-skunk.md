@@ -27,6 +27,8 @@ summary: Overview of Super Skunk bred by Sensi Seeds by crossing Skunk #1 with a
 
 Released by Sensi Seeds in the 1990s, Super Skunk crossed the classic Skunk #1 line with an Afghan "hash plant" family selection to enhance density, resin output, and deep earthy pungent notes. Sensi Seeds' own materials date the release to the 1990s; the specific "1990" year appears in third-party references.
 
+**First-party source**: [Sensi Seeds — Super Skunk](https://sensiseeds.com/en/cannabis-seeds/sensi-seeds/super-skunk) (retrieved 2026-08-09). Machine records: `CLM-0004`, `CLM-0005`.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:

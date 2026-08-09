@@ -70,7 +70,7 @@ Typically a minor constituent of cannabis flower: reported at 0.002–0.09 mg/g 
 
 [^1]: ICSC 1704, *Camphene*, ILO/WHO IPCS (boiling point 156–160 °C); ChemicalBook (lit. 159–160 °C); NIST WebBook SRD 69, CAS 79-92-5. The NIST average boiling temperature (380 ± 100 K, mean of 11 values) is too dispersed to cite as a precise value. https://webbook.nist.gov/cgi/cbook.cgi?ID=C79925&Mask=4
 [^2]: No primary source located during the editorial audit.
-[^3]: Research-corpus dossier (research/compounds/terpenes/camphene/): antioxidant, anti-inflammatory, and antimicrobial assays conducted in vitro or at high oral/i.p. doses; not translated to cannabis inhalation. Claims not independently re-verified in this wave.
+[^3]: No publicly reachable primary source is currently cited for the remaining details in this footnote. The details remain approximate or unverified and are not treated as verified archive facts.
 [^4]: PubChem CID 6616, *Camphene* (CAS 79-92-5). https://pubchem.ncbi.nlm.nih.gov/compound/6616
 [^5]: Fischedick JT. Identification of Terpenoid Chemotypes Among High (−)-trans-Δ9-Tetrahydrocannabinol-Producing *Cannabis sativa* L. Cultivars. *Cannabis Cannabinoid Res.* 2017;2(1):34–47. PMID 28861503; Booth JK, et al. Terpene synthases and terpene variation in *Cannabis sativa*. *Plant Physiol.* 2020;184(1):130–147. PMID 32591428.
 

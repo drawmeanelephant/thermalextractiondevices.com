@@ -8,7 +8,7 @@ summary: Technical reference tables, engineering constants, and standards direct
 
 # Reference & Standards Directory
 
-Catalog of technical reference tables, taxonomy standards, evidence claim grammar rules, and thermodynamic constants.
+Catalog of taxonomy standards, evidence-claim grammar rules, and technical reference tables. It is not an authoritative safety or calibration manual.
 
 All satellite records in this collection follow the form identifier schema `reference/TREF-XXXX`.
 

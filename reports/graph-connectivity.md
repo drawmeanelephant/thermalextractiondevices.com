@@ -5,6 +5,10 @@
 **Date:** 2026-08-08
 **Inputs:** `content/` (Boris site graph), `research/_index/manifest.jsonl` (195 records · 132 subjects), `research/_index/ingestion-queue.md`, `research/_index/verification-ledger.md`
 
+This is a historical connectivity snapshot. The later publication-hardening
+pass retired the non-authoritative `TREL-0001` fixture; the historical counts
+below are not a current release inventory.
+
 ## Goal
 
 Prevent the site from becoming hundreds of excellent but isolated pages: find orphan entities, weak components, missing high-value edges, and duplicate concepts — then add only **high-confidence relationships supported by existing evidence**.
@@ -43,10 +47,10 @@ botanicals 3 · cannabinoids 8 · changelog 3 · contaminants 8 · cultivars 9 �
 | Law-and-use (8) | TLAW-0002..0009 (California DCC registry snapshots) | **Fixed** — 26 edges to TJUR/TLIC/TDTS (+TREQ for manufacturing/testing) |
 | Guide | TGDE-0001 (Vaporizer Heating Architectures) | **Fixed** — 4 edges to TREF-0001 + its 3 documented devices |
 | Changelog (2) | TCHG-0001, TCHG-0002 | **Intentional** — historical process records; no meaningful edge |
-| Release (1) | TREL-0001 (Firmware v1.0.0) | **Intentional** — fixture release record |
+| Release | TREL-0001 | **Retired** — non-authoritative fixture removed during publication hardening |
 | Law-and-use (1) | TLAW-0001 (Ohio Medical Cannabis) | **Unresolved** — no Ohio jurisdiction entity exists; left isolated (see Missing entities) |
 
-**After the pass, 28 fully-isolated entities remain: 24 trunks + 4 intentional/blocked satellites** (TCHG-0001, TCHG-0002, TLAW-0001, TREL-0001).
+**Historical result:** the pass reported 28 fully-isolated entities. TREL-0001 is no longer part of the publication tree.
 
 ## Weak components (before)
 

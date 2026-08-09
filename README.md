@@ -66,10 +66,12 @@ Generated outputs under `dist/`, `publish/`, `site/`, `.tools/`, and local compi
 
 ## Public-Release Readiness
 
-This repository is prepared for eventual public visibility. Before making it
-public, maintainers must work through `docs/pre-publication-checklist.md`
-and resolve the blockers it lists (license choice, real security contact,
-zero category-4 data). Key documents:
+This repository and site are public. Publication hardening remains an active
+workstream: maintainers must work through `docs/pre-publication-checklist.md`
+and the current reports before treating the archive as fully release-ready.
+The current hardening pass removes tracked California DCC raw/normalized
+payloads and tightens the release gates; historical cleanup, licensing, and
+security-process decisions still require maintainer action. Key documents:
 
 * `LICENSE.md` — current licensing status (unlicensed; guidance included)
 * `SECURITY.md` — security reporting and supply-chain posture

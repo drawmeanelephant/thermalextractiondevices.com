@@ -13,9 +13,10 @@ Key rules enforced here:
 
 * **Result states are never collapsed.** ``nd`` (not detected), ``below_lod``,
   ``below_loq``, ``zero`` (explicit zero, flagged for review), ``missing``
-  (blank), and ``not_tested`` (absent from the panel) are six distinct states
-  with distinct allowed uses. A ``0.0`` printed by a laboratory is recorded as
-  ``zero``, never silently converted to ``nd`` or ``missing``.
+  (blank), ``not_tested`` (absent from the panel), and ``invalid`` (present but
+  unparseable, preserved verbatim) are seven distinct states with distinct
+  allowed uses. A ``0.0`` printed by a laboratory is recorded as ``zero``,
+  never silently converted to ``nd`` or ``missing``.
 * **Reported values are preserved verbatim.** ``reported_value`` /
   ``reported_unit`` keep the exact printed string and unit; ``value`` / ``unit``
   carry the normalized representation. Nothing is rounded during ingestion;
@@ -28,6 +29,16 @@ Key rules enforced here:
   producer/operator batch identifier (stable across retests); ``report_id`` is
   the archive record (``lab-results/TLAB-XXXX``). One batch may have retests,
   corrected reports, multiple panels, or reports from different laboratories.
+* **Cultivar claims are claims, not measurements.** ``CultivarClaim`` records
+  the printed label plus an explicit ``resolution`` (resolved / tentative /
+  ambiguous / unresolved) and an optional canonical ``cultivars/TCUL-XXXX``
+  target. Resolution is never forced: an unknown label stays unresolved with
+  ``cultivar_id = None``, and chemistry is never attached to a cultivar name.
+* **Provenance is required for verified records.** ``SourceProvenance`` ties a
+  report to its source (URL, document hash, retrieval date, upstream record
+  id, parser version); a verified record without at least one of
+  ``source_url`` / ``document_hash`` / ``upstream_record_id`` is rejected so
+  no measurement floats without a traceable source.
 * **Comparability is graded, never assumed.** ``comparability_grade`` returns
   A (directly comparable) through F (incomparable/invalid) with explicit
   reason codes, following the laboratory-comparability research report
@@ -69,6 +80,21 @@ class ResultState(str, Enum):
     ZERO = "zero"                # explicit zero as printed; flagged for review
     MISSING = "missing"          # source record exists but the result field is blank
     NOT_TESTED = "not_tested"    # analyte absent from the panel
+    INVALID = "invalid"          # result string present but unparseable/unusable
+
+
+class CultivarClaimResolution(str, Enum):
+    """How confidently a printed label resolves to a canonical cultivar.
+
+    A claim is never forced to resolve: ``resolved`` (confidently one
+    cultivar), ``tentative`` (leaning toward one cultivar), ``ambiguous``
+    (matches several possibilities), or ``unresolved`` (no canonical target).
+    """
+
+    RESOLVED = "resolved"
+    TENTATIVE = "tentative"
+    AMBIGUOUS = "ambiguous"
+    UNRESOLVED = "unresolved"
 
 
 class ReportingBasis(str, Enum):
@@ -79,6 +105,7 @@ class ReportingBasis(str, Enum):
 
 class InstrumentTechnique(str, Enum):
     HPLC_DAD = "HPLC-DAD"
+    UHPLC_DAD = "UHPLC-DAD"
     UPLC_DAD = "UPLC-DAD"
     LC_MS = "LC-MS"
     LC_MS_MS = "LC-MS/MS"
@@ -87,6 +114,10 @@ class InstrumentTechnique(str, Enum):
     GC_MS_MS = "GC-MS/MS"
     HS_GC_MS = "HS-GC-MS"
     HS_GC_FID = "HS-GC-FID"
+    ICP_MS = "ICP-MS"      # heavy-metal panels
+    ICP_OES = "ICP-OES"    # heavy-metal panels
+    PCR = "PCR"            # microbial panels (qPCR/real-time PCR)
+    ELISA = "ELISA"        # mycotoxin immunoassay panels
     OTHER = "other"
     UNKNOWN = "unknown"
 
@@ -140,6 +171,17 @@ REPORT_ID_PATTERN = re.compile(r"^lab-results/TLAB-[0-9]{4}$")
 BATCH_PRODUCER_ID_PATTERN = re.compile(r"^organizations/TORG-[0-9]{4}$")
 BATCH_PRODUCT_ID_PATTERN = re.compile(r"^products/TPRD-[0-9]{4}$")
 LAB_ID_PATTERN = re.compile(r"^testing-laboratories/TSTL-[0-9]{4}$")
+CULTIVAR_ID_PATTERN = re.compile(r"^cultivars/TCUL-[0-9]{4}$")
+LICENSE_ID_PATTERN = re.compile(r"^licenses/TLIC-[0-9]{4}$")
+
+# Vocabulary of test panels a report may declare. Unknown panels are a soft
+# warning, never a hard error: jurisdictions legitimately name panels
+# differently and the model must not reject legitimate historical data.
+TEST_PANEL_VOCABULARY = frozenset({
+    "cannabinoid", "terpene", "pesticide", "heavy-metal", "microbial",
+    "mycotoxin", "residual-solvent", "foreign-material", "water-activity",
+    "moisture", "other",
+})
 COMPOUND_ID_PATTERN = re.compile(
     r"^(cannabinoids/TCBN|terpenes/TTRP|contaminants/TCNT|botanicals/TBOT)-[0-9]{4}$"
 )
@@ -424,8 +466,10 @@ def decode_result(raw: Optional[str]) -> tuple[ResultState, Optional[float], Opt
 
     ``value`` is set only for ``numeric`` and ``zero`` states. Explicit zeros
     are returned as ``zero`` with a review flag — never conflated with ``nd``
-    or ``missing``. Unrecognized non-blank strings are preserved as
-    ``missing`` with the original text in ``note`` so nothing is lost.
+    or ``missing``. Unrecognized non-blank strings are returned as ``invalid``
+    with the original text in ``note`` so nothing is lost; ``invalid`` is
+    distinct from ``missing`` (blank field) and never conflated with ``nd`` or
+    ``zero``.
     """
     text = (raw or "").strip()
     if not text:
@@ -456,7 +500,10 @@ def decode_result(raw: Optional[str]) -> tuple[ResultState, Optional[float], Opt
     try:
         value = float(text)
     except ValueError:
-        return ResultState.MISSING, None, f"unrecognized result string {text!r} preserved"
+        return ResultState.INVALID, None, (
+            f"unrecognized result string {text!r} preserved verbatim; "
+            "state=invalid, never conflated with missing/nd/zero"
+        )
     if value == 0.0:
         return ResultState.ZERO, 0.0, (
             "explicit zero as printed; flagged for review — chemically "
@@ -469,6 +516,100 @@ def decode_result(raw: Optional[str]) -> tuple[ResultState, Optional[float], Opt
 # ---------------------------------------------------------------------------
 # Method / laboratory / report / batch / measurement records
 # ---------------------------------------------------------------------------
+
+
+def _claim_problems(claim: "CultivarClaim") -> list[str]:
+    problems: list[str] = []
+    if not claim.label.strip():
+        problems.append("cultivar claim label is required")
+    if claim.cultivar_id is not None and not CULTIVAR_ID_PATTERN.fullmatch(claim.cultivar_id):
+        problems.append(
+            f"claim cultivar_id {claim.cultivar_id!r} is not a canonical cultivars/TCUL-XXXX id"
+        )
+    for candidate in claim.candidate_ids:
+        if not CULTIVAR_ID_PATTERN.fullmatch(candidate):
+            problems.append(
+                f"claim candidate id {candidate!r} is not a canonical cultivars/TCUL-XXXX id"
+            )
+    if claim.resolution == CultivarClaimResolution.RESOLVED and claim.cultivar_id is None:
+        problems.append("resolved cultivar claims require a cultivar_id")
+    return problems
+
+
+def _claim_warnings(claim: "CultivarClaim") -> list[str]:
+    warnings: list[str] = []
+    if claim.resolution == CultivarClaimResolution.AMBIGUOUS and not claim.candidate_ids:
+        warnings.append(
+            f"claim {claim.label!r} is ambiguous but lists no candidate ids"
+        )
+    if claim.resolution == CultivarClaimResolution.TENTATIVE and claim.cultivar_id is None:
+        warnings.append(
+            f"claim {claim.label!r} is tentative but names no leaning cultivar_id"
+        )
+    return warnings
+
+
+@dataclass(frozen=True)
+class CultivarClaim:
+    """A cultivar name/label as claimed for a product or batch.
+
+    The claim is the *printed identity*, never a measurement: resolving it to a
+    canonical ``cultivars/TCUL-XXXX`` record is a separate, optional act with an
+    explicit ``resolution`` grade. ``candidate_ids`` lists the several
+    possibilities when the label is ambiguous. Unknown labels stay
+    ``resolution = unresolved`` with ``cultivar_id = None`` — resolution is
+    never forced.
+    """
+
+    label: str
+    resolution: CultivarClaimResolution = CultivarClaimResolution.UNRESOLVED
+    cultivar_id: Optional[str] = None
+    candidate_ids: tuple[str, ...] = ()
+    note: str = ""
+
+    def __post_init__(self) -> None:
+        problems = _claim_problems(self)
+        if problems:
+            raise ValueError("; ".join(problems))
+
+    def to_dict(self) -> dict:
+        return {
+            "label": self.label,
+            "resolution": self.resolution.value,
+            "cultivar_id": self.cultivar_id,
+            "candidate_ids": list(self.candidate_ids),
+            "note": self.note,
+        }
+
+
+@dataclass(frozen=True)
+class SourceProvenance:
+    """Retrieval metadata tying a report to its source document/endpoint.
+
+    Every real observation must trace to a source: this object records the
+    official URL, a document hash, when the archive retrieved it, the upstream
+    record id, and the parser/import version that produced the record. All
+    fields are optional so incomplete historical data stays representable;
+    verified records require at least one of ``source_url`` /
+    ``document_hash`` / ``upstream_record_id`` (see ``coa_problems``).
+    """
+
+    source_url: str = ""
+    document_hash: str = ""           # sha256 hex of the source artifact
+    retrieval_date: Optional[str] = None
+    upstream_record_id: str = ""
+    parser_version: str = ""
+    retrieval_note: str = ""
+
+    def to_dict(self) -> dict:
+        return {
+            "source_url": self.source_url,
+            "document_hash": self.document_hash,
+            "retrieval_date": self.retrieval_date,
+            "upstream_record_id": self.upstream_record_id,
+            "parser_version": self.parser_version,
+            "retrieval_note": self.retrieval_note,
+        }
 
 
 @dataclass(frozen=True)
@@ -538,7 +679,13 @@ class Report:
     ``revision`` increments when a corrected report supersedes an earlier one;
     ``supersedes`` names the prior report id. ``source_reference`` points at
     the original document (COA number, PDF id, or dataset row key) so every
-    value traces to the printed artifact.
+    value traces to the printed artifact; ``provenance`` carries the retrieval
+    metadata (URL, hash, retrieval date, upstream id, parser version).
+    ``sample_id`` is the laboratory's own sample identifier when printed.
+    ``license_references`` names regulator licenses (``licenses/TLIC-XXXX``
+    canonical ids when records exist, else natural license numbers as
+    printed). ``test_panels`` declares the panels the report covers
+    (``cannabinoid``, ``terpene``, ``pesticide``, ``heavy-metal``, ...).
     """
 
     report_id: str
@@ -548,8 +695,12 @@ class Report:
     report_date: Optional[str] = None
     test_date: Optional[str] = None
     sample_date: Optional[str] = None
+    sample_id: str = ""
     laboratory: Optional[Laboratory] = None
     jurisdiction: str = ""
+    license_references: tuple[str, ...] = ()
+    test_panels: tuple[str, ...] = ()
+    provenance: Optional[SourceProvenance] = None
     method: Optional[MethodMetadata] = None
 
     def to_dict(self) -> dict:
@@ -561,8 +712,12 @@ class Report:
             "report_date": self.report_date,
             "test_date": self.test_date,
             "sample_date": self.sample_date,
+            "sample_id": self.sample_id,
             "laboratory": self.laboratory.to_dict() if self.laboratory else None,
             "jurisdiction": self.jurisdiction,
+            "license_references": list(self.license_references),
+            "test_panels": list(self.test_panels),
+            "provenance": self.provenance.to_dict() if self.provenance else None,
             "method": self.method.to_dict() if self.method else None,
         }
 
@@ -574,14 +729,22 @@ class Batch:
     ``batch_id`` is the producer/operator batch identifier (a natural key
     stable across retests and reports). ``metrc_tag`` carries the state
     traceability package tag when the source system provides one (e.g. the
-    CCC testing files' METRC SOURCE TAG).
+    CCC testing files' METRC SOURCE TAG). ``lot_number``, ``harvest_date``,
+    ``production_date``, and ``package_date`` are optional identifiers/dates
+    that legitimately vary by jurisdiction and are never required.
+    ``cultivar_labels`` keeps the raw printed labels; ``cultivar_claims``
+    carries the interpreted claims (resolution, canonical target) when an
+    editor or ingest step has attempted resolution — claims may be absent and
+    resolution is never forced.
     """
 
     batch_id: str
     metrc_tag: str = ""
+    lot_number: str = ""
     producer_id: Optional[str] = None
     product_id: Optional[str] = None
     cultivar_labels: tuple[str, ...] = ()
+    cultivar_claims: tuple[CultivarClaim, ...] = ()
     sample_type: str = "unknown"
     matrix_detail: str = ""
     basis: ReportingBasis = ReportingBasis.UNKNOWN
@@ -589,14 +752,18 @@ class Batch:
     record_kind: RecordKind = RecordKind.UNVERIFIED
     jurisdiction: str = ""
     harvest_date: Optional[str] = None
+    production_date: Optional[str] = None
+    package_date: Optional[str] = None
 
     def to_dict(self) -> dict:
         return {
             "batch_id": self.batch_id,
             "metrc_tag": self.metrc_tag,
+            "lot_number": self.lot_number,
             "producer_id": self.producer_id,
             "product_id": self.product_id,
             "cultivar_labels": list(self.cultivar_labels),
+            "cultivar_claims": [c.to_dict() for c in self.cultivar_claims],
             "sample_type": self.sample_type,
             "matrix_detail": self.matrix_detail,
             "basis": self.basis.value,
@@ -604,6 +771,8 @@ class Batch:
             "record_kind": self.record_kind.value,
             "jurisdiction": self.jurisdiction,
             "harvest_date": self.harvest_date,
+            "production_date": self.production_date,
+            "package_date": self.package_date,
         }
 
 
@@ -632,6 +801,7 @@ class AnalyteMeasurement:
     test_date: Optional[str] = None
     quantitation_note: Optional[str] = None
     conversion: Optional[ConversionAudit] = None
+    calculation_formula: Optional[str] = None  # set => report-derived calculated quantity
 
     def __post_init__(self) -> None:
         problems = measurement_problems(self)
@@ -654,6 +824,7 @@ class AnalyteMeasurement:
             "test_date": self.test_date,
             "quantitation_note": self.quantitation_note,
             "conversion": self.conversion.to_dict() if self.conversion else None,
+            "calculation_formula": self.calculation_formula,
         }
 
 
@@ -690,6 +861,22 @@ def soft_measurement_warnings(m: AnalyteMeasurement) -> list[str]:
         warnings.append(f"{m.compound_name}: unit {m.unit!r} is not canonical")
     if m.state == ResultState.ZERO:
         warnings.append(f"{m.compound_name}: explicit zero flagged for review (never treated as nd/missing)")
+    if m.state == ResultState.INVALID:
+        warnings.append(
+            f"{m.compound_name}: reported result string is present but unparseable "
+            "(state=invalid); preserved verbatim for review"
+        )
+    if m.calculation_formula is not None:
+        if m.compound_id is not None:
+            warnings.append(
+                f"{m.compound_name}: calculated quantity carries compound_id; "
+                "report-derived totals are not independent chemical compounds"
+            )
+        if m.state != ResultState.NUMERIC:
+            warnings.append(
+                f"{m.compound_name}: calculated quantity has state={m.state.value}; "
+                "calculated rows are expected to be numeric"
+            )
     if m.test_date is not None and len(m.test_date) > 10:
         warnings.append(f"{m.compound_name}: test_date is not an ISO date")
     return warnings
@@ -746,6 +933,8 @@ def coa_problems(record: CoaRecord) -> list[str]:
         problems.append("laboratory.lab_id must be a canonical testing-laboratories/TSTL-XXXX id or null")
     if record.report.revision < 1:
         problems.append("report revision must be >= 1")
+    for claim in record.batch.cultivar_claims:
+        problems.extend(_claim_problems(claim))
     if not record.measurements:
         problems.append("at least one analyte measurement is required")
     seen: set[str] = set()
@@ -762,6 +951,17 @@ def coa_problems(record: CoaRecord) -> list[str]:
             )
         if record.report.report_date is None:
             problems.append("verified records require a report_date")
+        provenance = record.report.provenance
+        has_provenance = provenance is not None and bool(
+            provenance.source_url.strip()
+            or provenance.document_hash.strip()
+            or provenance.upstream_record_id.strip()
+        )
+        if not has_provenance:
+            problems.append(
+                "verified records require provenance (source_url, document_hash, "
+                "or upstream_record_id) so every measurement traces to a source"
+            )
     return problems
 
 
@@ -789,6 +989,32 @@ def coa_warnings(record: CoaRecord) -> list[str]:
             "reporting basis unknown; dry-weight and as-received results are "
             "never compared without a basis"
         )
+    for claim in record.batch.cultivar_claims:
+        warnings.extend(_claim_warnings(claim))
+    for reference in record.report.license_references:
+        if not LICENSE_ID_PATTERN.fullmatch(reference):
+            warnings.append(
+                f"license reference {reference!r} is not a canonical licenses/TLIC-XXXX "
+                "id; natural license numbers are preserved verbatim until a record exists"
+            )
+    for panel in record.report.test_panels:
+        if panel not in TEST_PANEL_VOCABULARY:
+            warnings.append(
+                f"test panel {panel!r} is not in the known vocabulary; preserved verbatim"
+            )
+    if record.report.provenance is not None:
+        prov = record.report.provenance
+        if prov.retrieval_date is not None and len(prov.retrieval_date) > 10:
+            warnings.append("provenance.retrieval_date is not an ISO date")
+        if prov.document_hash and not re.fullmatch(r"[0-9a-fA-F]{64}", prov.document_hash):
+            warnings.append("provenance.document_hash is not a 64-char hex sha256")
+    for label, date_value in (
+        ("production_date", record.batch.production_date),
+        ("package_date", record.batch.package_date),
+        ("harvest_date", record.batch.harvest_date),
+    ):
+        if date_value is not None and len(date_value) > 10:
+            warnings.append(f"batch.{label} is not an ISO date")
     for m in record.measurements:
         warnings.extend(soft_measurement_warnings(m))
     return warnings

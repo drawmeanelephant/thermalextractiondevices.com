@@ -17,7 +17,7 @@ summary: Florida vapor hardware brand (founded 2013, Pompano Beach) covering dry
 | Field | Detail |
 | --- | --- |
 | Legal Entity | Mig Vapor LLC [^1] |
-| Headquarters | 4100 N Powerline Rd, Ste A5, Pompano Beach, FL 33073, USA [^1] |
+| Headquarters | Pompano Beach, Florida, USA [^1] |
 | Operating Principle | Consumer vapor hardware — dry-herb portables, concentrate pens, oil/cartridge devices, e-cigarette batteries and tanks |
 | Foundation Year | 2013 (per business-profile records) [^1] |
 | Status | Operations discontinued circa 2020–2021; VaporFi is the official home / exclusive distributor of Mig Vapor products (VaporFi blog, live page) [^2] |
@@ -51,4 +51,4 @@ summary: Florida vapor hardware brand (founded 2013, Pompano Beach) covering dry
 
 [^1]: ZoomInfo company profile, "Mig Vapor LLC" (founded 2013; Pompano Beach, FL). https://www.zoominfo.com/c/mig-vapor-llc/372006196
 [^2]: VaporFi, "VaporFi Is the Exclusive Home for Mig Vapor" (official distributor of Mig Vapor products). https://www.vaporfi.com/blog/vaporfi-is-the-exclusive-home-for-mig-vapor
-[^3]: Research corpus — Mig Vapor device-lineage artifact (identity verified 2026-08-08; VaporFi relationship confirmed first-party; per-model spec minutiae derive from retailer/reviewer sources and are subject to ingestion-level review). research/devices/manufacturers/mig-vapor/artifact.md
+[^3]: No publicly reachable primary source is currently cited for the remaining details in this footnote. The details remain approximate or unverified and are not treated as verified archive facts.

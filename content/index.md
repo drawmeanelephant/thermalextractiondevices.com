@@ -9,7 +9,7 @@ tags: ["thermal", "extraction", "devices", "home"]
 
 Welcome to the canonical technical archive for **Thermal Extraction Devices** (`thermalextractiondevices.com`).
 
-This platform maintains technical specifications, engineering schematics, safety procedures, and operating guidelines for thermal extraction equipment, closed-loop thermal recovery systems, and precision vapor phase instruments.
+This platform is an evidence-aware archive of thermal extraction and vaporization devices, manufacturer and device lineage, hardware architecture, cannabis chemistry, terpenes, cannabinoids, cultivars, products, batches, laboratories, jurisdictions, requirements, recalls, and safety documentation. Records distinguish source-attributed facts, editorial taxonomy, demonstrations, and unresolved research. The archive does not assert closed-loop industrial systems, firmware telemetry, engineering schematics, calibration services, or pressure-performance guarantees unless a published record supports the claim.
 
 ---
 
@@ -20,16 +20,16 @@ This platform maintains technical specifications, engineering schematics, safety
 - **[Botanicals](botanicals.md)**: Non-cannabis plant species sharing volatile terpene chemistry (`botanicals/TBOT-XXXX`).
 - **[Cultivars](cultivars.md)**: Genetic lineage indices and cultivar overviews (`cultivars/TCUL-XXXX`).
 - **[Products](products.md)**: Commercial producer products and packaged offerings (`products/TPRD-XXXX`).
-- **[Lab Results](lab-results.md)**: Verified batch Certificates of Analysis (COAs) (`lab-results/TLAB-XXXX`).
-- **[Devices](devices.md)**: Hardware catalog and extraction device registry (`devices/TED-XXXX`).
-- **[Manufacturers](manufacturers.md)**: Thermal extraction hardware manufacturers and engineering specs (`manufacturers/TMFR-XXXX`).
-- **[Specifications](specs.md)**: Electrical, mechanical, and thermodynamic parameters (`specs/TSPEC-XXXX`).
-- **[Safety & Compliance](safety.md)**: Operational boundaries, pressure thresholds, and hazard mitigation (`safety/TSAFE-XXXX`).
-- **[Reference](reference.md)**: Standard operating procedures and engineering reference tables (`reference/TREF-XXXX`).
-- **[Guides](guides.md)**: System assembly, maintenance, and calibration walkthroughs (`guides/TGDE-XXXX`).
-- **[Law & Use](law-and-use.md)**: Legal authorization rules, permitted administration forms, and statutory compliance (`law-and-use/TLAW-XXXX`).
-- **[Releases](releases.md)**: Firmware builds, hardware revisions, and calibration profiles (`releases/TREL-XXXX`).
-- **[Changelog](changelog.md)**: Historical record of design modifications and field service notices (`changelog/TCHG-XXXX`).
+- **[Lab Results](lab-results.md)**: COA records and clearly labeled synthetic demonstrations; no demo is evidence of a real batch (`lab-results/TLAB-XXXX`).
+- **[Devices](devices.md)**: Source-attributed thermal extraction and vaporization hardware records (`devices/TED-XXXX`).
+- **[Manufacturers](manufacturers.md)**: Manufacturer identity, product lineage, hardware architecture, materials, lifecycle, warranty, and recall records (`manufacturers/TMFR-XXXX`).
+- **[Specifications](specs.md)**: Reserved for source-supported electrical, mechanical, and thermodynamic parameters (`specs/TSPEC-XXXX`).
+- **[Safety & Compliance](safety.md)**: Safety records and source-supported hazard guidance; no empty pressure-performance promises (`safety/TSAFE-XXXX`).
+- **[Reference](reference.md)**: Taxonomy, evidence grammar, and engineering reference tables (`reference/TREF-XXXX`).
+- **[Guides](guides.md)**: Evidence-aware reading, lineage, COA, and specimen-format guidance (`guides/TGDE-XXXX`).
+- **[Law & Use](law-and-use.md)**: Jurisdiction, licensing, requirements, recalls, and statutory-source records (`law-and-use/TLAW-XXXX`).
+- **[Releases](releases.md)**: Reserved for documented hardware revisions and future release notes; no firmware or calibration claims are currently published (`releases/TREL-XXXX`).
+- **[Changelog](changelog.md)**: Historical archive and data-model changes, not a record of unsupported field-service events (`changelog/TCHG-XXXX`).
 
 ---
 
@@ -52,6 +52,22 @@ Related regulatory collections:
 - **[Contaminants](contaminants.md)**: Contaminant classes regulated under cannabis testing (`contaminants/TCNT-XXXX`).
 - **[Datasets](datasets.md)**: Dated, source-traceable dataset snapshots and aggregate reporting surfaces (`datasets/TDTS-XXXX`).
 - **[Requirements](requirements.md)**: Regulatory requirements and testing panels (`requirements/TREQ-XXXX`).
+
+---
+
+## Massachusetts CCC Data Collections
+
+Source-traceable records derived from Massachusetts Cannabis Control Commission (CCC) open data (license tracker, testing results, public health and safety advisories, testing laboratories, contaminants, requirements, and aggregate datasets). See the [Massachusetts Cannabis Data Landscape](jurisdictions/TJUR-0075.md) overview.
+
+- **[Jurisdictions](jurisdictions.md)**: State-level jurisdiction profiles (`jurisdictions/TJUR-XXXX`).
+- **[Licenses](licenses.md)**: Aggregate license counts and licensing summaries (`licenses/TLIC-XXXX`).
+- **[Organizations](organizations.md)**: Licensed organizations and advisory-connected licensees (`organizations/TORG-XXXX`).
+- **[Testing Laboratories](testing-laboratories.md)**: Massachusetts Independent Testing Laboratories (`testing-laboratories/TSTL-XXXX`).
+- **[Safety Advisories](safety-advisories.md)**: CCC public health and safety advisories, with the Commission's own terminology preserved (`safety-advisories/TSAD-XXXX`).
+- **[Contaminants](contaminants.md)**: Contaminant classes regulated under cannabis testing (`contaminants/TCNT-XXXX`).
+- **[Datasets](datasets.md)**: Dated, source-traceable dataset snapshots and aggregate reporting surfaces (`datasets/TDTS-XXXX`).
+- **[Requirements](requirements.md)**: Regulatory requirements and testing panels (`requirements/TREQ-XXXX`).
+- **[Affected Products](affected-products.md)**: Normalized package-level records from public health advisories (`affected-products/TAFP-XXXX`).
 
 ---
 

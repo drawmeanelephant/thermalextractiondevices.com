@@ -27,7 +27,7 @@ summary: Propyl-side-chain homologue of CBD; no measured atmospheric boiling poi
 ### Identity notes
 
 - CBDV shares the molecular formula C19H26O2 with CBCV (cannabichromevarin); chromatographic separation is required [^1].
-- InChIKey for CBDV was garbled in the research dossier and is not asserted here; confirm before machine use [^1].
+- InChIKey for CBDV was not confirmed in the available source notes and is not asserted here; confirm before machine use [^1].
 
 ## Physical properties
 

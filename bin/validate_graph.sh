@@ -15,8 +15,17 @@ python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl
 echo "==> Auditing device records against the Device Architecture Taxonomy"
 python3 scripts/audit_device_taxonomy.py "$CONTENT_DIR" --vocab metadata/device-taxonomy.json
 
+echo "==> Auditing COA / lab-result content against the COA graph rules"
+python3 scripts/audit_coa_content.py "$CONTENT_DIR" --map metadata/id-map.jsonl
+
 echo "==> Auditing device records against the record-completeness floor"
 python3 scripts/audit_record_completeness.py "$CONTENT_DIR" --vocab metadata/device-taxonomy.json
+
+echo "==> Validating cultivar identity claim registry"
+python3 scripts/validate_cultivar_claims.py --root "$CONTENT_DIR" --claims metadata/cultivar-claims.jsonl
+
+echo "==> Validating the evidence-aware crosslink layer"
+python3 scripts/validate_crosslinks.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl --claims metadata/cultivar-claims.jsonl --coa metadata/coa-records.jsonl
 
 echo "==> Running Boris graph diagnostics"
 CHECK_REPORT=$(mktemp "${TMPDIR:-/tmp}/ted-boris-check.XXXXXX")

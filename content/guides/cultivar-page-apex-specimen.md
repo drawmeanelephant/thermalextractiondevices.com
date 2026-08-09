@@ -29,7 +29,7 @@ This page serves as an intentionally overstuffed Apex Markdown specimen, validat
 > Standard informational callout for secondary botanical context.
 
 > [!TIP]
-> Operational tip: Maintain thermal convection airflow between 180 °C and 200 °C for optimal terpene preservation.
+> Formatting specimen placeholder: no operating temperature, airflow, or terpene-preservation recommendation is provided by this demonstration page.
 
 > [!IMPORTANT]
 > COA values are batch-specific. Always cross-reference batch lot numbers.

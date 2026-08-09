@@ -27,6 +27,19 @@ summary: Overview of the Strawberry Cough genetic lineage popularized by Kyle Ku
 
 Popularized in North America and offered in global seed catalogs by Dutch Passion, Strawberry Cough is recognized for its distinct sweet strawberry sensory aroma and uplifting Haze lineage. The Strawberry Fields × Haze parentage is widely reported; the breeder credit is contested, with Kyle Kushman the most commonly named originator and some community accounts attributing the original to another breeder (Jeff Cavanagh).
 
+**First-party source**: [Dutch Passion — Strawberry Cough](https://dutch-passion.com/en/cannabis-seeds/strawberry-cough) (retrieved 2026-08-09). Machine records: `CLM-0013`, `CLM-0014`, `CLM-0015`.
+
+## Conflicting Claims
+
+The breeder attribution for Strawberry Cough is **disputed**. This archive retains both claims and does not pick a winner; resolving the dispute requires first-party evidence from the original breeder.
+
+| Attribution | Status | Source |
+| --- | --- | --- |
+| **Kyle Kushman / Dutch Passion** (`CLM-0013`) | claimed | Widely reported in strain databases ([CannaConnection](https://www.cannaconnection.com/strains/strawberry-cough), [Medical Jane](https://www.medicaljane.com/review/kyle-kushmans-strawberry-cough-from-buds-roses/)); Kushman's own account is that he received the cut as a gift and popularized it |
+| **Jeff Cavanagh** (`CLM-0014`) | claimed | [Overgrow forum](https://overgrow.com/t/the-real-story-behind-strawberry-cough-not-kyle-kushman-s-creation/187612) (May 2025): *"was not made by Kyle Kushman. The real breeder? A man named Jeff Cavanagh"* |
+
+Machine record: `CLM-0015` (`source_disagrees_with`, status `conflicting`) links the two claims. Neither claim is promoted; the disagreement is preserved.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:

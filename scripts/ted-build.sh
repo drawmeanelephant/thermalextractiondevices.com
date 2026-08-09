@@ -30,11 +30,22 @@ python3 scripts/audit_markdown_links.py "$CONTENT_DIR"
   --layout-rule default glob:manufacturers/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:products/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:reference/* "$THEME/layouts/compact.html" \
-  --layout-rule default glob:releases/* "$THEME/layouts/compact.html" \
-  --layout-rule default glob:safety/* "$THEME/layouts/compact.html" \
-  --layout-rule default glob:specs/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:terpenes/* "$THEME/layouts/compact.html" \
   --jobs "$BORIS_JOBS"
+
+# Evidence-aware crosslinking: derive labeled, bounded navigation from
+# structured relationships (frontmatter relations, claim registry, COA
+# records) and inject it into the rendered pages. Runs before the HTML ID
+# audit and the public-release audit so the injected HTML is fully checked.
+python3 scripts/crosslinks.py \
+  --root "$CONTENT_DIR" \
+  --map metadata/id-map.jsonl \
+  --claims metadata/cultivar-claims.jsonl \
+  --coa metadata/coa-records.jsonl \
+  --out exports/crosslinks.json \
+  --rag exports/crosslinks-rag.md \
+  --html-dir "$DIST_DIR" \
+  --inject
 
 python3 scripts/audit_html_ids.py "$DIST_DIR"
 
@@ -54,25 +65,21 @@ if [[ -f "$ROOT/_headers" ]]; then
   echo "==> Security headers manifest copied to $DIST_DIR/_headers"
 fi
 
-# Local public-release audit hook (runs when the audit config exists).
-# Fails the build on blocking findings; tool errors only warn, so a broken
-# audit tool can never silently break a release build.
+# Public-release audit hook. Audit failures and audit-tool errors are release
+# failures; a broken audit cannot silently produce a deployable build.
 if [[ -f "$ROOT/docs/audit-config.json" ]]; then
-  if [[ "${SKIP_RELEASE_AUDIT:-0}" == "1" ]]; then
-    echo "⚠️ Skipping public-release audit verification (SKIP_RELEASE_AUDIT=1)"
+  set +e
+  python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" >&2
+  AUDIT_RC=$?
+  set -e
+  if [[ "$AUDIT_RC" -eq 0 ]]; then
+    echo "==> Public-release audit passed"
+  elif [[ "$AUDIT_RC" -eq 2 ]]; then
+    echo "❌ Public-release audit tool failure (output above)" >&2
+    exit 2
   else
-    set +e
-    python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" >&2
-    AUDIT_RC=$?
-    set -e
-    if [[ "$AUDIT_RC" -eq 0 ]]; then
-      echo "==> Public-release audit passed"
-    elif [[ "$AUDIT_RC" -eq 2 ]]; then
-      echo "⚠️ Public-release audit: tool error (output above); continuing build" >&2
-    else
-      echo "❌ Public-release audit: blocking findings (output above)" >&2
-      exit 1
-    fi
+    echo "❌ Public-release audit: blocking findings (output above)" >&2
+    exit 1
   fi
 fi
 

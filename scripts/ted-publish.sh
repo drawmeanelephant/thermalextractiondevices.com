@@ -32,14 +32,25 @@ if "$BORIS_BIN" --input "$CONTENT_DIR" --llms-path "$PUBLISH_DIR/llms.txt" --qui
   fi
 fi
 
+echo "==> Running release audits"
+python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" --report "$PUBLISH_DIR/public-release-report.json"
+python3 scripts/audit_sensitive_content.py --config docs/audit-config.json
+python3 scripts/audit_large_files.py --config docs/audit-config.json
+
 cat > "$PUBLISH_DIR/README.txt" <<'EOF'
 Thermal Extraction Devices publishing artifacts
 
-site/     Public HTML site.
-llms.txt  Public crawler/discovery index.
-context/  Provenance-rich bundle for LLM context uploads.
-rag/      Retrieval corpus for local or hosted RAG systems.
-ir/       Machine-readable graph and reverse-index artifacts.
+site/      Public HTML site.
+llms.txt   Public crawler/discovery index.
+context/   Provenance-rich bundle for LLM context uploads.
+rag/       Retrieval corpus for local or hosted RAG systems.
+ir/        Machine-readable graph and reverse-index artifacts.
+claims.jsonl  Cultivar identity claim registry (machine-readable, provenance-annotated).
 EOF
+
+if [[ -f "$ROOT/metadata/cultivar-claims.jsonl" ]]; then
+  cp "$ROOT/metadata/cultivar-claims.jsonl" "$PUBLISH_DIR/claims.jsonl"
+  echo "✅ cultivar identity claim registry exported to $PUBLISH_DIR/claims.jsonl"
+fi
 
 echo "✅ Publishing export complete: $PUBLISH_DIR"

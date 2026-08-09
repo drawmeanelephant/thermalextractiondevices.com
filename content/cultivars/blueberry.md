@@ -27,6 +27,8 @@ summary: Overview of the Blueberry genetic lineage developed by DJ Short and pop
 
 Originating in the late 1970s through breeder DJ Short and introduced to European seed banks by Dutch Passion in the 1990s, Blueberry is renowned for its distinctive sweet berry aroma and floral undertones.
 
+**First-party source**: [Dutch Passion — Blueberry](https://dutch-passion.com/en/cannabis-seeds/blueberry) (retrieved 2026-08-09). Machine record: `CLM-0009`.
+
 ## Terpene & Chemovar Reference
 
 - Primary Volatile Terpene Nodes:

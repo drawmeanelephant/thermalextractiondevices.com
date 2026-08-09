@@ -80,7 +80,7 @@ partial, N = no / not operational / none located, — = not applicable.
 | [Louisiana](../content/jurisdictions/louisiana.md) | state | N | Y | N | N | LDH / Pharmacy Bd | LAC | P | P | N | N | N | C |
 | [Maine](../content/jurisdictions/maine.md) | state | Y | Y | Y | Y | OCP (DAFS) | OCP rules | P | P | P | P | P | B |
 | [Maryland](../content/jurisdictions/maryland.md) | state | Y | Y | Y | Y | MCA | COMAR 27 | P | P | N | P | N | B |
-| [Massachusetts](../content/jurisdictions/massachusetts.md) | state | Y | Y | Y | Y | CCC | 935 CMR 500 | Y | Y | Y | Y | Y | Deep-ingested |
+| [Massachusetts](../content/jurisdictions/TJUR-0022.md) | state | Y | Y | Y | Y | CCC | 935 CMR 500 | Y | Y | Y | Y | Y | Deep-ingested |
 | [Michigan](../content/jurisdictions/michigan.md) | state | Y | Y | Y | Y | CRA | MRTMA rules | P | P | N | P | P | B |
 | [Minnesota](../content/jurisdictions/minnesota.md) | state | Y | Y | Y | Y | OCM | Minn. Stat. 342 | P | P | N | P | N | B |
 | [Mississippi](../content/jurisdictions/mississippi.md) | state | N | Y | N | N | MSDH | MSDH regs | P | P | N | N | P | C |
