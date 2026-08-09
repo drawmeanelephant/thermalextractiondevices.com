@@ -4,7 +4,7 @@ title: "Blueberry Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "indica-dominant", "dutch-passion", "dj-short", "genetics"]
-relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0007]
+relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0007, relates_to=reference/TREF-0002]
 summary: Overview of the Blueberry genetic lineage developed by DJ Short and popularized by Dutch Passion.
 ---
 
@@ -33,3 +33,10 @@ Originating in the late 1970s through breeder DJ Short and introduced to Europea
   - [β-Myrcene Record](../terpenes/beta-myrcene.md)
   - [β-Caryophyllene Record](../terpenes/beta-caryophyllene.md)
   - [D-Limonene Record](../terpenes/d-limonene.md)
+
+## Provenance & Sources
+
+The lineage and origin details above are breeder-attributed claims (DJ Short's own breeding accounts and Dutch Passion's documentation), not independently verified genetics. Per the archive's [cultivar identity framework](../reference/cultivar-name-vs-chemovar.md), cultivar names do not fix chemical composition, and breeder-attributed pedigrees are claims that can conflict across sources.
+
+- Dutch Passion blog ("Forgotten Cannabis Strains: Blue Velvet"): "In the 1990s, Dutch Passion worked closely with DJ Short, the original breeder of the Blueberry family, to bring these genetics to Europe." https://dutch-passion.com/en/blog/forgotten-cannabis-strains-blue-velvet-n1262 (accessed 2026-08-08)
+- The Afghan/Purple Thai/Highland Thai parentage attributed to DJ Short's Blueberry is reported in DJ Short's own breeding accounts and interviews; it has not been independently verified by genetic analysis in this archive.

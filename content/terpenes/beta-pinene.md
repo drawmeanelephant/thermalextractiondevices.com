@@ -4,7 +4,7 @@ title: "β-Pinene"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpene", "pine"]
-relations: [relates_to=terpenes/TTRP-0003]
+relations: [relates_to=terpenes/TTRP-0003, relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: Isomer of pinene with woody and spicy herbal notes.
 ---
 
@@ -15,9 +15,13 @@ summary: Isomer of pinene with woody and spicy herbal notes.
 | Property | Value |
 | --- | --- |
 | Preferred name | β-Pinene |
+| IUPAC name | 6,6-dimethyl-2-methylidenebicyclo[3.1.1]heptane |
 | CAS number | 127-91-3 |
+| PubChem CID | 14896 [^3] |
 | Chemical family | Bicyclic Monoterpene |
 | Molecular formula | C10H16 |
+| Molecular mass | 136.23 g/mol |
+| Stereochemistry | Chiral; both enantiomers occur in nature |
 
 ## Aroma and sensory character
 
@@ -57,12 +61,14 @@ Associated with herbal steam preparations.
 
 ## Cannabis laboratory results
 
-See [Lab Results](../lab-results.md) for batch analyses.
+Measured at 0.14–0.53 mg/g dry weight in two US hemp cultivars by validated GC-MS of hydrodistilled oil; typically minor relative to β-myrcene and limonene in the same samples [^4]. See [Lab Results](../lab-results.md) for batch analyses.
 
 ## Sources
 
 [^1]: The 166 °C figure is consistent with NIST Antoine parameters for β-pinene (CAS 127-91-3), which extend to ≈439 K; NIST lists no explicit boiling point for the compound. https://webbook.nist.gov/cgi/cbook.cgi?ID=C127913&Mask=4
 [^2]: No primary source located during the editorial audit; requires identification and verification.
+[^3]: PubChem CID 14896, *β-Pinene* (CAS 127-91-3). https://pubchem.ncbi.nlm.nih.gov/compound/14896
+[^4]: Joy N, et al. A Validated GC-MS Method for Major Terpenes Quantification in *Cannabis sativa* L. Essential Oil. 2025. PMC12670203; PMID 40042239.
 
 ## Related pages
 

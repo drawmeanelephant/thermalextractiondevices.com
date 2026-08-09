@@ -4,7 +4,7 @@ title: "α-Pinene"
 parent: terpenes
 status: published
 tags: ["terpene", "bicyclic-monoterpene", "pine"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A bicyclic monoterpene responsible for distinct pine forest aromas.
 ---
 
@@ -15,9 +15,13 @@ summary: A bicyclic monoterpene responsible for distinct pine forest aromas.
 | Property | Value |
 | --- | --- |
 | Preferred name | α-Pinene |
+| IUPAC name | (1S,5S)-2,6,6-trimethylbicyclo[3.1.1]hept-2-ene |
 | CAS number | 80-56-8 |
+| PubChem CID | 6654 [^4] |
 | Chemical family | Bicyclic Monoterpene |
 | Molecular formula | C10H16 |
+| Molecular mass | 136.23 g/mol |
+| Stereochemistry | Chiral; both enantiomers occur in nature and carry distinct CAS numbers ((+)-α-pinene: 7785-70-8; (−)-α-pinene: 18172-67-3) |
 
 ## Aroma and sensory character
 
@@ -59,13 +63,15 @@ Historically used in forest-bathing and herbal vapor treatments for respiratory 
 
 ## Cannabis laboratory results
 
-Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Reported as the most abundant monoterpene in Finola hemp (HS-SPME-GC-MS) and among the dominant monoterpenes across cannabis chemotypes [^5]. Measured concentrations are batch- and method-dependent. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 
 [^1]: NIST Chemistry WebBook, SRD 69, *α-Pinene* (CAS 80-56-8) phase-change data: normal boiling point 430 ± 4 K (≈156.9 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C80568&Mask=4
 [^2]: No primary source located during the editorial audit; the acute-inhalation bronchodilator claim requires identification and verification before it can be retained.
 [^3]: Kim D-S, Lee H-J, Jeon Y-D, et al. Alpha-Pinene Exhibits Anti-Inflammatory Activity Through the Suppression of MAPKs and the NF-κB Pathway in Mouse Peritoneal Macrophages. *Am J Chin Med.* 2015;43(4):731–742. doi:10.1142/S0192415X15500457. PMID 26119957.
+[^4]: PubChem CID 6654, *α-Pinene* (CAS 80-56-8). https://pubchem.ncbi.nlm.nih.gov/compound/6654
+[^5]: Booth JK, Page JE, Bohlmann J. Terpene synthases from *Cannabis sativa*. *PLoS One.* 2017;12(3):e0173911. PMID 28355238; Booth JK, et al. Terpene synthases and terpene variation in *Cannabis sativa*. *Plant Physiol.* 2020;184(1):130–147. PMID 32591428.
 
 ## Related pages
 

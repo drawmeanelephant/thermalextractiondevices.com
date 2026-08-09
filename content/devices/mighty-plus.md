@@ -3,8 +3,8 @@ id: devices/TED-0003
 title: "Storz & Bickel Mighty+ Portable Thermal Extractor"
 parent: devices
 status: published
-tags: ["device", "portable", "hybrid", "storz-bickel"]
-relations: [relates_to=manufacturers/TMFR-0003]
+tags: ["device", "portable", "hybrid", "resistive", "battery", "session", "direct-draw", "storz-bickel"]
+relations: [relates_to=manufacturers/TMFR-0003, relates_to=guides/TGDE-0001]
 summary: Portable hybrid conduction/convection thermal extractor from Storz & Bickel.
 ---
 
@@ -17,8 +17,11 @@ summary: Portable hybrid conduction/convection thermal extractor from Storz & Bi
 | Property | Specification |
 | --- | --- |
 | Manufacturer | [Storz & Bickel GmbH](../manufacturers/storz-bickel.md) |
+| Part Number | `01 01 MY` (Storz & Bickel article number, MIGHTY+ product page) [^3] |
+| Form Factor | Handheld portable vaporizer with a fixed cooling-unit mouthpiece (direct-draw); not a desktop unit [^3] |
 | Release Year | 2021 [^1] |
-| Heating Method | Hybrid conduction and convection |
+| Heating Method | Hybrid conduction and convection: Storz & Bickel states all of its devices use "a patented combination of hot air convection and additional conduction heating," with the Filling Chamber itself heated in addition to the pre-heated air stream [^8] |
+| Heat Generation | Electric resistance heater inside the ceramic-coated aluminum Filling Chamber; the manufacturer does not publish the specific element sub-type (rod, coil, or cartridge), so the general `resistive` value is used here rather than a more specific one [^3][^8] |
 | Operation Mode | Session |
 | Temperature Range | 40 °C – 210 °C (104 °F – 410 °F), adjustable [^2] |
 | Temperature Control | Digital OLED display (set-point control) |
@@ -26,7 +29,7 @@ summary: Portable hybrid conduction/convection thermal extractor from Storz & Bi
 | Chamber Surface | Ceramic-coated aluminum |
 | Cooling Unit / Airpath | PEEK cooling unit with a labyrinth-designed airpath (per manufacturer) [^4] |
 | Power Source | Two internal lithium-ion cells, 3300 mAh total (per manufacturer); "18650" cell format is reported by third parties, not stated officially [^5] |
-| Charging | USB-C with Power Delivery (5–15 V); "Supercharge" reaches ~80 % in ~40 minutes [^5] |
+| Charging | USB-C with Power Delivery (5–15 V), max. power consumption ≈45 W; complies with IEC 60335 and EN 55011 (consumer electrical safety and EMC; distinct from the medical-device certification below); "Supercharge" reaches ~80 % in ~40 minutes; rated operating temperature 5 °C–35 °C (41 °F–95 °F) [^5]. Pass-through operation is supported with a sufficiently powerful USB-C supply (≥15 V @ 3 A): the batteries are bridged and the display shows "dct" to confirm pass-through charging, but the unit does not run directly on mains power without its batteries fitted — this archive does not tag `mains` alongside `battery` for that reason [^5] |
 | Heat-Up Time | ≈60–70 seconds to 180 °C (per manufacturer) [^2] |
 | Compatible Media | Dry botanical flower; concentrates via stainless steel pad |
 
@@ -34,6 +37,12 @@ summary: Portable hybrid conduction/convection thermal extractor from Storz & Bi
 
 > [!IMPORTANT]
 > Only the **Mighty+ MEDIC** (and Volcano MEDIC 2) are certified medical devices, certified under the European Medical Device Regulation (EU MDR) by TÜV SÜD in July 2023 [^6]. The consumer **Mighty+** sold to the public is **not** a certified medical device; household units are subject to consumer appliance safety standards. Terms such as "medical grade" for materials are manufacturer marketing language unless a specific material standard is cited [^7].
+
+## Safety Notes
+
+- Official pre-use guidance: confirm vapors from cleaning agents or disinfectants have fully evaporated before turning the device on; do not block or cover the air vents during use or cooling down; inspect the vaporizer and power supply for visible damage before use; confirm the voltage on the rating plate matches the local power supply; fully charge the device before first use; do not leave it unattended during operation, and unplug the power adapter immediately if a malfunction occurs [^9].
+- The device carries two internal lithium-ion cells (3300 mAh total); allow it to cool completely before storage, and use only the original Storz & Bickel charger to avoid damage or voiding the warranty [^5][^9].
+- See also "Medical Device Status & Certification" below for the consumer-vs-medical certification distinction.
 
 ## Cleaning & Maintenance Protocol
 
@@ -57,6 +66,8 @@ summary: Portable hybrid conduction/convection thermal extractor from Storz & Bi
 [^2]: Storz & Bickel support, "Temperature Settings" (heat-up ≈60–70 s to 180 °C) and "Technical Overview". https://support.storz-bickel.com/hc/en-us/articles/36138271520913-Temperature-Settings
 [^3]: Storz & Bickel product page: "Ceramic Coated Filling Chamber (1.4 cm³)". https://www.storz-bickel.com/en/mighty-plus
 [^4]: Storz & Bickel product page: "Efficient Cooling Unit – Through labyrinth-designed airpath". https://www.storz-bickel.com/en/mighty-plus
-[^5]: Storz & Bickel support, "Technical Overview" (2 Li-ion batteries, 3300 mAh total; USB-C; USB-C PD 5–15 V; ~80 % in ~40 min). https://support.storz-bickel.com/hc/en-us/articles/36136284918585-Technical-Overview
+[^5]: Storz & Bickel support, "Technical Overview" (2 Li-ion batteries, 3300 mAh total; USB-C; USB-C PD 5–15 V; max. power consumption 45 W; operating temperature 5 °C–35 °C; compliance IEC 60335, EN 55011; pass-through/"dct" charging behavior). Snapshot 2026-08-08; corrects a stale URL previously cited in this record. https://support.storz-bickel.com/hc/en-us/articles/36136284925585-Technical-Overview
 [^6]: Storz & Bickel, "Our Medical Devices" (VOLCANO MEDIC 2 and MIGHTY+ MEDIC certified under EU MDR). https://support.storz-bickel.com/hc/en-us/articles/32145749331601-Our-Medical-Devices
 [^7]: ISO 13485:2016 quality-management certification for Storz & Bickel GmbH verified via TÜV SÜD certificate and company materials. https://www.storz-bickel.com/en/about-us
+[^8]: Storz & Bickel support, "All Devices" — "How Is The Vapor Created?" ("All STORZ & BICKEL devices utilize a patented combination of hot air convection and additional conduction heating. The hot air is pre-heated before entering the Filling Chamber, and the chamber itself is also heated."). Snapshot 2026-08-08. https://support.storz-bickel.com/hc/en-us/articles/35886728106257-All-Devices
+[^9]: Storz & Bickel support, "Operation" (MIGHTY+ safety instructions before use, charging, automatic shutdown). Snapshot 2026-08-08. https://support.storz-bickel.com/hc/en-us/articles/36165025129233-Operation

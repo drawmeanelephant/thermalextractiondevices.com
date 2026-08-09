@@ -176,9 +176,9 @@ Massachusetts shares the canonical collections (`jurisdictions`, `licenses`,
 DCC content already committed on `main`. On every live run the importer seeds
 its ID allocator from the combined content tree, so Massachusetts IDs always
 continue from the highest existing number per collection (e.g. California owns
-`jurisdictions/TJUR-0001`; Massachusetts is `jurisdictions/TJUR-0002`). The
-persisted `data/massachusetts-ccc/id-map.json` keeps these mappings stable
-across runs.
+`jurisdictions/TJUR-0001`; Massachusetts is `jurisdictions/TJUR-0022`, the
+number `main`'s jurisdiction scaffold reserved for the state). The persisted
+`data/massachusetts-ccc/id-map.json` keeps these mappings stable across runs.
 
 > ⚠️ **Never delete `data/massachusetts-ccc/id-map.json` without also removing
 > the generated Massachusetts pages.** The allocator seeds from whatever IDs
@@ -210,7 +210,9 @@ SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash bin/validate_graph.sh
 SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash scripts/ted-publish.sh
 ```
 
-Do not treat the CA findings as resolved by this task.
+Do not treat the CA findings as resolved by this task. Current cross-state
+architecture decisions and state status are tracked in `docs/status.md` and
+`docs/status/states/massachusetts.md`.
 
 ## What is intentionally not generated
 
@@ -226,5 +228,6 @@ Do not treat the CA findings as resolved by this task.
 * Numeric action limits — these must be confirmed against current regulation
   text before republishing.
 * Raw coordinates, EIN/TIN, emails, phones, street addresses, agent records.
-* `dcc_sync.py`-style duplicate workflows — there is exactly one canonical
-  command (`state_ingest.py`).
+* California's existing `dcc_sync.py` workflow is not silently removed. Its
+  relationship to the shared `state_ingest.py` command is an open architecture
+  decision tracked in `docs/roadmap.md` and `docs/status.md`.
