@@ -28,6 +28,7 @@ from scripts.crosslinks import (  # noqa: E402
     inject_html,
     load_coa_records,
     load_entities,
+    parse_frontmatter_relations,
     render_sections_html,
     sections_for,
     validate_graph,
@@ -620,3 +621,46 @@ def _coa_json(report_id: str, number: int) -> str:
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestOpenRelationKindGrammar(unittest.TestCase):
+    """BORIS-03: Boris eb49644 opened the relation-kind vocabulary.
+
+    This repository previously enforced its own four-kind allowlist, which
+    rejected edges Boris itself compiles (`unknown relation kind 'tested_by'`).
+    Validation is now by Boris's grammar, so these tests pin BOTH directions:
+    conforming kinds must be accepted, and malformed ones must still fail.
+    Without the negative cases a grammar that accepted everything would pass.
+    """
+
+    def _relations(self, kind: str) -> str:
+        return f"---\nid: devices/TED-0001\nrelations: [{kind}=devices/TED-0002]\n---\n"
+
+    def test_open_kinds_are_accepted(self):
+        for kind in ("tested_by", "analyte_result", "product_claims_cultivar"):
+            with self.subTest(kind=kind):
+                parsed = parse_frontmatter_relations(self._relations(kind), "t.md")
+                self.assertEqual(parsed, [("devices/TED-0001", "devices/TED-0002", kind)])
+
+    def test_core_kinds_still_accepted(self):
+        for kind in ("relates_to", "implements", "depends_on", "supersedes"):
+            with self.subTest(kind=kind):
+                self.assertEqual(
+                    parse_frontmatter_relations(self._relations(kind), "t.md")[0][2], kind
+                )
+
+    def test_uppercase_kind_is_rejected(self):
+        with self.assertRaises(ValueError):
+            parse_frontmatter_relations(self._relations("Tested_By"), "t.md")
+
+    def test_leading_digit_kind_is_rejected(self):
+        with self.assertRaises(ValueError):
+            parse_frontmatter_relations(self._relations("9bad"), "t.md")
+
+    def test_hyphenated_kind_is_rejected(self):
+        with self.assertRaises(ValueError):
+            parse_frontmatter_relations(self._relations("has-dash"), "t.md")
+
+    def test_overlong_kind_is_rejected(self):
+        with self.assertRaises(ValueError):
+            parse_frontmatter_relations(self._relations("x" * 70), "t.md")
