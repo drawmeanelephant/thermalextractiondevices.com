@@ -36,7 +36,7 @@ This is an editorial workflow label, **not a legal rating**. Statuses:
 | TJUR-0020 | Maine | baseline | |
 | TJUR-0021 | Maryland | baseline | |
 | TJUR-0022 | Massachusetts | data-ingestion-ready | Adapter fixture-tested; live sync pending |
-| TJUR-0023 | Michigan | baseline | |
+| TJUR-0023 | Michigan (stub removed; superseded by TJUR-0076) | replaced | Deep-ingested as TJUR-0076 (CRA wave) |
 | TJUR-0024 | Minnesota | baseline | Market ramp-up 2025–26 |
 | TJUR-0025 | Mississippi | stub-verified | |
 | TJUR-0026 | Missouri | stub-verified | Seed-to-sale vendor in flux |

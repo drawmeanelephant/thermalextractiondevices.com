@@ -48,7 +48,7 @@ Satellite records in this collection follow the form identifier schema `jurisdic
 | Maine | [profile](jurisdictions/maine.md) | Yes | Yes | Yes | B |
 | Maryland | [profile](jurisdictions/maryland.md) | Yes | Yes | Yes | B |
 | Massachusetts | [profile](jurisdictions/TJUR-0022.md) | Yes | Yes | Yes | Deep-data implementation (CCC) |
-| Michigan | [profile](jurisdictions/michigan.md) | Yes | Yes | Yes | B |
+| Michigan | [profile](jurisdictions/TJUR-0076.md) | Yes | Yes | Yes | Deep-data implementation (CRA) |
 | Minnesota | [profile](jurisdictions/minnesota.md) | Yes | Yes | Yes | B |
 | Mississippi | [profile](jurisdictions/mississippi.md) | No | Yes | No | C |
 | Missouri | [profile](jurisdictions/missouri.md) | Yes | Yes | Yes | C |
