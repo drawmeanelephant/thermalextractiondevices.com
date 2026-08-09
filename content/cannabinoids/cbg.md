@@ -4,7 +4,7 @@ title: "Cannabigerol (CBG)"
 parent: cannabinoids
 status: published
 tags: ["cannabinoid", "phytocannabinoid", "neutral"]
-relations: [relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0002]
+relations: [relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0002, relates_to=reference/TREF-0003]
 summary: Neutral phytocannabinoid formed from CBGA by decarboxylation; no measured atmospheric boiling point because decomposition precedes boiling.
 ---
 

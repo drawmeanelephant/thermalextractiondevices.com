@@ -4,7 +4,7 @@ title: "Sample COA: Buckeye Relief Blue Dream Batch 123 (Demonstration)"
 parent: lab-results
 status: published
 tags: ["lab-results", "coa", "analytics", "batch", "sample", "demonstration"]
-relations: [relates_to=products/TPRD-0001, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0007, relates_to=terpenes/TTRP-0004]
+relations: [relates_to=products/TPRD-0001, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0007, relates_to=terpenes/TTRP-0004, relates_to=cultivars/TCUL-0001]
 summary: Illustrative sample certificate of analysis record (demonstration) showing the archive's COA format with sample data.
 ---
 

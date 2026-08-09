@@ -4,7 +4,7 @@ title: "α-Bisabolol"
 parent: terpenes
 status: published
 tags: ["terpene", "sesquiterpenoid", "chamomile"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A monocyclic sesquiterpene alcohol with sweet floral and chamomile descriptors.
 ---
 

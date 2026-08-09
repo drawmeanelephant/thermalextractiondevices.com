@@ -4,7 +4,7 @@ title: "Fenchol"
 parent: terpenes
 status: published
 tags: ["terpene", "bicyclic-monoterpene", "pine"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003, relates_to=botanicals/TBOT-0001]
 summary: A bicyclic monoterpene alcohol with camphoraceous fennel-pine character and a boiling point of ≈201–202 °C at 760 mmHg.
 ---
 

@@ -4,7 +4,7 @@ title: "Skunk #1 Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "hybrid", "sensi-seeds", "sacred-seeds", "genetics"]
-relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0007]
+relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0007, relates_to=reference/TREF-0002]
 summary: Historical overview of the Skunk #1 genetic baseline created by Sacred Seeds and Sensi Seeds.
 ---
 

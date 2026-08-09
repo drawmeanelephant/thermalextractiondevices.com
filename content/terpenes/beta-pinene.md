@@ -4,7 +4,7 @@ title: "β-Pinene"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpene", "pine"]
-relations: [relates_to=terpenes/TTRP-0003]
+relations: [relates_to=terpenes/TTRP-0003, relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: Isomer of pinene with woody and spicy herbal notes.
 ---
 

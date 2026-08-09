@@ -182,6 +182,25 @@ def fmt_int(value: int) -> str:
     return f"{value:,}"
 
 
+# Graph edges shared by every California licensing record: the jurisdiction
+# profile, the aggregate license summary, and the underlying DCC registry
+# dataset. Manufacturing and testing-laboratory licensees are additionally
+# bound to the mandatory testing panel (TREQ-0001). Kept in sync with the
+# published records in content/law-and-use/.
+_TESTING_REQUIREMENT_CATEGORIES = {"manufacturing", "testing laboratory"}
+
+
+def relations_for_category(category: str) -> list[str]:
+    rels = [
+        "relates_to=jurisdictions/TJUR-0001",
+        "relates_to=licenses/TLIC-0001",
+        "relates_to=datasets/TDTS-0001",
+    ]
+    if category.strip().lower() in _TESTING_REQUIREMENT_CATEGORIES:
+        rels.append("relates_to=requirements/TREQ-0001")
+    return rels
+
+
 def build_record(category: str, group: list[dict], form_id: str, snapshot_label: str, single: bool = False) -> str:
     summary = summarize(group)
     refreshed = max((clean(record.get("dataRefreshedDate")) for record in group), default="")[:10]
@@ -233,7 +252,7 @@ title: "{title}"
 parent: law-and-use
 status: published
 tags: ["law", "california", "licensing", "{tags_slug}"]
-relations: []
+relations: [{', '.join(relations_for_category(category))}]
 summary: "{summary_text}"
 ---
 

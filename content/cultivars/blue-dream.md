@@ -4,7 +4,7 @@ title: "Blue Dream Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "hybrid", "genetics"]
-relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0007, relates_to=terpenes/TTRP-0003, relates_to=terpenes/TTRP-0004]
+relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0007, relates_to=terpenes/TTRP-0003, relates_to=terpenes/TTRP-0004, relates_to=reference/TREF-0002, relates_to=products/TPRD-0001]
 summary: Overview index for the Blue Dream genetic lineage and an illustrative sample batch laboratory record (demonstration).
 ---
 

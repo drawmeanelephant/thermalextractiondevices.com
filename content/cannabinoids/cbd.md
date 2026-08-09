@@ -4,7 +4,7 @@ title: "Cannabidiol (CBD)"
 parent: cannabinoids
 status: published
 tags: ["cannabinoid", "phytocannabinoid", "neutral"]
-relations: [relates_to=cannabinoids/TCBN-0003, relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0007, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004]
+relations: [relates_to=cannabinoids/TCBN-0003, relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0007, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=reference/TREF-0003]
 summary: Neutral phytocannabinoid formed from CBDA by decarboxylation; no true atmospheric boiling point because thermal decomposition precedes boiling.
 ---
 
