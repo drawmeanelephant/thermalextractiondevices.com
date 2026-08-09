@@ -51,17 +51,25 @@ class BusinessContactClassification(unittest.TestCase):
         line = "contact Arizer for a free replacement: recall@arizer.com or 888-291-0521."
         f = scan(line, "content/devices/TED-0001.md")
         self.assertNotIn("PII-001", codes(f))
-        self.assertNotIn("PII-002", codes(f))
-        self.assertEqual(len(by_code(f, "REV-001")), 2)  # the email and its phone
+        self.assertIn("PII-002", codes(f))
+        self.assertEqual(len(by_code(f, "REV-001")), 1)  # the role email only
 
-    def test_phone_on_same_line_as_role_mailbox_is_review(self):
-        f = scan("| Contact | support@x.com \u00b7 561-529-9001 |", "content/manufacturers/TMFR-0004.md")
-        self.assertNotIn("PII-002", codes(f))
-        self.assertEqual(len(by_code(f, "REV-001")), 2)
+    def test_phone_on_same_line_as_role_mailbox_still_blocks(self):
+        f = scan(
+            "[support@example.com](mailto:support@example.com) — owner John: 415-555-0142",
+            "content/manufacturers/TMFR-0004.md",
+        )
+        self.assertIn("PII-002", codes(f))
+        self.assertEqual(len(by_code(f, "REV-001")), 2)  # display and mailto email matches
 
-    def test_manufacturer_business_address_is_review(self):
-        f = scan("| HQ | 5016 Schuster St |", "content/manufacturers/TMFR-0009.md")
-        self.assertIn("REV-001", codes(f))
+    def test_explicitly_reviewed_business_address_is_allowed(self):
+        f = []
+        _scan_text(
+            "| HQ | 5016 Schuster St |",
+            "content/manufacturers/TMFR-0009.md",
+            {"allowlist": {"addresses": ["5016 Schuster St"]}},
+            f,
+        )
         self.assertNotIn("PII-003", codes(f))
 
     # --- negative controls: the rule must not over-reach --------------------
@@ -82,13 +90,20 @@ class BusinessContactClassification(unittest.TestCase):
         self.assertIn("PII-002", codes(f))
 
     def test_bare_phone_on_content_without_role_mailbox_still_blocks(self):
-        """Only a phone sharing a line with a functional mailbox is a business line."""
+        """Phones remain blocked unless separately reviewed or allowlisted."""
         f = scan("call 415-555-0142 for the grower", "content/manufacturers/TMFR-0001.md")
         self.assertIn("PII-002", codes(f))
         self.assertNotIn("REV-001", codes(f))
 
     def test_address_outside_manufacturer_records_still_blocks(self):
         f = scan("premises at 742 Evergreen Terrace Drive", "content/licenses/TLIC-0001.md")
+        self.assertIn("PII-003", codes(f))
+
+    def test_unreviewed_address_in_manufacturer_content_still_blocks(self):
+        f = scan(
+            "Founder began work at 742 Evergreen Terrace Drive",
+            "content/manufacturers/TMFR-0009.md",
+        )
         self.assertIn("PII-003", codes(f))
 
     def test_personal_email_in_data_still_blocks(self):
@@ -98,8 +113,13 @@ class BusinessContactClassification(unittest.TestCase):
     # --- the detector still detects ----------------------------------------
 
     def test_secrets_and_coordinates_unaffected(self):
-        f = scan("lat 44.12345, -71.98765", "content/manufacturers/TMFR-0001.md")
+        synthetic_key = "AKIA" + "1234567890ABCDEF"
+        f = scan(
+            "lat 44.12345, -71.98765; " + synthetic_key,
+            "content/manufacturers/TMFR-0001.md",
+        )
         self.assertIn("PII-004", codes(f))
+        self.assertIn("SEC-001", codes(f))
 
 
 if __name__ == "__main__":
