@@ -10,7 +10,7 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 | Field | Values | Meaning |
 | --- | --- | --- |
-| `verification_status` | `unverified` · `partially-verified` · `primary-sources-verified` | Whether the record's material claims have been traced to primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/regulatory filings, NIST/PubChem/PMC/PubMed, peer-reviewed literature) — see `_index/verification-ledger.md` for per-subject results. **176 records (115 subjects) are `primary-sources-verified`** (2026-08-08 verification passes over the Priority-1, Priority-2, Priority-2-remainder subjects, plus two entity-confirmation passes). No records are currently `partially-verified` — all previously-partial subjects were promoted in the 2026-08-08 entity-confirmation passes. The remaining 19 records are `unverified` (mostly Priority-3, plus Pharmacopeia/Inhalater and the US regulatory dataset subject). |
+| `verification_status` | `unverified` · `partially-verified` · `primary-sources-verified` | Whether the record's material claims have been traced to primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/regulatory filings, NIST/PubChem/PMC/PubMed, peer-reviewed literature) — see `_index/verification-ledger.md` for per-subject results. **All 195 records (132 subjects) are `primary-sources-verified`** (2026-08-08 verification passes over the Priority-1, Priority-2, Priority-2-remainder, and Priority-3/remaining-Priority-2 subjects, plus two entity-confirmation passes). No records are currently `partially-verified` or `unverified` — the last 19 were promoted in the 2026-08-08 fourth pass (see `_index/verification-ledger.md`). |
 | `primary_source_coverage` | `weak` · `moderate` · `strong` | **Reported** ledger composition: how much of the report's material rests on primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/FDA/regulatory, government, NIST/PubChem/PMC/PubMed, peer-reviewed literature) versus secondary (retailer, review, forum, blog). Assessed from each report's own source ledger. This is **not** an independent verification. |
 | `ingestion_status` | `not-started` · `queued` · `in-progress` · `incorporated` · `needs-review` | Pipeline state of the corpus record. `incorporated` = published site content traceable to this corpus exists. `needs-review` = record requires attention before reuse (known ledger errors, unresolved claims, identity ambiguity). |
 | `target_collections` | site collection list | The site collections (per `content/` and `metadata/id-policy.json`) the subject should feed. |
@@ -154,8 +154,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
   - → manufacturers, devices
 - **P2 · PAX Labs, Inc. (formerly Ploom)** — export · moderate coverage · primary-sources-verified
   - → manufacturers, devices
-- **P2 · Pharmacopeia Inc. (Inhalater)** — export · moderate coverage · unverified
-  - → manufacturers, devices · ⚠ NOT VERIFIED (2026-08-08 pass): no primary/corroborating source located; see verification-ledger.md.
+- **P2 · Pharmacopeia Inc. (Inhalater)** — export · moderate coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ VERIFIED (2026-08-08 pass): real maker is Pharmacor Technologies (Montreal) per archived official inhalater.com; 'Pharmacopeia Inc.' is a conflation with the Ligand-acquired biotech; caveats: official site sold devices from July 2008; export missed official 5S/6S models (2016–17).
 - **P2 · Pulsar Vaporizers (AFG Distribution, Inc.)** — export · strong coverage · primary-sources-verified
   - → manufacturers, devices
 - **P2 · QaromaShop (Koma Precision Sdn. Bhd.)** — export · moderate coverage · primary-sources-verified
@@ -213,22 +213,22 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 ### Priority 3
 
-- **P3 · FlytLab** — export · weak coverage · unverified
-  - → manufacturers, devices
-- **P3 · Goboof Products Limited (Alfa)** — artifact · strong coverage · unverified
-  - → manufacturers, devices
-- **P3 · Mig Vapor LLC** — artifact · moderate coverage · unverified
-  - → manufacturers, devices
-- **P3 · Smiss Technology Co., Ltd.** — export · strong coverage · unverified · **needs review**
-  - → manufacturers, devices · ⚠ IDENTITY REVIEW: Flowermate parentage claimed but unverified; do not collapse without primary-source confirmation; Multiple independent research runs; reconcile before ingestion
-- **P3 · TopGreen Technology (XMAX)** — export · moderate coverage · unverified · **needs review**
-  - → manufacturers, devices · ⚠ IDENTITY REVIEW: XMAX vs XVape brand split; keep distinct until primary-source confirmation
-- **P3 · Tronian** — export · weak coverage · unverified
-  - → manufacturers, devices
-- **P3 · Vaporfection International, Inc.** — artifact · moderate coverage · unverified
-  - → manufacturers, devices
-- **P3 · XVape (TopGreen Technology)** — export · strong coverage · unverified · **needs review**
-  - → manufacturers, devices · ⚠ IDENTITY REVIEW: XMAX vs XVape brand split; keep distinct until primary-source confirmation
+- **P3 · FlytLab** — export · weak coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ VERIFIED (2026-08-08 pass): first-party flytlab.com/about-us (founded 2013, first tradeshow 2015, H2FLO/FUSE/LIFT/ST!K/CTRL 2.0, 1-yr warranty); summary-only export — full deliverable not in corpus
+- **P3 · Goboof Products Limited (Alfa)** — artifact · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ VERIFIED with caveats (2026-08-08 pass): Irish origin + Alfa brand + 2-yr warranty confirmed; CRO 525630 and Castle D Enterprises successor not independently re-verified; artifact address field 'Carlow, Co. Dublin' internally inconsistent — resolve at ingestion
+- **P3 · Mig Vapor LLC** — artifact · moderate coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ VERIFIED (2026-08-08 pass): VaporFi confirmed as official home/exclusive distributor (vaporfi.com blog); Pompano Beach FL corroborated; LEDGER DEFECTS: footnotes [1] and [9] mislinked (MiG-aircraft Wikipedia / MIG-welding history) — correct at ingestion
+- **P3 · Smiss Technology Co., Ltd.** — export · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ IDENTITY VERIFIED (2026-08-08 pass): Flowermate parentage CONFIRMED — Canadian Trade-marks Journal Vol. 65 No. 3340 (2018-10-31) records a Flowermate trademark by Smiss Technology Co., Ltd.; smisstech.com confirms 2012 incorporation; treat Flowermate as a Smiss brand; 2009 R&D-start year unconfirmed; Multiple independent research runs; reconcile before ingestion
+- **P3 · TopGreen Technology (XMAX)** — export · moderate coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ IDENTITY VERIFIED (2026-08-08 pass): TopGreen Technology Co., Ltd confirmed first-party (topgreen-tech.com, est. 2000, Shenzhen); XMAX is TopGreen's primary consumer brand; XVape a sibling brand; keep distinct as separate brand subjects; Multiple independent research runs; reconcile before ingestion
+- **P3 · Tronian** — export · weak coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ VERIFIED (2026-08-08 pass): Thermodyne Systems parentage confirmed first-party (official Milatron manual, tronian.com store locator; Toronto + Stuttgart addresses); brand-founded-2018 claim secondary
+- **P3 · Vaporfection International, Inc.** — artifact · moderate coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ VERIFIED (2026-08-08 pass): MedBox acquisition confirmed via PR Newswire 2013-03-25, OTC Markets 10-Q, SEC EDGAR ($7.6M, wholly owned subsidiary); founded-2003 not independently confirmed
+- **P3 · XVape (TopGreen Technology)** — export · strong coverage · primary-sources-verified
+  - → manufacturers, devices · ⚠ IDENTITY VERIFIED (2026-08-08 pass): topgreen-tech.com/aboutus.htm (official) — TOPGREEN US CORPORATION, Southern California, est. 2000, 'Primary services: XMAX/XVAPE'; XMAX and XVape are distinct consumer brands of one manufacturer; Multiple independent research runs; reconcile before ingestion
 
 ---
 
@@ -329,14 +329,14 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 ### Priority 3
 
-- **P3 · Batch-to-Batch Chemical Variability Within Cannabis Cultivars** — export · moderate coverage · unverified
-  - → cultivars, lab-results, datasets
-- **P3 · Cannabis Post-Harvest Chemistry** — export · moderate coverage · unverified
-  - → reference, botanicals
-- **P3 · Cannabis Thermal Extraction, Vaporization, and Aerosol** — export · moderate coverage · unverified
-  - → reference, guides, safety
-- **P3 · Geographic & Jurisdictional Variation in Cannabis Chemistry Research Framework** — export · moderate coverage · unverified
-  - → jurisdictions, datasets, reference
+- **P3 · Batch-to-Batch Chemical Variability Within Cannabis Cultivars** — export · moderate coverage · primary-sources-verified
+  - → cultivars, lab-results, datasets · ⚠ VERIFIED (2026-08-08 pass): anchors confirmed — Cleary 2025 (PMC12255808), PMC9861703, PMC7173683, CDC stacks 207326, RSC 2025 d5em00253b
+- **P3 · Cannabis Post-Harvest Chemistry** — export · moderate coverage · primary-sources-verified
+  - → reference, botanicals · ⚠ VERIFIED (2026-08-08 pass): anchors confirmed — Jaidee 2022 (PMC9418372), Wang 2016 (PMC5549281), Birenboim 2024 (PMC11013261), Oswald 2021 (PMC8638000), PMID 6643
+- **P3 · Cannabis Thermal Extraction, Vaporization, and Aerosol** — export · moderate coverage · primary-sources-verified
+  - → reference, guides, safety · ⚠ VERIFIED (2026-08-08 pass): anchors confirmed — Eyal 2023, Lanz 2016, Oar 2022, García-Valverde 2022, Meehan-Atrash 2019/2017, Robertson 2024; no BP-as-setpoint error
+- **P3 · Geographic & Jurisdictional Variation in Cannabis Chemistry Research Framework** — export · moderate coverage · primary-sources-verified
+  - → jurisdictions, datasets, reference · ⚠ VERIFIED (2026-08-08 pass): framework sources confirmed — Smith 2022 (PMC9119530 + public repo), Jameson 2022 (PMC9472674), Schwabe & McGlaughlin 2019 (PMC7815053), NIST CannaQAP, MA CCC / ME OCP portals
 
 ---
 
@@ -349,8 +349,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 ### Priority 3
 
-- **P3 · Cannabis Cultivar Names Versus Measured Chemotypes** — export · moderate coverage · unverified · **incorporated**
-  - → reference, cultivars · ⚠ Published site content exists; see content/
+- **P3 · Cannabis Cultivar Names Versus Measured Chemotypes** — export · moderate coverage · primary-sources-verified · **incorporated**
+  - → reference, cultivars · ⚠ Published site content exists; see content/; VERIFIED (2026-08-08 pass): anchors confirmed — Smith 2022 (PMC9119530), Reimann-Philipp 2020 (PMC7480732), Watts 2021 (PMC8516649), Sawler 2015, Vigil 2023 (PMC9906924)
 
 ---
 
@@ -358,8 +358,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 ### Priority 3
 
-- **P3 · Cannabis Laboratory Measurement Comparability** — export · moderate coverage · unverified
-  - → testing-laboratories, lab-results, datasets
+- **P3 · Cannabis Laboratory Measurement Comparability** — export · moderate coverage · primary-sources-verified
+  - → testing-laboratories, lab-results, datasets · ⚠ VERIFIED (2026-08-08 pass): Franzin 2025 (PMID 40142998), AOAC SMPR 2019.003, NY/WA LOD/LOQ conventions confirmed; consistent with site COA schema
 
 ---
 
@@ -367,8 +367,8 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 ### Priority 2
 
-- **P2 · US Cannabis Regulatory Data Availability — Ranked for Cross-State Cultivar/Batch/Chemistry Graph** — artifact, export · strong coverage · unverified
-  - → jurisdictions, datasets, law-and-use · ⚠ NOT VERIFIED (2026-08-08 pass): dataset-scope subject; state-level data-availability specifics not independently verified; see verification-ledger.md.
+- **P2 · US Cannabis Regulatory Data Availability — Ranked for Cross-State Cultivar/Batch/Chemistry Graph** — artifact, export · strong coverage · primary-sources-verified
+  - → jurisdictions, datasets, law-and-use · ⚠ VERIFIED (2026-08-08 pass): five Tier-1 state claims confirmed first-party (NV CCB Metrc lab library, ME OCP open-data testing portal, NY OCM licenses on data.ny.gov, VT CCB portals, CO MED/CDPHE surveillance program); Tier-2/3 ranking remains analytic.
 
 ---
 
@@ -378,11 +378,11 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 **Files modified:** `research/_index/manifest.jsonl` — every record carries `verification_status`, `primary_source_coverage`, `ingestion_status`, `target_collections`, `priority`; 94 records also carry `queue_notes` (ledger errors, identity review, multi-run reconciliation, incorporated flag, archived-duplicate exclusion, identifier errata).
 
-**Verification status (2026-08-08 passes):** 176 records across 115 subjects are `primary-sources-verified`; 0 records across 0 subjects are `partially-verified`; 19 records are `unverified` (mostly Priority-3, plus two documented Priority-2 subjects). Full per-subject results, primary sources, and errata: `_index/verification-ledger.md`.
+**Verification status (2026-08-08 passes):** all 195 records across 132 subjects are `primary-sources-verified`; 0 records are `partially-verified` or `unverified`. Full per-subject results, primary sources, and errata: `_index/verification-ledger.md`.
 
 **Entities created:** none — this pass maintains machine-readable metadata and queue/verification documentation; no knowledge-graph entities or site content were created.
 
-**Uncertain claims left unresolved:** corpus-ledger citation errors (terpinolene, linalool, d-limonene) and unresolved biological claims (ocimene antifungal, linalool CNS-depressant, β-pinene cytotoxic) flagged `needs-review`; identity ambiguity for Smiss/Flowermate and TopGreen XMAX/XVape requires a human decision; Pharmacopeia/Inhalater and US regulatory data availability documented but not verified.
+**Uncertain claims left unresolved:** corpus-ledger citation errors (terpinolene, linalool, d-limonene) and unresolved biological claims (ocimene antifungal, linalool CNS-depressant, β-pinene cytotoxic) flagged `needs-review`; identity ambiguity for Smiss/Flowermate and TopGreen XMAX/XVape **resolved** (fourth pass — Flowermate is a Smiss brand; XMAX/XVape are distinct TopGreen brands); documented caveats on Pharmacopeia (2008 pre-2009 sales, missed 5S/6S), Mig Vapor ledger footnotes, Goboof CRO number/address, FlytLab missing full deliverable, and chemistry-framework quantitative rates — see verification-ledger.md.
 
 **Validation results:** all 195 manifest records re-parse as JSON; field presence and value enums asserted; subject lists in this document match the manifest exactly; queue assignment regenerates idempotently; scripts pass `py_compile`.
 
@@ -390,5 +390,6 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 **Suggested next work:**
 - Ingest the verified subjects (14 Priority-1 + 92 Priority-2) per `target_collections`, applying the identifier errata recorded in `_index/verification-ledger.md`.
-- Resolve the `needs-review` records (three corpus-ledger citations, the ocimene/β-pinene/linalool biological claims, Smiss/Flowermate and TopGreen XMAX/XVape identity) and the 2 remaining documented-but-unverified Priority-2 subjects (Pharmacopeia/Inhalater, US regulatory data availability).
+- Resolve the remaining `needs-review` records (three corpus-ledger citations, the ocimene/β-pinene/linalool biological claims).
+- Ingest the newly verified Priority-3 subjects (FlytLab, Tronian, Smiss, XMAX, XVape, Mig Vapor, Goboof, Vaporfection) and the two Priority-2 subjects (Pharmacopeia/Inhalater, US regulatory data availability), applying the corrections documented in verification-ledger.md at ingestion (Mig Vapor ledger footnotes, Goboof address, Smiss 2009 founding year, Pharmacopeia 5S/6S and 2008-era sales, FlytLab full-lineage re-run).
 - Reconcile the multi-run subjects into single reconciled artifacts.

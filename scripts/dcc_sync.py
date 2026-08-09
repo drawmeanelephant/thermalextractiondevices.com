@@ -226,6 +226,13 @@ def build_record(category: str, group: list[dict], form_id: str, snapshot_label:
             f"({fmt_int(summary['total'])} records, {snapshot_label})."
         )
     tags_slug = slug_cat
+    # The dated archive layout (data/dcc/license-registry/<retrieval-date>/) is
+    # the canonical snapshot source; the former data/dcc/licenses-*.csv paths
+    # were never committed. Keep the reference aligned with the archive.
+    if single:
+        snapshot_desc = f"{snapshot_label.replace('-', ' ').title()} segment derived from the full registry snapshot"
+    else:
+        snapshot_desc = f"{category} segment of the full registry snapshot"
     active_sorted = sorted(
         summary["active"],
         key=lambda record: (
@@ -292,7 +299,7 @@ This record is a data snapshot of the {category} segment of the registry, captur
 
 - Data source: DCC Cannabis Unified License Search — https://search.cannabis.ca.gov
 - Registry refresh date: {refreshed}
-- Snapshot file: `data/dcc/licenses-{snapshot_label}.csv`
+- Snapshot file: `data/dcc/license-registry/2026-08-04/normalized.json` ({snapshot_desc})
 """
 
 
