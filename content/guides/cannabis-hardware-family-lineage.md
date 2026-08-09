@@ -32,7 +32,7 @@ Cannabis Hardware (2009–present; formerly NewVape)
 │   ├─ B-rod Mod (c. 2021) — COMMUNITY mod (Vrod filled with rubies); not a CH product
 │   ├─ Ball-vape generations
 │   │   ├─ Baller (gen 1, 2021-08) — hollowed Vrod diffuser, ~58–60 × 4 mm balls → TED-0039
-│   │   ├─ Screen Baller (gen 2, 2021-09) — screen-bottom diffuser (SKU 3408) → TED-0040
+│   │   ├─ Screen Baller (gen 2, 2021-09) — screen-bottom diffuser (SKU 3408); COMPONENT, no record
 │   │   ├─ B2  (gen 3, by 2021-10, discontinued) — dual-use head + dish → TED-0028
 │   │   ├─ B1  (gen 3, head listed 2021-10) — high-airflow flower head → TED-0004
 │   │   ├─ B0 / B-Zero (gen 3, 2022) — budget single-piece injector → TED-0005
@@ -71,7 +71,7 @@ Cannabis Hardware (2009–present; formerly NewVape)
 | Vrod | Pre-ball | Not published; archived 2019-08 to 2021-10 | Discontinued | Heater head — pre-ball diffuser + dish | [TED-0038](../devices/TED-0038.md) |
 | B-rod Mod | — | c. 2021 | Community modification | Modified Vrod | — (not an entity) |
 | Baller (FlowerPot Ball Vape) | 1 | "Introduced in Aug-2021" (manufacturer) | Superseded | Heater head — first ball-holding diffuser | [TED-0039](../devices/TED-0039.md) |
-| Screen Baller | 2 | Not published; first archived listing 2021-09-27 | Branding retired; SKU 3408 continues as a component | Heater head — screen-bottom diffuser | [TED-0040](../devices/TED-0040.md) |
+| Screen Baller | 2 | Not published; first archived listing 2021-09-27 | Name retired; part 3408 still sold as a component | Component — diffuser insert, no top in its listing | — (no record; rule TAX-06) |
 | B2 | 3 | Not published; documented as existing by 2021-10-20 | Discontinued (date not published) | Heater head — dual-use, concentrate dish | [TED-0028](../devices/TED-0028.md) |
 | B1 | 3 | Head listed 2021-10-20; kit 2022-02-14 | Current | Heater head — high airflow, flower-only | [TED-0004](../devices/TED-0004.md) |
 | B0 / B-Zero | 3 | 2022 | Current | Heater head — single-piece injector | [TED-0005](../devices/TED-0005.md) |
@@ -80,11 +80,13 @@ Cannabis Hardware (2009–present; formerly NewVape)
 | Pulse | — | Listed 2024-03-06 | Current | Heater head — 18 mm male, 20 mm coil | [TED-0042](../devices/TED-0042.md) |
 | Swift | — | Listed 2024-03-11 | Current | Heater head — 14 mm male, 20 mm coil | [TED-0043](../devices/TED-0043.md) |
 
-### The 3408 continuity case
+### The Screen Baller: a name, not a model
 
-SKU **3408** is the clearest example of why this archive tracks part numbers, not just names. It was sold as the **Screen Baller** (generation 2, first archived 2021-09-27), relisted as the "22mm Baller Diffuser", and is sold today as the "22mm 'Standard' Diffuser" — the original URL still 301-redirects to the current listing. The archived B-2 assembly listing shows the same part shipping *inside* the B-2 as its "Screen Diffuser (3408)".
+SKU **3408** is why this archive classifies by what a listing sold, not by what it was called. The manufacturer's lineage blog names the **Screen Baller** as generation 2 of the ball vape, and it had its own page and its own price (first archived 2021-09-27). It is nonetheless **not a model**, and holds no record.
 
-The archive therefore records 3408 in two roles across time, and says so plainly rather than choosing one: **as a model**, the Screen Baller is a named generation in the manufacturer's own lineage narrative and holds record [TED-0040](../devices/TED-0040.md); **as a current SKU**, 3408 is a diffuser component of later head assemblies and gets no separate record in that capacity. Neither statement contradicts the other — the part outlived the model.
+The listing sold one thing: "Screen Baller Diffuser (3408)" plus a 3/4" titanium screen. No top, no nut — nothing that makes a working head on its own. Compare the generation-1 [Baller](../devices/TED-0039.md) (part 3405), whose listing sold top-with-dish variants and could be bought as a complete head; that one holds a record. The same 3408 was then relisted as the "22mm Baller Diffuser", appears in the archived B-2 assembly as its "Screen Diffuser (3408)", and is sold today as the "22mm 'Standard' Diffuser" — the original URL still 301-redirects to the current listing. It is a live component of the [B1](../devices/TED-0004.md) and [B2](../devices/TED-0028.md) heads.
+
+Giving it a device record would have double-counted a part that is already a spec-table row on the heads that contain it, and would have set the precedent that any renamed SKU earns an entity. That is rule **TAX-06** in [TREF-0004](../reference/TREF-0004.md): a marketing name does not promote a component to a model. The Screen Baller is documented as a lineage stage on the records either side of it.
 
 ## ZenLeaf family (cordless wireless, 25 mm axial coil)
 
@@ -120,9 +122,9 @@ The manufacturer has twice claimed a "smallest in the ZenLeaf series" title: the
 
 Per [TREF-0004](../reference/TREF-0004.md), a retailer bundle is never a model, and components stay spec-table rows unless they are substantive separately-purchasable platforms. The modeled catalog maps as follows:
 
-- **Heater head entities (16):** Showerhead, Vrod, Baller, Screen Baller, B2, B1, B0/B-Zero, F16, F22, Pulse, Swift, Mary, Jane, Mercury, VMAX, VMAX Injector. Each names its coil, PID, and bowl in the spec table as sold-separately components.
+- **Heater head entities (15):** Showerhead, Vrod, Baller, B2, B1, B0/B-Zero, F16, F22, Pulse, Swift, Mary, Jane, Mercury, VMAX, VMAX Injector. Each names its coil, PID, and bowl in the spec table as sold-separately components.
 - **Complete system entities (7):** ZenLeaf Whisper, Nova, Bliss, Fusion, Zion, MOAB, and the Airstream — each integrates a coil and stand (Whisper and Zion require a user-supplied external PID; Nova, Bliss, and MOAB carry a built-in PID, with Bliss adding an external XLR output; Fusion carries dual built-in PIDs and dual coils; the Airstream adds an integrated vapor path).
-- **23 Cannabis Hardware records in total**, spanning 2019-era archived listings to the 2025 VMAX generation.
+- **22 Cannabis Hardware records in total**, spanning 2019-era archived listings to the 2025 VMAX generation.
 - **Cross-platform pairings** are recorded on both records where the manufacturer documents them: the Mercury names the MOAB and Airstream as supported systems, and the Airstream Essentials Kit bundles the VMAX by its correct part number (3574).
 
 ## Deliberately not modeled
@@ -136,7 +138,7 @@ Recorded so the omissions are decisions rather than gaps.
 | Clampy Essentials Kit (8067) | TAX-05 | Retail bundle of the Clampy post, a Pulse head, a coil, a bowl, and an optional PID [^4] |
 | B1 kit (8043/8044), B-Zero bundle (8068), MOAB Essentials Kit (8065), Airstream Essentials Kit (8072) | TAX-05 | Retail SKUs of models already recorded |
 | Titanium Coil Cover (3585) | Accessory | Manufacturer states it "doesn't alter performance" — cosmetic cover over an existing coil |
-| 22 mm "Standard" Diffuser (3408) in its current role | Component | The current-catalog identity of the Screen Baller SKU; see [The 3408 continuity case](#the-3408-continuity-case) |
+| Screen Baller / "22mm Standard Diffuser" (3408) | TAX-06 | A named lineage generation whose listing sold only a diffuser and screen, and which still ships as a component of the B1 and B2 heads; see [The Screen Baller: a name, not a model](#the-screen-baller-a-name-not-a-model) |
 | Coils, PID controllers, bowls, posts, screens, handles, sleeves, cases, bangers, ruby balls | Component roles | Recorded in the spec tables of the heads and stations that use them |
 
 A sweep of the full ZenLeaf (34 products) and FlowerPot (43 products) collections on 2026-08-08 found no further substantive, separately-purchasable platform unmodeled.
@@ -145,7 +147,7 @@ A sweep of the full ZenLeaf (34 products) and FlowerPot (43 products) collection
 
 - Every modeled device `relates_to` [Cannabis Hardware, LLC](../manufacturers/TMFR-0004.md).
 - Sibling heads in the same family `relates_to` each other (B1 ↔ B0 ↔ F16 ↔ F22; Mary ↔ Jane; VMAX ↔ VMAX Injector ↔ Mercury); sibling base stations likewise (Whisper ↔ Nova ↔ Bliss ↔ Fusion).
-- Generational succession uses `supersedes` on the newer record where a manufacturer source supports it: Baller → Screen Baller → B2, and Mary → Mercury. The Showerhead and Vrod are linked as siblings only, because no manufacturer source establishes which came first.
+- Generational succession uses `supersedes` on the newer record where a manufacturer source supports it: Baller → B2, and Mary → Mercury. The Screen Baller sits between the Baller and the B2 in the manufacturer's narrative but holds no record, so the `supersedes` edge skips it and the interstitial step is described in prose on both records. The Showerhead and Vrod are linked as siblings only, because no manufacturer source establishes which came first.
 - Head ↔ base-station compatibility is expressed with `relates_to` plus explicit terminology in the spec table — no invented relation kinds.
 
 ## Sources
