@@ -15,9 +15,13 @@ summary: A monoterpenoid ether also known as 1,8-cineole with fresh cooling mint
 | Property | Value |
 | --- | --- |
 | Preferred name | Eucalyptol (1,8-Cineole) |
+| IUPAC name | 1,3,3-trimethyl-2-oxabicyclo[2.2.2]octane |
 | CAS number | 470-82-6 |
+| PubChem CID | 2758 [^5] |
 | Chemical family | Bicyclic Monoterpenoid Ether |
 | Molecular formula | C10H18O |
+| Molecular mass | 154.25 g/mol |
+| Stereochemistry | No chiral centers |
 
 ## Aroma and sensory character
 
@@ -58,7 +62,7 @@ Longstanding use in respiratory vapor inhalations and chest rubs.
 
 ## Cannabis laboratory results
 
-Check [Lab Results](../lab-results.md) for detected levels.
+An occasional, usually minor constituent: detected in only 3 of 19 dried-flower cultivars in a Thai GC-MS survey (0.01–0.39% of identified peak area) and below detection in the rest [^6]. Check [Lab Results](../lab-results.md) for detected levels.
 
 ## Sources
 
@@ -66,6 +70,8 @@ Check [Lab Results](../lab-results.md) for detected levels.
 [^2]: Fischer J, Dethlefsen U. Efficacy of cineole in patients suffering from acute bronchitis: a placebo-controlled double-blind trial. *Cough.* 2013;9:25. doi:10.1186/1745-9974-9-25. PMID 24261680.
 [^3]: Worth H, Schacher C, Dethlefsen U. Concomitant therapy with Cineole (Eucalyptole) reduces exacerbations in COPD: a placebo-controlled double-blind trial. *Respir Res.* 2009;10:69. doi:10.1186/1465-9921-10-69. PMID 19624838.
 [^4]: El Shiekh RA, et al. Therapeutic applications of eucalyptus essential oils. *Inflammopharmacology.* 2024. doi:10.1007/s10787-024-01588-8. PMID 39499358. (Peer-reviewed review.)
+[^5]: PubChem CID 2758, *Eucalyptol / 1,8-Cineole* (CAS 470-82-6). https://pubchem.ncbi.nlm.nih.gov/compound/2758
+[^6]: Janta S, et al. Chemical profiling and clustering of various dried cannabis flowers. *J Cannabis Res.* 2024. doi:10.1186/s42238-024-00252-w. PMID 39639406.
 
 ## Related pages
 

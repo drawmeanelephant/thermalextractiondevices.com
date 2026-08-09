@@ -15,9 +15,13 @@ summary: A monoterpene alcohol with a sweet, floral, lavender scent profile.
 | Property | Value |
 | --- | --- |
 | Preferred name | Linalool |
+| IUPAC name | 3,7-dimethylocta-1,6-dien-3-ol |
 | CAS number | 78-70-6 |
+| PubChem CID | 6549 [^4] |
 | Chemical family | Acyclic Monoterpenoid |
 | Molecular formula | C10H18O |
+| Molecular mass | 154.25 g/mol |
+| Stereochemistry | Chiral; commercial material is usually racemic, but the (R)- and (S)-enantiomers are distinct identities that both occur in nature |
 
 ## Aroma and sensory character
 
@@ -59,13 +63,15 @@ Longstanding use in floral teas and sleep hygiene rituals.
 
 ## Cannabis laboratory results
 
-Check [Lab Results](../lab-results.md) for quantifiable levels.
+A common but rarely dominant monoterpene in cannabis flower; chemotype surveys show substantial batch-to-batch variation, and cultivar names are not chemically fixed [^5]. Check [Lab Results](../lab-results.md) for quantifiable levels.
 
 ## Sources
 
 [^1]: NIST Chemistry WebBook, SRD 69, *Linalool* (CAS 78-70-6): normal boiling point 471.75–471.8 K (≈198.6 °C). https://webbook.nist.gov/cgi/cbook.cgi?ID=C78706&Mask=4
 [^2]: Sugawara Y, Hara C, Tamura K, et al. Sedative effect on humans of inhalation of essential oil of linalool: sensory evaluation and physiological measurements using optically active linalools. *Anal Chim Acta.* 1998;365(1–3):293–299. doi:10.1016/S0003-2670(97)00639-9.
 [^3]: Linck VM, da Silva AL, Figueiró M, Caramão EB, Moreno PRH, Elisabetsky E. Effects of inhaled linalool in anxiety, social interaction and aggressive behavior in mice. *Phytomedicine.* 2010;17(8–9):679–683. doi:10.1016/j.phymed.2009.10.002. PMID 19962290.
+[^4]: PubChem CID 6549, *Linalool* (CAS 78-70-6). https://pubchem.ncbi.nlm.nih.gov/compound/6549
+[^5]: Booth JK, et al. Terpene synthases and terpene variation in *Cannabis sativa*. *Plant Physiol.* 2020;184(1):130–147. PMID 32591428.
 
 ## Related pages
 
