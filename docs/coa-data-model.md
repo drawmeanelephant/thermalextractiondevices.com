@@ -97,6 +97,15 @@ CultivarClaim ──► Product ──► Batch ──► LabReport ──► An
   `cultivars/TCUL-XXXX` record. Resolution is **never forced**: an unknown
   label stays unresolved with `cultivar_id: null`, and `candidate_ids` lists
   the several possibilities for an ambiguous label.
+
+  > **Two layers, one concept.** This model's `CultivarClaim` is the
+  > **in-record** representation: a batch/product carries the name claimed on
+  > its label, with a resolution grade. The archive's **content-level** claim
+  > registry — `metadata/cultivar-claims.jsonl` (`CLM-*` records, statuses,
+  > provenance), documented in `docs/cultivar-identity-model.md` — is the
+  > machine-readable home for those claims on cultivar/product pages.
+  > A `CultivarClaim` here and a `CLM-*` registry row are the same claim
+  > expressed at different layers; they complement, not compete.
 - **Batch → Product / Producer.** `batch.product_id` /
   `batch.producer_id` are canonical ids when records exist, else `null` —
   never invented identities.
