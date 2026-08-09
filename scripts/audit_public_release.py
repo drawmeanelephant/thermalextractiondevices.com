@@ -159,9 +159,9 @@ def _check_headers(root: Path, config: Dict[str, Any],
             ))
 
 
-def audit(root: Path, config: Dict[str, Any]) -> List[Finding]:
+def audit(root: Path, config: Dict[str, Any], include_history: bool = True) -> List[Finding]:
     findings: List[Finding] = []
-    findings.extend(audit_sensitive(root, config))
+    findings.extend(audit_sensitive(root, config, include_history=include_history))
     large_findings, _report = audit_large(root, config)
     findings.extend(large_findings)
     _check_policy_documents(root, config, findings)
@@ -210,7 +210,7 @@ def main() -> int:
     root = args.root.resolve()
     try:
         config = load_config(args.config)
-        findings = audit(root, config)
+        findings = audit(root, config, include_history=not args.no_history)
     except Exception as error:  # tool error => exit 2, never misread as findings
         print("public-release audit: error: {}".format(error), file=sys.stderr)
         return 2
