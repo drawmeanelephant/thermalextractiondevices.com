@@ -182,6 +182,25 @@ def fmt_int(value: int) -> str:
     return f"{value:,}"
 
 
+# Graph edges shared by every California licensing record: the jurisdiction
+# profile, the aggregate license summary, and the underlying DCC registry
+# dataset. Manufacturing and testing-laboratory licensees are additionally
+# bound to the mandatory testing panel (TREQ-0001). Kept in sync with the
+# published records in content/law-and-use/.
+_TESTING_REQUIREMENT_CATEGORIES = {"manufacturing", "testing laboratory"}
+
+
+def relations_for_category(category: str) -> list[str]:
+    rels = [
+        "relates_to=jurisdictions/TJUR-0001",
+        "relates_to=licenses/TLIC-0001",
+        "relates_to=datasets/TDTS-0001",
+    ]
+    if category.strip().lower() in _TESTING_REQUIREMENT_CATEGORIES:
+        rels.append("relates_to=requirements/TREQ-0001")
+    return rels
+
+
 def build_record(category: str, group: list[dict], form_id: str, snapshot_label: str, single: bool = False) -> str:
     summary = summarize(group)
     refreshed = max((clean(record.get("dataRefreshedDate")) for record in group), default="")[:10]
@@ -207,6 +226,13 @@ def build_record(category: str, group: list[dict], form_id: str, snapshot_label:
             f"({fmt_int(summary['total'])} records, {snapshot_label})."
         )
     tags_slug = slug_cat
+    # The dated archive layout (data/dcc/license-registry/<retrieval-date>/) is
+    # the canonical snapshot source; the former data/dcc/licenses-*.csv paths
+    # were never committed. Keep the reference aligned with the archive.
+    if single:
+        snapshot_desc = f"{snapshot_label.replace('-', ' ').title()} segment derived from the full registry snapshot"
+    else:
+        snapshot_desc = f"{category} segment of the full registry snapshot"
     active_sorted = sorted(
         summary["active"],
         key=lambda record: (
@@ -233,7 +259,7 @@ title: "{title}"
 parent: law-and-use
 status: published
 tags: ["law", "california", "licensing", "{tags_slug}"]
-relations: []
+relations: [{', '.join(relations_for_category(category))}]
 summary: "{summary_text}"
 ---
 
@@ -273,7 +299,7 @@ This record is a data snapshot of the {category} segment of the registry, captur
 
 - Data source: DCC Cannabis Unified License Search — https://search.cannabis.ca.gov
 - Registry refresh date: {refreshed}
-- Snapshot file: `data/dcc/licenses-{snapshot_label}.csv`
+- Snapshot file: `data/dcc/license-registry/2026-08-04/normalized.json` ({snapshot_desc})
 """
 
 

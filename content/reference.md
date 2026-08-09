@@ -18,3 +18,4 @@ All satellite records in this collection follow the form identifier schema `refe
 
 - [[reference/TREF-0001|Physical Property Data Standards]]
 - [[reference/TREF-0003|Evidence Labels and Claim Grammar]]
+- [[reference/TREF-0004|Device Architecture Taxonomy]]

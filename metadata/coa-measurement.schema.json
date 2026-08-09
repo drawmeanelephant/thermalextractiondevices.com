@@ -1,0 +1,412 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://thermalextractiondevices.com/metadata/coa-measurement.schema.json",
+  "title": "Durable COA & Laboratory Measurement Record",
+  "description": "Durable archive-facing representation of one laboratory report (COA): the report document, its batch/lot/package, and every analyte measurement with full censoring, unit, method, and comparability metadata. Result states (numeric, nd, below_lod, below_loq, zero, missing, not_tested) are distinct and are never collapsed or silently imputed as zero. Reported values are preserved verbatim (reported_value/reported_unit); value/unit carry the normalized representation with an audited conversion. Batch identity (batch_id) and report identity (report_id, lab-results/TLAB-XXXX) are distinct: one batch may have retests, corrected reports, multiple panels, or reports from different laboratories. See docs/graph/coa-lab-data-model.md and docs/graph/coa-migration.md.",
+  "type": "object",
+  "required": ["schema_version", "report", "batch", "measurements"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "report": {
+      "$ref": "#/definitions/report"
+    },
+    "batch": {
+      "$ref": "#/definitions/batch"
+    },
+    "measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/analyteMeasurement"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "batch": {
+            "properties": {
+              "record_kind": {
+                "const": "verified"
+              }
+            },
+            "required": ["record_kind"]
+          }
+        },
+        "required": ["batch"]
+      },
+      "then": {
+        "properties": {
+          "report": {
+            "properties": {
+              "report_id": {
+                "pattern": "^lab-results/TLAB-[0-9]{4}$"
+              }
+            },
+            "required": ["report_id"]
+          }
+        },
+        "required": ["report"]
+      }
+    }
+  ],
+  "definitions": {
+    "report": {
+      "type": "object",
+      "required": ["report_id"],
+      "properties": {
+        "report_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Archive record id for the laboratory report (COA). Verified records require the canonical form lab-results/TLAB-XXXX (enforced conditionally on batch.record_kind); provisional natural keys (e.g. ma-ccc:<metrc tag>) are tolerated only for non-verified records."
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Report revision; increments when a corrected report supersedes an earlier one."
+        },
+        "supersedes": {
+          "oneOf": [
+            {"type": "string", "pattern": "^lab-results/TLAB-[0-9]{4}$"},
+            {"type": "null"}
+          ],
+          "description": "report_id of the prior revision this report supersedes, or null."
+        },
+        "source_reference": {
+          "type": "string",
+          "description": "Reference to the original artifact: COA number, PDF id, or dataset row key, so every value traces to the printed document."
+        },
+        "report_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "test_date": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the sample was tested (may differ from report_date)."
+        },
+        "sample_date": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the sample was collected/received, when the report states it."
+        },
+        "laboratory": {
+          "oneOf": [
+            {"$ref": "#/definitions/laboratory"},
+            {"type": "null"}
+          ]
+        },
+        "jurisdiction": {
+          "type": "string",
+          "description": "Regulatory jurisdiction of the report, e.g. CA, MA. Enables jurisdiction-stratified analysis."
+        },
+        "method": {
+          "oneOf": [
+            {"$ref": "#/definitions/methodMetadata"},
+            {"type": "null"}
+          ]
+        }
+      }
+    },
+    "laboratory": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lab_id": {
+          "oneOf": [
+            {"type": "string", "pattern": "^testing-laboratories/TSTL-[0-9]{4}$"},
+            {"type": "null"}
+          ],
+          "description": "Canonical testing-laboratories/TSTL-XXXX archive id when the laboratory has a record, else null."
+        },
+        "license_number": {
+          "type": "string",
+          "description": "Regulator license number as printed, when public."
+        },
+        "jurisdiction": {
+          "type": "string"
+        }
+      }
+    },
+    "batch": {
+      "type": "object",
+      "required": ["batch_id", "record_kind"],
+      "properties": {
+        "batch_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Producer/operator batch identifier (natural key as printed). Stable across retests and reports."
+        },
+        "metrc_tag": {
+          "type": "string",
+          "description": "State traceability package tag (e.g. Metrc METRC SOURCE TAG) when the source system provides one."
+        },
+        "producer_id": {
+          "oneOf": [
+            {"type": "string", "pattern": "^organizations/TORG-[0-9]{4}$"},
+            {"type": "null"}
+          ],
+          "description": "Canonical producer organization id, e.g. organizations/TORG-XXXX, or null when unknown. Must be actual JSON null, never the string \"null\"."
+        },
+        "product_id": {
+          "oneOf": [
+            {"type": "string", "pattern": "^products/TPRD-[0-9]{4}$"},
+            {"type": "null"}
+          ],
+          "description": "Canonical commercial product id, e.g. products/TPRD-XXXX, or null when unknown."
+        },
+        "cultivar_labels": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Cultivar labels exactly as printed; never collapsed or canonicalized at ingest."
+        },
+        "sample_type": {
+          "type": "string",
+          "enum": ["flower", "trim", "kief", "hash", "rosin", "resin", "extract", "distillate", "infused", "unknown"]
+        },
+        "matrix_detail": {
+          "type": "string",
+          "description": "Sub-matrix as printed, e.g. \"Raw Plant Material\", \"Buds\", \"Distillate\"."
+        },
+        "basis": {
+          "type": "string",
+          "enum": ["dry-weight", "as-received", "unknown"],
+          "description": "Reporting basis. Cross-batch comparison requires explicit basis normalization; never implicit."
+        },
+        "decarb_convention": {
+          "type": "string",
+          "enum": ["native", "total-potential", "not-applicable", "unknown"],
+          "description": "native = acids and neutrals reported separately; total-potential = acid converted (e.g., THCA x 0.877 + THC). Mandatory context for cannabinoid profiles."
+        },
+        "record_kind": {
+          "type": "string",
+          "enum": ["verified", "demonstration", "unverified"],
+          "description": "verified = real provenance-verified COA; demonstration = sample/placeholder record excluded from derived statistics; unverified = real-looking but unverified record, also excluded. Derived statistics use only record_kind == verified."
+        },
+        "jurisdiction": {
+          "type": "string"
+        },
+        "harvest_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        }
+      }
+    },
+    "analyteMeasurement": {
+      "type": "object",
+      "required": ["compound_name", "state"],
+      "properties": {
+        "compound_id": {
+          "oneOf": [
+            {"type": "string", "pattern": "^(cannabinoids/TCBN|terpenes/TTRP|contaminants/TCNT|botanicals/TBOT)-[0-9]{4}$"},
+            {"type": "null"}
+          ],
+          "description": "Canonical compound entity id when a record exists (e.g. cannabinoids/TCBN-0007 for THCA, contaminants/TCNT-0007 for Lead); null when unmapped. Identity is keyed on the entity id, never the display name."
+        },
+        "compound_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Analyte name as parsed from the report, for readability and identity when compound_id is null."
+        },
+        "compound_cas": {
+          "type": ["string", "null"],
+          "description": "CAS registry number when known and verified."
+        },
+        "reported_value": {
+          "type": "string",
+          "description": "Exact result string as printed (e.g. \"0.0\", \"1.34\", \"ND\", \"<0.05\"). Preserved verbatim; never rounded."
+        },
+        "reported_unit": {
+          "type": "string",
+          "description": "Unit exactly as printed (e.g. \"%\", \"ppm\", \"CFU/g\")."
+        },
+        "state": {
+          "type": "string",
+          "enum": ["numeric", "nd", "below_lod", "below_loq", "zero", "missing", "not_tested"],
+          "description": "numeric = fully quantified; nd = not detected; below_lod / below_loq = censored below a limit; zero = explicit zero as printed (flagged for review, never conflated with nd or missing); missing = blank result field; not_tested = absent from the panel."
+        },
+        "value": {
+          "type": ["number", "null"],
+          "description": "Normalized numeric value. Required for numeric and zero states; must be null otherwise."
+        },
+        "unit": {
+          "type": "string",
+          "enum": ["% w/w", "mg/g", "ug/g", "ppm", "ppb", "mg/mL", "ug/mL", "CFU/g", "CFU/mL", "other"],
+          "description": "Canonical unit of the normalized value. A batch may contain multiple units (e.g. % w/w cannabinoids, mg/g terpenes, ppm pesticides); measurements are only compared/composed after explicit normalization into a compatible analyte subset."
+        },
+        "lod": {
+          "type": ["number", "null"],
+          "description": "Method limit of detection in the same unit. Required when state == below_lod."
+        },
+        "loq": {
+          "type": ["number", "null"],
+          "description": "Method limit of quantitation in the same unit. Required when state == below_loq."
+        },
+        "method": {
+          "oneOf": [
+            {"$ref": "#/definitions/methodMetadata"},
+            {"type": "null"}
+          ],
+          "description": "Per-measurement method override; when null the report-level method applies."
+        },
+        "test_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "quantitation_note": {
+          "type": ["string", "null"]
+        },
+        "conversion": {
+          "oneOf": [
+            {"$ref": "#/definitions/conversionAudit"},
+            {"type": "null"}
+          ],
+          "description": "Audit trail for converting reported_value/reported_unit into value/unit. Null when no conversion was applied."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"state": {"enum": ["numeric", "zero"]}},
+            "required": ["state"]
+          },
+          "then": {
+            "properties": {"value": {"type": "number"}},
+            "required": ["value"]
+          }
+        },
+        {
+          "if": {
+            "properties": {"state": {"not": {"enum": ["numeric", "zero"]}}},
+            "required": ["state"]
+          },
+          "then": {
+            "properties": {"value": {"type": "null"}}
+          }
+        },
+        {
+          "if": {
+            "properties": {"state": {"const": "below_lod"}},
+            "required": ["state"]
+          },
+          "then": {
+            "properties": {"lod": {"type": "number"}},
+            "required": ["lod"]
+          }
+        },
+        {
+          "if": {
+            "properties": {"state": {"const": "below_loq"}},
+            "required": ["state"]
+          },
+          "then": {
+            "properties": {"loq": {"type": "number"}},
+            "required": ["loq"]
+          }
+        }
+      ]
+    },
+    "methodMetadata": {
+      "type": "object",
+      "description": "Minimum-viable-comparability method metadata (laboratory-comparability report §3). Unknowns are explicit; omitting the object means the report carries no method section and cannot grade above D.",
+      "properties": {
+        "instrument_technique": {
+          "type": "string",
+          "enum": ["HPLC-DAD", "UPLC-DAD", "LC-MS", "LC-MS/MS", "GC-FID", "GC-MS", "GC-MS/MS", "HS-GC-MS", "HS-GC-FID", "other", "unknown"]
+        },
+        "derivatization": {
+          "type": ["boolean", "null"],
+          "description": "For GC cannabinoids: were acidic forms derivatized? Underivatized GC underestimates acidic cannabinoids."
+        },
+        "extraction_method": {
+          "type": "string"
+        },
+        "extraction_solvent": {
+          "type": "string"
+        },
+        "homogenization_method": {
+          "type": "string"
+        },
+        "internal_standard": {
+          "type": "string"
+        },
+        "calibration_type": {
+          "type": "string",
+          "enum": ["matrix-matched", "solvent", "unknown"]
+        },
+        "calibration_range": {
+          "type": "string"
+        },
+        "matrix_matched_calibration": {
+          "type": ["boolean", "null"]
+        },
+        "crm_vendor": {
+          "type": "string"
+        },
+        "crm_lot": {
+          "type": "string"
+        },
+        "moisture_method": {
+          "type": "string",
+          "enum": ["vacuum-oven", "karl-fischer", "loss-on-drying", "unknown"]
+        },
+        "moisture_content_pct": {
+          "type": ["number", "null"],
+          "description": "Moisture content in percent (0-100); needed for dry-weight <-> as-received conversion."
+        },
+        "rounding_rule": {
+          "type": "string",
+          "enum": ["round-half-even", "round-half-up", "truncate", "unknown"]
+        },
+        "significant_figures": {
+          "type": ["integer", "null"]
+        },
+        "measurement_uncertainty": {
+          "type": ["number", "null"],
+          "description": "Expanded uncertainty (k=2) as a relative fraction, e.g. 0.10 = ±10%."
+        },
+        "uncertainty_method": {
+          "type": "string",
+          "enum": ["top-down", "bottom-up", "AOAC-SMPR", "unknown"]
+        },
+        "accreditation_body": {
+          "type": "string"
+        },
+        "pt_provider": {
+          "type": "string"
+        },
+        "pt_z_score": {
+          "type": ["number", "null"],
+          "description": "Most recent proficiency-testing z-score for this analyte; |z| >= 3 is unsatisfactory (ISO 13528)."
+        }
+      }
+    },
+    "conversionAudit": {
+      "type": "object",
+      "required": ["from_unit", "to_unit", "factor", "formula"],
+      "properties": {
+        "from_unit": {"type": "string"},
+        "to_unit": {"type": "string"},
+        "factor": {"type": "number"},
+        "formula": {"type": "string"},
+        "params": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "added_uncertainty": {
+          "type": ["number", "null"],
+          "description": "Relative uncertainty (fraction) contributed by conversion parameters, for propagation by the analysis engine."
+        },
+        "note": {"type": "string"}
+      }
+    }
+  }
+}

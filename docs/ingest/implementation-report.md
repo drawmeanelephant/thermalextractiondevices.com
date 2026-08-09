@@ -5,11 +5,12 @@
 > California-containing `main` completed, and Massachusetts v2 ingested the
 > live CCC sources and published source-backed content. See
 > [`reports/massachusetts-ingestion-v2.md`](../../reports/massachusetts-ingestion-v2.md)
-> for the current implementation report, and this document's claims that
+> for the current implementation report. This document's claims that
 > "California is unreachable" or that "Massachusetts is test-only" no longer
-> describe the repository.
+> describe the repository; current integration status is tracked in
+> `docs/status.md` and `docs/status/states/massachusetts.md`.
 
-Status: **implemented (test-only) · not integrated** · Date: 2026-08-05
+Status: **historical snapshot: implemented (test-only) · not integrated** · Date: 2026-08-05
 Generator: `state_ingest-0.1` (schema v1)
 
 ## 0. Executive summary

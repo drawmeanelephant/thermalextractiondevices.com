@@ -40,3 +40,9 @@ data/dcc/cache/
 # Only small durable records under data/<jurisdiction>-ccc/ are committed.
 var/
 .tools/
+
+# Research corpus bulk files (only README.md and _index/ are committed)
+research/*
+!research/README.md
+!research/_index/
+

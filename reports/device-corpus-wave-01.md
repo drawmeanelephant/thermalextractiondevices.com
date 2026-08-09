@@ -144,6 +144,15 @@ All other claims are cited to the research-corpus source ledger (official pages,
 - `research/README.md`, `research/_index/manifest.jsonl`, `research/_index/inventory.md`, `research/_index/duplicate-groups.md`, `research/_index/unresolved.md` reviewed for selection and identity rules.
 - Perplexity reports were used as discovery/synthesis inputs only; material claims were traced to the artifacts' source ledgers (official pages/manuals) before publication.
 
+## Provenance remediation (2026-08-08, post-review)
+
+All 27 pages that had cited the research-corpus artifact as their `[^1]` source were converted so that **first-party sources are the published evidence** and the artifact is demoted to an explicitly labeled internal-provenance aid:
+
+- Device specs now cite the official product pages/manuals directly (e.g., EpicVape E-Nano NXT product page — which confirms 3.75″ × 2″ and 4.4 oz, correcting the page's prior ~4.6 oz figure; TinyMight official TM2 page; Dr. Dabber Switch² product page — confirming the 250–650 °F range; G Pen Dash+ product page; Magic-Flight history blog and MD Dab Box pages; nowinhale.com Vapman/Lotus pages).
+- Where the live first-party page does not publish a claim (release dates, transitional runs, chamber capacities, weights), the row is explicitly marked **reported/approximate/uncertain** and the artifact is named only as internal provenance (`research/devices/manufacturers/<name>/artifact.md`).
+- For the defunct VapeXhale, secondary sources with source class stated (retailer closure notice, Medical Jane review, VaporWarehouse product page, manufacturer's own explainer video) replace the artifact as the evidentiary endpoint.
+- Manufacturer pages cite the Finnish YTJ registry, official company pages, knowledge bases, and ARTG/regulatory filings directly.
+
 ## Suggested next work
 
 1. **Wave 2**: process the remaining artifact+export subjects — Boundless Technology, Eagle Bill, YLL Induction Heaters — plus artifact-only subjects (Goboof, Mig Vapor, Vaporfection) once dated exports exist.

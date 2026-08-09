@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "standard": "reference/TREF-0004",
+  "axes": {
+    "heating_mechanism": [
+      "conduction",
+      "convection",
+      "hybrid",
+      "radiant"
+    ],
+    "heat_generation": [
+      "resistive",
+      "induction",
+      "direct-flame",
+      "indirect-flame",
+      "halogen",
+      "cartridge-heater",
+      "coil",
+      "other"
+    ],
+    "delivery_mode": [
+      "direct-draw",
+      "stem",
+      "whip",
+      "balloon",
+      "injector",
+      "water-tool"
+    ],
+    "operating_mode": [
+      "session",
+      "on-demand",
+      "manual-thermal-cycle",
+      "continuous-desktop"
+    ],
+    "power": [
+      "battery",
+      "mains",
+      "external-pid",
+      "torch",
+      "induction-heater"
+    ]
+  },
+  "ball_vape_components": [
+    "complete-system",
+    "heater-head",
+    "coil",
+    "pid-controller",
+    "bowl",
+    "stand",
+    "bundle"
+  ],
+  "recognized_descriptors": [
+    "device",
+    "portable",
+    "desktop",
+    "cordless",
+    "analog",
+    "catalytic",
+    "glass-airpath",
+    "dry-herb",
+    "concentrates",
+    "ball-vape",
+    "log-vape",
+    "erig",
+    "session",
+    "manual",
+    "butane",
+    "induction",
+    "battery",
+    "hybrid",
+    "conduction",
+    "convection",
+    "on-demand"
+  ],
+  "manufacturer_slugs": [
+    "arizer",
+    "cannabis-hardware",
+    "dynavap",
+    "storz-bickel",
+    "tinymight",
+    "epicvape",
+    "vapman",
+    "lotus",
+    "dr-dabber",
+    "grenco-science",
+    "magic-flight",
+    "oglesby-butler",
+    "vapexhale"
+  ],
+  "tag_aliases": {
+    "manual": "manual-thermal-cycle",
+    "butane": "torch",
+    "induction": "induction",
+    "battery": "battery",
+    "session": "session",
+    "on-demand": "on-demand"
+  },
+  "contradiction_rules": {
+    "TAX-01": {
+      "severity": "error",
+      "name": "hybrid-required",
+      "message": "conduction and convection are both tagged; use the single 'hybrid' value instead"
+    },
+    "TAX-02": {
+      "severity": "error",
+      "name": "flame-exclusive",
+      "message": "direct-flame and indirect-flame are mutually exclusive heat-generation mechanisms"
+    },
+    "TAX-03": {
+      "severity": "error",
+      "name": "manual-vs-session",
+      "message": "manual thermal cycle and session are contradictory operating modes for a single record"
+    },
+    "TAX-04": {
+      "severity": "error",
+      "name": "battery-vs-mains",
+      "message": "battery and mains are mutually exclusive primary power sources unless dual power is documented"
+    },
+    "TAX-05": {
+      "severity": "error",
+      "name": "bundle-not-model",
+      "message": "a bundle is a retail SKU and must never be tagged as a device model"
+    }
+  },
+  "advisory_rules": {
+    "ADV-01": {
+      "name": "ball-vape-component-role",
+      "message": "ball-vape page should state its component role (complete system / heater head / coil / PID controller / bowl / stand / bundle)"
+    },
+    "ADV-02": {
+      "name": "heating-mechanism-declared",
+      "message": "device page has no heating-mechanism tag (conduction/convection/hybrid/radiant) and no matching spec-table row"
+    }
+  }
+}

@@ -6,6 +6,7 @@
 > `scripts/dcc_ingest.py` / `dcc_sync.py`, `data/dcc/`, and the committed
 > California collections). Massachusetts v2 was built on top of that combined
 > tree — see [`reports/massachusetts-ingestion-v2.md`](../../reports/massachusetts-ingestion-v2.md).
+> Active follow-up work is tracked in `docs/status.md`.
 
 Status: **completed** · Date: 2026-08-05 · Author: Freebuff ingestion agent
 
