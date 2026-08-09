@@ -30,9 +30,6 @@ python3 scripts/audit_markdown_links.py "$CONTENT_DIR"
   --layout-rule default glob:manufacturers/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:products/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:reference/* "$THEME/layouts/compact.html" \
-  --layout-rule default glob:releases/* "$THEME/layouts/compact.html" \
-  --layout-rule default glob:safety/* "$THEME/layouts/compact.html" \
-  --layout-rule default glob:specs/* "$THEME/layouts/compact.html" \
   --layout-rule default glob:terpenes/* "$THEME/layouts/compact.html" \
   --jobs "$BORIS_JOBS"
 
