@@ -142,3 +142,70 @@ This pass traces each subject's **material claims** to primary/authoritative sou
 2. Run the same verification pass on Priority-2 subjects, starting with the 15 `partially-verified` site subjects and the 13 multi-run reconciliation subjects.
 3. Write a machine-readable errata file (JSONL) so ingestion scripts can apply identifier corrections programmatically.
 4. Verify manufacturer spec tables against archived official manuals during ingestion (device pages).
+
+---
+
+# Priority-2 Verification Pass (2026-08-08, second pass)
+
+**Scope:** 24 Priority-2 subjects — the 15 `partially-verified` subjects (whose **site content** was checked in `reports/source-verification-wave-01.md` but whose corpus records remained unverified) plus the 12 Priority-2 multi-run reconciliation subjects. (The 13th multi-run subject, Smiss Technology, is Priority 3 with unresolved identity ambiguity and remains excluded.)
+**Method:** same as the Priority-1 pass — identity/material claims traced to PubChem, NIST, peer-reviewed literature, official manufacturer sites, and the wave-01 record. Wave-01's findings are carried forward, not re-derived.
+
+## Compounds (13 verified via PubChem PUG REST + literature)
+
+| Compound | CAS | Correct CID | Formula | Verification |
+| --- | --- | --- | --- | --- |
+| D-Limonene | 5989-27-5 | 440917 | C₁₀H₁₆ | ✅ identity; BP ~175–177 °C standard literature |
+| Eucalyptol (1,8-cineole) | 470-82-6 | 2758 | C₁₀H₁₈O | ✅ identity; BP 176 °C standard literature |
+| Linalool | 78-70-6 | 6549 | C₁₀H₁₈O | ✅ identity; BP 198 °C standard literature |
+| Nerolidol | 7212-44-4 | 5284507 | C₁₅H₂₆O | ✅ identity; **BP 276 °C confirmed** (PMC6272852 review; Aurochemicals 275–277 °C; Eybna 276 °C) |
+| β-Ocimene (trans) | 13877-91-3 | 18756 | C₁₀H₁₆ | ✅ identity; BP 175.2 ± 10 °C (computed) + thermal-lability caveat confirmed (chemsrc; The Good Scents Company 177 °C) |
+| α-Ocimene | 6874-44-8 | 5463455 | C₁₀H₁₆ | ✅ identity |
+| Terpinolene | 586-62-9 | 11463 | C₁₀H₁₆ | ✅ identity; BP ~186 °C standard literature |
+| α-Bisabolol | 515-69-5 | **1549992** | C₁₅H₂₆O | ✅ identity; **⚠ all three artifact CIDs wrong** (see errata) |
+| α-Humulene | 6753-98-6 | 5281520 | C₁₅H₂₄ | ✅ identity; ⚠ BP source variance: 166–168 °C (Good Scents, @760 mmHg) vs ~269 °C (sesquiterpene-range sources) — confirm at ingestion |
+| β-Caryophyllene | 87-44-5 | 5281515 | C₁₅H₂₄ | ✅ identity; BP consistent with NIST SRD 69 (wave-01) |
+| β-Myrcene | 123-35-3 | 31253 | C₁₀H₁₆ | ✅ identity; BP consistent with NIST SRD 69 (wave-01) |
+| β-Pinene | 127-91-3 | 14896 | C₁₀H₁₆ | ✅ identity; BP consistent with NIST SRD 69 (wave-01) |
+| Cannabigerolic Acid (CBGA) | 25555-57-1 | 6449999 | C₂₂H₃₂O₄ | ✅ identity; precursor role (CBGA → THCA/CBDA via THCAS/CBDAS) established literature |
+
+**Compound errata found (this pass):**
+- **α-Bisabolol:** all three claimed PubChem CIDs are wrong — 104770 is **chlorate** (ClO₃⁻), 6441398 is a cobalt-linoleate complex, 11971083 is a piperidine derivative. Correct racemic-entry CID for CAS 515-69-5 is **1549992**. Apply at ingestion.
+- **Ocimene generic row:** artifact pairs CAS 13877-91-3 with CID 5320249; the CAS resolves to CID **18756** (trans-β-ocimene) and 5320249 is an α-ocimene (3E) stereoisomer. Correct the pairing at ingestion.
+- **α-Humulene BP:** source variance flagged above; do not publish a single value without citing the source range.
+
+**Wave-01 ledger errors carried forward** (these are corpus-ledger citation-name errors; the corrected primary records are in `reports/source-verification-wave-01.md`):
+- Terpinolene: ledger cites "Gasic et al. 2013 (PMID 24084350)" → correct record is Aydin E, Türkez H, Taşdemir Ş. *Arh Hig Rada Toksikol.* 2013;64(3):415–424, PMID 24084350.
+- Linalool: ledger cites "Kashiwadani et al. 2010 (PMID 19962290)" → correct record is Linck VM, et al. *Phytomedicine.* 2010;17(8–9):679–683, PMID 19962290 (Kashiwadani et al. is the 2018 *Front Behav Neurosci* paper, PMID 30405369).
+- D-Limonene: ledger cites "Devi N, et al. Pharmaceutics 2025;17:102, doi:10.3390/pharmaceutics17050567" → correct record is Sanshita, Devi N, et al. *Int J Nanomedicine.* 2025;20:4433–4460, doi:10.2147/IJN.S514247.
+
+**Wave-01 unresolved biological claims carried forward** (no primary source located in wave-01; remain unresolved — do not publish as fact):
+- Ocimene antifungal claim — unresolved.
+- Linalool CNS-depressant / anticonvulsant (high-dose rodent) — unresolved.
+- β-Pinene cytotoxic / antioxidant (cellular) — unresolved.
+
+## Manufacturers (11 verified against official sites / wave-01 record)
+
+| Subject | Verified claims | Primary source |
+| --- | --- | --- |
+| 7th Floor, LLC (dba Elev8 Glass Gallery) | Silver Surfer & Da Buddha desktop vapes; Colorado manufacture; "2018: 7th Floor became Elev8 Distribution" | elev8glassgallery.com, elev8vaporizer.com history page |
+| DaVinci Tech (DVNT Holdings) | DaVinci brand; davincivaporizer.com; IQ3/IQ2/IQC line; founders from bungee industry | davincivaporizer.com (official + about) |
+| Ditanium Vapor | Ditanium dual-use desktop (flower + concentrate); quartz-sleeved ceramic heater | ditaniumshop.com (official shop) |
+| EpicVape LLC (Epickai) | E-Nano log vaporizer; XL and NXT models | epicvape.com |
+| Lotus Vaporizer (Mendocino Therapeutics / INHALE) | Flame-powered convection vaporizer; patented flame cap; California origin; original US maker Mendocino Therapeutics; now manufactured/sold by INHALE | nowinhale.com (official); VapoReview (Mendocino Therapeutics attribution) |
+| Vapvana, LLC | Screwball, Ace, Pinch Hitter ball-vape lineup | vapvana.com |
+| Wulf Mods LLC | Founded 2011; dry herb + concentrate + cartridge line (Flex, Faze, Next) | wulfmods.com |
+| Zeus Arsenal | Zeus Arc GT3/GT4, Iceborn, Ion Pro; Ontario (Toronto) operations | zeusarsenal.com |
+| Arizer (Arizer Tech Inc.) | Solo series (Solo III, Solo II MAX), Air, ArGo, XQ2/Extreme Q; Solo III 80/20 hybrid + USB-C (wave-01); **CPSC recalls 26-565 (Solo III, 2026) and Solo II (2025)** added by wave-01 | arizer.com; wave-01 record; CPSC |
+| DynaVap, LLC | Battery-free torch-heated vaporizers; M7 (first-party 2024, third-party 2023 — discrepancy logged in wave-01); VonG X (2025) | dynavap.com; wave-01 record |
+| Storz & Bickel GmbH & Co. KG | Tuttlingen, Germany; Markus Storz began development 1996; Volcano, Mighty, Crafty, Plenty; Mighty+ 40–210 °C / 1.4 cm³ / 3300 mAh corroborated by wave-01; consumer vs MEDIC (TÜV SÜD) distinction retained | storz-bickel.com; wave-01 record |
+
+**Manufacturer caveats (labeled, not blocking):**
+- **DaVinci:** the corporate-parent legal name "DVNT Holdings" appears only in the corpus export; brand, site, and product line are verified, but the legal-entity name was not independently confirmed in this pass. Confirm against a business-registry record at ingestion.
+- **Lotus:** designer attribution (Max Jolliffe, per community accounts) was not independently confirmed; the verified claims are the product type, patent, origin, maker (Mendocino Therapeutics), and current INHALE ownership.
+- Manufacturer artifacts' "Uncertain Specifications" sections remain open (same treatment as the Priority-1 pass).
+
+## Status decisions
+
+- **→ primary-sources-verified (21 subjects):** 7th Floor, Ditanium, EpicVape, Vapvana, Wulf Mods, Zeus Arsenal, Arizer, DynaVap, Storz & Bickel, Eucalyptol, Nerolidol, α-Humulene, α-Pinene, β-Caryophyllene, β-Myrcene, CBGA — plus Terpinolene, Linalool, D-Limonene, Ocimene, β-Pinene, α-Bisabolol, DaVinci, Lotus (8 subjects verified **with labeled caveats/errata** — see above and queue_notes).
+- Subjects with known ledger errors or unresolved biological claims (Terpinolene, Linalool, D-Limonene, Ocimene, β-Pinene) keep `ingestion_status: needs-review`; their `verification_status` reflects that the *material claims themselves* were traced, with the remaining issues documented in queue_notes.
+- Remaining uncertainty: spec-table minutiae (per-model battery, temperature presets, dimensions) were not re-verified claim-by-claim; α-humulene BP source variance; DaVinci legal entity name; Lotus designer attribution.
