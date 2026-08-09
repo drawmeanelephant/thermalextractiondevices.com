@@ -36,6 +36,20 @@ python3 scripts/audit_markdown_links.py "$CONTENT_DIR"
   --layout-rule default glob:terpenes/* "$THEME/layouts/compact.html" \
   --jobs "$BORIS_JOBS"
 
+# Evidence-aware crosslinking: derive labeled, bounded navigation from
+# structured relationships (frontmatter relations, claim registry, COA
+# records) and inject it into the rendered pages. Runs before the HTML ID
+# audit and the public-release audit so the injected HTML is fully checked.
+python3 scripts/crosslinks.py \
+  --root "$CONTENT_DIR" \
+  --map metadata/id-map.jsonl \
+  --claims metadata/cultivar-claims.jsonl \
+  --coa metadata/coa-records.jsonl \
+  --out exports/crosslinks.json \
+  --rag exports/crosslinks-rag.md \
+  --html-dir "$DIST_DIR" \
+  --inject
+
 python3 scripts/audit_html_ids.py "$DIST_DIR"
 
 if [[ -f "$DIST_DIR/_boris/proof/checks.json" ]]; then
