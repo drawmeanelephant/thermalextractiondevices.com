@@ -81,6 +81,19 @@ reasons: ['missing_MU']
 
 Because both records lack `instrument_technique`, `basis` (unknown), moisture, calibration, PT, and uncertainty, the honest answer is "not comparable" — the model never returns A/B for data that cannot support it. Once a real report supplies a method section (`HPLC-DAD`, basis `as-received`, `measurement_uncertainty: 0.08`, matrix-matched calibration, `|z| < 2` for both labs), the same pair can grade **A** with `['all_criteria_met']`, and the pooled comparison becomes defensible.
 
+## 5. Reproducible walk-through (read-only)
+
+`python3 scripts/ma_ccc_walkthrough.py` maps one real fixture package end to
+end (Metrc `33fadba74ecad1e89a…`, 2025-06-24, Lab_H): THC `1.34 %` →
+`numeric`, Lead `0.0 ppm` → `zero`, Arsenic `0.0 ppm` → `zero`, Total Yeast
+and Mold `0.0 CFU/g` → `zero`. It prints the mapped record (provisional
+`ma-ccc:<tag>` id, `record_kind: unverified`), the result-state census, the
+honest soft warnings, and the exact steps verification requires — and it
+**refuses to write** (Massachusetts publication is blocked by the fixture
+guard; this task does not ingest Massachusetts). The same mapping is reused
+unchanged when the pipeline is unblocked; only ids, lab names, and provenance
+change.
+
 ---
 
 *Compiled 2026-08-08. Sources: CCC Open Data catalog (official), verbatim fixture slice with provenance recorded in `tests/fixtures/massachusetts/PROVENANCE.md`. Companion: `docs/graph/coa-lab-data-model.md`, `docs/graph/coa-migration.md`.*
