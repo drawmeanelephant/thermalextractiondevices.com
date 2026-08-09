@@ -82,3 +82,4 @@ The reusable normalization pipeline lives in `scripts/` (see `scripts/README.md`
 - `_index/duplicate-groups.md` — duplicate classification and archive candidates
 - `_index/unresolved.md` — ambiguous files and how they were resolved
 - `_index/ingestion-queue.md` — actionable ingestion/verification work queue by subject area
+- `_index/verification-ledger.md` — primary-source verification results and errata for the Priority-1 subjects
