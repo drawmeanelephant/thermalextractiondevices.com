@@ -98,7 +98,7 @@ class BusinessContactClassification(unittest.TestCase):
     # --- the detector still detects ----------------------------------------
 
     def test_secrets_and_coordinates_unaffected(self):
-        f = scan("lat 37.774900, -122.419400", "content/manufacturers/TMFR-0001.md")
+        f = scan("lat 44.12345, -71.98765", "content/manufacturers/TMFR-0001.md")
         self.assertIn("PII-004", codes(f))
 
 
