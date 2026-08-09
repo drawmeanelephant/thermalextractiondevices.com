@@ -22,7 +22,13 @@
     "premise_longitude"
   ],
   "allowlist": {
-    "emails": ["@users.noreply.github.com", "@example.com", "@example.org"],
+    "emails": [
+      "@users.noreply.github.com",
+      "@example.com",
+      "@example.org",
+      "noreply@github.com",
+      "beau@boorman.tech"
+    ],
     "secrets": [
       "\\$\\{\\{\\s*secrets\\.[A-Za-z0-9_]+\\s*\\}\\}",
       "\\$\\{\\{\\s*env\\.[A-Za-z0-9_]+\\s*\\}\\}",
@@ -30,8 +36,12 @@
       "CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID"
     ],
     "personal_paths": [],
-    "phones": [],
-    "addresses": [],
+    "phones": [
+      "555-01"
+    ],
+    "addresses": [
+      "Constitutional Court"
+    ],
     "coordinates": [],
     "tax_ids_comment": "Manufacturer product identifiers on device records (UPC/EAN barcodes and article numbers), reviewed 2026-08-08 and confirmed to be published product codes, not tax or parcel numbers. PII-005 flags any long numeric run for human review; these are the reviewed dispositions. Add an entry only after confirming the number is a manufacturer-published product identifier.",
     "tax_ids": [
@@ -49,7 +59,12 @@
     ],
     "duplicate_blobs": [],
     "human_review": [],
-    "generated_artifacts": ["metadata/id-map.jsonl"]
+    "generated_artifacts": [
+      "metadata/id-map.jsonl"
+    ],
+    "addresses_comment": "Reviewed false positives. 'Constitutional Court' matches the street-suffix pattern in legal citations such as 'the 2018 Constitutional Court ruling'; it is a court, not a street. Reviewed 2026-08-09. Add an entry only after confirming the match is not a real premises address.",
+    "emails_comment": "noreply@github.com and @users.noreply.github.com are GitHub-generated, non-personal addresses. beau@boorman.tech is the maintainer's own git committer identity, present in the author/committer field of every commit in this repository and already public in the GitHub commit log; it is not leaked third-party PII. Reviewed 2026-08-09.",
+    "phones_comment": "555-01xx is the NANP block reserved for fictional use; such numbers cannot be assigned to a real subscriber and appear here only in test fixtures. Reviewed 2026-08-09."
   },
   "suppressions": [
     "PII-005:scripts/audit_sensitive_content.py",
