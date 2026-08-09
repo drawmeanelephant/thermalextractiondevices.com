@@ -17,7 +17,7 @@ summary: A monocyclic monoterpene alcohol with lilac-floral character and a veri
 | Preferred name | α-Terpineol |
 | IUPAC name | 2-(4-methylcyclohex-3-en-1-yl)propan-2-ol |
 | CAS number | 98-55-5 |
-| PubChem CID | 17100 |
+| PubChem CID | 17100 [^4] |
 | Chemical family | Monocyclic Monoterpene Alcohol |
 | Molecular formula | C10H18O |
 | Molecular mass | 154.25 g/mol |
@@ -64,13 +64,15 @@ Historically used in aromatherapy and traditional herbal steam preparations.
 
 ## Cannabis laboratory results
 
-Consult [Lab Results](../lab-results.md) for batch-level measurements. α-Terpineol is a minor monoterpene alcohol that can form from oxidation of other monoterpenes during storage and processing.
+Measured at 0.034–0.08 mg/g dry weight across three University of Mississippi chemovars (GC-FID) and at 0.1–0.9 mg/g across California dispensary cultivars (GC-FID) — a minor constituent [^5]. α-Terpineol can also form from oxidation of other monoterpenes during storage and processing. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 
 [^1]: NIST Chemistry WebBook, SRD 69, *α-Terpineol* (CAS 98-55-5) phase-change data: boiling temperatures 490.7 K, 491.15 K, 491.0 K (Aldrich 1990; Lecat 1930, 1926). https://webbook.nist.gov/cgi/cbook.cgi?ID=C98555&Mask=4
 [^2]: No primary source located during the editorial audit; the inhalation-sedation claim requires identification and verification before it can be retained.
 [^3]: Research-corpus dossier (research/compounds/terpenes/alpha-terpineol/): in vitro CB1/CB2 modulation, NF-κB inhibition, and antimicrobial assays conducted at 1–100 µM or higher, not translated to cannabis inhalation. Claims not independently re-verified in this wave.
+[^4]: PubChem CID 17100, *α-Terpineol* (CAS 98-55-5). https://pubchem.ncbi.nlm.nih.gov/compound/17100
+[^5]: Ibrahim EA, et al. Quantitative Determination of Cannabis Terpenes Using Gas Chromatography-Flame Ionization Detector. *Cannabis Cannabinoid Res.* 2023;8(5):899–910. doi:10.1089/can.2022.0188. PMID 36322895; Fischedick JT. Identification of Terpenoid Chemotypes Among High (−)-trans-Δ9-Tetrahydrocannabinol-Producing *Cannabis sativa* L. Cultivars. *Cannabis Cannabinoid Res.* 2017;2(1):34–47. PMID 28861503.
 
 ## Related pages
 
