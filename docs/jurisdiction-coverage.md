@@ -81,7 +81,7 @@ partial, N = no / not operational / none located, — = not applicable.
 | [Maine](../content/jurisdictions/maine.md) | state | Y | Y | Y | Y | OCP (DAFS) | OCP rules | P | P | P | P | P | B |
 | [Maryland](../content/jurisdictions/maryland.md) | state | Y | Y | Y | Y | MCA | COMAR 27 | P | P | N | P | N | B |
 | [Massachusetts](../content/jurisdictions/TJUR-0022.md) | state | Y | Y | Y | Y | CCC | 935 CMR 500 | Y | Y | Y | Y | Y | Deep-ingested |
-| [Michigan](../content/jurisdictions/michigan.md) | state | Y | Y | Y | Y | CRA | MRTMA rules | P | P | N | P | P | B |
+| [Michigan](../content/jurisdictions/TJUR-0076.md) | state | Y | Y | Y | Y | CRA | MRTMA rules | Y | Y | Y | Y | P | Deep-ingested |
 | [Minnesota](../content/jurisdictions/minnesota.md) | state | Y | Y | Y | Y | OCM | Minn. Stat. 342 | P | P | N | P | N | B |
 | [Mississippi](../content/jurisdictions/mississippi.md) | state | N | Y | N | N | MSDH | MSDH regs | P | P | N | N | P | C |
 | [Missouri](../content/jurisdictions/missouri.md) | state | Y | Y | Y | Y | DHSS DCR | 19 CSR 30-95 | P | P | N | P | N | C |
