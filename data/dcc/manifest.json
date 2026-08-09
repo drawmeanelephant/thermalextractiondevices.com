@@ -3,6 +3,8 @@
   "script_version": "0.1.0-poc",
   "retrieval_timestamp": "2026-08-04T23:21:57Z",
   "dcc_warning": "Source data are entered by licensees and may later be corrected or revised by the Department of Cannabis Control (DCC).",
+  "publication_boundary": "Only this manifest, the schema report, and sync reports are tracked in the repository. Raw and normalized payloads are retained in private, unpublished storage and are not served by Boris.",
+  "payload_storage": "private-unpublished",
   "datasets": {
     "license-registry": {
       "dataset": "license-registry",
@@ -16,7 +18,7 @@
         "pageSize": 1000,
         "pageNumber": "1..N"
       },
-      "raw_files": {
+      "source_payloads": {
         "raw.json": "794179a7076de7491d79c2592a0e99dbe8feaeed1f20bcc4eacbc0483e0da455"
       },
       "raw_checksum": "324875e45efbd872201ca6b6e7908f13a10566ab74ad7f7e2e132b569c0d1da9",
@@ -41,7 +43,7 @@
         "licenseType": "Commercial -  Testing Laboratory",
         "pageSize": 1000
       },
-      "raw_files": {
+      "source_payloads": {
         "raw.json": "0eb79c9ece56c66168a27bd229e71b2b9e8d10ab4b07f375ede0d3624241a615"
       },
       "raw_checksum": "5b27e1c42cc5735acbac4aa593e8e3d6199fbc2c2f2681a0cd31cf536db9dc78",
@@ -64,7 +66,7 @@
       "query_params": {
         "page": "1..N"
       },
-      "raw_files": {
+      "source_payloads": {
         "index-page-01.html": "11393c2c4ffb357236d0233ae7e694e748ead227a406dec0befd18d3d2e63fe5",
         "index-page-02.html": "82df8275c4977528a0c8fff76f8055a17556e561ff3c6821b02d42f35ac560be",
         "index-page-03.html": "f45d8c6657b4fe249818794d19d64f1ccfb265024ec431132e393aaa8ff7d4a5",
@@ -118,7 +120,7 @@
         "representative": true,
         "limit": 6
       },
-      "raw_files": {
+      "source_payloads": {
         "6a68dfdbc5b39a34e10f7334.html": "44a64293d58a49721effd67e28a6114e01dd14ab5dc0dd4b6244dae7963bb2f6",
         "6a43e400469891f7ecd256ae.html": "4f04b99ecc272e689dab2d4643fd0b1f048ba73c226f32953844a5cd5b561eba",
         "6a3c3b5b3e7bbb565418e5a5.html": "4f165cfc1a102dbd41e4625a6f6061c69d44376016f53a3409933d03d373d365",
@@ -144,7 +146,7 @@
       "retrieval_date": "2026-08-04",
       "data_through": "2026-08-04",
       "query_params": {},
-      "raw_files": {
+      "source_payloads": {
         "dcc-testing-page.html": "4e66dffc1cadcaa2b0bfed2431b5de08b59a2e4443d9a07080c8e4ed322081c6"
       },
       "raw_checksum": "6901eed11e01dfed2d01a3c77686ebafd71d2b5af397fc6ab1067ce3e072791e",
@@ -166,7 +168,7 @@
       "retrieval_date": "2026-08-04",
       "data_through": "",
       "query_params": {},
-      "raw_files": {
+      "source_payloads": {
         "raw.html": "10874c925e55179924427d606e4ed5ab792e6446ad3b1f790b1533153269b376"
       },
       "raw_checksum": "1dbfa09e1ed5a25014a4fd63b5d6b1a8c67040343bbd5bfc9616a8313c02b084",
@@ -188,7 +190,7 @@
       "retrieval_date": "2026-08-04",
       "data_through": "",
       "query_params": {},
-      "raw_files": {
+      "source_payloads": {
         "raw.html": "c3cee8ae87885ac0bef04ccd8e4365c11fd3628ca6f352583c7fc955f1f40c6f"
       },
       "raw_checksum": "cf21cb6a5a2e7286f3052c1881d7a1821430ac271c6984c101471886f052ec73",

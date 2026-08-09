@@ -33,8 +33,13 @@ __pycache__/
 *.log
 *.tmp
 
-# DCC ingestion working cache (re-fetched on --refresh; not part of the immutable archive)
-data/dcc/cache/
+# California DCC raw and normalized source payloads are private/unpublished.
+# Keep only the small provenance manifest, schema note, and sync reports below.
+data/dcc/*
+!data/dcc/manifest.json
+!data/dcc/schema-report.md
+!data/dcc/sync-reports/
+!data/dcc/sync-reports/*.md
 
 # Ingest working directory: large raw/normalized artifacts stay out of Git.
 # Only small durable records under data/<jurisdiction>-ccc/ are committed.
@@ -45,4 +50,3 @@ var/
 research/*
 !research/README.md
 !research/_index/
-

@@ -128,7 +128,7 @@ The last two were verified via PubMed/PMC before publishing.
   of primary evidence; consistent with TREF-0003. Fine as-is.
 - **L-2.** `inventory.md` lists Goboof / Mig Vapor / Vaporfection as artifact-only subjects
   (no export) — informational gap, no content impact.
-- **L-3.** The demo/fixture records (`TLAB-0001`, `TPRD-0001`, `TREL-0001`, `TCUL-0001`'s
+- **L-3.** The demo records (`TLAB-0001`, `TPRD-0001`, `TCUL-0001`'s
   demo linkage) are all explicitly labeled demonstration and are never used as verified
   evidence (verified by inspection + schema: `record_kind` enum in
   `metadata/coa-measurement.schema.json`).

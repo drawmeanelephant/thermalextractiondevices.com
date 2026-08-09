@@ -7,6 +7,6 @@ tags: ["devices", "hardware"]
 
 # Thermal Extraction Devices Catalog
 
-Registry of consumer and medical thermal extraction hardware platforms, including portable and desktop vaporizers, with manufacturer-verified specifications.
+Registry of source-attributed consumer thermal extraction and vaporization hardware platforms, including portable and desktop devices. Specifications are reported only where the cited source supports them; these records are not product certification or independent testing.
 
 All records in this collection follow the form identifier schema `devices/TED-XXXX`.

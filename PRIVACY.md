@@ -54,6 +54,10 @@ is **never committed to git** and **never published**:
 * Large raw datasets and archives (see `docs/artifact-storage.md`).
 * Internal research notes and editorial backlogs (draft status in git is
   acceptable for the backlog itself, but the raw sources stay local).
+* California DCC raw and normalized source payloads. The public repository
+  retains only the redacted `data/dcc/manifest.json`,
+  `data/dcc/schema-report.md`, and sync reports; source payloads belong in
+  private, unpublished storage.
 
 ### 4. Never publish
 
@@ -80,7 +84,9 @@ record before release (the audit flags these as `REV-001`):
 * **Committed content** must satisfy category 1 or 2 (with evidence
   warnings) or 5 (after review). Never commit categories 3 or 4.
 * **Corrections and takedowns** follow `DATA_SOURCES.md`; category-4 data
-  discovered after commit is removed and reported in the changelog.
+  discovered in the current tree is removed and the disposition is recorded
+  in the publication-hardening report. The Massachusetts implementation lane
+  remains explicitly outside this pass and is reported, not modified.
 * **Deletion does not erase history.** If prohibited data ever lands in a
   commit, it remains reachable in history until the history-cleanup plan in
   `docs/history-cleanup-plan.md` is executed. Rotate any exposed credential

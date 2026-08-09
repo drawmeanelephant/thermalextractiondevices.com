@@ -54,25 +54,21 @@ if [[ -f "$ROOT/_headers" ]]; then
   echo "==> Security headers manifest copied to $DIST_DIR/_headers"
 fi
 
-# Local public-release audit hook (runs when the audit config exists).
-# Fails the build on blocking findings; tool errors only warn, so a broken
-# audit tool can never silently break a release build.
+# Public-release audit hook. Audit failures and audit-tool errors are release
+# failures; a broken audit cannot silently produce a deployable build.
 if [[ -f "$ROOT/docs/audit-config.json" ]]; then
-  if [[ "${SKIP_RELEASE_AUDIT:-0}" == "1" ]]; then
-    echo "⚠️ Skipping public-release audit verification (SKIP_RELEASE_AUDIT=1)"
+  set +e
+  python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" >&2
+  AUDIT_RC=$?
+  set -e
+  if [[ "$AUDIT_RC" -eq 0 ]]; then
+    echo "==> Public-release audit passed"
+  elif [[ "$AUDIT_RC" -eq 2 ]]; then
+    echo "❌ Public-release audit tool failure (output above)" >&2
+    exit 2
   else
-    set +e
-    python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" >&2
-    AUDIT_RC=$?
-    set -e
-    if [[ "$AUDIT_RC" -eq 0 ]]; then
-      echo "==> Public-release audit passed"
-    elif [[ "$AUDIT_RC" -eq 2 ]]; then
-      echo "⚠️ Public-release audit: tool error (output above); continuing build" >&2
-    else
-      echo "❌ Public-release audit: blocking findings (output above)" >&2
-      exit 1
-    fi
+    echo "❌ Public-release audit: blocking findings (output above)" >&2
+    exit 1
   fi
 fi
 
