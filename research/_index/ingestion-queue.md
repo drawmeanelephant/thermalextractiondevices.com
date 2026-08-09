@@ -10,7 +10,7 @@ This queue turns the research corpus itself into an actionable work plan: which 
 
 | Field | Values | Meaning |
 | --- | --- | --- |
-| `verification_status` | `unverified` · `partially-verified` · `primary-sources-verified` | Whether the record's material claims have been traced to primary/authoritative sources. The 14 Priority-1 and 24 Priority-2 subjects (82 records) are `primary-sources-verified` per `_index/verification-ledger.md` (2026-08-08 passes). No records currently carry `partially-verified`; the former 15 such subjects were promoted when their corpus records were verified, with wave-01 ledger errors and unresolved claims carried forward in `queue_notes`. |
+| `verification_status` | `unverified` · `partially-verified` · `primary-sources-verified` | Whether the record's material claims have been traced to primary/authoritative sources. The 14 Priority-1, 24 Priority-2, and 67 Priority-2-remainder subjects (164 records) are `primary-sources-verified` per `_index/verification-ledger.md` (2026-08-08 passes). `partially-verified` (12 records, 10 subjects) marks records whose brand/product claims were traced but whose entity, parentage, or attribution remains unconfirmed or disputed (AroMed, Cuboo, Custom Log Vape Collective, Element, G-Spot, Hamilton, Smono, Sublimator, VaporBlunt, terpene-co-occurrence). |
 | `primary_source_coverage` | `weak` · `moderate` · `strong` | **Reported** ledger composition: how much of the report's material rests on primary/authoritative sources (official manufacturer documentation, manuals, patents, SEC/FDA/regulatory, government, NIST/PubChem/PMC/PubMed, peer-reviewed literature) versus secondary (retailer, review, forum, blog). Assessed from each report's own source ledger. This is **not** an independent verification. |
 | `ingestion_status` | `not-started` · `queued` · `in-progress` · `incorporated` · `needs-review` | Pipeline state of the corpus record. `incorporated` = published site content traceable to this corpus exists. `needs-review` = record requires attention before reuse (known ledger errors, unresolved claims, identity ambiguity). |
 | `target_collections` | site collection list | The site collections (per `content/` and `metadata/id-policy.json`) the subject should feed. |
@@ -25,7 +25,7 @@ This queue turns the research corpus itself into an actionable work plan: which 
 ## Honesty rules applied
 
 1. Nothing is marked `primary-sources-verified` merely because a Perplexity report cited a primary source — the ledger is reported coverage, not proof.
-2. Coverage labels describe the **reported** source ledger. For the 14 Priority-1 and 24 Priority-2 subjects they were independently re-verified in `_index/verification-ledger.md`; for all other subjects they remain reported-only.
+2. Coverage labels describe the **reported** source ledger. For the 14 Priority-1, 24 Priority-2, and 67 Priority-2-remainder subjects they were independently re-verified in `_index/verification-ledger.md`; for all other subjects they remain reported-only.
 3. Corpus documents were **not** rewritten. Three corpus-ledger citation errors and unresolved claims discovered in the source-verification wave are flagged via `ingestion_status: needs-review` + `queue_notes` instead.
 4. Archived duplicates (9 redundant records) and the meta-research prompt template are excluded from all queues.
 
