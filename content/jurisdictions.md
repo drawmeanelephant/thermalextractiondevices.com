@@ -16,7 +16,7 @@ Each profile records the responsible authority, program status (adult use, medic
 Satellite records in this collection follow the form identifier schema `jurisdictions/TJUR-XXXX`. Content quality status is tracked in the internal report `reports/jurisdiction-quality-status.md` (project management only; not a legal rating). Refresh scheduling is tracked in `reports/jurisdiction-refresh-queue.md`.
 
 - **Last verified (all profiles)**: 2026-08-09
-- **Deep-data implementation states**: California (DCC) and Massachusetts (CCC) have dedicated ingestion pipelines; see the [California DCC Data Landscape](datasets/TDTS-0004.md) and the Massachusetts adapter (`scripts/ingest/states/massachusetts.py`).
+- **Deep-data implementation states**: California (DCC), Massachusetts (CCC), and Michigan (CRA) have connected evidence implementations; see the [California DCC Data Landscape](datasets/TDTS-0004.md), the Massachusetts adapter (`scripts/ingest/states/massachusetts.py`), and the [Michigan profile](jurisdictions/michigan.md).
 
 ---
 
@@ -48,7 +48,7 @@ Satellite records in this collection follow the form identifier schema `jurisdic
 | Maine | [profile](jurisdictions/maine.md) | Yes | Yes | Yes | B |
 | Maryland | [profile](jurisdictions/maryland.md) | Yes | Yes | Yes | B |
 | Massachusetts | [profile](jurisdictions/TJUR-0022.md) | Yes | Yes | Yes | Deep-data implementation (CCC) |
-| Michigan | [profile](jurisdictions/michigan.md) | Yes | Yes | Yes | B |
+| Michigan | [profile](jurisdictions/michigan.md) | Yes | Yes | Yes | Deep-data implementation (CRA) |
 | Minnesota | [profile](jurisdictions/minnesota.md) | Yes | Yes | Yes | B |
 | Mississippi | [profile](jurisdictions/mississippi.md) | No | Yes | No | C |
 | Missouri | [profile](jurisdictions/missouri.md) | Yes | Yes | Yes | C |
