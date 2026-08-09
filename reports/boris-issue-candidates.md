@@ -6,6 +6,26 @@ Each entry is independently readable and copy-ready for an issue tracker. They w
 
 Priority legend: P0 = data-integrity risk; P1 = repeatedly causes project-local scaffolding; P2 = substantial ergonomic problem; P3 = useful improvement; P4 = documentation/polish.
 
+## Current status correction (2026-08-09)
+
+This file contains historical issue drafts plus the current planning status.
+The current Boris implementation review changes three conclusions:
+
+* BORIS-01/02/03 remain confirmed, but are one semantic-relations capability
+  gap: the relation model is constrained and semantic relations still have no
+  first-class HTML outgoing/incoming rendering surface.
+* BORIS-06 is reclassified. Boris already validates canonical page-ID shape and
+  duplicate IDs. TED's `ted_ids.py`, `metadata/id-map.jsonl`, and state
+  `NaturalKeyRegistry` enforce TED allocation, migration, and domain policy;
+  they are not proof that Boris lacks identity validation.
+* BORIS-13 is `needs-current-reproduction`. The older fixture result below is
+  historical evidence and must not be treated as the current Boris contract
+  until the literal `.md` case is rerun against current source.
+
+The detailed TED-side retirement map is in
+`reports/boris-workaround-retirement-map.md`. No code is deleted by this
+status update.
+
 ---
 
 ## BORIS-01 — Expose the relation graph to templates (or render reverse edges/backlinks natively)
@@ -109,22 +129,23 @@ Priority legend: P0 = data-integrity risk; P1 = repeatedly causes project-local 
 
 ---
 
-## BORIS-06 — No canonical ID policy; projects build their own ID registries (twice)
+## BORIS-06 — Reclassified: TED domain ID allocation is distinct from Boris page-ID validation
 
-- **Priority:** P1
-- **Classification:** Boris core (ID uniqueness/validation) with docs for migration
-- **Problem:** Boris accepts an `id` field but provides no identity policy, allocation, collision detection, or migration record. This project built two independent registries (`scripts/ted_ids.py` → `metadata/id-map.jsonl`; `scripts/ingest/ids.py` `NaturalKeyRegistry` → `data/massachusetts-ccc/id-map.json`) with different allocation rules, plus a committed generated migration map and a documented renumbering hazard (deleting a collection's anchor file silently renumbers its satellites).
+- **Status:** Reclassified/closed as a Boris-gap claim; retain a TED-side consolidation item.
+- **Priority:** TED architecture review, not a Boris feature request
+- **Classification:** TED domain identity policy and migration tooling
+- **Problem:** Boris already validates canonical entity-ID shape and duplicate page IDs. TED separately enforces form-code allocation, migration stability, collection policy, and natural-key reuse. The project currently has two allocation/mapping surfaces (`scripts/ted_ids.py` → `metadata/id-map.jsonl`; `scripts/ingest/ids.py` `NaturalKeyRegistry` → `data/massachusetts-ccc/id-map.json`) that need a deliberate consolidation review, but neither should be described as authoritative for Boris's core identity validation.
 - **Real-world evidence:**
-  - `docs/status.md`: "Canonical CLI and global ID allocation are unresolved."
+  - `docs/status.md`: TED allocation is a project concern; Boris validates page-ID shape and uniqueness.
   - `reports/placeholder-disposition.md`: anchor-file deletion renumbers collections.
   - `metadata/id-map.jsonl` is a generated file deliberately committed; four other tools parse it.
   - **PR #28 hit the collision live** (`reports/jurisdiction-pipeline-audit.md` §8): a fresh Massachusetts `NaturalKeyRegistry` would allocate `jurisdictions/TJUR-0001` on top of California's, and the same for every shared prefix (TLIC, TSTL, TDTS, TREQ, TCNT, TORG…); the fix was project-side seeding of the registry from existing content plus create-if-missing trunk writes. The two-allocator problem is documented in the same report as "a future consolidation item" — still no Boris surface.
 - **Current workaround:** project-owned allocation scripts + committed generated map + manual regeneration discipline.
-- **Desired behavior:** Boris validates ID uniqueness/format per project policy and offers a documented, single migration story (or the project consolidates on one registry with Boris-agnostic helpers).
+- **Desired behavior:** Boris remains authoritative for valid/unique page IDs; TED documents one domain allocation/migration authority and keeps any state natural-key persistence explicitly scoped to ingestion.
 - **Acceptance criteria:**
-  1. Boris reports duplicate or malformed IDs with actionable messages.
-  2. There is one documented way to keep a stable migration record across renames.
-  3. The consuming project can delete one of its two registries.
+  1. TED documents the boundary between Boris page-ID validation and TED allocation/migration policy.
+  2. The two ID maps are compared and either consolidated or explicitly retained with non-overlapping authority.
+  3. No Boris ID allocator or global sequence registry is requested based on this finding.
 - **Affected project files:** `scripts/ted_ids.py`, `scripts/ingest/ids.py`, `metadata/id-map.jsonl`, `data/massachusetts-ccc/id-map.json`, `metadata/id-policy.json`.
 - **AI-attractor factor:** HIGH.
 
@@ -223,17 +244,17 @@ Priority legend: P0 = data-integrity risk; P1 = repeatedly causes project-local 
 
 ---
 
-## BORIS-13 — Link validation: `boris check` reports no link findings, and the built-in output audit silently ships broken `.md` hrefs
+## BORIS-13 — Needs current reproduction: literal Markdown-link publication behavior
 
-- **Priority:** P2
-- **Classification:** core (small) + docs
-- **Problem:** Boris's only link validation is a post-render audit (`src/link_audit.zig`) that runs immediately before publishing and **deliberately skips literal `.md`/`.mdx` targets** (a documentation-links contract: it leaves them "byte-for-byte unchanged"). `boris check` reports no link findings at all. A broken `[x](missing.md)` therefore compiles, renders, and ships as a literal `href="missing.md"` 404. None of this is discoverable from a consuming project; this project wrote its own `audit_markdown_links.py` to catch exactly the case Boris skips.
-- **Verified (boris/0.8.1, 2026-08-09):** fixture tests — broken `href="missing.html"` fails the build (`EROUTEMISSING … does not resolve to a published output` → `LinkAuditFailed`); broken `[x](missing.md)` builds and ships byte-for-byte; broken asset href fails. `boris check` emits no link findings.
-- **Current workaround:** `scripts/audit_markdown_links.py` (source-level) + `scripts/validate_crosslinks.py` CXL-01 for injected `.html` links (needed because injection runs *after* Boris's audit).
-- **Desired behavior:** (a) document the output link audit and its `.md`-skip contract so consumers know what is and is not checked; (b) warn on literal `.md` hrefs in site output (or provide an opt-in strict mode); (c) optionally surface link findings through `boris check`.
+- **Status:** `needs-current-reproduction` against current Boris source.
+- **Priority:** P2 pending reproduction
+- **Classification:** Boris core/docs if the old behavior still exists; otherwise close/reclassify as audit drift
+- **Problem:** The older audit reported that Boris skipped literal `.md`/`.mdx` targets, but current Boris reportedly includes a graph-backed documentation-link rewrite path and a post-render local-link audit against the publication manifest. The old behavior must be reproduced or retired from the issue list; do not infer the current contract from the historical fixture.
+- **Current workaround:** `scripts/audit_markdown_links.py` remains in the TED build and ingestion gates until the reproduction proves it is redundant. `scripts/validate_crosslinks.py` CXL-01 also remains necessary for links injected after Boris's render until that architecture changes.
+- **Desired behavior:** A current source-level fixture establishes whether Boris rewrites and validates local Markdown links before publication, with a diagnostic that names the authored and rendered targets when it rejects one.
 - **Acceptance criteria:**
-  1. The `.md`-skip behavior is documented where consumers look (CLI help, contract docs shipped with the binary).
-  2. A broken `.md` link either fails the build or produces a check finding in strict mode.
-  3. The consuming project can delete `audit_markdown_links.py` without losing coverage.
+  1. The smallest old `.md` fixture is run against the previous TED baseline and current Boris source.
+  2. If current Boris rejects the broken route before publication, record the diagnostic and retire only the redundant TED source audit after a TED regression run.
+  3. If it still publishes, keep the smallest reproduction and the TED audit.
 - **Affected project files:** `scripts/audit_markdown_links.py`, `scripts/validate_crosslinks.py` (CXL-01), `scripts/ted-build.sh`.
 - **AI-attractor factor:** LOW-MEDIUM (the existing script is justified; the risk is future projects re-inventing it or assuming `boris check` covers links).
