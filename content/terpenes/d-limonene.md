@@ -4,7 +4,7 @@ title: "D-Limonene"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpene", "citrus"]
-relations: [relates_to=botanicals/TBOT-0001]
+relations: [relates_to=botanicals/TBOT-0001, relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A cyclic monoterpene with a strong citrus odor, abundant in citrus fruit rinds.
 ---
 

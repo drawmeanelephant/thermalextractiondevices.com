@@ -4,7 +4,7 @@ title: "Camphene"
 parent: terpenes
 status: published
 tags: ["terpene", "bicyclic-monoterpene", "camphor"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A bicyclic monoterpene with camphoraceous pine notes and a boiling point of ≈156–160 °C at 101.325 kPa.
 ---
 

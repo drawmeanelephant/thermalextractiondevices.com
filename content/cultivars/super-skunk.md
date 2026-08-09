@@ -4,7 +4,7 @@ title: "Super Skunk Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "indica-dominant", "sensi-seeds", "genetics"]
-relations: [relates_to=cultivars/TCUL-0007, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004]
+relations: [relates_to=cultivars/TCUL-0007, relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=reference/TREF-0002]
 summary: Overview of Super Skunk bred by Sensi Seeds by crossing Skunk #1 with an Afghan indica landrace.
 ---
 

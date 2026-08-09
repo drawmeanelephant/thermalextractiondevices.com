@@ -4,7 +4,7 @@ title: "α-Terpineol"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpene", "floral"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A monocyclic monoterpene alcohol with lilac-floral character and a verified NIST boiling point of ≈218 °C at 101.325 kPa.
 ---
 

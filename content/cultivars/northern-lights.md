@@ -4,7 +4,7 @@ title: "Northern Lights Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "indica", "sensi-seeds", "genetics"]
-relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0003]
+relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0004, relates_to=terpenes/TTRP-0003, relates_to=reference/TREF-0002]
 summary: Historical overview of the Northern Lights genetic lineage stabilized by Sensi Seeds.
 ---
 

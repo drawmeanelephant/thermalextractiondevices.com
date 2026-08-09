@@ -4,7 +4,7 @@ title: "α-Humulene"
 parent: terpenes
 status: published
 tags: ["terpene", "sesquiterpene", "hops"]
-relations: [relates_to=terpenes/TTRP-0004, relates_to=botanicals/TBOT-0002]
+relations: [relates_to=terpenes/TTRP-0004, relates_to=botanicals/TBOT-0002, relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A monocyclic sesquiterpene isomeric with beta-caryophyllene, abundant in hops.
 ---
 

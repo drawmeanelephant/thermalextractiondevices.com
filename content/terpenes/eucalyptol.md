@@ -4,7 +4,7 @@ title: "Eucalyptol"
 parent: terpenes
 status: published
 tags: ["terpene", "monoterpenoid", "mint"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A monoterpenoid ether also known as 1,8-cineole with fresh cooling minty aroma.
 ---
 
