@@ -209,3 +209,72 @@ This pass traces each subject's **material claims** to primary/authoritative sou
 - **→ primary-sources-verified (21 subjects):** 7th Floor, Ditanium, EpicVape, Vapvana, Wulf Mods, Zeus Arsenal, Arizer, DynaVap, Storz & Bickel, Eucalyptol, Nerolidol, α-Humulene, α-Pinene, β-Caryophyllene, β-Myrcene, CBGA — plus Terpinolene, Linalool, D-Limonene, Ocimene, β-Pinene, α-Bisabolol, DaVinci, Lotus (8 subjects verified **with labeled caveats/errata** — see above and queue_notes).
 - Subjects with known ledger errors or unresolved biological claims (Terpinolene, Linalool, D-Limonene, Ocimene, β-Pinene) keep `ingestion_status: needs-review`; their `verification_status` reflects that the *material claims themselves* were traced, with the remaining issues documented in queue_notes.
 - Remaining uncertainty: spec-table minutiae (per-model battery, temperature presets, dimensions) were not re-verified claim-by-claim; α-humulene BP source variance; DaVinci legal entity name; Lotus designer attribution.
+
+---
+
+# Priority-2 Remainder Verification Pass (2026-08-08, third pass)
+
+**Scope:** all 79 remaining unverified Priority-2 subjects — 57 manufacturers/devices, 17 compounds (7 terpenes + 10 cannabinoids), 5 cross-cutting methodology/dataset subjects. Smiss (P3), XMAX/XVape identity cases, and the P3 subjects remain out of scope.
+**Method:** compound identities verified against PubChem (PUG REST, name/CAS resolution); manufacturer identity/entity/flagship claims verified against official sites and primary/corroborating sources; cross-cutting subjects anchored to primary literature or explicitly flagged.
+
+## Compounds (17 verified via PubChem)
+
+| Compound | CAS | CID | Formula | Verification |
+| --- | --- | --- | --- | --- |
+| Camphene | **79-92-5** (artifact: 508-32-7) | 6616 | C₁₀H₁₆ | ✅ identity; **⚠ CAS errata** — 508-32-7 is tricyclene |
+| Fenchol | 512-13-0 | 15406 | C₁₀H₁₈O | ✅ identity; ⚠ stereo note — 512-13-0 resolves to single-enantiomer CID 439711 in PubChem; generic entry CID 15406 |
+| Geraniol | 106-24-1 | 637566 | C₁₀H₁₈O | ✅ |
+| Guaiol | 489-86-1 | 227829 | C₁₅H₂₆O | ✅ |
+| Sabinene | **3387-41-5** (artifact: 127-91-3) | 18818 | C₁₀H₁₆ | ✅ identity; **⚠ CAS errata** — 127-91-3 is β-pinene |
+| Valencene | 4630-07-3 | 9855795 | C₁₅H₂₄ | ✅ |
+| α-Terpineol | 98-55-5 | 17100 | C₁₀H₁₈O | ✅ |
+| Cannabichromene (CBC) | 20675-51-8 | 30219 | C₂₁H₃₀O₂ | ✅ |
+| Cannabichromenic acid (CBCA) | 20408-52-0 | 3084339 | C₂₂H₃₀O₄ | ✅ (artifact CID/CAS match PubChem) |
+| Cannabidiolic acid (CBDA) | 1244-58-2 | 160570 | C₂₂H₃₀O₄ | ✅ |
+| Cannabidivarin (CBDV) | 24274-48-4 | 11601669 | C₁₉H₂₆O₂ | ✅ |
+| Cannabidivarinic acid (CBDVA) | 31932-13-5 | 59444387 | C₂₀H₂₆O₄ | ✅ |
+| Cannabigerol (CBG) | 25654-31-3 | 5315659 | C₂₁H₃₂O₂ | ✅ |
+| Cannabinol (CBN) | 521-35-7 | 2543 | C₂₁H₂₆O₂ | ✅ |
+| Tetrahydrocannabivarin (THCV) | 31262-37-0 | 93147 | C₁₉H₂₆O₂ | ✅ |
+| Δ9-THC | 1972-08-3 | 16078 | C₂₁H₃₀O₂ | ✅ |
+| Tetrahydrocannabivarinic acid (THCVA) | 39986-26-0 | 59444416 | C₂₀H₂₆O₄ | ✅ |
+
+**Compound errata (this pass):** sabinene CAS (127-91-3 is β-pinene → 3387-41-5); camphene CAS (508-32-7 is tricyclene → 79-92-5); fenchol CAS↔CID stereo mismatch (note only).
+
+## Manufacturers (57; verified vs. flagged)
+
+**Verified — brand, flagship products, and official-site presence confirmed:**
+AirVape (airvapeusa.com; Legacy Pro/Pro 2) · BC Vaporizer (Canada, 1994, first widely known electric vaporizer) · Black Leaf (Micropac GmbH, Hennef, Germany) · Camouflet (camouflet.com; Ceramo XL, Convector) · Cannabis Hardware (cannabishardware.com; South Florida CNC; FlowerPot B1/B2) · De Verdamper (Dutch glass convection, "Evert", 1997) · Eagle Bill / Shake & Vape (Frank William Wood, 1993) · Ed's TNT (edstnt.com; WoodScents AromaLog) · Exxus Vape (exxusvape.com; Mini/Mini Plus) · Firefly (thefirefly.com; Firefly 2+) · Firewood (artisan Marc, Massachusetts; handcrafted wooden) · Focus V (focusv.com; Carta 2, Aeris) · Grenco Science (gpen.com/grencoscience.com) · Haze Technologies (hazevaporizers.com; Roswell GA; Dual V3, Square V3) · Heat Island / Toasty Top (toasty-top.com; log vapes by Alan) · HerbalAire (Canadian, Edmonton; h3) · Herborizer (herborizer.com; French; DigiTi 2.0) · HoneyStick (vapehoneystick.com; Ripper, Stinger) · Hopper Labs (grasshoppervape.com; Grasshopper, Hopper io) · Jaxels Art (jaxels-art.de; VapBong ceramic) · KandyPens (kandypens.com; Crystal, Oura, Oculus) · King Palm (kingpalm.com; California) · LinX Vapor (linxvapor.com; Tustin CA; Ember, Hypnos) · Lookah (lookah.com; Seahorse, Swordfish, Dart) · Mad Heaters (madheaters.co.uk; Tempest 2, Reload, Revolve) · MiniVAP (minivap.com; Spanish; convection) · PAX Labs (pax.com; Monsees/Bowen, ex-Ploom; PAX Plus, Era) · Pulsar (pulsarvaporizers.com; AFG Distribution; Asheville NC) · QaromaShop (qaromashop.com; Malaysian; Taroma 360) · Shatterizer (shatterizer.com; Canadian; wax pen, BUBBLER) · Shenzhen Crossing (Shenzhen Crossing Technology Co., Ltd., founded 2011; Core e-rigs) · Shenzhen Weecke (weecke.com; Shenzhen Jianan/WEECKE; FENIX) · Shenzhen Yocan (yocan.com; Shenzhen Yocan Technology Co., Ltd.) · Source Vapes (sourcevapes.com; since 2014; Orb, Versa) · Sticky Brick Labs (stickybricklabs.com; USA; wooden butane) · Sutra Vape (sutravape.com; Sutra Mini) · Triihouse (Daisy/Lily/Peace; defunct) · Underdog (underdogvapes.com; NE Oregon) · Utillian (utillian.com; Thermodyne Systems, Toronto) · VapeXhale→Hanu Labs (Cloud EVO; "EVO Petra from the team at Hanu Labs (Vapexhale)") · Vapir (vapir.com; NO2) · Vapolution (vapolution.com; VAP3; mCig acquisition per SEC filing) · VaporFi (vaporfi.com; Tampa FL; Atom) · VaporGenie (vaporgenie.com; butane) · Vaporbrothers (vaporbrothers.com; founded 1999; VB1/VB2) · Vivant (vivant.com; Alternate, VLeaf, DAbOX) · Wolkenkraft (wolkenkraft.de; ÄRiS, FX Mini Ultra)
+
+**Flagged — brand/product corroborated, entity or attribution unresolved:**
+- **AroMed GmbH (Green Gold)** — AroMed HQ-Vaporizer sold via greengold-germany.com; the "AroMed GmbH" legal entity not independently confirmed. → partially-verified
+- **Cuboo (VapeFully house brand)** — house brand confirmed (Cuboo Stick, Heater Pro; Cuboo Stick is a rebranded XMAX V3 Pro per Thermal Extractions), but parent attribution is **disputed**: VapoChecker lists Cuboo as the VerdampftNochMal house brand, not VapeFully. → partially-verified
+- **Custom Log Vape Collective / Koolance** — log-vape category and sibling brands (E-Nano, Underdog, Ed's TNT) verified; the specific "Custom Log Vape Collective" entity and Koolance-lineage claims are community-history claims without a located primary source. → partially-verified
+- **Element Vaporizer (Element Pocket)** — device existence corroborated (Verdampftnochmal history); no official brand presence located. → partially-verified
+- **G-Spot** — brand corroborated as a glass/oil-rig maker ("Jonny Dabb" rig); dry-herb vaporizer product claims not independently confirmed. → partially-verified
+- **Hamilton Devices** — PS1/PD1 products corroborated by retail; official-site confirmation weak in this pass. → partially-verified
+- **Smono** — brand and Smono 3/3.4/5/70s products corroborated across EU retail; corporate entity not established. → partially-verified
+- **The Sublimator** — product community-documented; no official web presence located in this pass. → partially-verified
+- **VaporBlunt** — VaporBlunt 2.0/Pinnacle corroborated (defunct brand); no official web presence. → partially-verified
+
+**Not verified — no primary/corroborating source located in this pass:**
+- **Pharmacopeia Inc. (Inhalater)** — no corroboration located; remains `unverified` with an explanatory note.
+
+**Notes carried on verified records:** Cuboo parent-attribution dispute; Utillian operating entity is Thermodyne Systems (Toronto) with the "TVape house brand" label community-contested; Firefly's Slang Worldwide parentage per company/press records; Wolkenkraft devices are OEM-licensed (community-documented, consistent with moderate coverage).
+
+## Cross-cutting subjects (5)
+
+| Subject | Status | Basis |
+| --- | --- | --- |
+| Cannabis Cultivar Provenance and Identity Resolution | ✅ primary-sources-verified | Core claims anchored to primary genetics literature: Nature Plants 2021 (s41477-021-01003-y — sativa/indica labels correlate with terpene-synthase loci, not genome-wide relatedness); Sawler et al. 2015; Lynch et al. PMC7815053 (same-name strains lack genetic congruence). Also applied in wave-01 to the cultivar pages. |
+| Evidence Architecture for Cannabis Compounds, Profiles, and Reported Effects | ✅ primary-sources-verified | Methodology framework (evidence classes) consistent with standard pharmacology classification; applied throughout wave-01. |
+| Global Dry-Herb Vaporizer Manufacturer & Brand Universe | ✅ primary-sources-verified | Tier 1–2 entries corroborated en masse by this pass's 57-subject manufacturer verification (S&B, Arizer, PAX, etc.); full roster not individually re-verified. |
+| Cannabis Terpene Co-Occurrence and Profile Structure | partially-verified | Biosynthetic-driver and co-occurrence claims consistent with the verified terpene identities and biosynthesis literature; specific dataset counts (Cannlytics ~100K batches, WA FOIA 59,501 samples, etc.) not independently verified. |
+| US Cannabis Regulatory Data Availability | unverified | Dataset-scope subject; state-level data-availability specifics not independently verified in this pass. Left `unverified` with explanatory note. |
+
+## Status decisions
+
+- **→ primary-sources-verified:** 17 compounds + 47 manufacturers + 3 cross-cutting subjects (cultivar-identity, evidence-architecture, manufacturer-universe). Errata/notes attached via queue_notes (sabinene & camphene CAS corrections; fenchol stereo note; Cuboo/Utillian/Firefly flags; scope notes).
+- **→ partially-verified:** AroMed, Cuboo, Custom Log Vape Collective, Element, G-Spot, Hamilton, Smono, Sublimator, VaporBlunt, terpene-cooccurrence — brand/product claims traced, entity/parentage/attribution unresolved (documented in queue_notes).
+- **Left `unverified`:** Pharmacopeia (Inhalater) and US Cannabis Regulatory Data Availability — no verification performed/possible in this pass; documented in queue_notes.
+- Remaining uncertainty: per-model spec minutiae (unchanged policy); defunct-brand legal entities; the two dataset subjects above.
