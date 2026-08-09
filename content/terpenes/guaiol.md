@@ -17,7 +17,7 @@ summary: A guaiane-type sesquiterpene alcohol with woody balsamic character; mea
 | Preferred name | Guaiol |
 | IUPAC name | 2-((3S,8S)-1,2,3,4,5,6,7,8-octahydro-3,8-dimethylazulen-5-yl)propan-2-ol |
 | CAS number | 489-86-1 |
-| PubChem CID | 227829 |
+| PubChem CID | 227829 [^4] |
 | Chemical family | Sesquiterpene Alcohol (guaiane skeleton) |
 | Molecular formula | C15H26O |
 | Molecular mass | 222.37 g/mol |
@@ -65,13 +65,15 @@ Woody aromatics of guaiacwood used in traditional medicine and perfumery.
 
 ## Cannabis laboratory results
 
-Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Quantitative flower data are scarce. A high-CBD full-spectrum extract was reported to contain guaiol at ~10% of its terpene fraction, with γ-curcumene dominant [^5]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 
 [^1]: CAS Common Chemistry, *(−)-Guaiol* (CAS 489-86-1): boiling point 132–136 °C @ 10 Torr, melting point 91 °C. NIST WebBook SRD 69, CAS 489-86-1, lists enthalpy of vaporization data but no atmospheric boiling point. https://webbook.nist.gov/cgi/cbook.cgi?ID=C489861&Mask=4
 [^2]: No primary source located during the editorial audit.
 [^3]: Yang et al. 2016 (RAD51/DSB apoptosis in NSCLC lines), as reported in research/compounds/terpenes/guaiol/; not re-verified in this wave.
+[^4]: PubChem CID 227829, *Guaiol* (CAS 489-86-1). https://pubchem.ncbi.nlm.nih.gov/compound/227829
+[^5]: Anil SM, Shalev N, Vinayaka AC, et al. Cannabis compounds exhibit anti-inflammatory activity in vitro in COVID-19-related inflammation in lung epithelial cells and pro-inflammatory activity in macrophages. *Sci Rep.* 2021;11. doi:10.1038/s41598-021-81049-2. PMID 33446817.
 
 ## Related pages
 
