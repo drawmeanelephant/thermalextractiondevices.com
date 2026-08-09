@@ -80,7 +80,11 @@
     "PII-006:scripts/audit_sensitive_content.py",
     "PII-005:scripts/audit_common.py",
     "PII-006:scripts/audit_common.py",
-    "PII-007:docs/audit-config.json"
+    "PII-007:docs/audit-config.json",
+    "PII-001:tests/test_sensitive_content_classification.py",
+    "PII-002:tests/test_sensitive_content_classification.py",
+    "PII-003:tests/test_sensitive_content_classification.py",
+    "PII-004:tests/test_sensitive_content_classification.py"
   ],
   "fail_threshold": "high",
   "required_policy_documents": [
@@ -117,5 +121,6 @@
     "Permissions-Policy": "medium",
     "Cross-Origin-Opener-Policy": "medium",
     "X-Frame-Options": "high"
-  }
+  },
+  "suppressions_comment": "Self-detection only. audit_sensitive_content.py contains the PII regex definitions themselves, and test_sensitive_content_classification.py contains the synthetic PII-shaped fixtures that prove those regexes fire \u2014 including the negative controls that keep the business-contact rule from under-flagging. Scanning either file reports the detector, not a leak. Reviewed 2026-08-09."
 }
