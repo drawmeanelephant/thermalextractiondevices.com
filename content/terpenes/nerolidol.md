@@ -14,10 +14,14 @@ summary: An acyclic sesquiterpene alcohol with subtle woody, bark, and fresh flo
 
 | Property | Value |
 | --- | --- |
-| Preferred name | Trans-Nerolidol / Cis-Nerolidol |
-| CAS number | 7212-44-4 |
+| Preferred name | Nerolidol (trans/cis mixture) |
+| IUPAC name | (6E)-3,7,11-trimethyldodeca-1,6,10-trien-3-ol (trans); (6Z)-3,7,11-trimethyldodeca-1,6,10-trien-3-ol (cis) |
+| CAS number | 7212-44-4 (mixed/unspecified) |
+| PubChem CID | 5284507 [^3] |
 | Chemical family | Acyclic Sesquiterpenoid |
 | Molecular formula | C15H26O |
+| Molecular mass | 222.37 g/mol |
+| Stereochemistry | Two geometric isomers are distinct identities: trans-nerolidol (CAS 40716-66-3) and cis-nerolidol. CAS 7212-44-4 is commonly used for the mixed/unspecified material; each isomer also has enantiomeric forms |
 
 ## Aroma and sensory character
 
@@ -58,12 +62,14 @@ Constituent of traditional woody and floral aromatic tinctures.
 
 ## Cannabis laboratory results
 
-Consult [Lab Results](../lab-results.md) for batch analyses.
+Usually absent or trace in cannabis flower: the only cultivar above the limit of quantitation in a nine-cultivar profiling study was Black Lime, at <0.1% dry weight [^4]. Consult [Lab Results](../lab-results.md) for batch analyses.
 
 ## Sources
 
 [^1]: The 276 °C figure corresponds to a NIST boiling point of 549.2 K recorded for the nerolidol structure (1,6,10-dodecatrien-3-ol, 3,7,11-trimethyl-). The CAS 7212-44-4 page itself lists only a reduced-pressure value (≈114 °C at 0.001 bar). https://webbook.nist.gov/cgi/cbook.cgi?ID=C142507&Mask=3FFF
 [^2]: Chan WK, Tan LTH, Chan KG, Lee LH, Goh BH. Nerolidol: a sesquiterpene alcohol with multi-faceted pharmacological and biological activities. *Molecules.* 2016;21(5):529. doi:10.3390/molecules21050529. PMID 27136520. (Peer-reviewed review.)
+[^3]: PubChem CID 5284507, *Nerolidol*. https://pubchem.ncbi.nlm.nih.gov/compound/5284507
+[^4]: Zager JJ, Lange I, Srividya N, et al. Gene Networks Underlying Cannabinoid and Terpenoid Accumulation in Cannabis. *Plant Physiol.* 2019;180(4):1877–1897.
 
 ## Related pages
 
