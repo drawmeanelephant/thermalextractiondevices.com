@@ -4,59 +4,56 @@ Removing a file from the working tree does not remove it from history. For build
 output that is merely wasteful; for PRIVACY.md category-4 data it is a live
 disclosure, because `git show <old-commit>:<path>` still returns the payload to
 anyone who can clone the repository.
-
-This was a real gap: after the DCC registry payloads were untracked, the
-public-release audit reported "passed" while ~79 MiB of licensee data —
-including roughly 20,681 recoverable email addresses — remained reachable from
-`main`. The only signal was a `medium` finding, which sits below the `high` fail
-threshold and therefore blocked nothing.
 """
 
 from __future__ import annotations
 
+import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from audit_common import Finding  # noqa: E402,F401
-
-
-def grade(path: str, size: int, config: dict) -> str:
-    """Mirror of the severity decision in audit_large_files.audit()."""
-    prefixes = tuple(config.get("history_sensitive_paths", ["data/"]))
-    return "high" if path.startswith(prefixes) else "medium"
-
 
 class HistoryReachableSeverity(unittest.TestCase):
-    def test_regulated_path_blocks(self):
-        self.assertEqual(grade("data/dcc/license-registry/latest.json", 21_000_000, {}), "high")
-
-    def test_build_output_only_informs(self):
-        self.assertEqual(grade("dist/cantilever/bundle.js", 21_000_000, {}), "medium")
-
-    def test_prefix_list_is_configurable(self):
-        cfg = {"history_sensitive_paths": ["private/", "data/"]}
-        self.assertEqual(grade("private/registry.json", 9_000_000, cfg), "high")
-        self.assertEqual(grade("docs/big.pdf", 9_000_000, cfg), "medium")
-
-    def test_default_applies_when_unconfigured(self):
-        self.assertEqual(grade("data/anything.json", 9_000_000, {}), "high")
-
-    def test_near_miss_path_does_not_block(self):
-        """'database/' must not match the 'data/' prefix by accident."""
-        self.assertEqual(grade("database-notes/readme.md", 9_000_000, {}), "medium")
-
-
-class RealRepositoryState(unittest.TestCase):
-    """Guard against the gap silently reopening in this repository."""
-
-    def test_audit_module_grades_sensitive_history_as_high(self):
+    def test_audit_grades_deleted_reachable_blobs_by_path(self):
+        """Exercise the production audit against real deleted Git objects."""
         import audit_large_files
-        src = Path(audit_large_files.__file__).read_text(encoding="utf-8")
-        self.assertIn("history_sensitive_paths", src)
-        self.assertIn('severity="high"', src.split("LARGE-004")[1][:400])
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            subprocess.run(["git", "init", "-q", str(root)], check=True)
+            subprocess.run(["git", "-C", str(root), "config", "user.name", "Audit Test"], check=True)
+            subprocess.run(["git", "-C", str(root), "config", "user.email", "audit@example.com"], check=True)
+
+            (root / "data").mkdir()
+            (root / "dist").mkdir()
+            (root / "data" / "registry.json").write_text("sensitive fixture\n", encoding="utf-8")
+            (root / "dist" / "bundle.js").write_text("generated fixture\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(root), "add", "."], check=True)
+            subprocess.run(["git", "-C", str(root), "commit", "-qm", "add fixtures"], check=True)
+
+            (root / "data" / "registry.json").unlink()
+            (root / "dist" / "bundle.js").unlink()
+            subprocess.run(["git", "-C", str(root), "add", "-A"], check=True)
+            subprocess.run(["git", "-C", str(root), "commit", "-qm", "remove fixtures"], check=True)
+
+            config = {
+                "thresholds": {"large_file_bytes": 1, "review_file_bytes": 1},
+                "allowlist": {"large_files": [], "duplicate_blobs": []},
+                "history_sensitive_paths": ["data/"],
+                "generated_artifact_patterns": [],
+            }
+            findings, _ = audit_large_files.audit(root, config)
+            deleted = {
+                finding.path: finding.severity
+                for finding in findings
+                if finding.code == "LARGE-004"
+            }
+            self.assertEqual(deleted["data/registry.json"], "high")
+            self.assertEqual(deleted["dist/bundle.js"], "medium")
 
 
 if __name__ == "__main__":
