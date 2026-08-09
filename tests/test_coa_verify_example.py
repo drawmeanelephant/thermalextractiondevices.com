@@ -11,8 +11,18 @@ from __future__ import annotations
 import re
 import unittest
 
+from pathlib import Path
+
 from scripts.coa_model import RecordKind, coa_problems
-from scripts.coa_verify_example import DOCUMENT_HASH, record, render_page
+from scripts.coa_verify_example import (
+    DATASET_ID,
+    DOCUMENT_HASH,
+    ROOT,
+    SNAPSHOT_PATH,
+    record,
+    render_dataset_page,
+    render_page,
+)
 
 
 class CoaVerifyExampleTest(unittest.TestCase):
@@ -54,6 +64,19 @@ class CoaVerifyExampleTest(unittest.TestCase):
         self.assertIn("&lt;LOQ", page)
         relations = re.findall(r"relates_to=", page)
         self.assertLessEqual(len(relations), 16)  # Boris max relation count
+
+    def test_dataset_page_registers_snapshot(self):
+        page = render_dataset_page(record())
+        self.assertIn(DATASET_ID, page)
+        self.assertIn(DOCUMENT_HASH, page)
+        self.assertIn(SNAPSHOT_PATH.relative_to(ROOT).as_posix(), page)
+        self.assertIn("var/ingest/coa-verify", page)
+        relations = re.findall(r"relates_to=", page)
+        self.assertLessEqual(len(relations), 16)
+
+    def test_snapshot_path_lives_under_gitignored_var(self):
+        rel = SNAPSHOT_PATH.relative_to(ROOT)
+        self.assertEqual(rel.parts[0], "var")
 
 
 if __name__ == "__main__":

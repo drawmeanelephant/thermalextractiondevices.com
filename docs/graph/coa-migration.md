@@ -30,7 +30,7 @@ The `content/lab-results.md` trunk describes the collection as "Archive of verif
 
 ## 3. Path A — first verified report (any jurisdiction)
 
-> **Status:** exercised once by `lab-results/TLAB-0002` (a real InfiniteCAL CA COA, `scripts/coa_verify_example.py`). The steps below remain the canonical path; the walk-through is a hand-transcribed first pass, so a couple of formalities were simplified (the PDF snapshot lives at its public CDN URL with a recorded sha256 rather than in `var/…`, and no `datasets/TDTS-*` row was created). Full Path A compliance for bulk ingestion should add those two steps.
+> **Status:** exercised once by `lab-results/TLAB-0002` (a real InfiniteCAL CA COA, `scripts/coa_verify_example.py`). Path A is now fully implemented for this record: `python3 scripts/coa_verify_example.py --snapshot` downloads the source PDF into `var/ingest/coa-verify/raw/2026-08-09/` (git-ignored working area), verifies its sha256 against the recorded hash, and writes the dated dataset record `datasets/TDTS-0022` that registers it. Bulk ingestion should reuse the same pattern.
 
 1. **Ingest the source artifact.** A real COA (PDF/CSV from a laboratory or regulator open-data portal) is captured as an immutable raw snapshot in the state ingest working area (`var/…`), checksummed, and registered in a dated dataset record (`datasets/TDTS-*` pattern).
 2. **Allocate identities.** `NaturalKeyRegistry` allocates `lab-results/TLAB-XXXX` (report), reuses or allocates `testing-laboratories/TSTL-*` (laboratory), `organizations/TORG-*` (producer), `products/TPRD-*` (product) where they exist; unknown producers/products stay `null` in the model rather than being invented.
