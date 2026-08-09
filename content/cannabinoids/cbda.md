@@ -85,7 +85,7 @@ Marketed anti-inflammatory/nausea claims for CBDA remain unsupported by controll
 
 ## Related pages
 
-- [Cannabinoids Index](../cannabinoids.md)
-- [CBD Record](cbd.md) (neutral decarboxylation product)
-- [CBGA Record](cbga.md) (biosynthetic precursor)
-- [THCA Record](thca.md) (competitive biosynthetic branch)
+- [Cannabinoids Index](../cannabinoids.html)
+- [CBD Record](TCBN-0002.html) (neutral decarboxylation product)
+- [CBGA Record](TCBN-0006.html) (biosynthetic precursor)
+- [THCA Record](TCBN-0007.html) (competitive biosynthetic branch)
