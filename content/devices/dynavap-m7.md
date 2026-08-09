@@ -4,7 +4,7 @@ title: "DynaVap M7 Mechanical Thermal Extractor"
 parent: devices
 status: published
 tags: ["device", "portable", "analog", "manual", "direct-draw", "dynavap", "torch"]
-relations: [relates_to=manufacturers/TMFR-0002]
+relations: [relates_to=manufacturers/TMFR-0002, relates_to=guides/TGDE-0001]
 summary: Battery-free stainless steel mechanical thermal extraction device from DynaVap.
 ---
 

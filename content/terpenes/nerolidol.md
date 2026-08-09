@@ -4,7 +4,7 @@ title: "Nerolidol"
 parent: terpenes
 status: published
 tags: ["terpene", "sesquiterpenoid", "woody"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003, relates_to=botanicals/TBOT-0001]
 summary: An acyclic sesquiterpene alcohol with subtle woody, bark, and fresh floral notes.
 ---
 

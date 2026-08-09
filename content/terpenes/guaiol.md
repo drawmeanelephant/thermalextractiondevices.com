@@ -4,7 +4,7 @@ title: "Guaiol"
 parent: terpenes
 status: published
 tags: ["terpene", "sesquiterpene", "woody"]
-relations: []
+relations: [relates_to=reference/TREF-0001, relates_to=reference/TREF-0003]
 summary: A guaiane-type sesquiterpene alcohol with woody balsamic character; measured boiling point 132–136 °C at 10 Torr.
 ---
 

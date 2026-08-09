@@ -4,7 +4,7 @@ title: "Cannabidiolic Acid (CBDA)"
 parent: cannabinoids
 status: published
 tags: ["cannabinoid", "phytocannabinoid", "acid"]
-relations: [relates_to=cannabinoids/TCBN-0002, relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0007]
+relations: [relates_to=cannabinoids/TCBN-0002, relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0007, relates_to=reference/TREF-0003]
 summary: Acidic phytocannabinoid precursor of CBD, dominant in fresh flower; no reliable atmospheric boiling point because decarboxylation precedes boiling.
 ---
 
