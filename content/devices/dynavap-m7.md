@@ -3,7 +3,7 @@ id: devices/TED-0002
 title: "DynaVap M7 Mechanical Thermal Extractor"
 parent: devices
 status: published
-tags: ["device", "portable", "analog", "manual", "direct-draw", "dynavap", "torch"]
+tags: ["device", "portable", "analog", "conduction", "manual", "manual-thermal-cycle", "direct-draw", "dynavap", "torch", "induction-heater", "direct-flame"]
 relations: [relates_to=manufacturers/TMFR-0002, relates_to=guides/TGDE-0001]
 summary: Battery-free stainless steel mechanical thermal extraction device from DynaVap.
 ---
@@ -26,6 +26,14 @@ summary: Battery-free stainless steel mechanical thermal extraction device from 
 | Power Source | External thermal input (butane torch or electromagnetic induction heater) |
 | Heat-Up Time | ~5–10 seconds (induction) / ~10–15 seconds (flame) — per DynaVap marketing |
 | Compatible Media | Dry botanical flower; concentrates via the [DynaCoil](https://www.dynavap.com/products/dynacoil) concentrate adapter |
+| Part Number | `VCM 853-73-15-00.f` (barcode 810086751556), per the manufacturer's own product data [^7] |
+| Form Factor | Handheld, pocket-sized, single-piece torch/induction-heated wand; not a modular ball-vape system — no separate heater-head/coil/PID/bowl components |
+
+## Safety Notes
+
+- DynaVap's FAQ instructs users to stop heating "if more than 6 seconds pass without hearing the click" with a torch, and never to apply heat past the click — doing so can permanently damage the cap [^2].
+- The Captive Cap and tip reach the device's highest temperatures immediately after heating; DynaVap's guidance is to wait for the audible cool-down click before handling the cap or emptying the bowl [^2].
+- Use only butane-fueled jet lighters or a DynaVap-compatible induction heater as the heat source; the device carries no batteries or mains connection and has no built-in thermal cutoff [^2].
 
 ## Warranty & Service
 
@@ -53,3 +61,4 @@ summary: Battery-free stainless steel mechanical thermal extraction device from 
 [^4]: DynaVap product pages use "medical grade stainless steel" (e.g., "How to use" and Cap pages). The specific "316" grade is stated by DynaVap for some components, not stated for the M7 pages.
 [^5]: DynaVap Device Warranty (limited lifetime warranty on metal components; caps, CCDs, O-rings excluded). https://dynavap.freshdesk.com/support/solutions/articles/1510000
 [^6]: DynaVap cleaning guide: do not soak the Cap. https://dynavap.freshdesk.com/support/solutions/articles/151000083483-how-to-clean-your-device
+[^7]: DynaVap official M7 product page — https://www.dynavap.com/products/the-m-7 (verified 2026-08-08; product SKU and barcode, product ID 8041137078424).
