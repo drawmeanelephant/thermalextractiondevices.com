@@ -158,9 +158,10 @@ the provenance shape, and is unmistakably labeled:
    release audit unconditionally (main's publication-hardening wave removed the
    `SKIP_RELEASE_AUDIT` bypass and resolved the old `data/dcc/*` PII block). In
    a full-depth clone the audit reports 48 HIGH `PII-001 <history>` findings
-   from pre-existing commits (e.g. `beau@boorman.tech`); this reproduces
-   **identically on clean `main`** (verified: same 130 findings / 52 high on
-   both trees, 0 on this wave's files) and is invisible to CI's shallow clone.
+   from pre-existing commits authored under an early committer identity; this
+   reproduces **identically on clean `main`** (verified: same 130 findings /
+   52 high on both trees, 0 on this wave's files) and is invisible to CI's
+   shallow clone.
    The documented cleanup path is `reports/publication-hardening.md` +
    `docs/history-cleanup-plan.md`; no history rewrite is authorized here.
 2. **Massachusetts merge blocker (concurrent work).** The MA pipeline remains
