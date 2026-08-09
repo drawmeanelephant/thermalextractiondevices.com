@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "jurisdiction": "Michigan",
+  "retrieved_at": "2026-08-09",
+  "coverage": "source-connected sample, not a complete registry extract",
+  "source_url": "https://www.michigan.gov/cra/resources/cannabis-regulatory-agency-licensing-reports",
+  "records": [
+    {"license_number":"AU-P-000205","license_type":"Processor","program":"adult-use","status":"source-connected; current status must be checked in CRA Verify a License","legal_name":"IVP Holding, LLC","dba":"House Brands Distro","municipality":"Warren","county":"Macomb County","source_url":"https://www.michigan.gov/lara/news-releases/2025/09/02/cannabis-regulatory-agency-announces-voluntary-vape-recall-ivp-holding-llc-aka-house-brands-distro","source_retrieved_at":"2026-08-09","source_class":"CRA recall news release"},
+    {"license_number":"AU-P-000532","license_type":"Processor","program":"adult-use","status":"source-connected; current status must be checked in CRA Verify a License","legal_name":"Sky Cannabis LLC","dba":"","municipality":"Warren","county":"Macomb County","source_url":"https://www.michigan.gov/lara/news-releases/2025/08/12/cannabis-regulatory-agency-announces-voluntary-vape-recall---sky-cannabis-llc","source_retrieved_at":"2026-08-09","source_class":"CRA recall news release"},
+    {"license_number":"AU-P-000495","license_type":"Processor","program":"adult-use","status":"source-connected; current status must be checked in CRA Verify a License","legal_name":"Exhale Systems Inc","dba":"BLOOM","municipality":"Detroit","county":"Wayne County","source_url":"https://www.michigan.gov/lara/news-releases/2025/02/11/cannabis-regulatory-agency-announces-voluntary-vape-recall-bloom","source_retrieved_at":"2026-08-09","source_class":"CRA recall news release"}
+  ],
+  "limitation": "CRA exposes separate Accela searches and periodic DOC/DOCX reports, but no stable public bulk license endpoint was located. These records are preserved separately and are not presented as the complete Michigan registry."
+}
