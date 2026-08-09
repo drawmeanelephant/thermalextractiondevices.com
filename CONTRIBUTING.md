@@ -38,7 +38,7 @@ When working in parallel:
 ## Required validation (all must pass)
 
 ```sh
-./bin/validate_graph.sh                          # IDs, graph, build, HTML IDs
+./bin/validate_graph.sh                          # IDs, taxonomy, record completeness, graph, build, HTML IDs
 python3 scripts/audit_public_release.py --config docs/audit-config.json
 python3 scripts/audit_markdown_links.py content
 python3 scripts/audit_html_ids.py dist/cantilever   # after a build
@@ -50,6 +50,12 @@ CI runs these on every push and pull request.
 
 * **Frontmatter is a closed schema.** Only `id`, `title`, `parent`, `status`,
   `tags`, `relations` are allowed. Unknown keys break the build.
+* **Device records must clear the completeness floor.** Every `content/devices/*.md`
+  record carries a tag from all five taxonomy axes, a `Part Number` row, and at least
+  one primary-source URL. `scripts/audit_record_completeness.py` enforces this in
+  `validate_graph.sh`. Where a manufacturer publishes no part number, say so in the
+  row — an absent identifier is recorded, never omitted. See
+  `content/reference/TREF-0004.md` § The record-completeness floor.
 * **IDs are immutable.** Never rename, renumber, or reuse canonical IDs.
   Run `python3 scripts/ted_ids.py --root content --map metadata/id-map.jsonl`
   to validate; allocate new IDs from the next unused prefix.
