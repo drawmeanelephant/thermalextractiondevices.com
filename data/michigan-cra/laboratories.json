@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "jurisdiction": "Michigan",
+  "retrieved_at": "2026-08-09",
+  "records": [
+    {"name":"PSI Labs","legal_entity":"PSI Labs, LLC","license_numbers":["SC-000005","AU-SC-000100"],"status":"first-party site identifies Michigan licenses; verify current status in CRA Accela","premises_municipality":"Ann Arbor","website":"https://thepsilabs.org/","accreditation":"ISO/IEC 17025:2017; accreditation no. 84351","panels":["cannabinoid profile","terpenoid profile","foreign matter","microbial screening","moisture","water activity","residual solvents","pesticides","heavy metals"],"source_url":"https://thepsilabs.org/","source_class":"laboratory first-party evidence"},
+    {"name":"ACT Laboratories — Michigan","legal_entity":"ACT Laboratories, Inc.","license_numbers":["AU-SC-000106","SC-000018"],"status":"first-party site says these licenses were used before 2026-04-15; current CRA status requires verification","premises_municipality":"Lansing","website":"https://actlab.com/michigan/","accreditation":"not captured in this pass","panels":["compliance testing","research and development testing"],"source_url":"https://actlab.com/michigan/","source_class":"laboratory first-party evidence"},
+    {"name":"Reassure Labs","legal_entity":"Reassure Labs","license_numbers":[],"status":"first-party site identifies a Michigan licensed safety compliance facility; license number not publicly stated on reviewed page","premises_municipality":"not captured","website":"https://www.reassurelabs.com/","accreditation":"not captured in this pass","panels":["cannabinoid potency","terpene profiles","residual solvents","microbial contaminants","mycotoxins","heavy metals","pesticides","vitamin E acetate","foreign matter","water activity"],"source_url":"https://www.reassurelabs.com/","source_class":"laboratory first-party evidence"}
+  ],
+  "limitation": "No official, machine-readable complete lab registry was found. The public set is therefore an evidence-backed discovery sample, not a claim that these are every active Michigan lab."
+}
