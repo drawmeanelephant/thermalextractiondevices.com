@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "jurisdiction": "Michigan",
+  "retrieved_at": "2026-08-09",
+  "records": [
+    {"publication_date":"2025-09-02","event_type":"voluntary recall","license_number":"AU-P-000205","licensee":"IVP Holding, LLC aka House Brands Distro","product":"Top Smoke - Vape Cart - 1g - Runtz","reason":"banned chemical; CRA release does not name the chemical in the page text","consumer_instruction":"Return to purchase location or dispose safely","source_url":"https://www.michigan.gov/lara/news-releases/2025/09/02/cannabis-regulatory-agency-announces-voluntary-vape-recall-ivp-holding-llc-aka-house-brands-distro"},
+    {"publication_date":"2025-08-12","event_type":"voluntary recall","license_number":"AU-P-000532","licensee":"Sky Cannabis LLC","product":"Motor City Cannacarts — Georgia Pie and Confetti Cake; RIPZ — Peach Cobbler, Wedding Cake, Ice Cream Man, Tropic Thunder","reason":"Medium Chain Triglyceride Chain (MCT) oil","consumer_instruction":"Return to purchase location or dispose safely","source_url":"https://www.michigan.gov/lara/news-releases/2025/08/12/cannabis-regulatory-agency-announces-voluntary-vape-recall---sky-cannabis-llc"},
+    {"publication_date":"2025-02-11","event_type":"voluntary recall","license_number":"AU-P-000495","licensee":"Exhale Systems Inc","product":"BLOOM Classic and BLOOM Live vape cartridges; 15 named strains including Blue Dream, Jack Herer, and White Widow","reason":"Medium Chain Triglyceride Chain (MCT) oil","consumer_instruction":"Return to purchase location or dispose safely","source_url":"https://www.michigan.gov/lara/news-releases/2025/02/11/cannabis-regulatory-agency-announces-voluntary-vape-recall-bloom"}
+  ],
+  "limitation": "This is a deliberately small event corpus demonstrating the CRA notice structure; the bulletin page is the authoritative index for additional historical events."
+}
