@@ -40,11 +40,17 @@ python3 scripts/audit_large_files.py --config docs/audit-config.json
 cat > "$PUBLISH_DIR/README.txt" <<'EOF'
 Thermal Extraction Devices publishing artifacts
 
-site/     Public HTML site.
-llms.txt  Public crawler/discovery index.
-context/  Provenance-rich bundle for LLM context uploads.
-rag/      Retrieval corpus for local or hosted RAG systems.
-ir/       Machine-readable graph and reverse-index artifacts.
+site/      Public HTML site.
+llms.txt   Public crawler/discovery index.
+context/   Provenance-rich bundle for LLM context uploads.
+rag/       Retrieval corpus for local or hosted RAG systems.
+ir/        Machine-readable graph and reverse-index artifacts.
+claims.jsonl  Cultivar identity claim registry (machine-readable, provenance-annotated).
 EOF
+
+if [[ -f "$ROOT/metadata/cultivar-claims.jsonl" ]]; then
+  cp "$ROOT/metadata/cultivar-claims.jsonl" "$PUBLISH_DIR/claims.jsonl"
+  echo "✅ cultivar identity claim registry exported to $PUBLISH_DIR/claims.jsonl"
+fi
 
 echo "✅ Publishing export complete: $PUBLISH_DIR"
