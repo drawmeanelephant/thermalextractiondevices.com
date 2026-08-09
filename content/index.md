@@ -57,7 +57,7 @@ Related regulatory collections:
 
 ## Massachusetts CCC Data Collections
 
-Source-traceable records derived from Massachusetts Cannabis Control Commission (CCC) open data (license tracker, testing results, public health and safety advisories, testing laboratories, contaminants, requirements, and aggregate datasets). See the [Massachusetts Cannabis Data Landscape](jurisdictions/TJUR-0003.md) overview.
+Source-traceable records derived from Massachusetts Cannabis Control Commission (CCC) open data (license tracker, testing results, public health and safety advisories, testing laboratories, contaminants, requirements, and aggregate datasets). See the [Massachusetts Cannabis Data Landscape](jurisdictions/TJUR-0075.md) overview.
 
 - **[Jurisdictions](jurisdictions.md)**: State-level jurisdiction profiles (`jurisdictions/TJUR-XXXX`).
 - **[Licenses](licenses.md)**: Aggregate license counts and licensing summaries (`licenses/TLIC-XXXX`).

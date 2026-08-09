@@ -11,4 +11,4 @@ Public health and safety advisories published by state regulators. The regulator
 
 Records in this collection use the form identifier schema `safety-advisories/TSAD-XXXX`.
 
-> Massachusetts data is compiled by the state ingestion pipeline; see [[jurisdictions/TJUR-0002|Massachusetts]] for provenance.
+> Massachusetts data is compiled by the state ingestion pipeline; see [[jurisdictions/TJUR-0022|Massachusetts]] for provenance.

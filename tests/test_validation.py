@@ -51,6 +51,31 @@ class PrivacyScanTestCase(unittest.TestCase):
         with self.assertRaises(PrivacyViolationError):
             assert_clean(findings)
 
+    def test_judicial_court_not_street_address(self):
+        # Regression: "2018 Constitutional Court ruling" / "overturned in
+        # court" (legal prose) must not be flagged as a street address.
+        findings = scan_text(
+            "Following the 2018 Constitutional Court ruling, the measure was "
+            "overturned in court.",
+            _spec(),
+        )
+        self.assertFalse(any(f.pattern == "street-address" for f in findings))
+
+    def test_court_street_still_detected(self):
+        # "123 Court Street" is a real address and still matches via Street.
+        findings = scan_text("licensed at 123 Court Street Boston", _spec())
+        self.assertTrue(any(f.pattern == "street-address" for f in findings))
+
+    def test_legal_citation_not_coordinate(self):
+        # Regression: "MCL 333.27901 et seq." must not match coordinates via
+        # a suffix of the number ("33.27901" inside "333.27901").
+        findings = scan_text("Testing rules per MCL 333.27901 et seq.", _spec())
+        self.assertFalse(any(f.pattern == "coordinates" for f in findings))
+
+    def test_coordinate_pair_still_detected(self):
+        findings = scan_text("grow site at 44.12345, -71.98765", _spec())
+        self.assertTrue(any(f.pattern == "coordinates" for f in findings))
+
 
 class RelationValidationTestCase(unittest.TestCase):
     def test_broken_relation_detected(self):

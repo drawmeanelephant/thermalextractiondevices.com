@@ -215,14 +215,14 @@
     {
       "entity_type": "jurisdiction",
       "natural_key": "massachusetts",
-      "entity_id": "jurisdictions/TJUR-0002",
+      "entity_id": "jurisdictions/TJUR-0022",
       "label": "Massachusetts",
       "collection": "jurisdictions"
     },
     {
       "entity_type": "jurisdiction",
       "natural_key": "massachusetts-data-landscape",
-      "entity_id": "jurisdictions/TJUR-0003",
+      "entity_id": "jurisdictions/TJUR-0075",
       "label": "Massachusetts Cannabis Data Landscape",
       "collection": "jurisdictions"
     },
@@ -712,7 +712,7 @@
     {
       "entity_type": "reference",
       "natural_key": "MA:ref:privacy-spec",
-      "entity_id": "reference/TREF-0004",
+      "entity_id": "reference/TREF-0005",
       "label": "Massachusetts Ingestion: Privacy and Excluded-Field Specification",
       "collection": "reference"
     },
@@ -815,5 +815,5 @@
       "collection": "testing-laboratories"
     }
   ],
-  "digest": "115be58e8990b7bc545ad2d04216981480e705121798290392de8d5eca87a89f"
+  "digest": "c7578113a92d3cc59372e0ef4145653a2ebfb7e8996ad0782227e12c46ae57e1"
 }

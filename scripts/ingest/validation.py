@@ -23,18 +23,25 @@ EIN_RE = re.compile(r"\b\d{2}-\d{7}\b")                       # 12-3456789
 EMAIL_RE = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
 PHONE_RE = re.compile(r"\b(?:\+1[-\s.]?)?\(?\d{3}\)?[-\s.]\d{3}[-\s.]\d{4}\b")
 ZIP_RE = re.compile(r"\b\d{5}(?:-\d{4})?\b")
+# Note: "Court"/"Ct" are intentionally NOT street suffixes here. Prose like
+# "2018 Constitutional Court ruling" or "overturned in court" is common in
+# regulatory/legal content, and a year + judicial-court noun is not a street
+# address. Real addresses virtually always carry St/Ave/Rd/etc. (e.g. "123
+# Court Street" still matches via Street).
 STREET_RE = re.compile(
     r"\b\d{1,6}\s+[A-Z][A-Za-z.'-]*(?:\s+[A-Z][A-Za-z.'-]*)*\s+"
     r"(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Boulevard|Blvd\.?|Drive|Dr\.?|"
-    r"Lane|Ln\.?|Way|Court|Ct\.?|Circle|Cir\.?|Highway|Hwy\.?|Pike|Turnpike|"
+    r"Lane|Ln\.?|Way|Circle|Cir\.?|Highway|Hwy\.?|Pike|Turnpike|"
     r"Route|Rte\.?|Parkway|Pkwy\.?)\b",
     re.IGNORECASE,
 )
 # Raw coordinates: an explicit lat,lon pair, or a standalone value with 5+
 # decimal places (unambiguous coordinate precision). Loose 4-decimal numbers
-# (e.g. market shares like 0.0023) must NOT be flagged.
-COORD_PAIR_RE = re.compile(r"[-+]?\d{1,2}\.\d{4,}\s*,\s*[-+]?\d{1,3}\.\d{4,}")
-COORD_RE = re.compile(r"[-+]?\d{1,2}\.\d{5,}")
+# (e.g. market shares like 0.0023) must NOT be flagged. The (?<!\d) guards
+# prevent matching a suffix of a longer number ("333.27901" must not match
+# "33.27901" via its trailing digits, e.g. MCL 333.27901 et seq.).
+COORD_PAIR_RE = re.compile(r"(?<!\d)[-+]?\d{1,2}\.\d{4,}\s*,\s*(?<!\d)[-+]?\d{1,3}\.\d{4,}")
+COORD_RE = re.compile(r"(?<!\d)[-+]?\d{1,2}\.\d{5,}")
 
 # Excluded field names as they appear in source schemas (case-insensitive).
 EXCLUDED_FIELD_NAMES = {
@@ -113,7 +120,16 @@ def scan_directory(
     spec: PrivacySpec,
     *,
     only_collections: Optional[list[str]] = None,
+    only_paths: Optional[set] = None,
 ) -> list[Finding]:
+    """Scan Markdown under ``content_root``.
+
+    ``only_collections`` restricts to whole collections (prefix match);
+    ``only_paths`` restricts to exact relative paths (posix form, e.g.
+    ``"jurisdictions/TJUR-0022.md"``). The state pipeline uses ``only_paths``
+    so its privacy gate validates only the pages it generates, never other
+    states' or other workstreams' content.
+    """
     findings: list[Finding] = []
     for path in sorted(content_root.rglob("*.md")):
         rel = path.relative_to(content_root)
@@ -124,6 +140,8 @@ def scan_directory(
         if collection in ("includes",) or parts[-1].startswith("_"):
             continue
         if only_collections and collection not in only_collections:
+            continue
+        if only_paths is not None and rel.as_posix() not in only_paths:
             continue
         try:
             text = path.read_text(encoding="utf-8")
