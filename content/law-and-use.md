@@ -3,12 +3,12 @@ title: "Law and Use"
 id: law-and-use
 status: published
 tags: ["law", "regulations", "compliance"]
-summary: Legal frameworks, statutory administration, and authorized use policies.
+summary: Jurisdiction, licensing, statutory, and authorized-use records.
 ---
 
 # Legal Frameworks & Authorization Rules
 
-Documentation of state legal statutes, administrative codes, and operational guidelines governing thermal extraction and medical cannabis administration.
+Documentation of jurisdictional statutes, administrative codes, licensing, recalls, requirements, and source-attributed use rules. This archive does not provide legal advice or certify a product's lawful use.
 
 All satellite records in this collection follow the form identifier schema `law-and-use/TLAW-XXXX`.
 
@@ -25,4 +25,4 @@ Records derived from the DCC Cannabis Unified License Search registry (`search.c
 - [California Cannabis Licensing — Testing Laboratory](law-and-use/TLAW-0008.md)
 - [California Cannabis Licensing — Los Angeles County (Active)](law-and-use/TLAW-0009.md)
 
-Raw snapshots (`JSON`/`CSV`) are maintained under `data/dcc/` by `scripts/dcc_sync.py`.
+Raw and normalized DCC payloads are retained in private, unpublished storage by the ingestion workflow. The repository tracks only a redacted provenance manifest, schema note, and sync reports; no raw licensee-entered payload is a public site source.

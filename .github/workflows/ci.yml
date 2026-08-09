@@ -13,7 +13,6 @@ env:
   BORIS_REPOSITORY: https://github.com/drawmeanelephant/boris.git
   BORIS_BRANCH: afterparty
   BORIS_JOBS: 1
-  SKIP_RELEASE_AUDIT: 1
 
 jobs:
   validate-and-build:
@@ -49,11 +48,19 @@ jobs:
         run: ./bin/validate_graph.sh
 
       - name: Run public-release audits
-        continue-on-error: true
         run: |
+          set +e
           python3 scripts/audit_public_release.py --config docs/audit-config.json --report /tmp/public-release-report.json
+          public_rc=$?
           python3 scripts/audit_sensitive_content.py --config docs/audit-config.json
+          sensitive_rc=$?
           python3 scripts/audit_large_files.py --config docs/audit-config.json
+          large_rc=$?
+          set -e
+          if [ "$public_rc" -ne 0 ] || [ "$sensitive_rc" -ne 0 ] || [ "$large_rc" -ne 0 ]; then
+            echo "Release audit gate failed: public=$public_rc sensitive=$sensitive_rc large=$large_rc" >&2
+            exit 1
+          fi
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4

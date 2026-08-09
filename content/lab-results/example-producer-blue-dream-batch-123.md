@@ -45,10 +45,10 @@ All terpene concentrations are reported as measured values in mass-per-mass unit
 | THCA | 242.0 mg/g | 24.20 % |
 | Δ9-THC | 5.2 mg/g | 0.52 % |
 | CBGA | 8.1 mg/g | 0.81 % |
-| Total Active Cannabinoids | 217.4 mg/g (Decarb Equivalent) | 21.74 % |
+| Total Potential THC (calculated) | 217.4 mg/g (Decarb Equivalent) | 21.74 % |
 
 > [!NOTE]
-> **Measured vs calculated.** THCA, Δ9-THC, and CBGA are reported as individually measured values. The "Total Active Cannabinoids" row is a **calculated** value using the decarboxylation conversion formula Total Active THC = Δ9-THC + (THCA × 0.877), i.e. 5.2 + (242.0 × 0.877) = 217.4 mg/g. It is an estimate of total potential THC after thermal decarboxylation, not a directly measured compound.
+> **Measured vs calculated.** THCA, Δ9-THC, and CBGA are reported as individually measured values. The "Total Potential THC (calculated)" row uses the decarboxylation conversion formula Δ9-THC + (THCA × 0.877), i.e. 5.2 + (242.0 × 0.877) = 217.4 mg/g. It estimates potential THC after thermal decarboxylation; it is not total cannabinoids and is not a directly measured compound.
 
 ## Related Graph Connections
 

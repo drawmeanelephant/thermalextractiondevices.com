@@ -48,4 +48,4 @@ summary: Consumer vapor brand of TopGreen Technology Co., Ltd. (est. 2000), sibl
 ## Sources
 
 [^1]: TopGreen Technology, official "About Us" and product catalog (TOPGREEN US CORPORATION; established 2000; XMAX/XVape lines; "100% isolated airflow" marketing copy on Aria listings). https://www.topgreen-tech.com/aboutus.htm · https://www.topgreen-tech.com/
-[^2]: Research corpus — XVape (TopGreen) device-lineage export (identity verified 2026-08-08 against topgreen-tech.com; per-model spec minutiae subject to ingestion-level review against manufacturer manuals). research/devices/manufacturers/xvape/
+[^2]: No publicly reachable primary source is currently cited for the remaining details in this footnote. The details remain approximate or unverified and are not treated as verified archive facts.

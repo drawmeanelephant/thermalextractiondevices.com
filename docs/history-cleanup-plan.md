@@ -1,6 +1,6 @@
 # Git History Cleanup Plan (NOT executed)
 
-Current state (re-audited against the California `main`, 2026-08-05):
+Current state (re-audited against the California `main` base, 2026-08-09):
 
 * 8 commits; every author/committer identity is the repository owner's
   GitHub noreply address.
@@ -10,8 +10,10 @@ Current state (re-audited against the California `main`, 2026-08-05):
   * `data/dcc/license-registry/2026-08-04/raw.json` — 20.9 MiB
   * `data/dcc/license-registry/2026-08-04/normalized.json` — 20.3 MiB
   (byte-identical to `previous.json`; git stores it once).
-* The working tree tracks ~87.6 MiB across four registry copies
-  (`raw.json`, `normalized.json`, `latest.json`, `previous.json`).
+* The pre-hardening base tracked ~87.6 MiB across four registry copies
+  (`raw.json`, `normalized.json`, `latest.json`, `previous.json`). This
+  hardening branch removes those current-tree copies and leaves only bounded
+  provenance metadata; it does not rewrite history.
 * **No path has ever been deleted** from the real history (the provisioning
   scripts seen in some local snapshots never existed on `main`).
 * The datasets contain personal/regulated data (business emails, phones,
@@ -132,5 +134,7 @@ git push origin --delete <stale-branch>
 
 * Do not run `git filter-branch` without a backup.
 * Do not force-push from the mirror backup clone.
-* Do not delete source snapshots or raw archives as part of cleanup; move
-  them to external artifact storage (`docs/artifact-storage.md`) instead.
+* Do not rewrite shared history or destroy the only source copy. Current-tree
+  publication cleanup may remove tracked payloads when a private source copy
+  and manifest disposition are documented; preserve any retained source in
+  private external storage (`docs/artifact-storage.md`).

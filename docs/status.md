@@ -79,10 +79,22 @@ lane.
 The current source-only ID check validated 204 pages without changing files.
 The Boris graph, Cantilever build, Markdown-link audit, and HTML-ID audit
 completed successfully, and the device taxonomy audit reports 0 errors and
-0 warnings. The overall validate_graph.sh command passes with
-SKIP_RELEASE_AUDIT=1; the public-release audit still exits at the pre-existing
+0 warnings. The public-release audit still exits at the pre-existing
 data/dcc privacy and large-file findings. A per-file attribution of that audit
-confirms the Cannabis Hardware completion lane introduced no new findings — the
-two findings on content/manufacturers/TMFR-0004.md (a manufacturer support email
-and phone number) are present on main and are owned by the pre-publication
-checklist. The system test run completed 154 tests with 4 optional skips.
+confirms the Cannabis Hardware completion lane introduced no new findings. The
+system test run completed 154 tests with 4 optional skips.
+
+## Publication hardening update
+
+Verified 2026-08-09 against main commit `41768af` and the publication-
+hardening commits on this branch. This PR removes current California DCC raw
+and normalized payloads, redacts direct contacts and street addresses from
+in-scope content, removes internal provenance paths from published content,
+and makes release audits fail closed. It does not modify the Massachusetts
+implementation, fixtures, tests, or state documents. The remaining release
+blockers are reachable historical DCC blobs and metadata, the documented
+human-review findings, licensing/security-process decisions, and the
+repo-wide audit findings carried by the Massachusetts lane.
+
+Validation must be rerun on the completed branch. Do not use an audit bypass as
+a release result.

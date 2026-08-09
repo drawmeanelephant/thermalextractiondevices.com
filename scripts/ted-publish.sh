@@ -32,6 +32,11 @@ if "$BORIS_BIN" --input "$CONTENT_DIR" --llms-path "$PUBLISH_DIR/llms.txt" --qui
   fi
 fi
 
+echo "==> Running release audits"
+python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" --report "$PUBLISH_DIR/public-release-report.json"
+python3 scripts/audit_sensitive_content.py --config docs/audit-config.json
+python3 scripts/audit_large_files.py --config docs/audit-config.json
+
 cat > "$PUBLISH_DIR/README.txt" <<'EOF'
 Thermal Extraction Devices publishing artifacts
 

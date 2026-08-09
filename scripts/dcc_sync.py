@@ -2,8 +2,10 @@
 """DCC licensed-cannabis data sync for Thermal Extraction Devices.
 
 Fetches the California Department of Cannabis Control (DCC) unified license
-search registry, snapshots a configurable segment to data/dcc/, and generates
-Boris-compliant Markdown satellite records under a content collection.
+search registry, keeps only a coarse-location safe subset in the private cache,
+and generates Boris-compliant Markdown satellite records under a content
+collection. Raw licensee-entered contact, premise, parcel, and coordinate
+fields are never written by this helper.
 
 API endpoints (discovered from https://search.cannabis.ca.gov/config.js):
   CANNA_API  https://as-dcc-pub-cann-w-p-002.azurewebsites.net
@@ -26,6 +28,14 @@ from pathlib import Path
 
 CANNA_API = "https://as-dcc-pub-cann-w-p-002.azurewebsites.net"
 DEFAULT_PAGE_SIZE = 1000
+
+PUBLIC_LICENSE_FIELDS = [
+    "id", "licenseNumber", "licenseStatus", "licenseStatusDate", "licenseTerm",
+    "licenseType", "licenseDesignation", "issueDate", "expirationDate",
+    "licensingAuthorityId", "licensingAuthority", "businessLegalName",
+    "businessDbaName", "businessStructure", "activity", "premiseCity",
+    "premiseState", "premiseCounty", "dataRefreshedDate",
+]
 
 # Order matters: more specific keywords first.
 BUSINESS_TYPE_KEYWORDS = [
@@ -66,6 +76,15 @@ def clean(value):
     if text.upper() in ("DATA NOT AVAILABLE", "N/A"):
         return ""
     return text
+
+
+def sanitize_license(record: dict) -> dict:
+    """Retain only fields required for coarse regulatory archive records."""
+    return {key: record.get(key) for key in PUBLIC_LICENSE_FIELDS if key in record}
+
+
+def sanitize_licenses(records: list[dict]) -> list[dict]:
+    return [sanitize_license(record) for record in records]
 
 
 def fetch_licenses(page_size: int = DEFAULT_PAGE_SIZE, quiet: bool = False) -> list[dict]:
@@ -126,18 +145,11 @@ def filter_segment(licenses: list[dict], status: str = "", business_type: str = 
 
 def write_snapshot(licenses: list[dict], cache_dir: Path, label: str) -> tuple[Path, Path]:
     cache_dir.mkdir(parents=True, exist_ok=True)
+    licenses = sanitize_licenses(licenses)
     json_path = cache_dir / f"licenses-{label}.json"
     csv_path = cache_dir / f"licenses-{label}.csv"
     json_path.write_text(json.dumps(licenses, indent=2, ensure_ascii=False), encoding="utf-8")
-    fields = [
-        "id", "licenseNumber", "licenseStatus", "licenseStatusDate", "licenseTerm",
-        "licenseType", "licenseDesignation", "issueDate", "expirationDate",
-        "licensingAuthorityId", "licensingAuthority", "businessLegalName",
-        "businessDbaName", "businessOwnerName", "businessStructure", "activity",
-        "premiseStreetAddress", "premiseCity", "premiseState", "premiseCounty",
-        "premiseZipCode", "businessEmail", "businessPhone", "parcelNumber",
-        "premiseLatitude", "premiseLongitude", "dataRefreshedDate",
-    ]
+    fields = PUBLIC_LICENSE_FIELDS
     with csv_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()
@@ -226,9 +238,8 @@ def build_record(category: str, group: list[dict], form_id: str, snapshot_label:
             f"({fmt_int(summary['total'])} records, {snapshot_label})."
         )
     tags_slug = slug_cat
-    # The dated archive layout (data/dcc/license-registry/<retrieval-date>/) is
-    # the canonical snapshot source; the former data/dcc/licenses-*.csv paths
-    # were never committed. Keep the reference aligned with the archive.
+    # Source payloads are private and unpublished. Generated records retain
+    # only the source URL and provenance metadata, never an archive path.
     if single:
         snapshot_desc = f"{snapshot_label.replace('-', ' ').title()} segment derived from the full registry snapshot"
     else:
@@ -299,7 +310,7 @@ This record is a data snapshot of the {category} segment of the registry, captur
 
 - Data source: DCC Cannabis Unified License Search — https://search.cannabis.ca.gov
 - Registry refresh date: {refreshed}
-- Snapshot file: `data/dcc/license-registry/2026-08-04/normalized.json` ({snapshot_desc})
+- Payload storage: private and unpublished; source payload hashes belong in the DCC manifest ({snapshot_desc})
 """
 
 
@@ -393,13 +404,14 @@ def main() -> int:
     full_path = args.cache_dir / "licenses-all.json"
     if args.refresh or not full_path.exists():
         print("Fetching full DCC license registry...")
-        all_licenses = fetch_licenses()
+        all_licenses = sanitize_licenses(fetch_licenses())
         args.cache_dir.mkdir(parents=True, exist_ok=True)
         full_path.write_text(json.dumps(all_licenses, ensure_ascii=False), encoding="utf-8")
         print(f"  cached {len(all_licenses)} records -> {full_path}")
     else:
         print(f"Loading cached full registry ({full_path})...")
-        all_licenses = json.loads(full_path.read_text(encoding="utf-8"))
+        all_licenses = sanitize_licenses(json.loads(full_path.read_text(encoding="utf-8")))
+        full_path.write_text(json.dumps(all_licenses, ensure_ascii=False), encoding="utf-8")
 
     segment = filter_segment(
         all_licenses,
