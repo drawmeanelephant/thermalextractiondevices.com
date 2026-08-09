@@ -18,7 +18,9 @@ from scripts.ingest.schema import (
     SchemaSpec,
     check_date_regression,
     check_duplicate_keys,
+    check_fully_duplicate_rows,
     check_row_collapse,
+    check_source_staleness,
     parse_csv_bytes,
     stream_csv,
 )
@@ -71,6 +73,33 @@ class SchemaTestCase(unittest.TestCase):
     def test_date_regression_forward_is_clean(self):
         self.assertEqual(check_date_regression("2025-01-01", "2026-06-01"), [])
 
+    def test_source_staleness_forward_is_clean(self):
+        warnings = check_source_staleness(
+            "Fri, 10 Apr 2026 20:25:36 GMT", "Sat, 11 Apr 2026 00:00:00 GMT"
+        )
+        self.assertEqual(warnings, [])
+
+    def test_source_staleness_older_copy_fails_closed(self):
+        # An obsolete pre-correction release (older file date) must not
+        # silently replace the corrected snapshot without a clarification.
+        with self.assertRaises(DateRegressionError):
+            check_source_staleness(
+                "Fri, 10 Apr 2026 20:25:36 GMT", "Tue, 10 Mar 2026 12:00:00 GMT"
+            )
+
+    def test_source_staleness_allowed_with_clarification(self):
+        # The 2025 testing dataset carries a recognized correction notice, so
+        # a backward file date is tolerated as a non-blocking warning.
+        warnings = check_source_staleness(
+            "Fri, 10 Apr 2026 20:25:36 GMT", "Tue, 10 Mar 2026 12:00:00 GMT",
+            has_clarification=True,
+        )
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("backward", warnings[0])
+
+    def test_source_staleness_unparseable_dates_skip(self):
+        self.assertEqual(check_source_staleness("2026-07 (per catalog)", None), [])
+
     def test_empty_output_guard(self):
         spec = SchemaSpec(name="t", min_rows=1)
         with self.assertRaises(EmptyOutputError):
@@ -80,6 +109,20 @@ class SchemaTestCase(unittest.TestCase):
         rows = [{"id": "a"}, {"id": "b"}, {"id": "a"}]
         with self.assertRaises(DuplicateKeyError):
             check_duplicate_keys(rows, ["id"], "t")
+
+    def test_duplicate_keys_warn_policy(self):
+        """Non-keyed large datasets (e.g. testing results) warn instead of
+        failing on partial-key repeats while still rejecting full-row dups."""
+        rows = [{"id": "a", "v": "1"}, {"id": "a", "v": "1"}]
+        warnings = check_duplicate_keys(rows, ["id"], "t", policy="warn")
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("duplicate", warnings[0])
+        with self.assertRaises(DuplicateKeyError):
+            check_fully_duplicate_rows(rows, "t")
+        # Distinct keys are clean; full-row dup check also passes.
+        rows2 = [{"id": "a", "v": "1"}, {"id": "b", "v": "2"}]
+        self.assertEqual(check_duplicate_keys(rows2, ["id"], "t", policy="warn"), [])
+        self.assertEqual(check_fully_duplicate_rows(rows2, "t"), [])
 
     def test_parse_csv_with_bom(self):
         data = b"\xef\xbb\xbfa,b\n1,2\n3,4\n"

@@ -23,6 +23,7 @@ All fixtures were captured from the official CCC data catalog
 | `a_sales_au_activityvolume.csv` | Plant activity | 40 rows | |
 | `a_applications_all.csv` | Applications | 14 rows | Full |
 | `a_applications_dbe.csv` | DBE totals | 7 rows | Full |
+| `l_applications_all_details.csv` | Application details (approved/pending/re-opened) | 20 rows | PII fields blanked |
 | `a_agents_gender.csv` | Agent gender | 4 rows | Full |
 | `a_agents_raceethnicity.csv` | Agent race/ethnicity | 10 rows | Full |
 | `advisories.json` | Advisories portal | 3 advisories | Parsed records incl. affected-product and retailer tables |

@@ -1,0 +1,819 @@
+{
+  "version": 1,
+  "state": null,
+  "mappings": [
+    {
+      "entity_type": "affected_product",
+      "natural_key": "MA:afp:https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-may-31-2024-and-january-23-2025-february-3-2025/:Carbon Fiber",
+      "entity_id": "affected-products/TAFP-0003",
+      "label": "1 g Pre-rolls Strane (Carbon Fiber)",
+      "collection": "affected-products"
+    },
+    {
+      "entity_type": "affected_product",
+      "natural_key": "MA:afp:https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-may-31-2024-and-january-23-2025-february-3-2025/:Frosted Jungle",
+      "entity_id": "affected-products/TAFP-0004",
+      "label": "1 g Pre-rolls Strane (Frosted Jungle)",
+      "collection": "affected-products"
+    },
+    {
+      "entity_type": "affected_product",
+      "natural_key": "MA:afp:https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-may-31-2024-and-january-23-2025-february-3-2025/:Highland OG",
+      "entity_id": "affected-products/TAFP-0005",
+      "label": "3.5 g Garcia Hand Picked (Highland OG)",
+      "collection": "affected-products"
+    },
+    {
+      "entity_type": "affected_product",
+      "natural_key": "MA:afp:https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-september-18-2024-and-january-30-2025-february-3/:Slap N Tickle",
+      "entity_id": "affected-products/TAFP-0001",
+      "label": "3.5g Jar (Slap N Tickle)",
+      "collection": "affected-products"
+    },
+    {
+      "entity_type": "affected_product",
+      "natural_key": "MA:afp:https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-september-18-2024-and-january-30-2025-february-3/:Tiger’s Eye",
+      "entity_id": "affected-products/TAFP-0002",
+      "label": "3.5g Jar (Tiger’s Eye)",
+      "collection": "affected-products"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:arsenic",
+      "entity_id": "contaminants/TCNT-0011",
+      "label": "Arsenic",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:cadmium",
+      "entity_id": "contaminants/TCNT-0012",
+      "label": "Cadmium",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:coliforms",
+      "entity_id": "contaminants/TCNT-0016",
+      "label": "Coliforms",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:lead",
+      "entity_id": "contaminants/TCNT-0013",
+      "label": "Lead",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:mercury",
+      "entity_id": "contaminants/TCNT-0014",
+      "label": "Mercury",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:thc",
+      "entity_id": "contaminants/TCNT-0009",
+      "label": "THC",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:thca",
+      "entity_id": "contaminants/TCNT-0010",
+      "label": "THCA",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "contaminant",
+      "natural_key": "MA:contaminant:total-yeast-and-mold",
+      "entity_id": "contaminants/TCNT-0015",
+      "label": "Total Yeast and Mold",
+      "collection": "contaminants"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:applications_details",
+      "entity_id": "datasets/TDTS-0013",
+      "label": "Marijuana Establishment License Applications - Approved, Pending, Re-Opened",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:equity-summaries",
+      "entity_id": "datasets/TDTS-0020",
+      "label": "Massachusetts Applications and Equity Summaries",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:heavy-metals",
+      "entity_id": "datasets/TDTS-0017",
+      "label": "Massachusetts Testing: Heavy Metals",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:industry-reporting",
+      "entity_id": "datasets/TDTS-0019",
+      "label": "Massachusetts Official Industry-Report Scripts",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:licenses",
+      "entity_id": "datasets/TDTS-0005",
+      "label": "All Licenses / Licensing Tracker (Adult-Use and Medical)",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:market-composition",
+      "entity_id": "datasets/TDTS-0021",
+      "label": "Massachusetts Market Composition",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:mtc_sales",
+      "entity_id": "datasets/TDTS-0011",
+      "label": "Medical Treatment Centers - Facility Sales",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:plant_activity",
+      "entity_id": "datasets/TDTS-0012",
+      "label": "Adult-Use and MTC Plant Activity and Volume",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:price_per_gram",
+      "entity_id": "datasets/TDTS-0010",
+      "label": "Average Monthly Price per Ounce / Gram for Adult-Use Cannabis",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:sales_deliveries",
+      "entity_id": "datasets/TDTS-0009",
+      "label": "Marijuana Retail and Delivery Weekly Sales Report Total",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:sales_gross",
+      "entity_id": "datasets/TDTS-0008",
+      "label": "Adult-Use Marijuana Establishment Facility Sales and Statistics",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:testing-corrections",
+      "entity_id": "datasets/TDTS-0014",
+      "label": "Massachusetts Testing Corrections and Clarifications",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:testing-coverage-by-month",
+      "entity_id": "datasets/TDTS-0018",
+      "label": "Massachusetts Testing Coverage by Month",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:testing_2024",
+      "entity_id": "datasets/TDTS-0006",
+      "label": "Testing Results 2024 (01/01/2024 - 12/31/2024)",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:testing_2025",
+      "entity_id": "datasets/TDTS-0007",
+      "label": "CCC Testing Results 2025 (01/01/2025 - 11/30/2025)",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:thc-thca",
+      "entity_id": "datasets/TDTS-0015",
+      "label": "Massachusetts Testing: THC and THCA",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "dataset",
+      "natural_key": "MA:dataset:yeast-mold",
+      "entity_id": "datasets/TDTS-0016",
+      "label": "Massachusetts Testing: Total Yeast and Mold",
+      "collection": "datasets"
+    },
+    {
+      "entity_type": "jurisdiction",
+      "natural_key": "massachusetts",
+      "entity_id": "jurisdictions/TJUR-0002",
+      "label": "Massachusetts",
+      "collection": "jurisdictions"
+    },
+    {
+      "entity_type": "jurisdiction",
+      "natural_key": "massachusetts-data-landscape",
+      "entity_id": "jurisdictions/TJUR-0003",
+      "label": "Massachusetts Cannabis Data Landscape",
+      "collection": "jurisdictions"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR281245",
+      "entity_id": "licenses/TLIC-0009",
+      "label": "MR281245",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR281282",
+      "entity_id": "licenses/TLIC-0025",
+      "label": "MR281282",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR281332",
+      "entity_id": "licenses/TLIC-0010",
+      "label": "MR281332",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR281374",
+      "entity_id": "licenses/TLIC-0011",
+      "label": "MR281374",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR281735",
+      "entity_id": "licenses/TLIC-0004",
+      "label": "MR281735",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR281787",
+      "entity_id": "licenses/TLIC-0012",
+      "label": "MR281787",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR281867",
+      "entity_id": "licenses/TLIC-0013",
+      "label": "MR281867",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR282037",
+      "entity_id": "licenses/TLIC-0014",
+      "label": "MR282037",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR282376",
+      "entity_id": "licenses/TLIC-0026",
+      "label": "MR282376",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR282382",
+      "entity_id": "licenses/TLIC-0027",
+      "label": "MR282382",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR282605",
+      "entity_id": "licenses/TLIC-0015",
+      "label": "MR282605",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR282667",
+      "entity_id": "licenses/TLIC-0005",
+      "label": "MR282667",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR282884",
+      "entity_id": "licenses/TLIC-0016",
+      "label": "MR282884",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR283098",
+      "entity_id": "licenses/TLIC-0017",
+      "label": "MR283098",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR283143",
+      "entity_id": "licenses/TLIC-0028",
+      "label": "MR283143",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR283213",
+      "entity_id": "licenses/TLIC-0007",
+      "label": "MR283213",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR283773",
+      "entity_id": "licenses/TLIC-0018",
+      "label": "MR283773",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284013",
+      "entity_id": "licenses/TLIC-0019",
+      "label": "MR284013",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284097",
+      "entity_id": "licenses/TLIC-0020",
+      "label": "MR284097",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284117",
+      "entity_id": "licenses/TLIC-0003",
+      "label": "MR284117",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284181",
+      "entity_id": "licenses/TLIC-0029",
+      "label": "MR284181",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284261",
+      "entity_id": "licenses/TLIC-0021",
+      "label": "MR284261",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284276",
+      "entity_id": "licenses/TLIC-0022",
+      "label": "MR284276",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284431",
+      "entity_id": "licenses/TLIC-0006",
+      "label": "MR284431",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284518",
+      "entity_id": "licenses/TLIC-0030",
+      "label": "MR284518",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284556",
+      "entity_id": "licenses/TLIC-0008",
+      "label": "MR284556",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284651",
+      "entity_id": "licenses/TLIC-0023",
+      "label": "MR284651",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:MR284873",
+      "entity_id": "licenses/TLIC-0024",
+      "label": "MR284873",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "license",
+      "natural_key": "MA:lic:overview",
+      "entity_id": "licenses/TLIC-0002",
+      "label": "Massachusetts Licensing Overview",
+      "collection": "licenses"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:202 Trading Company, Inc.",
+      "entity_id": "organizations/TORG-0034",
+      "label": "202 Trading Company, Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:253 Organic, LLC",
+      "entity_id": "organizations/TORG-0039",
+      "label": "253 Organic, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:6 Bricks, LLC",
+      "entity_id": "organizations/TORG-0047",
+      "label": "6 Bricks, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:6 Bricks, LLC.",
+      "entity_id": "organizations/TORG-0058",
+      "label": "6 Bricks, LLC.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:ARL Healthcare Inc.",
+      "entity_id": "organizations/TORG-0054",
+      "label": "ARL Healthcare Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:ARL Healthcare, Inc.",
+      "entity_id": "organizations/TORG-0055",
+      "label": "ARL Healthcare, Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Analytics Labs, LLC.",
+      "entity_id": "organizations/TORG-0025",
+      "label": "Analytics Labs, LLC.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Ashli’s, Inc.",
+      "entity_id": "organizations/TORG-0040",
+      "label": "Ashli’s, Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Assured Testing Laboratories LLC",
+      "entity_id": "organizations/TORG-0029",
+      "label": "Assured Testing Laboratories LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Cadella LLC",
+      "entity_id": "organizations/TORG-0038",
+      "label": "Cadella LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Cypress Tree Management Natick, Inc.",
+      "entity_id": "organizations/TORG-0048",
+      "label": "Cypress Tree Management Natick, Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:East Boston Local Roots LLC",
+      "entity_id": "organizations/TORG-0033",
+      "label": "East Boston Local Roots LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Enlite Cannabis Dispensary LLC",
+      "entity_id": "organizations/TORG-0053",
+      "label": "Enlite Cannabis Dispensary LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Enlite Cannabis Dispensary, LLC",
+      "entity_id": "organizations/TORG-0043",
+      "label": "Enlite Cannabis Dispensary, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Erba C3 Dorchester LLC",
+      "entity_id": "organizations/TORG-0049",
+      "label": "Erba C3 Dorchester LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:G7 Lab LLC",
+      "entity_id": "organizations/TORG-0026",
+      "label": "G7 Lab LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Great Barrington Retail, Inc.",
+      "entity_id": "organizations/TORG-0046",
+      "label": "Great Barrington Retail, Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Green Analytics Massachusetts LLC",
+      "entity_id": "organizations/TORG-0024",
+      "label": "Green Analytics Massachusetts LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Green Valley Analytics LLC",
+      "entity_id": "organizations/TORG-0032",
+      "label": "Green Valley Analytics LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Herbal Pathways",
+      "entity_id": "organizations/TORG-0044",
+      "label": "Herbal Pathways",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Holistic Industries, Inc",
+      "entity_id": "organizations/TORG-0045",
+      "label": "Holistic Industries, Inc",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Holistic Industries, Inc.",
+      "entity_id": "organizations/TORG-0042",
+      "label": "Holistic Industries, Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Holistic Industries, Inc. D/b/a Liberty Cannabis",
+      "entity_id": "organizations/TORG-0035",
+      "label": "Holistic Industries, Inc. D/b/a Liberty Cannabis",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Holistic Industries, Inc. d/b/a",
+      "entity_id": "organizations/TORG-0062",
+      "label": "Holistic Industries, Inc. d/b/a",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Indica LLC",
+      "entity_id": "organizations/TORG-0036",
+      "label": "Indica LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:KG Collective Brockton, LLC",
+      "entity_id": "organizations/TORG-0041",
+      "label": "KG Collective Brockton, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:KG Collective Cambridge, LLC",
+      "entity_id": "organizations/TORG-0060",
+      "label": "KG Collective Cambridge, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Kaycha MA, LLC",
+      "entity_id": "organizations/TORG-0030",
+      "label": "Kaycha MA, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:MCR Labs, LLC",
+      "entity_id": "organizations/TORG-0023",
+      "label": "MCR Labs, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Massachusetts Citizens for Social Equity LLC",
+      "entity_id": "organizations/TORG-0050",
+      "label": "Massachusetts Citizens for Social Equity LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Patriot Care Corp",
+      "entity_id": "organizations/TORG-0056",
+      "label": "Patriot Care Corp",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:ProVerde Laboratories, Inc.",
+      "entity_id": "organizations/TORG-0027",
+      "label": "ProVerde Laboratories, Inc.",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Rooted In, LLC",
+      "entity_id": "organizations/TORG-0051",
+      "label": "Rooted In, LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:SafeTiva Labs LLC",
+      "entity_id": "organizations/TORG-0031",
+      "label": "SafeTiva Labs LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Smithers AMS LLC",
+      "entity_id": "organizations/TORG-0028",
+      "label": "Smithers AMS LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Smokey Leaf LLC",
+      "entity_id": "organizations/TORG-0052",
+      "label": "Smokey Leaf LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:TDMA LLC",
+      "entity_id": "organizations/TORG-0057",
+      "label": "TDMA LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Uma Flowers LLC",
+      "entity_id": "organizations/TORG-0059",
+      "label": "Uma Flowers LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Uma Flowers Lunenburg LLC",
+      "entity_id": "organizations/TORG-0061",
+      "label": "Uma Flowers Lunenburg LLC",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "organization",
+      "natural_key": "MA:org:Z&T Inc",
+      "entity_id": "organizations/TORG-0037",
+      "label": "Z&T Inc",
+      "collection": "organizations"
+    },
+    {
+      "entity_type": "reference",
+      "natural_key": "MA:ref:privacy-spec",
+      "entity_id": "reference/TREF-0004",
+      "label": "Massachusetts Ingestion: Privacy and Excluded-Field Specification",
+      "collection": "reference"
+    },
+    {
+      "entity_type": "requirement",
+      "natural_key": "MA:req:testing",
+      "entity_id": "requirements/TREQ-0002",
+      "label": "Massachusetts Testing Requirements",
+      "collection": "requirements"
+    },
+    {
+      "entity_type": "safety_advisory",
+      "natural_key": "MA:adv:https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-may-31-2024-and-january-23-2025-february-3-2025/",
+      "entity_id": "safety-advisories/TSAD-0003",
+      "label": "Public Health and Safety Advisory: Potentially Contaminated Marijuana Products (sold between May 31, 2024, and January 23, 2025) |",
+      "collection": "safety-advisories"
+    },
+    {
+      "entity_type": "safety_advisory",
+      "natural_key": "MA:adv:https://masscannabiscontrol.com/2025/02/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-potentially-contaminated-marijuana-products-sold-between-september-18-2024-and-january-30-2025-february-3/",
+      "entity_id": "safety-advisories/TSAD-0002",
+      "label": "Public Health and Safety Advisory: Potentially Contaminated Marijuana Products (sold between September 18, 2024, and January 30, 2025) |",
+      "collection": "safety-advisories"
+    },
+    {
+      "entity_type": "safety_advisory",
+      "natural_key": "MA:adv:https://masscannabiscontrol.com/2025/08/notice-massachusetts-cannabis-control-commission-public-health-and-safety-advisory-contaminated-and-potentially-contaminated-marijuana-products-august-6-2025/",
+      "entity_id": "safety-advisories/TSAD-0001",
+      "label": "Public Health and Safety Advisory: Contaminated and Potentially Contaminated Marijuana Products |",
+      "collection": "safety-advisories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281277",
+      "entity_id": "testing-laboratories/TSTL-0020",
+      "label": "Green Analytics Massachusetts LLC ",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281278",
+      "entity_id": "testing-laboratories/TSTL-0019",
+      "label": "MCR Labs, LLC",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281279",
+      "entity_id": "testing-laboratories/TSTL-0023",
+      "label": "ProVerde Laboratories, Inc.",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281280",
+      "entity_id": "testing-laboratories/TSTL-0021",
+      "label": "Analytics Labs, LLC.",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281334",
+      "entity_id": "testing-laboratories/TSTL-0022",
+      "label": "G7 Lab LLC",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281349",
+      "entity_id": "testing-laboratories/TSTL-0026",
+      "label": "Kaycha MA, LLC",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281354",
+      "entity_id": "testing-laboratories/TSTL-0027",
+      "label": "SafeTiva Labs LLC",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281355",
+      "entity_id": "testing-laboratories/TSTL-0024",
+      "label": "Smithers AMS LLC",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281359",
+      "entity_id": "testing-laboratories/TSTL-0028",
+      "label": "Green Valley Analytics LLC",
+      "collection": "testing-laboratories"
+    },
+    {
+      "entity_type": "testing_laboratory",
+      "natural_key": "MA:lab:IL281360",
+      "entity_id": "testing-laboratories/TSTL-0025",
+      "label": "Assured Testing Laboratories LLC",
+      "collection": "testing-laboratories"
+    }
+  ],
+  "digest": "115be58e8990b7bc545ad2d04216981480e705121798290392de8d5eca87a89f"
+}

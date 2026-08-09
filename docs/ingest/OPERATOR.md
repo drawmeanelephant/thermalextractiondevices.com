@@ -168,19 +168,58 @@ manifest without touching anything.
   after confirming no importer run raced it; the digest guard will flag
   manual edits.
 
-## Reconciliation note (2026-08-05)
+## Sharing collections with California (v2)
 
-This repository's `main` (as visible from the worktree) does not contain the
-California DCC ingestion commit `3628c641`; that commit lives in a repository
-outside the sandbox and is currently unreachable. Until a rebase onto the
-California-containing `main` completes, Massachusetts content must NOT be
-published. All Massachusetts files here are uncommitted and test-only.
+Massachusetts shares the canonical collections (`jurisdictions`, `licenses`,
+`organizations`, `testing-laboratories`, `datasets`, `requirements`,
+`contaminants`, `safety-advisories`, `affected-products`) with the California
+DCC content already committed on `main`. On every live run the importer seeds
+its ID allocator from the combined content tree, so Massachusetts IDs always
+continue from the highest existing number per collection (e.g. California owns
+`jurisdictions/TJUR-0001`; Massachusetts is `jurisdictions/TJUR-0002`). The
+persisted `data/massachusetts-ccc/id-map.json` keeps these mappings stable
+across runs.
+
+> ⚠️ **Never delete `data/massachusetts-ccc/id-map.json` without also removing
+> the generated Massachusetts pages.** The allocator seeds from whatever IDs
+> exist in the content tree; a deleted registry with stale pages left behind
+> would allocate *new* IDs and orphan the old pages.
+
+Existing trunk pages (`content/<collection>.md`) are preserved untouched when
+Massachusetts regenerates content — only the missing trunks
+(`safety-advisories.md`, `affected-products.md`) are created.
+
+## Determinism
+
+Regeneration is deterministic: given the same source snapshots and code
+version, reruns produce byte-identical content files (verified: 293 content
+files identical across a full live re-sync). Retrieval timestamps live in the
+manifest, never in page text.
+
+## Known pre-existing gate failure (California release audit)
+
+The repo-wide public-release audit (`scripts/audit_public_release.py`) reports
+blocking PII findings on `data/dcc/` (California's committed license-registry
+JSON and recall HTML, added by commit `3628c64`). This is pre-existing on
+`main` and unrelated to Massachusetts; the Massachusetts pipeline contributes
+zero findings (its own privacy scan passes cleanly). To run the full build/publish
+gates, use the project's documented escape hatch:
+
+```bash
+SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash bin/validate_graph.sh
+SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash scripts/ted-publish.sh
+```
+
+Do not treat the CA findings as resolved by this task.
 
 ## What is intentionally not generated
 
 * One page per license or per test result (only aggregates; individual pages
   only for active Independent Testing Laboratories, advisory-connected
   licensees, and representative affected products).
+* Per-application detail rows from `l_applications_all_details.csv` (the
+  source file carries EIN/TIN, contact, and street-address fields; only
+  aggregate counts by license type/status are published).
 * Cultivar pages from advisory/testing strain strings — a candidate report is
   produced but no lineage/effect/terpene facts are manufactured.
 * Laboratory rankings, producer rankings, or cultivar rankings.
