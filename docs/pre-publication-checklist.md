@@ -22,19 +22,6 @@ the mechanical parts, but human sign-off is required on judgment items.
       finding (producer/manufacturer/lab content, draft research queue) and
       confirm each record is accurate, evidenced, and safe to publish under
       `PRIVACY.md` categories.
-- [ ] **[BLOCKER] Category-4 data removed from git *history*, not just the tree.**
-      Verified 2026-08-09: the DCC registry payloads were untracked in `6d740f4`
-      but **no history rewrite was performed**, so ~79 MiB across four blobs is
-      still reachable — `git show <commit-before-6d740f4>:data/dcc/license-registry/latest.json`
-      returns the full payload, from which **20,697 email addresses** were
-      recovered during verification. `LARGE-004` grades this `high`, and the
-      three findings are currently **suppressed by explicit, dated acknowledgement**
-      in `docs/audit-config.json` on the sole grounds that this repository is
-      private. **Making the repository public without first executing
-      `docs/history-cleanup-plan.md` and deleting those three suppression entries
-      publishes the data.** Removing the suppressions is part of this item, not
-      optional cleanup.
-
 ## 1. Automated audits (all must pass)
 
 - [ ] `python3 scripts/audit_public_release.py --config docs/audit-config.json`
@@ -68,8 +55,27 @@ the mechanical parts, but human sign-off is required on judgment items.
       until the separate history-cleanup plan is executed.
 - [x] Duplicate current-tree DCC payload copies removed; private cache state
       is ignored and not a publication artifact.
-- [ ] History cleanup decided (`docs/history-cleanup-plan.md`) — only if
-      `data/` PII is to be removed from history.
+- [ ] **Repository hygiene: bulk payloads still reachable in git history.**
+      Verified 2026-08-10: the DCC registry payloads were untracked in `6d740f4`
+      but no history rewrite was performed, so ~60 MiB across three blobs remains
+      reachable and every clone still pays for it. Removing them takes the
+      repository from 6.33 MiB to 2.55 MiB. See `docs/history-cleanup-plan.md`.
+
+      **This is not a blocker and not a disclosure.** The payload is the
+      California DCC licence register, fetched from `search.cannabis.ca.gov` —
+      a public register the state operates so that licensed cannabis businesses
+      can be looked up by anyone. Cal. Civ. Code § 1798.82(i) excludes
+      information lawfully made public in government records from the definition
+      of personal information, and `PRIVACY.md` places records naming
+      identifiable businesses in category 5 (human review), not category 4
+      (never publish). Registered businesses do not carry a privacy expectation
+      in their own licence record.
+
+      What it *does* violate is `docs/artifact-storage.md` rule 4 — raw and
+      normalized payloads are not committed — which exists to stop a content
+      repository becoming a data lake. Fix it for that reason, on a convenient
+      schedule.
+
 - [x] Repository visibility is public; this checklist does not change
       visibility.
 

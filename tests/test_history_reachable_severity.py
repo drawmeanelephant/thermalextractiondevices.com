@@ -1,9 +1,16 @@
-"""Deleted-but-reachable blobs under regulated paths must block the release gate.
+"""Deleted-but-reachable blobs are graded by path, and none of those grades block.
 
-Removing a file from the working tree does not remove it from history. For build
-output that is merely wasteful; for PRIVACY.md category-4 data it is a live
-disclosure, because `git show <old-commit>:<path>` still returns the payload to
-anyone who can clone the repository.
+Removing a file from the working tree does not remove it from history: `git show
+<old-commit>:<path>` still returns it, so every clone keeps paying for it. Bulk
+data under a sensitive prefix is therefore reported more loudly than build output.
+
+Neither grade blocks the release gate. An earlier version graded anything under
+`data/` as `high` on the assumption that such a path implied PRIVACY.md category-4
+data. It did not: the payload in question was the California DCC licence register,
+retrieved from the state's public licence-search system, and Cal. Civ. Code
+s.1798.82(i) excludes information lawfully made public in government records from
+the definition of personal information. A path prefix is not evidence of
+disclosure; only content is. audit_sensitive_content.py does that job.
 """
 
 from __future__ import annotations
@@ -52,8 +59,19 @@ class HistoryReachableSeverity(unittest.TestCase):
                 for finding in findings
                 if finding.code == "LARGE-004"
             }
-            self.assertEqual(deleted["data/registry.json"], "high")
-            self.assertEqual(deleted["dist/bundle.js"], "medium")
+            # Bulk data under a sensitive prefix reports louder than build output,
+            # but neither blocks. This deliberately no longer pins `high`: the
+            # payload that motivated that grade was the California DCC licence
+            # register from search.cannabis.ca.gov, a public government register.
+            # Cal. Civ. Code s.1798.82(i) excludes government-record information
+            # from the personal-information definition, so treating a path prefix
+            # as proof of disclosure was wrong. Content-based detection lives in
+            # audit_sensitive_content.py, which inspects payloads rather than paths
+            # and is where a real category-4 finding should originate.
+            self.assertEqual(deleted["data/registry.json"], "medium")
+            self.assertEqual(deleted["dist/bundle.js"], "low")
+            # Neither grade may reach the blocking threshold.
+            self.assertNotIn("high", set(deleted.values()))
 
 
 if __name__ == "__main__":

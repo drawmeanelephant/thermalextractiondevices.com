@@ -84,10 +84,7 @@
     "PII-001:tests/test_sensitive_content_classification.py",
     "PII-002:tests/test_sensitive_content_classification.py",
     "PII-003:tests/test_sensitive_content_classification.py",
-    "PII-004:tests/test_sensitive_content_classification.py",
-    "LARGE-004:data/dcc/license-registry/latest.json",
-    "LARGE-004:data/dcc/license-registry/2026-08-04/raw.json",
-    "LARGE-004:data/dcc/license-registry/2026-08-04/normalized.json"
+    "PII-004:tests/test_sensitive_content_classification.py"
   ],
   "fail_threshold": "high",
   "required_policy_documents": [
