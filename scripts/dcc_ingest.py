@@ -927,14 +927,73 @@ def gen_testing_labs(records_dir: Path, labs: list[dict], org_ids: dict[str, str
     return out
 
 
-def gen_organizations(records_dir: Path, orgs: list[dict]) -> dict[str, str]:
+def build_organization_relations(
+    orgs: list[dict],
+    labs: list[dict],
+    lab_ids: dict[str, str],
+    recall_index: list[dict],
+    recall_details: list[dict],
+    recall_id_map: dict[str, str],
+) -> dict[str, list[str]]:
+    """Return high-confidence reverse edges for generated organization pages.
+
+    DCC organization identity is keyed by the legal license number carried in
+    the generated record.  Only a unique exact license-number match is linked;
+    missing or ambiguous values are deliberately left unlinked.
+    """
+    org_names_by_license: dict[str, set[str]] = {}
+    for org in orgs:
+        license_number = clean(org.get("license_number"))
+        if license_number:
+            org_names_by_license.setdefault(license_number, set()).add(org["name"])
+    unique_org_by_license = {
+        license_number: next(iter(names))
+        for license_number, names in org_names_by_license.items()
+        if len(names) == 1
+    }
+
+    relations = {org["name"]: [] for org in orgs}
+    for lab in labs:
+        license_number = clean(lab.get("license_number"))
+        org_name = unique_org_by_license.get(license_number)
+        lab_id = lab_ids.get(license_number)
+        if org_name and lab_id:
+            relations[org_name].append(f"relates_to=testing-laboratories/{lab_id}")
+
+    detail_by_id = {item["id"]: item for item in recall_details}
+    for recall in recall_index[:6]:
+        recall_id = recall_id_map.get(recall.get("id", ""))
+        detail = detail_by_id.get(recall.get("id", ""), {})
+        fields = detail.get("fields", {})
+        license_number = clean(fields.get("Legal Business License Number"))
+        org_name = unique_org_by_license.get(license_number)
+        if org_name and recall_id:
+            relations[org_name].append(f"relates_to=recalls/{recall_id}")
+
+    return {name: sorted(set(items)) for name, items in relations.items()}
+
+
+def gen_organizations(
+    records_dir: Path,
+    orgs: list[dict],
+    labs: list[dict],
+    recall_index: list[dict],
+    recall_details: list[dict],
+) -> dict[str, str]:
     name_to_id = assign_ids("organizations", records_dir, [org["name"] for org in orgs])
+    lab_ids = assign_ids("testing-laboratories", records_dir, [lab["license_number"] for lab in labs])
+    recall_id_map = assign_ids("recalls", records_dir, [recall["id"] for recall in recall_index[:6]])
+    organization_relations = build_organization_relations(
+        orgs, labs, lab_ids, recall_index, recall_details, recall_id_map
+    )
     for org in orgs:
         entity_id = f"organizations/{name_to_id[org['name']]}"
+        relations = ["relates_to=jurisdictions/TJUR-0001"]
+        relations.extend(organization_relations.get(org["name"], []))
         body = frontmatter(
             entity_id, org["name"], "organizations",
             ["organization", "california"],
-            relations=["relates_to=jurisdictions/TJUR-0001"],
+            relations=relations,
             summary=f"Licensed cannabis organization: {org['name']}.",
         )
         body += f"""# {org['name']}
@@ -1602,7 +1661,7 @@ def main() -> int:
         if name and name not in org_names:
             org_names[name] = {"name": name, "structure": "", "city": "", "county": "",
                                "license_number": fields.get("Legal Business License Number") or ""}
-    org_ids = gen_organizations(records_dir, list(org_names.values()))
+    org_ids = gen_organizations(records_dir, list(org_names.values()), labs, recall_index, recall_details)
 
     gen_requirements(records_dir)
     gen_jurisdiction(records_dir)

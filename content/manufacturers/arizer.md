@@ -4,7 +4,7 @@ title: "Arizer"
 parent: manufacturers
 status: published
 tags: ["manufacturer", "arizer", "canada", "glass-path"]
-relations: [relates_to=devices/TED-0001]
+relations: [relates_to=devices/TED-0001, relates_to=recalls/TRCL-0010, relates_to=recalls/TRCL-0011]
 summary: Canadian hardware manufacturer known for glass pod stem systems and convection heating.
 ---
 

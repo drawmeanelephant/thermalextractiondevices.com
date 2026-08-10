@@ -1,6 +1,6 @@
 # Thermal Extraction Devices — Current Status
 
-Last verified: 2026-08-08
+Last verified: 2026-08-09
 Base commit reviewed: 8649973
 
 This is the current coordination snapshot. It is intentionally shorter-lived
@@ -76,13 +76,25 @@ lane.
 
 ## Verification notes
 
-The current source-only ID check validated 204 pages without changing files.
-The Boris graph, Cantilever build, Markdown-link audit, and HTML-ID audit
-completed successfully, and the device taxonomy audit reports 0 errors and
-0 warnings. The public-release audit still exits at the pre-existing
-data/dcc privacy and large-file findings. A per-file attribution of that audit
-confirms the Cannabis Hardware completion lane introduced no new findings. The
-system test run completed 154 tests with 4 optional skips.
+The current source-only ID check validated 444 pages without changing files.
+The Boris graph, Cantilever build, Markdown-link audit, crosslink validator,
+and HTML-ID audit completed successfully. The device taxonomy, COA,
+cannabinoid thermal-property, and record-completeness audits report 0 errors
+and 0 warnings/findings. The crosslink validator reports 444 entities and
+1,664 edges with no problems. The system test run completed 339 tests with 6
+optional skips.
+
+## Archive integrity update
+
+Verified 2026-08-09. The Arizer Solo II and Solo III CPSC recalls are now
+modeled as `recalls/TRCL-0010` and `recalls/TRCL-0011`, with source-backed
+relations to the manufacturer and Solo III device record. The crosslink layer
+now rejects a fully isolated satellite collection (`CXL-13`), and the DCC
+generator now emits conservative organization → laboratory/recall reverse
+edges when unique license-number matches exist. The required validation wrapper
+now completes successfully; the public-release audit reports 89 findings (56
+active), with none above its high-severity failure threshold. Remaining low-
+and medium-severity findings still require the documented release review.
 
 ## Publication hardening update
 

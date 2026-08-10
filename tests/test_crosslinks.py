@@ -18,6 +18,7 @@ from scripts.crosslinks import (  # noqa: E402
     MAX_LINKS_PER_PAGE,
     CrosslinkGraph,
     Edge,
+    Entity,
     build_graph,
     export_json,
     generate_index_pages,
@@ -319,6 +320,60 @@ class TestValidation(unittest.TestCase):
         ))
         problems = validate_graph(graph, FIXTURES / "content")
         self.assertTrue(any("CXL-06" in p for p in problems))
+
+    def test_fully_isolated_satellite_collection_is_rejected(self):
+        entities = {
+            "orphaned": Entity(
+                id="orphaned", title="Orphaned", source="orphaned.md",
+                collection="orphaned", parent=None, role="trunk",
+            ),
+            "orphaned/TO-0001": Entity(
+                id="orphaned/TO-0001", title="Orphan One",
+                source="orphaned/TO-0001.md", collection="orphaned",
+                parent="orphaned", role="satellite",
+            ),
+            "orphaned/TO-0002": Entity(
+                id="orphaned/TO-0002", title="Orphan Two",
+                source="orphaned/TO-0002.md", collection="orphaned",
+                parent="orphaned", role="satellite",
+            ),
+        }
+        graph = CrosslinkGraph(entities=entities)
+
+        problems = validate_graph(graph, FIXTURES / "content")
+
+        self.assertEqual(len(problems), 1)
+        self.assertIn("CXL-13", problems[0])
+        self.assertIn("orphaned", problems[0])
+
+    def test_partial_collection_and_trunks_are_not_rejected(self):
+        entities = {
+            "mixed": Entity(
+                id="mixed", title="Mixed", source="mixed.md",
+                collection="mixed", parent=None, role="trunk",
+            ),
+            "mixed/TM-0001": Entity(
+                id="mixed/TM-0001", title="Connected",
+                source="mixed/TM-0001.md", collection="mixed",
+                parent="mixed", role="satellite",
+            ),
+            "mixed/TM-0002": Entity(
+                id="mixed/TM-0002", title="Standalone",
+                source="mixed/TM-0002.md", collection="mixed",
+                parent="mixed", role="satellite",
+            ),
+            "trunks-only": Entity(
+                id="trunks-only", title="Trunks Only", source="trunks-only.md",
+                collection="trunks-only", parent=None, role="trunk",
+            ),
+        }
+        graph = CrosslinkGraph(entities=entities)
+        graph.add(Edge(
+            from_id="mixed/TM-0001", to_id="mixed", kind="relates_to",
+            edge_class="direct",
+        ))
+
+        self.assertEqual(validate_graph(graph, FIXTURES / "content"), [])
 
     def test_invalid_coa_record_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
