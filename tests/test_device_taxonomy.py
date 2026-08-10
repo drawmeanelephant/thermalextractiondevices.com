@@ -10,6 +10,7 @@ from pathlib import Path
 from scripts.audit_device_taxonomy import (
     TAXONOMY_DEFAULT,
     audit_file,
+    known_tags,
     parse_spec_rows,
     parse_tags,
 )
@@ -115,6 +116,41 @@ class TaxonomyFixture(unittest.TestCase):
         body = frontmatter(["device", "portable", "definitely-not-a-term"])
         findings = self._findings(body)
         self.assertTrue(any(rule == "VOCAB" for _, rule, _ in findings))
+
+    def test_backlog_terms_are_reusable_vocabulary(self) -> None:
+        terms = [
+            "510",
+            "oil-cartridge",
+            "digital",
+            "dial",
+            "18650",
+            "defunct",
+            "ireland",
+            "flytlab",
+            "tronian",
+            "flowermate",
+            "smiss",
+            "xmax",
+            "topgreen",
+            "xvape",
+            "mig-vapor",
+            "goboof",
+            "vaporfection",
+        ]
+        self.assertTrue(set(terms).issubset(known_tags(self.taxonomy)))
+        body = frontmatter(["device", "portable", "conduction", *terms]) + (
+            "# Fixture\n\n| Property | Specification |\n| --- | --- |\n"
+            "| Heating Method | Conduction |\n"
+        )
+        findings = self._findings(body)
+        self.assertFalse(any(rule == "VOCAB" for _, rule, _ in findings))
+
+    def test_noncanonical_backlog_aliases_still_warn(self) -> None:
+        aliases = ["wax", "bubbler", "forced-air-convection", "glass-path"]
+        self.assertTrue(set(aliases).isdisjoint(known_tags(self.taxonomy)))
+        body = frontmatter(["device", "portable", "conduction", *aliases])
+        findings = self._findings(body)
+        self.assertEqual(sum(rule == "VOCAB" for _, rule, _ in findings), len(aliases))
 
 
 if __name__ == "__main__":

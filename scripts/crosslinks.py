@@ -100,6 +100,7 @@ from scripts.coa_model import (  # noqa: E402
     Report,
     ReportingBasis,
     ResultState,
+    SourceProvenance,
     coa_problems,
 )
 from scripts.ingest.validation import collect_entity_ids  # noqa: E402
@@ -386,8 +387,23 @@ def coa_record_from_dict(data: dict[str, Any]) -> CoaRecord:
         report_date=report_data.get("report_date"),
         test_date=report_data.get("test_date"),
         sample_date=report_data.get("sample_date"),
+        sample_id=str(report_data.get("sample_id") or ""),
         laboratory=laboratory,
         jurisdiction=str(report_data.get("jurisdiction") or ""),
+        license_references=tuple(report_data.get("license_references") or ()),
+        test_panels=tuple(report_data.get("test_panels") or ()),
+        provenance=(
+            SourceProvenance(
+                source_url=str((report_data.get("provenance") or {}).get("source_url") or ""),
+                document_hash=str((report_data.get("provenance") or {}).get("document_hash") or ""),
+                retrieval_date=(report_data.get("provenance") or {}).get("retrieval_date"),
+                upstream_record_id=str((report_data.get("provenance") or {}).get("upstream_record_id") or ""),
+                parser_version=str((report_data.get("provenance") or {}).get("parser_version") or ""),
+                retrieval_note=str((report_data.get("provenance") or {}).get("retrieval_note") or ""),
+            )
+            if report_data.get("provenance") is not None
+            else None
+        ),
     )
     batch_data = data.get("batch") or {}
     def _enum(member: Any, values: Any, fallback: Any) -> Any:
@@ -401,15 +417,19 @@ def coa_record_from_dict(data: dict[str, Any]) -> CoaRecord:
     batch = Batch(
         batch_id=str(batch_data.get("batch_id") or ""),
         metrc_tag=str(batch_data.get("metrc_tag") or ""),
+        lot_number=str(batch_data.get("lot_number") or ""),
         producer_id=batch_data.get("producer_id"),
         product_id=batch_data.get("product_id"),
         cultivar_labels=tuple(batch_data.get("cultivar_labels") or ()),
         sample_type=str(batch_data.get("sample_type") or "unknown"),
         matrix_detail=str(batch_data.get("matrix_detail") or ""),
         basis=_enum(batch_data.get("basis"), ReportingBasis, ReportingBasis.UNKNOWN),
+        decarb_convention=str(batch_data.get("decarb_convention") or "unknown"),
         record_kind=_enum(batch_data.get("record_kind"), RecordKind, RecordKind.UNVERIFIED),
         jurisdiction=str(batch_data.get("jurisdiction") or ""),
         harvest_date=batch_data.get("harvest_date"),
+        production_date=batch_data.get("production_date"),
+        package_date=batch_data.get("package_date"),
     )
     measurements: list[AnalyteMeasurement] = []
     for measurement in data.get("measurements") or ():
@@ -426,6 +446,7 @@ def coa_record_from_dict(data: dict[str, Any]) -> CoaRecord:
             loq=measurement.get("loq"),
             test_date=measurement.get("test_date"),
             quantitation_note=measurement.get("quantitation_note"),
+            calculation_formula=measurement.get("calculation_formula"),
         ))
     record = CoaRecord(report=report, batch=batch, measurements=tuple(measurements))
     problems = coa_problems(record)
@@ -524,7 +545,16 @@ def build_graph(
     for record in coa_records:
         record_kind = record.batch.record_kind.value
         report_id = record.report.report_id
-        provenance = (f"coa:{report_id}", f"record_kind:{record_kind}")
+        provenance_parts = [f"coa:{report_id}", f"record_kind:{record_kind}"]
+        if record.report.provenance is not None:
+            source = record.report.provenance
+            if source.source_url:
+                provenance_parts.append(f"source_url:{source.source_url}")
+            if source.document_hash:
+                provenance_parts.append(f"document_sha256:{source.document_hash}")
+            if source.upstream_record_id:
+                provenance_parts.append(f"upstream:{source.upstream_record_id}")
+        provenance = tuple(provenance_parts)
         graph.report_batches[report_id] = {
             "batch_id": record.batch.batch_id,
             "metrc_tag": record.batch.metrc_tag,

@@ -35,22 +35,22 @@ summary: Principal psychoactive phytocannabinoid and decarboxylation product of 
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | ≈157 °C at 1 atm (derived from measured vapor-pressure data; not an observed phase change at that exact temperature) | From measured vapor pressures over ≈25–121 °C [^3] |
+| Boiling point | Predicted normal boiling temperature ≈417 °C (690.4 K) at 1 atm; extrapolated from vapor-pressure data, not an observed phase change | Direct vapor-pressure measurements covered ≈25–121 °C; decomposition prevents a direct atmospheric boiling observation [^3][^10] |
 | Vapor pressure | Measured ≈2.6×10⁻⁵ Pa at 25 °C to ≈0.22 Pa at 121 °C | Lovestead & Bruno 2017, direct measurement [^3] |
 | Melting point | No sharp melting point; viscous oil/semi-solid at room temperature | |
 | logP (octanol-water) | ≈5.7 (reported) | Highly lipophilic |
 | Water solubility | Practically insoluble | Soluble in ethanol, methanol, chloroform, oils, CO₂ |
-| Thermal decomposition | Oxidation and isomerization accelerate above ≈150–200 °C; prolonged heat yields CBN-type products | [^4][^5] |
-| Oxidation / light sensitivity | Moderate-to-high; forms CBN on prolonged air/heat exposure | Store opaque, inert |
+| Thermal decomposition | In the cited GC-injector study, Δ9-THC loss reached 17.2% at the study's 300 °C inlet condition and CBN increased; no universal decomposition threshold is assigned | Injector temperature and residence time are study conditions, not a device sample temperature [^4] |
+| Oxidation / light sensitivity | Oxidation is condition-dependent; CBN formation is reported under prolonged air/heat exposure [^4] | Store opaque, inert |
 | Known degradation products | Cannabinol (CBN, oxidation), Δ8-THC (isomerization), quinones (pyrolysis) | [^4][^5] |
 
-> **Boiling point is not a device setpoint.** The ≈157 °C figure is derived from measured vapor-pressure data and is commonly repeated in vaporizer marketing; device chamber temperature is not sample temperature, and material in plant matrix lags the setpoint. "Vaporizing at 157 °C" is not the same as boiling pure THC at 1 atm in a flask.
+> **Boiling point is not a device setpoint.** The commonly repeated ≈155–157 °C figure is associated with low-pressure vaporization or a device setting, not an atmospheric boiling observation. The predicted thermodynamic boiling point of pure Δ9-THC is ≈417 °C at 1 atm, while device chamber temperature is not sample temperature and material in plant matrix lags the setpoint [^3][^10].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-THC is the neutral product of THCA decarboxylation (onset ≈105 °C, accelerated at higher temperature) and is released from botanical matrix by vapor-pressure-driven evaporation. Because vapor pressures are measured only below ≈121 °C, the evaporation rate at common device operating temperatures is an extrapolation, not a measurement [^3].
+THC is the neutral product of THCA decarboxylation; conversion is temperature-, time-, atmosphere-, and matrix-dependent, so no universal onset is assigned here [^2]. It is released from botanical matrix by vapor-pressure-driven evaporation. Because vapor pressures are measured only below ≈121 °C, the evaporation rate at common device operating temperatures is an extrapolation, not a measurement; device setpoint and sample temperature are distinct [^3]. The thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature.
 
 ## Cannabis occurrence
 

@@ -1,6 +1,6 @@
 # Device Taxonomy — Migration Recommendations
 
-**Status:** Plan — ball-vape component-role recommendations applied 2026-08-08 · delivery-mode tags applied 2026-08-08 · operating-mode tags applied 2026-08-08 · Cannabis Hardware corpus completed 2026-08-08 · **Standard:** `content/reference/TREF-0004.md` (Device Architecture Taxonomy) · **Scope:** all existing `content/devices/*.md` records (44 pages; TED-0001…TED-0045 with TED-0040 retired and never to be reused) and the `devices` trunk.
+**Status:** Device-taxonomy warning backlog resolved 2026-08-09 · ball-vape component-role recommendations applied 2026-08-08 · delivery-mode tags applied 2026-08-08 · operating-mode tags applied 2026-08-08 · Cannabis Hardware corpus completed 2026-08-08 · **Standard:** `content/reference/TREF-0004.md` (Device Architecture Taxonomy) · **Scope:** all existing `content/devices/*.md` records and the `devices` trunk.
 
 This document audits the current device corpus against the five orthogonal axes and the ball-vape component model, and recommends concrete changes. It complements `metadata/device-taxonomy.json` and `scripts/audit_device_taxonomy.py`.
 
@@ -10,9 +10,44 @@ This document audits the current device corpus against the five orthogonal axes 
 
 The corpus was built before this taxonomy existed, but it is largely consistent with it:
 
-- **Tag vocabulary is already clean.** Every tag in use on device pages is either a recognized descriptor (`portable`, `desktop`, `ball-vape`, `log-vape`, `erig`, `cordless`, `analog`, `catalytic`, `conduction`, `convection`, `hybrid`, `induction`, `butane`, `manual`, `battery`, `on-demand`, `dry-herb`, `concentrates`, `glass-airpath`) or a manufacturer slug. `scripts/audit_device_taxonomy.py` reports **0 errors / 0 warnings** on the current corpus.
+- **Tag vocabulary is clean after the 2026-08-09 warning pass.** The baseline audit found 24 vocabulary warnings and 0 errors on TED-0046 through TED-0053. Seventeen reusable concepts were added to the controlled vocabulary, and four non-canonical tags were corrected in content. The final audit reports **0 errors / 0 warnings** on the corpus.
 - **Spec tables already separate heating from power** on most pages (e.g., FlowerPot pages list "Heating Method" and "Heat Source: 20 mm enail coil + external PID controller" as distinct rows).
 - **No contradiction rules currently fire.** No page tags `conduction`+`convection` without `hybrid`, `battery`+`mains`, `direct-flame`+`indirect-flame`, `manual`+`session`, or `bundle` as a model.
+
+### 2026-08-09 warning inventory and disposition
+
+The baseline command was `python3 scripts/audit_device_taxonomy.py content`. It reported **24 warnings / 0 errors**. Each warning had one of the following dispositions:
+
+| Record | Warning tag | Classification | Disposition |
+| --- | --- | --- | --- |
+| TED-0046 | `510` | missing reusable vocabulary | Added as a reusable cartridge-interface descriptor. |
+| TED-0046 | `oil-cartridge` | missing reusable vocabulary | Added as a reusable media/component descriptor. |
+| TED-0046 | `flytlab` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0047 | `digital` | missing reusable vocabulary | Added as a reusable control-interface descriptor, parallel to `analog`. |
+| TED-0047 | `tronian` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0048 | `flowermate` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0048 | `smiss` | missing reusable vocabulary | Added as a manufacturer/company slug. |
+| TED-0048 | `18650` | missing reusable vocabulary | Added as a reusable battery-format descriptor. |
+| TED-0049 | `xmax` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0049 | `topgreen` | missing reusable vocabulary | Added as a manufacturer/company slug. |
+| TED-0049 | `18650` | missing reusable vocabulary | Added as a reusable battery-format descriptor. |
+| TED-0050 | `wax` | incorrect tag | Replaced with the canonical `concentrates` descriptor. |
+| TED-0050 | `xvape` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0050 | `topgreen` | missing reusable vocabulary | Added as a manufacturer/company slug. |
+| TED-0051 | `mig-vapor` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0051 | `defunct` | missing reusable vocabulary | Added as a reusable lifecycle-status descriptor. |
+| TED-0051 | `bubbler` | incorrect tag | Removed as a colloquial delivery alias; the canonical `water-tool` tag remains. |
+| TED-0052 | `goboof` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0052 | `ireland` | missing reusable vocabulary | Added as a reusable manufacturer-origin descriptor. |
+| TED-0052 | `dial` | missing reusable vocabulary | Added as a reusable control-interface descriptor. |
+| TED-0053 | `forced-air-convection` | incorrect tag | Removed as a compound synonym; the canonical `convection` tag remains. |
+| TED-0053 | `glass-path` | incorrect tag | Replaced with the existing canonical `glass-airpath` descriptor. |
+| TED-0053 | `vaporfection` | missing reusable vocabulary | Added as a manufacturer/brand slug. |
+| TED-0053 | `defunct` | missing reusable vocabulary | Added as a reusable lifecycle-status descriptor. |
+
+The vocabulary additions are limited to the reusable terms above: descriptors `510`, `oil-cartridge`, `digital`, `18650`, `defunct`, `ireland`, and `dial`, plus manufacturer/brand slugs `flytlab`, `tronian`, `flowermate`, `smiss`, `xmax`, `topgreen`, `xvape`, `mig-vapor`, `goboof`, and `vaporfection`. The canonical replacements are recorded in `tag_aliases` in `metadata/device-taxonomy.json`; the audit intentionally continues to flag those old spellings until content is corrected.
+
+No baseline warning required an ambiguous-architecture exception. The separate architecture judgment on TED-0046 remains deliberate: it is a 510 battery component rather than a complete vaporizer, so its axis tags describe the assembled cartridge system and are explained in the record's Usage Notes. That exception does not weaken the component/system/head/controller/heater/bundle model and does not suppress vocabulary auditing.
 
 ## 2. Per-axis audit of current pages
 

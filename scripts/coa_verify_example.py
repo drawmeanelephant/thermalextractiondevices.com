@@ -129,9 +129,9 @@ CANNABINOID_PANEL = [
     ("Δ9-THC", "11.0", ResultState.NUMERIC, 11.0, ("0.000460", "0.00172"), None),
     ("THCA", "ND", ResultState.ND, None, ("0.000632", "0.00190"), None),
     ("THCV", "ND", ResultState.ND, None, ("0.000212", "0.00172"), None),
-    ("Total THC", "11.2", ResultState.NUMERIC, 11.2, ("0.000460", "0.00172"),
+    ("Total THC", "11.2", ResultState.NUMERIC, 11.2, (None, None),
      "Total THC = Delta-9-THC + (THCA x 0.877)"),
-    ("Total CBD", "0.219", ResultState.NUMERIC, 0.219, ("0.000347", "0.00172"),
+    ("Total CBD", "0.219", ResultState.NUMERIC, 0.219, (None, None),
      "Total CBD = CBD + (CBDA x 0.877)"),
     ("Total Cannabinoids", "11.4", ResultState.NUMERIC, 11.4, (None, None),
      "Total Cannabinoids = Neutral Cannabinoids + (Acidic Cannabinoids * 0.877)"),
@@ -229,6 +229,7 @@ def measurements() -> list[AnalyteMeasurement]:
     for name, printed, state, value, unit, limits, compound_id in SAFETY_ROWS:
         lod = float(limits[0]) if limits and limits[0] is not None else None
         loq = float(limits[1]) if limits and limits[1] is not None else None
+        normalized_unit = "other" if unit == "ug/kg" else unit
         out.append(AnalyteMeasurement(
             compound_id=compound_id,
             compound_name=name,
@@ -237,7 +238,7 @@ def measurements() -> list[AnalyteMeasurement]:
                           ("µg/kg" if unit == "ug/kg" else unit),
             state=state,
             value=value,
-            unit=unit,
+            unit=normalized_unit,
             lod=lod,
             loq=loq,
             method=PANEL_METHODS.get(name),
@@ -558,7 +559,7 @@ and registered here.
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--write", action="store_true",
-                        help="write content/lab-results/TLAB-0002.md")
+                        help="write the verified page and durable COA registry record")
     parser.add_argument("--snapshot", action="store_true",
                         help="Path A: checksum the PDF into var/ and write "
                              "content/datasets/TDTS-0022.md")
@@ -609,6 +610,18 @@ def main() -> int:
         target = ROOT / "content" / "lab-results" / "TLAB-0002.md"
         target.write_text(render_page(rec), encoding="utf-8")
         print(f"wrote {target.relative_to(ROOT)}")
+        registry = ROOT / "metadata" / "coa-records.jsonl"
+        existing: list[str] = []
+        if registry.exists():
+            existing = [line for line in registry.read_text(encoding="utf-8").splitlines() if line.strip()]
+        existing = [
+            line for line in existing
+            if json.loads(line).get("report", {}).get("report_id") != rec.report.report_id
+        ]
+        existing.append(json.dumps(rec.to_dict(), ensure_ascii=False, sort_keys=True, separators=(",", ":")))
+        existing.sort(key=lambda line: json.loads(line).get("report", {}).get("report_id", ""))
+        registry.write_text("\n".join(existing) + "\n", encoding="utf-8")
+        print(f"wrote {registry.relative_to(ROOT)} ({len(existing)} record(s))")
     return 0
 
 

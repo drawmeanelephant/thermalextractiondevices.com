@@ -34,7 +34,7 @@ summary: "Federal cannabis context for the United States: Controlled Substances 
 
 ## Controlled Substances Act Context
 
-Marijuana is listed in Schedule I of the Controlled Substances Act (21 U.S.C. § 812). **Effective April 28, 2026**, a final rule transferred two categories to **Schedule III**: (1) FDA-approved drug products containing marijuana and (2) marijuana products regulated by a state medical-marijuana license, subject to conditions (see DEA "Marijuana Rescheduling Regulatory Actions" and 90 FR 22714 et seq., Federal Register, April 28, 2026). A broader administrative hearing on rescheduling marijuana began June 29, 2026; the April 2026 final order does **not** legalize adult-use cannabis under federal law.
+Marijuana is listed in Schedule I of the Controlled Substances Act (21 U.S.C. § 812). **Effective April 28, 2026**, a final rule transferred two categories to **Schedule III**: (1) FDA-approved drug products containing marijuana and (2) marijuana products regulated by a state medical-marijuana license, subject to conditions (see DEA "Marijuana Rescheduling Regulatory Actions" and 91 FR 22714, Federal Register, April 28, 2026). The separate broader rescheduling proceeding had a hearing beginning June 29, 2026; this pass located no final disposition for that broader proceeding. The April 2026 final rule does **not** legalize adult-use cannabis under federal law.
 
 ## FDA-Approved Cannabis-Derived and Cannabis-Related Drugs
 
@@ -51,7 +51,7 @@ State frameworks range from fully regulated adult-use markets (California, Color
 ## Sources & Provenance
 
 - **CSA**: 21 U.S.C. § 812 (Schedule I listing).
-- **Rescheduling**: DEA "Marijuana Rescheduling Regulatory Actions" — https://www.dea.gov/marijuana-rescheduling-regulatory-actions ; Federal Register final rule (marijuana) — https://www.federalregister.gov/documents/2026/04/28/2026-08177/schedules-of-controlled-substances-rescheduling-of-marijuana (effective April 28, 2026); Federal Register final rule (FDA-approved products) — https://www.federalregister.gov/documents/2026/04/28/2026-08176/schedules-of-controlled-substances-rescheduling-of-food-and-drug-administration-approved-products (effective April 28, 2026); hearing began June 29, 2026.
+- **Rescheduling**: DEA "Marijuana Rescheduling Regulatory Actions" — https://www.dea.gov/marijuana-rescheduling-regulatory-actions ; Federal Register final rule for FDA-approved and state-medical products — https://www.federalregister.gov/documents/2026/04/28/2026-08176/schedules-of-controlled-substances-rescheduling-of-food-and-drug-administration-approved-products (91 FR 22714; effective April 28, 2026); Federal Register notice of hearing for the broader NPRM — https://www.federalregister.gov/documents/2026/04/28/2026-08177/schedules-of-controlled-substances-rescheduling-of-marijuana (91 FR 22777; not itself a final rescheduling rule).
 - **Hemp**: 2018 Farm Bill; 2026 total-THC definition effective November 12, 2026.
 - **Retrieval date**: 2026-08-09
 

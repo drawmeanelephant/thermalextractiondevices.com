@@ -35,21 +35,21 @@ summary: Neutral phytocannabinoid formed from CBGA by decarboxylation; no measur
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
 | Melting point | ≈52 °C (reported) | [^2] |
-| Boiling point | **Not experimentally measured at 1 atm** — decomposition precedes boiling. The widely cited "CBG boiling point = 52 °C" is not an atmospheric boiling point: 52 °C is CBG's reported melting point, and at 1 atm CBG decomposes before boiling [^2][^3][^5] |
-| Vapor pressure | No direct experimental data; by analogy to the measured THC/CBD data, ≈10⁻⁶–10⁻⁷ Torr at 20 °C, ≈0.1–0.2 Torr at 180 °C (extrapolated) | [^4] |
+| Boiling point | **No compound-specific atmospheric boiling point was located.** The reported 52 °C value is a melting point, not an atmospheric boiling point; a compound-specific reduced-pressure boiling value was also not verified [^2][^3][^5] |
+| Vapor pressure | No direct experimental data or defensible compound-specific estimate was located; THC/CBD measurements must not be presented as CBG vapor pressure [^4] |
 | logP (octanol-water) | 7.4 (computed XLogP3) | Extremely lipophilic |
 | Water solubility | Practically insoluble | Soluble in ethanol, methanol, acetonitrile, chloroform, scCO₂ |
-| Thermal decomposition | Onset ≈150 °C; significant loss of CBG with emergence of CBC at elevated temperature | [^3] |
+| Thermal decomposition | In GC-injector tests, CBG decreased by about 35.6% at 250 °C and about 50% at 300 °C, with CBC observed; these injector conditions do not define a universal sample-temperature onset [^3] |
 | Oxidation / light sensitivity | High | Store cold, dark, inert |
-| Known degradation products | CBC (thermal cyclization); VCE-003-type quinones (oxidative) | [^3] |
+| Known degradation products | CBC was observed under cited GC-injector conditions [^3]; VCE-003-type quinones remain an unresolved analogy |
 
-> **Boiling point is not a device setpoint.** "CBG boils at 52 °C" is a reduced-pressure (≤0.05 Torr) distillation figure; at 1 atm CBG decomposes (≈150 °C) before boiling. Vaporizer chamber temperatures (170–220 °C) achieve evaporation from the matrix, not true boiling.
+> **Boiling point is not a device setpoint.** "CBG boils at 52 °C" is not a verified atmospheric or reduced-pressure boiling datum; 52 °C is the reported melting point. Vaporizer chamber temperature, device setpoint, and sample temperature are separate from the unresolved thermodynamic boiling point [^2][^3][^5].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-Effective volatilization of CBG from plant matrix requires elevated chamber temperatures; this is vapor-pressure-driven evaporation, not bulk boiling [^5].
+CBG release from plant matrix is expected to be vapor-pressure-driven evaporation rather than bulk boiling, but no CBG-specific device/sample-temperature curve was located. The thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature [^3][^5].
 
 ## Cannabis occurrence
 
@@ -75,8 +75,8 @@ Preclinical studies report CBG modulation of cannabinoid receptors and α2-adren
 
 ## Degradation products
 
-- Thermal: CBC (cyclization), plus secondary products at high temperature
-- Oxidative: VCE-003-type quinones
+- Thermal: CBC (cyclization) under cited GC-injector conditions [^3]
+- Oxidative: secondary products unresolved; VCE-003-type quinones are an analogy, not a verified CBG result
 
 ## Sources
 

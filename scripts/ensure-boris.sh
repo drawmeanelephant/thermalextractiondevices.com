@@ -16,29 +16,63 @@ for arg in "$@"; do
   fi
 done
 
-# Read defaults from metadata/boris-version.json
-CONFIG_DATA=$(python3 -c '
-import json, sys
-try:
-    with open(sys.argv[1]) as f:
-        d = json.load(f)
-    print(d.get("repository", ""))
-    print(d.get("branch", ""))
-    print(d.get("commit", ""))
-    print(d.get("zig_version", ""))
-except Exception:
-    sys.exit(1)
-' "${CONFIG_FILE}" 2>/dev/null || true)
+# Read and validate the single source of truth in metadata/boris-version.json.
+# A branch name is retained as provenance, but it must never select the source
+# revision. The full commit SHA is the only Boris source selector.
+if ! CONFIG_DATA=$(python3 -c '
+import json, re, sys
+
+with open(sys.argv[1], encoding="utf-8") as f:
+    data = json.load(f)
+
+required = ("repository", "branch", "commit", "zig_version")
+missing = [key for key in required if not isinstance(data.get(key), str) or not data[key]]
+if missing:
+    raise ValueError("missing required field(s): " + ", ".join(missing))
+if not re.fullmatch(r"[0-9a-f]{40}", data["commit"]):
+    raise ValueError("commit must be an exact 40-character lowercase hexadecimal SHA, not a branch or tag")
+
+for key in required:
+    print(data[key])
+' "${CONFIG_FILE}"); then
+  echo "ERROR: Invalid Boris toolchain metadata in ${CONFIG_FILE}." >&2
+  echo "       repository, branch, commit, and zig_version are required; commit must be a full SHA." >&2
+  exit 1
+fi
 
 DEFAULT_REPO=$(echo "$CONFIG_DATA" | sed -n '1p')
 DEFAULT_BRANCH=$(echo "$CONFIG_DATA" | sed -n '2p')
 DEFAULT_COMMIT=$(echo "$CONFIG_DATA" | sed -n '3p')
 DEFAULT_ZIG_VER=$(echo "$CONFIG_DATA" | sed -n '4p')
 
-BORIS_REPOSITORY="${BORIS_REPOSITORY:-${DEFAULT_REPO:-https://github.com/drawmeanelephant/boris.git}}"
-BORIS_BRANCH="${BORIS_BRANCH:-${DEFAULT_BRANCH:-afterparty}}"
-PINNED_COMMIT="${BORIS_COMMIT_OVERRIDE:-${BORIS_COMMIT:-${DEFAULT_COMMIT:-9505ec610364e25f12bc4ec13e69275051f143fa}}}"
-ZIG_VERSION="${ZIG_VERSION:-${DEFAULT_ZIG_VER:-0.16.0}}"
+# Environment overrides are accepted only when they repeat the committed
+# value. This keeps existing callers useful while preventing a local, CI, or
+# deploy invocation from silently selecting another Boris source or toolchain.
+if [[ -n "${BORIS_REPOSITORY:-}" && "${BORIS_REPOSITORY}" != "${DEFAULT_REPO}" ]]; then
+  echo "ERROR: BORIS_REPOSITORY override differs from ${CONFIG_FILE}; use the committed repository." >&2
+  exit 1
+fi
+if [[ -n "${BORIS_BRANCH:-}" && "${BORIS_BRANCH}" != "${DEFAULT_BRANCH}" ]]; then
+  echo "ERROR: BORIS_BRANCH override differs from ${CONFIG_FILE}; branch overrides are not allowed." >&2
+  exit 1
+fi
+if [[ -n "${BORIS_COMMIT:-}" && "${BORIS_COMMIT}" != "${DEFAULT_COMMIT}" ]]; then
+  echo "ERROR: BORIS_COMMIT override differs from ${CONFIG_FILE}; use the committed Boris SHA." >&2
+  exit 1
+fi
+if [[ -n "${BORIS_COMMIT_OVERRIDE:-}" && "${BORIS_COMMIT_OVERRIDE}" != "${DEFAULT_COMMIT}" ]]; then
+  echo "ERROR: BORIS_COMMIT_OVERRIDE differs from ${CONFIG_FILE}; commit overrides are not allowed." >&2
+  exit 1
+fi
+if [[ -n "${ZIG_VERSION:-}" && "${ZIG_VERSION}" != "${DEFAULT_ZIG_VER}" ]]; then
+  echo "ERROR: ZIG_VERSION override differs from ${CONFIG_FILE}; use the committed Zig version." >&2
+  exit 1
+fi
+
+BORIS_REPOSITORY="${DEFAULT_REPO}"
+BORIS_BRANCH="${DEFAULT_BRANCH}"
+PINNED_COMMIT="${DEFAULT_COMMIT}"
+ZIG_VERSION="${DEFAULT_ZIG_VER}"
 
 write_manifest() {
   local binary_path="$1"
@@ -302,8 +336,15 @@ if ! git clone --no-single-branch "${BORIS_REPOSITORY}" "${BUILD_DIR}" >&2; then
   exit 1
 fi
 
-echo "==> Checking out pinned commit ${PINNED_COMMIT}..." >&2
-if ! (cd "${BUILD_DIR}" && git checkout "${PINNED_COMMIT}") >&2; then
+REMOTE_REPOSITORY=$(git -C "${BUILD_DIR}" remote get-url origin 2>/dev/null || echo "")
+if [[ "${REMOTE_REPOSITORY}" != "${BORIS_REPOSITORY}" ]]; then
+  echo "ERROR: Boris clone remote (${REMOTE_REPOSITORY}) does not match ${BORIS_REPOSITORY}" >&2
+  rm -rf "${BUILD_DIR}"
+  exit 1
+fi
+
+echo "==> Checking out exact Boris commit ${PINNED_COMMIT} (branch is provenance only)..." >&2
+if ! (cd "${BUILD_DIR}" && git cat-file -e "${PINNED_COMMIT}^{commit}" && git checkout --detach --force "${PINNED_COMMIT}") >&2; then
   echo "ERROR: Failed to checkout Boris commit ${PINNED_COMMIT}" >&2
   rm -rf "${BUILD_DIR}"
   exit 1
