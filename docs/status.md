@@ -76,11 +76,12 @@ lane.
 
 ## Verification notes
 
-The current source-only ID check validated 419 pages without changing files.
+The current source-only ID check validated 444 pages without changing files.
 The Boris graph, Cantilever build, Markdown-link audit, crosslink validator,
-and HTML-ID audit completed successfully. The device taxonomy audit reports 0
-errors and 24 existing warnings; the COA and record-completeness audits report
-0 errors and 0 warnings. The system test run completed 311 tests with 6
+and HTML-ID audit completed successfully. The device taxonomy, COA,
+cannabinoid thermal-property, and record-completeness audits report 0 errors
+and 0 warnings/findings. The crosslink validator reports 444 entities and
+1,664 edges with no problems. The system test run completed 339 tests with 6
 optional skips.
 
 ## Archive integrity update
@@ -91,8 +92,9 @@ relations to the manufacturer and Solo III device record. The crosslink layer
 now rejects a fully isolated satellite collection (`CXL-13`), and the DCC
 generator now emits conservative organization → laboratory/recall reverse
 edges when unique license-number matches exist. The required validation wrapper
-still exits at the pre-existing public-release audit: 60 blocking findings,
-including historical DCC data, PII-review findings, and git-history metadata.
+now completes successfully; the public-release audit reports 89 findings (56
+active), with none above its high-severity failure threshold. Remaining low-
+and medium-severity findings still require the documented release review.
 
 ## Publication hardening update
 
