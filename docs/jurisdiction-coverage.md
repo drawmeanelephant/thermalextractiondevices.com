@@ -45,8 +45,9 @@ scored 1–5 (5 = best for this project), consistent with `docs/state-expansion-
 - **Tier B** — good regulatory information, limited structured data.
 - **Tier C** — verified legal/regulatory baseline, poor public machine-readable data.
 
-California and Massachusetts are **deep-data implementation states** (dedicated ingestion
-pipelines) rather than rescored tier members.
+California, Massachusetts, and Michigan are **deep-data implementation states** (connected
+evidence implementations) rather than rescored tier members. Michigan does not yet have a
+live bulk adapter because its public license and COA surfaces are portal/document-heavy.
 
 ## United States
 
@@ -81,7 +82,7 @@ partial, N = no / not operational / none located, — = not applicable.
 | [Maine](../content/jurisdictions/maine.md) | state | Y | Y | Y | Y | OCP (DAFS) | OCP rules | P | P | P | P | P | B |
 | [Maryland](../content/jurisdictions/maryland.md) | state | Y | Y | Y | Y | MCA | COMAR 27 | P | P | N | P | N | B |
 | [Massachusetts](../content/jurisdictions/TJUR-0022.md) | state | Y | Y | Y | Y | CCC | 935 CMR 500 | Y | Y | Y | Y | Y | Deep-ingested |
-| [Michigan](../content/jurisdictions/michigan.md) | state | Y | Y | Y | Y | CRA | MRTMA rules | P | P | N | P | P | B |
+| [Michigan](../content/jurisdictions/michigan.md) | state | Y | Y | Y | Y | CRA | MRTMA rules | P | P | N | P | P | Deep-ingested |
 | [Minnesota](../content/jurisdictions/minnesota.md) | state | Y | Y | Y | Y | OCM | Minn. Stat. 342 | P | P | N | P | N | B |
 | [Mississippi](../content/jurisdictions/mississippi.md) | state | N | Y | N | N | MSDH | MSDH regs | P | P | N | N | P | C |
 | [Missouri](../content/jurisdictions/missouri.md) | state | Y | Y | Y | Y | DHSS DCR | 19 CSR 30-95 | P | P | N | P | N | C |
@@ -146,7 +147,7 @@ partial, N = no / not operational / none located, — = not applicable.
 
 ## Deepened jurisdictions (this wave)
 
-U.S. beyond California and Massachusetts: **Nevada, Colorado, Connecticut, Oregon,
+U.S. beyond California, Massachusetts, and Michigan: **Nevada, Colorado, Connecticut, Oregon,
 New York** — each page carries regulator history, licensing categories, testing-lab
 framework, contaminant-rule links, open datasets, recalls/advisories, traceability,
 market status, and ingestion opportunities, sourced from the verified ledger in
