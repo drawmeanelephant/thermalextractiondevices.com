@@ -185,6 +185,33 @@ class AuditCoaContentTest(unittest.TestCase):
         self.assertIn("COA-06", codes)
         self.assertNotIn("COA-06", self.codes("error"))
 
+    def test_verified_page_requires_matching_durable_record(self):
+        page = VERIFIED_PAGE.replace('tags: ["lab-results", "coa"]', 'tags: ["lab-results", "coa", "verified"]')
+        write(self.root / "content" / "lab-results" / "TLAB-0101.md", page)
+        registry = self.root / "metadata" / "coa-records.jsonl"
+        registry.write_text(json.dumps({
+            "report": {"report_id": "lab-results/TLAB-0101"},
+            "batch": {"record_kind": "verified"},
+        }) + "\n", encoding="utf-8")
+        self.assertNotIn("COA-08", [rule for _, rule, _ in audit(
+            self.root / "content", self.root / "metadata" / "id-map.jsonl", registry
+        )])
+
+        registry.unlink()
+        self.assertIn("COA-08", [rule for _, rule, _ in audit(
+            self.root / "content", self.root / "metadata" / "id-map.jsonl", registry
+        )])
+
+    def test_orphan_durable_verified_record_flagged(self):
+        registry = self.root / "metadata" / "coa-records.jsonl"
+        registry.write_text(json.dumps({
+            "report": {"report_id": "lab-results/TLAB-0999"},
+            "batch": {"record_kind": "verified"},
+        }) + "\n", encoding="utf-8")
+        findings = audit(self.root / "content", self.root / "metadata" / "id-map.jsonl", registry)
+        self.assertTrue(any(rule == "COA-08" and "no verified lab-results page" in message
+                            for _, rule, message in findings))
+
 
 if __name__ == "__main__":
     unittest.main()

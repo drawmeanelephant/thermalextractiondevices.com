@@ -5,7 +5,7 @@ parent: jurisdictions
 status: published
 tags: ["jurisdiction", "virginia", "united-states", "regulatory"]
 relations: []
-summary: "Jurisdiction profile for the Commonwealth of Virginia: adult-use possession and home grow legal; retail sales framework authorized for 2026–2027 under the CCA."
+summary: "Jurisdiction profile for the Commonwealth of Virginia: adult-use possession and home grow legal; CCA implementation targets retail sales for July 1, 2027."
 ---
 
 # Virginia (Jurisdiction Profile)
@@ -26,15 +26,15 @@ summary: "Jurisdiction profile for the Commonwealth of Virginia: adult-use posse
 
 | Dimension | Status |
 | --- | --- |
-| Adult-use possession | Permitted (21+; up to 1 oz in public, more at home; pending increase to 2 oz) |
-| Adult-use commercial sales | Not yet operational (licensing authorized from late 2026; retail no earlier than May 1, 2027) |
+| Adult-use possession | Permitted (21+; up to 2 oz on the person or in public under the 2026 amendment) |
+| Adult-use commercial sales | Not operational (CCA implementation schedule: regulations by February 1, 2027; initial licenses by May 1, 2027; retail sales may begin July 1, 2027) |
 | Medical cannabis | Regulated program (2018–2020 framework, licensed pharmaceutical processors) |
 | Home cultivation | Permitted (up to 4 plants per household) |
 | Hemp relationship | From August 15, 2026, products with more than 2 mg total THC per package cannot be sold as hemp products |
 
 ## Regulatory Overview
 
-Virginia legalized adult-use possession and home cultivation in 2021 (SB 1406/HB 2312). Retail sales are not yet operational: 2026 legislation (SB 542/SB 671) authorizes the Cannabis Control Authority to begin issuing licenses from September 1, 2026, with retail sales no earlier than May 1, 2027, and a cap of 350 retail establishments. New marijuana/hemp rules took effect August 15, 2026.
+Virginia legalized adult-use possession and home cultivation in 2021 (SB 1406/HB 2312). Retail sales are not yet operational: the CCA's current implementation schedule calls for regulations by February 1, 2027, initial licenses by May 1, 2027, and retail sales no earlier than July 1, 2027, with a cap of 350 retail establishments. The 2026 hemp product limit becomes effective August 15, 2026; it is enacted but not yet effective on this profile's verification date.
 
 ## Data Surface
 
@@ -52,9 +52,10 @@ Virginia legalized adult-use possession and home cultivation in 2021 (SB 1406/HB
 
 ## Sources & Provenance
 
-- **Statutory framework**: SB 1406/HB 2312 (2021, possession/home grow); SB 542/SB 671 (2026, retail framework; licensing from September 1, 2026; retail no earlier than May 1, 2027).
-- **Regulator**: Cannabis Control Authority — https://cca.virginia.gov/
-- **Hemp/marijuana rule change**: August 15, 2026 (CCA news release, July 1, 2026).
+- **Statutory framework**: SB 1406/HB 2312 (2021, possession/home grow); 2026 amendments reflected in the CCA laws page and Code of Virginia § 4.1-1108.
+- **Regulator and current law summary**: Cannabis Control Authority — https://cca.virginia.gov/laws/
+- **Retail implementation schedule**: CCA retail marijuana market page — https://cca.virginia.gov/retailmarijuanamarket/
+- **Hemp product limit**: effective August 15, 2026 — https://cca.virginia.gov/hempinformation/
 - **Retrieval date**: 2026-08-09
 
 ## Graph Connections

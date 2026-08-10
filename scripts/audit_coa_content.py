@@ -24,6 +24,8 @@ COA-06 (warning) a frontmatter relation references an entity id that is not
                  present in metadata/id-map.jsonl (broken relation)
 COA-07 (warning) a lab-results page links to no compound pages
                  (cannabinoid/terpene/contaminant)
+COA-08 (error)   verified lab-result pages and durable verified COA records
+                 must have a one-to-one report-id parity
 
 Severity split is deliberate. COA-01…05 are mechanically decidable and block;
 COA-06…07 inform without failing a page that is honestly thin.
@@ -179,7 +181,56 @@ def audit_cultivars(root: Path) -> list[tuple[str, str, str]]:
     return findings
 
 
-def audit(root: Path, id_map_path: Path) -> list[tuple[str, str, str]]:
+def audit_registry_parity(root: Path, registry_path: Path) -> list[tuple[str, str, str]]:
+    """Require one durable record for every verified page, and vice versa."""
+    findings: list[tuple[str, str, str]] = []
+    if not registry_path.exists():
+        findings.append(("error", "COA-08", f"{registry_path}: durable COA registry is missing"))
+        return findings
+
+    verified_records: dict[str, int] = {}
+    try:
+        for line_no, line in enumerate(registry_path.read_text(encoding="utf-8").splitlines(), start=1):
+            if not line.strip():
+                continue
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError as error:
+                findings.append(("error", "COA-08", f"{registry_path}:{line_no}: invalid JSON: {error}"))
+                continue
+            report = record.get("report") or {}
+            batch = record.get("batch") or {}
+            report_id = str(report.get("report_id") or "")
+            if batch.get("record_kind") != "verified":
+                continue
+            if report_id in verified_records:
+                findings.append(("error", "COA-08", f"{registry_path}:{line_no}: duplicate verified record {report_id!r}"))
+            verified_records[report_id] = line_no
+    except (OSError, UnicodeError) as error:
+        findings.append(("error", "COA-08", f"{registry_path}: cannot read durable registry: {error}"))
+        return findings
+
+    verified_pages: set[str] = set()
+    lab_results = root / "lab-results"
+    if lab_results.is_dir():
+        for path in sorted(lab_results.glob("*.md")):
+            text = path.read_text(encoding="utf-8")
+            frontmatter = read_frontmatter(text)
+            tags = parse_tags(frontmatter)
+            if "verified" not in tags or "demonstration" in tags:
+                continue
+            id_match = ID_LINE.search(frontmatter)
+            if id_match:
+                verified_pages.add(id_match.group(1).strip())
+
+    for report_id in sorted(verified_pages - verified_records.keys()):
+        findings.append(("error", "COA-08", f"{report_id}: verified lab-results page has no durable COA record"))
+    for report_id in sorted(verified_records.keys() - verified_pages):
+        findings.append(("error", "COA-08", f"{report_id}: durable verified COA record has no verified lab-results page"))
+    return findings
+
+
+def audit(root: Path, id_map_path: Path, coa_path: Path | None = None) -> list[tuple[str, str, str]]:
     findings: list[tuple[str, str, str]] = []
     known_ids = load_id_map(id_map_path)
     lab_results = root / "lab-results"
@@ -187,6 +238,8 @@ def audit(root: Path, id_map_path: Path) -> list[tuple[str, str, str]]:
         for path in sorted(lab_results.glob("*.md")):
             findings.extend(audit_lab_result(path, known_ids))
     findings.extend(audit_cultivars(root))
+    if coa_path is not None:
+        findings.extend(audit_registry_parity(root, coa_path))
     return findings
 
 
@@ -195,12 +248,14 @@ def main() -> int:
     parser.add_argument("root", type=Path, help="content directory")
     parser.add_argument("--map", dest="id_map", type=Path,
                         default=Path("metadata/id-map.jsonl"), help="id-map.jsonl path")
+    parser.add_argument("--coa", dest="coa_path", type=Path,
+                        default=Path("metadata/coa-records.jsonl"), help="durable COA registry path")
     parser.add_argument("--warnings-only", action="store_true",
                         help="never exit non-zero; report findings only")
     args = parser.parse_args()
 
     try:
-        findings = audit(args.root, args.id_map)
+        findings = audit(args.root, args.id_map, args.coa_path)
     except (OSError, UnicodeError, json.JSONDecodeError) as error:
         print(f"COA content audit: error: {error}", file=sys.stderr)
         return 2

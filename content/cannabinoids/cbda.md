@@ -33,19 +33,19 @@ summary: Acidic phytocannabinoid precursor of CBD, dominant in fresh flower; no 
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | **No reliable experimental boiling point at 1 atm**; the "≈120 °C / 248 °F" figures in popular literature are decarboxylation-onset temperatures, not boiling points [^2] |
+| Boiling point | **No compound-specific atmospheric boiling point was located.** The often-repeated ≈120 °C figure is a study-specific acid-conversion temperature, not a thermodynamic boiling point [^2] |
 | Melting point | Not sharply defined; decomposes on heating (decarboxylation overlaps melting) [^2] |
-| Decarboxylation | To CBD; complete at ≈105–120 °C over tens of minutes; on-set shifts higher in plant matrix [^2] |
-| Oxidation / light sensitivity | High; light and air accelerate decarboxylation and oxidation. CBDA is the primary acidic cannabinoid in fresh hemp flower [^2] |
-| Known degradation products | CBD (decarboxylation); oxidative products by analogy to CBD (CBE-type, quinones) [^2] |
+| Decarboxylation | To CBD; temperature-, time-, atmosphere-, solvent-, and matrix-dependent. In a vacuum-oven kinetic study, CBDA conversion was measured at 110 °C, with material loss and side chemistry; no universal onset or completion temperature is assigned [^2] |
+| Oxidation / light sensitivity | CBDA oxidation and light-stability behavior are condition-dependent; no compound-specific stability threshold is assigned. CBDA is the primary acidic cannabinoid in fresh hemp flower [^2] |
+| Known degradation products | CBD (decarboxylation) [^2]; secondary oxidative products remain analogies to CBD and are not directly characterized for CBDA |
 
-> **Boiling point is not a device setpoint.** CBDA degrades (decarboxylates) well before it could boil at atmospheric pressure; "boiling point" figures in vaporizer charts are decarboxylation/evaporation temperatures.
+> **Boiling point is not a device setpoint.** CBDA thermal conversion is condition-dependent and the available evidence does not establish an intact atmospheric boiling point. Vaporizer-chart figures are device or matrix-evaporation temperatures, not thermodynamic boiling points [^2].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-In fresh flower, CBDA is the dominant CBD-series analyte; heating first decarboxylates CBDA to CBD, which then volatilizes via vapor-pressure-driven evaporation from the matrix.
+In fresh flower, CBDA is the dominant CBD-series analyte; heating can decarboxylate CBDA to CBD, which may then volatilize via vapor-pressure-driven evaporation from the matrix. The thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature; device setpoint, sample temperature, matrix, and residence time must be reported separately [^2].
 
 ## Cannabis occurrence
 
@@ -73,8 +73,8 @@ Marketed anti-inflammatory/nausea claims for CBDA remain unsupported by controll
 
 ## Degradation products
 
-- Primary: CBD (decarboxylation)
-- Secondary (oxidative/photolytic): CBE-type and quinone products by analogy to CBD
+- Primary: CBD (decarboxylation) [^2]
+- Secondary (oxidative/photolytic): unresolved; CBE-type and quinone products are analogies to CBD, not verified CBDA products
 
 ## Sources
 

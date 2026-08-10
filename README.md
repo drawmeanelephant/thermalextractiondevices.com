@@ -7,7 +7,7 @@ Thermal Extraction Devices (`thermalextractiondevices.com`) is a static technica
 ## Production Deployment
 
 * **Source of Record**: `drawmeanelephant/thermalextractiondevices.com`
-* **Compiler**: [Boris](https://github.com/drawmeanelephant/boris) (CI tracks the `afterparty` branch)
+* **Compiler**: [Boris](https://github.com/drawmeanelephant/boris), resolved from the exact repository and commit in `metadata/boris-version.json`
 * **Production Theme**: Cantilever (`themes/cantilever/`)
 * **Output Path**: `dist/cantilever/`
 * **Host**: Cloudflare Pages (`thermalextractiondevices-com`)
@@ -30,6 +30,25 @@ Run the complete local validation gate:
 ```sh
 ./bin/validate_graph.sh
 ```
+
+Run the blocking offline test suites used by CI:
+
+```sh
+python3 -m unittest discover -s tests -t . -v
+python3 scripts/test_ensure_boris.py -v
+```
+
+The normal suite includes the in-process loopback HTTP tests and intentionally
+skips live-source checks. To run those optional network checks explicitly:
+
+```sh
+INGEST_LIVE=1 python3 -m unittest tests.test_live_smoke -v
+```
+
+Use `./scripts/ensure-boris.sh --provision` to resolve Boris locally. It reads
+`metadata/boris-version.json`, checks out the exact full commit, and verifies
+the configured Zig version and download checksum when Zig must be provisioned;
+the metadata branch is provenance only and never selects the source revision.
 
 Run the public-release readiness audits (also run in CI):
 

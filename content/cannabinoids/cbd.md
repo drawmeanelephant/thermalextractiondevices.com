@@ -35,21 +35,21 @@ summary: Neutral phytocannabinoid formed from CBDA by decarboxylation; no true a
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
 | Melting point | ≈66 °C (also reported 62–63 °C for the α-form) | Pure compound; polymorph-dependent [^1] |
-| Boiling point | **No true boiling point at 1 atm** — thermal decomposition precedes boiling. Reported "vaporization range" 160–180 °C is not a boiling point | Calculated/extrapolated atmospheric values ≈425–464 °C are never reached intact [^5] |
+| Boiling point | Predicted normal boiling temperature ≈422 °C (695.1 K) at 1 atm; extrapolated from vapor-pressure data, not an observed phase change | Direct vapor-pressure measurements covered ≈61–121 °C; thermal decomposition prevents a direct atmospheric boiling observation [^4][^5] |
 | Vapor pressure | Measured ≈10⁻³–10⁻¹ Pa over 61–121 °C (PLOT-cryo headspace); ambient values are model predictions | First experimental CBD vapor-pressure data; uncertainty ≈13.5 % [^4] |
 | Water solubility | <1 µg/mL (practically insoluble) | pH-dependent; phenolic pKa ≈9.1 |
 | logP (octanol-water) | ≈6.3 (experimental) | Highly lipophilic |
-| Thermal decomposition onset | ≈150–160 °C in air; cyclization to Δ9/Δ8-THC at GC-injector temperatures ≥200 °C | Significant degradation at ≥200 °C [^2][^3] |
-| Oxidation behavior | High sensitivity; phenolic groups oxidize to quinones; light and air accelerate | Degrades to CBN and related oxidation products [^3] |
-| Known degradation products | Δ9-THC (thermal cyclization), Δ8-THC (isomerization), CBN (oxidation), CBE, HU-331 (quinone) | [^3] |
+| Thermal decomposition | In GC-injector tests spanning 250–350 °C, partial CBD loss and formation of Δ9-THC, CBN, and Δ8-THC were observed; no universal onset is assigned | Injector temperature, residence time, atmosphere, and sample preparation are study conditions [^2][^3] |
+| Oxidation behavior | CBD oxidation under air/light is condition-dependent; no universal stability threshold is assigned | CBN and related products were reported under cited study conditions [^3] |
+| Known degradation products | Δ9-THC, Δ8-THC, and CBN were observed under cited GC-injector/thermal-treatment conditions [^2][^3]; CBE and HU-331 remain unverified here |
 
-> **Boiling point is not a device setpoint.** The "160–180 °C" figure circulating in vaporizer marketing is a matrix-evaporation/vaporization range, not a thermodynamic boiling point. Device behavior must be established from vapor-pressure curves and per-device empirical testing, never from a boiling-point table.
+> **Boiling point is not a device setpoint.** The commonly repeated 160–180 °C figure is a device-setting or matrix-evaporation range, not a thermodynamic boiling point. The predicted normal boiling temperature of pure CBD is ≈422 °C at 1 atm and is not a direct phase-change measurement; device behavior must be established from vapor-pressure data and per-device testing [^4][^5].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-CBD volatilizes from botanical matrix through vapor-pressure-driven evaporation, not bulk boiling. Recovery from dry-herb vaporizers is typically partial, and higher chamber temperatures increase both volatilization and the yield of degradation products (Δ9-THC, Δ8-THC, CBN) [^3]. Device chamber temperature is not sample temperature; conduction/convection lag can put the sample below setpoint.
+CBD volatilizes from botanical matrix through vapor-pressure-driven evaporation, not bulk boiling. The extent of release and degradation is load-, airflow-, residence-time-, and device-dependent; no universal recovery fraction is assigned here [^3]. Device chamber temperature is not sample temperature; conduction/convection lag can put the sample below setpoint. The thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature.
 
 ## Cannabis occurrence
 
@@ -61,7 +61,7 @@ Measured values are attached to batches and reports, not to cultivar names as un
 
 ## Biosynthesis and processing
 
-CBD is biosynthesized as CBDA via CBGA (cannabigerolic acid) through CBDAS (CBDA synthase), then decarboxylates to CBD upon heating (≈105–120 °C, tens of minutes) [^8]. The CBDAS/THCAS allele balance determines the CBD:THCA chemotype ratio; Type III (hemp) chemotypes are CBD-dominant [^9].
+CBD is biosynthesized as CBDA via CBGA (cannabigerolic acid) through CBDAS (CBDA synthase), then decarboxylates to CBD under temperature- and time-dependent processing conditions; no universal device setpoint is assigned [^8]. The CBDAS/THCAS allele balance determines the CBD:THCA chemotype ratio; Type III (hemp) chemotypes are CBD-dominant [^9].
 
 ## Reported biological activity
 
@@ -83,8 +83,8 @@ In vitro studies report CBD modulation of TRPV1, 5-HT1A, CB1 (negative allosteri
 
 ## Degradation products
 
-- Thermal (≥200 °C): Δ9-THC, Δ8-THC
-- Oxidative/photolytic: CBN, CBE, HU-331 (quinone)
+- Thermal products observed under the cited GC-injector/thermal-treatment conditions: Δ9-THC, Δ8-THC, and CBN [^2][^3]
+- Oxidative/photolytic: CBN under cited conditions [^3]; CBE and HU-331 remain unresolved in this record
 
 ## Sources
 

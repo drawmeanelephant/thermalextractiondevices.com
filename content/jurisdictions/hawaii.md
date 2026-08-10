@@ -34,7 +34,7 @@ summary: "Jurisdiction profile for the State of Hawaii: medical cannabis program
 
 ## Regulatory Overview
 
-Hawaii's medical cannabis program is administered by the Office of Medical Cannabis Control and Regulation within the Department of Health, with a patient registry and licensed dispensaries (329-card holders). Adult-use legalization bills (e.g., HB 1246 in 2026) were not enacted. Hawaii introduced hemp retailer and distributor registration effective July 1, 2026.
+Hawaii's medical cannabis program is administered by the Office of Medical Cannabis Control and Regulation within the Department of Health, with a patient registry and licensed dispensaries. DOH reported 28,849 valid in-state patients as of May 31, 2026; “329” refers to the statutory card/program chapter, not the patient count. Adult-use legalization bills (e.g., HB 1246 in 2026) were not enacted. Hawaii introduced hemp retailer and distributor registration effective July 1, 2026.
 
 ## Data Surface
 
@@ -55,6 +55,7 @@ Hawaii's medical cannabis program is administered by the Office of Medical Canna
 - **Statutory framework**: Hawaii medical cannabis law (HRS ch. 329, Part IX); HAR 11-850.
 - **Regulator**: DOH Office of Medical Cannabis Control and Regulation — https://health.hawaii.gov/medicalcannabis/
 - **Patient registry**: https://medmj.ehawaii.gov/
+- **Program statistics**: 28,849 valid in-state patients as of May 31, 2026 — https://health.hawaii.gov/medicalcannabisregistry/submenu/program-statistics/
 - **Hemp registration**: Required from July 1, 2026 (DOH announcement).
 - **Retrieval date**: 2026-08-09
 

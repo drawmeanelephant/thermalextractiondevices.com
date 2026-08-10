@@ -10,13 +10,16 @@ DIST_DIR=${DIST_DIR:-dist/cantilever}
 cd "$ROOT"
 
 echo "==> Validating Thermal Extraction Devices form IDs"
-python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl
+python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl --all-state-maps
 
 echo "==> Auditing device records against the Device Architecture Taxonomy"
 python3 scripts/audit_device_taxonomy.py "$CONTENT_DIR" --vocab metadata/device-taxonomy.json
 
 echo "==> Auditing COA / lab-result content against the COA graph rules"
 python3 scripts/audit_coa_content.py "$CONTENT_DIR" --map metadata/id-map.jsonl
+
+echo "==> Auditing cannabinoid thermal-property conditions"
+python3 scripts/audit_cannabinoid_thermal.py "$CONTENT_DIR"
 
 echo "==> Auditing device records against the record-completeness floor"
 python3 scripts/audit_record_completeness.py "$CONTENT_DIR" --vocab metadata/device-taxonomy.json
