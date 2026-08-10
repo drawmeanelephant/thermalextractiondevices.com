@@ -8,7 +8,7 @@ allowed in git, and where large raw datasets should be stored instead.
 | Artifact | Path | Tracked in git? | Notes |
 | --- | --- | --- | --- |
 | Rendered site | `dist/cantilever/` | No (`dist/` ignored) | Deployed by Cloudflare Pages |
-| Publish bundle (site, `llms.txt`, context, RAG, IR) | `publish/` | No (`publish/` ignored) | Produced by `scripts/ted-publish.sh` |
+| Publish bundle (site, `llms.txt`, context, RAG, bundled RAG, IR) | `publish/` | No (`publish/` ignored) | Produced by `scripts/ted-publish.sh`; `rag/` keeps per-page files, while `rag-bundle/` contains upload-ready split parts |
 | Local preview output | `dist/preview/` (or `DIST_DIR`) | No | `./preview.sh` |
 | Boris compiler binary + manifest | `bin/boris`, `bin/boris.json` | No (`bin/boris*` ignored) | Built by CI from the Boris source and placed in `bin/`; binary is ~9 MiB |
 | Zig toolchain + caches | `.tools/` | No (`.tools/` ignored) | Compiler downloads and build cache |

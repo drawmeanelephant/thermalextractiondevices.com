@@ -62,7 +62,7 @@ Long tradition of use in soothing chamomile teas and cosmetic preparations.
 
 ## Cannabis laboratory results
 
-Measured at 0.66–0.68 mg/g dry weight in two US hemp cultivars by validated GC-MS of hydrodistilled essential oil — consistently a minor terpene (<1 mg/g) where detected [^4]. No peer-reviewed concentration data were located for concentrates. Check [Lab Results](../lab-results.md) for quantifiable levels.
+Measured at 0.66–0.68 mg/g dry weight in two US hemp cultivars by validated GC-MS of hydrodistilled essential oil — consistently a minor terpene (<1 mg/g) where detected [^4]. No peer-reviewed concentration data were located for concentrates. Check [Lab Results](../lab-results.html) for quantifiable levels.
 
 ## Sources
 
@@ -73,4 +73,4 @@ Measured at 0.66–0.68 mg/g dry weight in two US hemp cultivars by validated GC
 
 ## Related pages
 
-- [Terpenes Index](../terpenes.md)
+- [Terpenes Index](../terpenes.html)

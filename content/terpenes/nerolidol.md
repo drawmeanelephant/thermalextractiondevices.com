@@ -62,7 +62,7 @@ Constituent of traditional woody and floral aromatic tinctures.
 
 ## Cannabis laboratory results
 
-Usually absent or trace in cannabis flower: the only cultivar above the limit of quantitation in a nine-cultivar profiling study was Black Lime, at <0.1% dry weight [^4]. Consult [Lab Results](../lab-results.md) for batch analyses.
+Usually absent or trace in cannabis flower: the only cultivar above the limit of quantitation in a nine-cultivar profiling study was Black Lime, at <0.1% dry weight [^4]. Consult [Lab Results](../lab-results.html) for batch analyses.
 
 ## Sources
 
@@ -73,4 +73,4 @@ Usually absent or trace in cannabis flower: the only cultivar above the limit of
 
 ## Related pages
 
-- [Terpenes Index](../terpenes.md)
+- [Terpenes Index](../terpenes.html)

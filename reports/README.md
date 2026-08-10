@@ -9,6 +9,7 @@ These documents were produced during the scientific/technical/legal/editorial re
 | [source-manifest.md](source-manifest.md) | Primary sources added/attributed across the audit |
 | [terminology-consistency.md](terminology-consistency.md) | Standardized evidence and claim terminology |
 | [cultivar-identity-implementation.md](cultivar-identity-implementation.md) | Provenance-aware cultivar identity architecture and claim registry |
+| [boris-workaround-retirement-map.md](boris-workaround-retirement-map.md) | Current Boris integration boundary and TED workaround retirement inventory |
 | [validation-results.md](validation-results.md) | Commands run and their results |
 
 ## Scope guardrails honored
