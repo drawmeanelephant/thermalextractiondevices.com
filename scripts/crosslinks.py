@@ -1400,7 +1400,9 @@ def validate_graph(graph: CrosslinkGraph, content_root: Path) -> list[str]:
     * CXL-03 relation types are valid for the target collection;
     * CXL-04 no duplicate ``(from, kind, to, class)`` edges;
     * CXL-05 no derived edge is ever emitted as ``direct``;
-    * CXL-06 derived edges carry an evidence trace.
+    * CXL-06 derived edges carry an evidence trace;
+    * CXL-13 every collection with satellites has at least one connected
+      satellite (trunks are navigation roots and are not counted).
     """
     problems: list[str] = []
 
@@ -1453,6 +1455,35 @@ def validate_graph(graph: CrosslinkGraph, content_root: Path) -> list[str]:
                 f"{edge.to_id} targets a nonexistent entity"
             )
 
+    problems.extend(validate_satellite_connectivity(graph))
+
+    return problems
+
+
+def validate_satellite_connectivity(graph: CrosslinkGraph) -> list[str]:
+    """Reject a collection whose satellites have no semantic graph edges.
+
+    Parentage connects a satellite to its collection trunk structurally, but
+    it is not a semantic relation in this graph. A collection may therefore
+    contain intentionally standalone records, while a collection made up
+    entirely of standalone satellites is likely an authoring omission.
+    """
+    satellites_by_collection: dict[str, list[str]] = {}
+    for entity in graph.entities.values():
+        if entity.role != "satellite":
+            continue
+        satellites_by_collection.setdefault(entity.collection, []).append(entity.id)
+
+    problems: list[str] = []
+    for collection, satellite_ids in sorted(satellites_by_collection.items()):
+        if all(
+            not graph.outgoing.get(entity_id) and not graph.incoming.get(entity_id)
+            for entity_id in satellite_ids
+        ):
+            problems.append(
+                f"CXL-13: satellite collection {collection!r} is fully isolated "
+                f"({len(satellite_ids)} satellite(s) have no semantic relations)"
+            )
     return problems
 
 

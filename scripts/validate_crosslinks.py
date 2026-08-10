@@ -14,7 +14,8 @@ gated on every build without emitting artifacts. Checks:
 * CXL-07 frontmatter relations targeting nonexistent pages;
 * CXL-08 unbounded page expansion (per-section caps);
 * CXL-09 duplicate generated navigation targets in one section;
-* CXL-10 unknown edge classes.
+* CXL-10 unknown edge classes;
+* CXL-13 fully isolated non-trunk satellite collections.
 
 Exit codes: 0 = clean, 1 = findings, 2 = tool failure.
 """
