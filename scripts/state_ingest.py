@@ -240,7 +240,7 @@ def _publish_gates(store, report, *, quiet: bool) -> list[str]:
 
     # ID + link audits and the Boris graph/build gate.
     steps = [
-        (["python3", "scripts/ted_ids.py", "--root", "content", "--map", "metadata/id-map.jsonl"], "ID validation"),
+        (["python3", "scripts/ted_ids.py", "--root", "content", "--map", "metadata/id-map.jsonl", "--all-state-maps"], "ID validation"),
         (["python3", "scripts/audit_markdown_links.py", "content"], "Markdown link audit"),
         (["bash", "bin/validate_graph.sh"], "Boris graph + build gate"),
     ]

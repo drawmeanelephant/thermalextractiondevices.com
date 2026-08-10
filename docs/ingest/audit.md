@@ -74,9 +74,12 @@ note mentioning California breeding).
 `thermalextractiondevices.com` is a **production Boris static-site scaffold**
 (8 commits, all linear):
 
-* **Compiler**: Boris (`github.com/drawmeanelephant/boris`, `afterparty`
-  branch, pinned commit `9505ec6`), Zig 0.16.0. Provisioned by
-  `scripts/ensure-boris.sh` (checksummed download + pinned-commit build).
+* **Compiler**: Boris (`github.com/drawmeanelephant/boris`, exact commit
+  `9505ec610364e25f12bc4ec13e69275051f143fa`), Zig 0.16.0. The `afterparty`
+  value in `metadata/boris-version.json` is provenance only; local, CI, and
+  deploy provisioning resolve the repository and full commit from that file.
+  `scripts/ensure-boris.sh` verifies the Zig version, checksummed downloads,
+  and exact Boris commit before building.
 * **Theme**: `themes/cantilever/` (hardcoded navigation sidebar + search UI).
 * **ID tooling**: `scripts/ted_ids.py` — deterministic form IDs per
   collection (`<collection>/<PREFIX>-NNNN`), collision detection, trunk
@@ -87,7 +90,10 @@ note mentioning California breeding).
   audit, `_boris/proof/checks.json`).
 * **Publication**: `scripts/ted-publish.sh` → HTML, IR, RAG, Context,
   `llms.txt` exports.
-* **Tests**: none beyond `scripts/test_ensure_boris.py` (Boris provisioning).
+* **Tests**: `python3 -m unittest discover -s tests -t .` for the repository's
+  offline suite, plus `python3 scripts/test_ensure_boris.py` for Boris
+  provisioning and workflow-pin regression coverage. Live-source smoke tests
+  remain opt-in via `INGEST_LIVE=1`.
 * **CI**: `.github/workflows/ci.yml` (validate+build) and `deploy.yml`
   (Cloudflare Pages deploy) both gate on `bin/validate_graph.sh`.
 

@@ -5,7 +5,7 @@ parent: jurisdictions
 status: published
 tags: ["jurisdiction", "oklahoma", "united-states", "regulatory"]
 relations: []
-summary: "Jurisdiction profile for the State of Oklahoma: medical marijuana program (SQ 788) under OMMA, broad home cultivation, license moratorium extended to 2026."
+summary: "Jurisdiction profile for the State of Oklahoma: medical marijuana program (SQ 788) under OMMA, broad home cultivation, license moratorium extended to August 1, 2028 unless OMMA completes pending reviews earlier."
 ---
 
 # Oklahoma (Jurisdiction Profile)
@@ -34,7 +34,7 @@ summary: "Jurisdiction profile for the State of Oklahoma: medical marijuana prog
 
 ## Regulatory Overview
 
-Oklahoma's medical marijuana program (State Question 788, 2018) is administered by the Oklahoma Medical Marijuana Authority. The state's ban on new commercial licenses was extended to August 1, 2026; new OMMA rules took effect July 11, 2026, with a packaging/labeling law enforced from November 1, 2026. Adult use is not legal; registered patients may cultivate at home within limits.
+Oklahoma's medical marijuana program (State Question 788, 2018) is administered by the Oklahoma Medical Marijuana Authority. HB 3143 (2026) extended the moratorium on new commercial licenses to August 1, 2028, unless the OMMA executive director determines that pending reviews are complete. New OMMA rules took effect July 11, 2026. Adult use is not legal; registered patients may cultivate at home within limits.
 
 ## Data Surface
 
@@ -54,7 +54,7 @@ Oklahoma's medical marijuana program (State Question 788, 2018) is administered 
 
 - **Statutory framework**: SQ 788 (2018, medical); OAC 310:681.
 - **Regulator**: Oklahoma Medical Marijuana Authority — https://oklahoma.gov/omma.html
-- **2026 note**: license moratorium extended to August 1, 2026; new rules effective July 11, 2026.
+- **2026 note**: HB 3143 extended the license moratorium to August 1, 2028, subject to OMMA's pending-review exception; new rules effective July 11, 2026.
 - **Retrieval date**: 2026-08-09
 
 ## Graph Connections

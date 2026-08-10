@@ -725,12 +725,13 @@ class SchemaConsistencyTest(unittest.TestCase):
     def test_schema_validates_real_ma_record_when_jsonschema_available(self):
         with open(MA_2025, newline="", encoding="utf-8-sig") as handle:
             raw_rows = list(csv.DictReader(handle))
+        tag = raw_rows[0]["METRC SOURCE TAG"]
+        raw_rows = [row for row in raw_rows if row["METRC SOURCE TAG"] == tag]
         from scripts.ingest.states.massachusetts import normalize_testing_common
         rows = [
             normalize_testing_common(r, release="CCC_Testing_Results_2025")
             for r in raw_rows
         ]
-        tag = raw_rows[0]["METRC SOURCE TAG"]
         rec = massachusetts_rows_to_record(rows, metrc_tag=tag)
         self.assert_valid(rec.to_dict())
 

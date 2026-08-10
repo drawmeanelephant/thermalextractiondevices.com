@@ -4,7 +4,7 @@ title: "Recalls"
 status: published
 tags: ["recall", "california", "safety"]
 relations: []
-summary: "California cannabis recall notices: 181 records indexed from the DCC recalls portal (latest 8/3/2026)."
+summary: "Dated California cannabis recall index sourced from the DCC recalls portal."
 ---
 
 # Recalls
@@ -13,8 +13,9 @@ summary: "California cannabis recall notices: 181 records indexed from the DCC r
 > Source data are entered by licensees and may later be corrected or revised by the Department of Cannabis Control (DCC).
 
 This collection indexes cannabis recall notices published by the California
-Department of Cannabis Control. 181 notices are listed from the official
-[recalls portal](https://recalls.cannabis.ca.gov/recalls) as of 2026-08-04.
+Department of Cannabis Control. The full official index below is a dated
+snapshot from the [recalls portal](https://recalls.cannabis.ca.gov/recalls) as
+of 2026-08-04.
 
 ## Archive Records
 
@@ -26,6 +27,15 @@ Representative notices with full archived detail pages:
 - [[recalls/TRCL-0004|Infused pre-roll products packaged by The Higher Path Infused Pre-Roll]]
 - [[recalls/TRCL-0005|Pre-roll products packaged by The Higher Path Pre-Roll]]
 - [[recalls/TRCL-0006|Flower products packaged by The Higher Path Flower]]
+
+### Michigan CRA records
+
+The following Michigan pages preserve CRA terminology and are not included in
+the California count above:
+
+- [[recalls/TRCL-0007|House Brands Distro / Top Smoke vape recall]]
+- [[recalls/TRCL-0008|Sky Cannabis / Motor City Cannacarts and RIPZ recall]]
+- [[recalls/TRCL-0009|BLOOM / Exhale Systems vape recall]]
 
 ## Full Official Index
 

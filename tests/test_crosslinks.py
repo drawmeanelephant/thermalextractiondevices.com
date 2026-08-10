@@ -36,6 +36,7 @@ from scripts.crosslinks import (  # noqa: E402
     validate_sections,
 )
 from scripts.cultivar_claims import load_claims  # noqa: E402
+from scripts.coa_verify_example import record as verified_coa_record  # noqa: E402
 
 FIXTURES = ROOT / "tests" / "fixtures" / "crosslinks"
 
@@ -561,6 +562,20 @@ class TestLiveRepository(unittest.TestCase):
         problems = validate_graph(graph, ROOT / "content")
         problems.extend(validate_sections(graph))
         self.assertEqual(problems, [])
+
+    def test_verified_coa_provenance_is_carried_into_measurement_edges(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "coa-records.jsonl"
+            path.write_text(
+                json.dumps(verified_coa_record().to_dict(), ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+            loaded = load_coa_records(path)
+            graph = build_graph(ROOT / "content", load_entities(ROOT / "metadata" / "id-map.jsonl"), [], loaded)
+            edge = next(edge for edge in graph.edges if edge.kind == "tested_by")
+            self.assertIn("coa:lab-results/TLAB-0002", edge.provenance)
+            self.assertIn("record_kind:verified", edge.provenance)
+            self.assertTrue(any(item.startswith("document_sha256:") for item in edge.provenance))
 
 
 # ---------------------------------------------------------------------------

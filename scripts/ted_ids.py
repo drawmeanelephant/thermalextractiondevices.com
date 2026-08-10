@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -74,6 +75,159 @@ FIELD_LINE = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):[ \t]*(.*?)(?:\r?\n)?$")
 
 class MigrationError(Exception):
     """A source or ID policy failure."""
+
+
+def _canonical_json(data: dict) -> str:
+    """Return the serialization used by state-map integrity digests."""
+    return json.dumps(data, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
+def _policy_root(policy_path: Path) -> Path:
+    """Return the repository root represented by an id-policy path."""
+    policy_path = Path(policy_path)
+    if policy_path.parent.name == "metadata":
+        return policy_path.parent.parent
+    return policy_path.parent
+
+
+def configured_state_maps(policy_path: Path) -> list[Path]:
+    """Resolve state-map paths declared by the global identity policy."""
+    try:
+        policy = json.loads(Path(policy_path).read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise MigrationError(f"could not read ID policy {policy_path}: {error}") from error
+
+    root = _policy_root(Path(policy_path))
+    paths: list[Path] = []
+    for raw_path in policy.get("state_maps", []):
+        path = Path(str(raw_path))
+        paths.append(path if path.is_absolute() else root / path)
+    for raw_pattern in policy.get("state_map_globs", []):
+        pattern = Path(str(raw_pattern))
+        if pattern.is_absolute():
+            paths.extend(sorted(pattern.parent.glob(pattern.name)))
+        else:
+            paths.extend(sorted(root.glob(str(pattern))))
+
+    unique: list[Path] = []
+    seen: set[Path] = set()
+    for path in paths:
+        resolved = path.resolve()
+        if resolved not in seen:
+            seen.add(resolved)
+            unique.append(resolved)
+    return unique
+
+
+def _state_map_claims(paths: list[Path]) -> list[tuple[Path, dict[str, str]]]:
+    """Load and validate state-map claims without consulting current content."""
+    claims: list[tuple[Path, dict[str, str]]] = []
+    claimed_ids: dict[str, tuple[Path, str, str]] = {}
+    claimed_keys: dict[tuple[str, str], tuple[Path, str]] = {}
+
+    for path in paths:
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, json.JSONDecodeError) as error:
+            raise MigrationError(f"could not read state ID map {path}: {error}") from error
+        if not isinstance(data, dict) or not isinstance(data.get("mappings"), list):
+            raise MigrationError(f"{path}: state ID map must contain a mappings list")
+
+        stored_digest = data.get("digest")
+        if stored_digest:
+            probe = {key: value for key, value in data.items() if key != "digest"}
+            expected_digest = hashlib.sha256(
+                _canonical_json(probe).encode("utf-8")
+            ).hexdigest()
+            if expected_digest != stored_digest:
+                raise MigrationError(
+                    f"{path}: state ID map integrity digest mismatch"
+                )
+
+        for index, raw_item in enumerate(data["mappings"]):
+            if not isinstance(raw_item, dict):
+                raise MigrationError(f"{path}: mapping {index} is not an object")
+            entity_type = str(raw_item.get("entity_type", ""))
+            natural_key = str(raw_item.get("natural_key", ""))
+            entity_id = str(raw_item.get("entity_id", ""))
+            collection = str(raw_item.get("collection", ""))
+            if not entity_type or not natural_key or not entity_id:
+                raise MigrationError(
+                    f"{path}: mapping {index} must include entity_type, natural_key, and entity_id"
+                )
+
+            parts = entity_id.split("/", 1)
+            if len(parts) != 2:
+                raise MigrationError(f"{path}: malformed canonical ID {entity_id!r}")
+            id_collection, form_id = parts
+            if collection and collection != id_collection:
+                raise MigrationError(
+                    f"{path}: {entity_id!r} disagrees with collection {collection!r}"
+                )
+            collection = id_collection
+            prefixes = FORM_PREFIXES.get(collection)
+            if not prefixes:
+                raise MigrationError(
+                    f"{path}: state map uses unregistered collection {collection!r}"
+                )
+            if (
+                not ID_PATTERN.fullmatch(form_id)
+                or not re.search(r"(?:^|-)[0-9]{4}(?:-|$)", form_id)
+                or not any(form_id == prefix or form_id.startswith(prefix + "-")
+                           for prefix in prefixes)
+            ):
+                raise MigrationError(
+                    f"{path}: state map ID {entity_id!r} does not match the global collection prefix"
+                )
+
+            key = (entity_type, natural_key)
+            prior_key = claimed_keys.get(key)
+            if prior_key is not None:
+                prior_path, prior_id = prior_key
+                raise MigrationError(
+                    f"state natural key {key!r} is claimed by both {prior_path} ({prior_id}) "
+                    f"and {path} ({entity_id})"
+                )
+            claimed_keys[key] = (path, entity_id)
+
+            prior_claim = claimed_ids.get(entity_id)
+            if prior_claim is not None:
+                prior_path, prior_type, prior_natural_key = prior_claim
+                raise MigrationError(
+                    f"state ID collision {entity_id!r}: {prior_path} maps "
+                    f"{prior_type}:{prior_natural_key!r}, {path} maps "
+                    f"{entity_type}:{natural_key!r}"
+                )
+            claimed_ids[entity_id] = (path, entity_type, natural_key)
+            claims.append((path, {
+                "entity_type": entity_type,
+                "natural_key": natural_key,
+                "entity_id": entity_id,
+                "collection": collection,
+            }))
+    return claims
+
+
+def state_map_reservations(paths: list[Path]) -> dict[str, set[str]]:
+    """Return canonical form IDs claimed by state maps, grouped by collection."""
+    reservations: dict[str, set[str]] = {}
+    for _path, item in _state_map_claims(paths):
+        collection, form_id = item["entity_id"].split("/", 1)
+        reservations.setdefault(collection, set()).add(form_id)
+    return reservations
+
+
+def validate_state_maps(paths: list[Path]) -> None:
+    """Fail closed when state maps claim a canonical ID more than once.
+
+    State maps may retain historical reservations whose page is no longer in
+    the current content tree, so this check intentionally does not require
+    every state-map ID to have a current Markdown page. The global allocator
+    still treats every such ID as reserved.
+    """
+    # Historical state reservations are valid even when their page is no
+    # longer present in the current tree.
+    _state_map_claims(paths)
 
 
 def parse_scalar(value: str) -> str:
@@ -150,11 +304,16 @@ def form_id_for(collection: str, stem: str) -> str | None:
     return None
 
 
-def allocate_form_id(collection: str, used: set[str]) -> str:
+def allocate_form_id(
+    collection: str,
+    used: set[str],
+    reserved: set[str] | None = None,
+) -> str:
     prefix = DEFAULT_PREFIX.get(collection, "TED")
+    reserved = reserved or set()
     for number in range(1, 10000):
         candidate = f"{prefix}-{number:04d}"
-        if candidate not in used:
+        if candidate not in used and candidate not in reserved:
             return candidate
     raise MigrationError(f"{collection}: exhausted four-digit {prefix} form IDs")
 
@@ -169,10 +328,15 @@ def content_pages(root: Path) -> list[Path]:
     return sorted(pages, key=lambda path: path.relative_to(root).as_posix())
 
 
-def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) -> list[dict[str, str | None]]:
+def build_records(
+    root: Path,
+    legacy_by_source: dict[str, str] | None = None,
+    reserved_form_ids: dict[str, set[str]] | None = None,
+) -> list[dict[str, str | None]]:
     records: list[dict[str, str | None]] = []
     used_by_collection: dict[str, set[str]] = {}
     pending: list[dict[str, str | None]] = []
+    reserved_form_ids = reserved_form_ids or {}
 
     for path in content_pages(root):
         rel = path.relative_to(root)
@@ -219,8 +383,13 @@ def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) ->
         if candidate is None:
             pending.append(record)
         else:
+            current_entity_id = str(current_id or "")
             if candidate in used:
                 raise MigrationError(f"{path}: form ID collision in {collection}: {candidate}")
+            if candidate in reserved_form_ids.get(collection, set()) and current_entity_id != f"{collection}/{candidate}":
+                raise MigrationError(
+                    f"{path}: form ID {collection}/{candidate} is reserved by a state ID map"
+                )
             used.add(candidate)
             record["id"] = f"{collection}/{candidate}"
             records.append(record)
@@ -242,8 +411,11 @@ def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) ->
             if (
                 ID_PATTERN.fullmatch(existing_form)
                 and re.search(r"(?:^|-)[0-9]{4}(?:-|$)", existing_form)
-                and existing_form not in used
             ):
+                if existing_form in used:
+                    raise MigrationError(
+                        f"{record['source']}: existing canonical ID collision in {collection}: {existing_form}"
+                    )
                 used.add(existing_form)
                 reserved_forms.setdefault(collection, {})[existing_form] = str(record["source"])
 
@@ -265,7 +437,11 @@ def build_records(root: Path, legacy_by_source: dict[str, str] | None = None) ->
             record["id"] = f"{collection}/{kept_form}"
             records.append(record)
             continue
-        candidate = allocate_form_id(collection, used)
+        candidate = allocate_form_id(
+            collection,
+            used,
+            reserved_form_ids.get(collection, set()),
+        )
         used.add(candidate)
         record["form_id"] = candidate
         record["id"] = f"{collection}/{candidate}"
@@ -321,10 +497,36 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path("content"))
     parser.add_argument("--map", dest="map_path", type=Path, default=Path("metadata/id-map.jsonl"))
+    parser.add_argument(
+        "--policy", dest="policy_path", type=Path,
+        default=Path("metadata/id-policy.json"),
+        help="global ID policy used to resolve --all-state-maps",
+    )
+    parser.add_argument(
+        "--state-map", dest="state_maps", action="append", type=Path, default=[],
+        help="state natural-key map to validate and reserve (repeatable)",
+    )
+    parser.add_argument(
+        "--all-state-maps", action="store_true",
+        help="validate and reserve every state map declared by the ID policy",
+    )
     parser.add_argument("--write", action="store_true", help="rewrite satellite IDs and write the migration map")
     args = parser.parse_args()
 
     try:
+        state_map_paths = list(args.state_maps)
+        if args.all_state_maps:
+            state_map_paths.extend(configured_state_maps(args.policy_path))
+        unique_state_map_paths: list[Path] = []
+        seen_state_map_paths: set[Path] = set()
+        for path in state_map_paths:
+            resolved = path.resolve()
+            if resolved not in seen_state_map_paths:
+                seen_state_map_paths.add(resolved)
+                unique_state_map_paths.append(resolved)
+        state_map_paths = unique_state_map_paths
+
+        reserved_form_ids = state_map_reservations(state_map_paths) if state_map_paths else {}
         legacy_by_source: dict[str, str] = {}
         if args.map_path.exists():
             for line in args.map_path.read_text(encoding="utf-8").splitlines():
@@ -332,7 +534,9 @@ def main() -> int:
                     item = json.loads(line)
                     legacy_by_source[str(item["source"])] = str(item["legacy_id"])
 
-        records = build_records(args.root, legacy_by_source)
+        records = build_records(args.root, legacy_by_source, reserved_form_ids)
+        if state_map_paths:
+            validate_state_maps(state_map_paths)
         if args.write:
             validate_records(records)
             write_map(args.map_path, records)

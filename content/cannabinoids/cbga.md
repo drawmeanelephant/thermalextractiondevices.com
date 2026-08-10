@@ -34,22 +34,22 @@ summary: Shared biosynthetic precursor of the major cannabinoid acids; no measur
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Melting point | ≈138–142 °C (decomposition) | Cayman Chemical CBGA reference-standard certificate of analysis; decomposes on melting [^2] |
-| Boiling point | **Not experimentally determined at 1 atm** — thermally labile, decomposes before boiling. Reported "425 °C" values are predictions for neutral CBG, not CBGA [^3] |
-| Vapor pressure | <10⁻⁶ Torr at 25 °C (estimated) | Acidic cannabinoids are far less volatile than neutrals [^3] |
+| Melting point | ≈138–142 °C (decomposition) | Cayman Chemical reference-standard certificate; certificate conditions apply and this is not a boiling point [^2] |
+| Boiling point | **No compound-specific atmospheric boiling point was located.** CBGA is thermally labile; values copied from neutral CBG or generic predictions are not CBGA measurements [^3] |
+| Vapor pressure | Not measured; no defensible compound-specific vapor-pressure value was located. Acid-form volatility is unresolved rather than a numeric estimate [^3] |
 | logP (octanol-water) | 5.8 (computed) | Acidic proton lowers logP vs. CBG (≈7.1) |
 | Water solubility | <1 mg/L (practically insoluble) | Soluble in ethanol, methanol, acetonitrile |
-| Thermal degradation onset | ≈110 °C (decarboxylation in plant matrix); 250 °C at GC injector | Primary pathway: CBGA → CBG [^4][^5] |
-| Oxidation / light sensitivity | High; phenolic dihydroxy motif; UV accelerates decarboxylation and oxidation | Store under inert gas, amber, −20 °C [^2] |
-| Known degradation products | CBG (decarboxylation); CBC, CBL, CBSA (cannabielsoic acids), quinones (secondary) | [^2] |
+| Thermal degradation | In a 110 °C vacuum-oven kinetic study of extracts/reference material, CBGA conversion and substantial material loss were observed; GC-injector work at 250–350 °C also showed incomplete decarboxylation and secondary products. These are study conditions, not a universal onset [^4][^5] |
+| Oxidation / light sensitivity | High; phenolic dihydroxy motif; UV accelerates decarboxylation and oxidation | Under the cited storage condition (inert gas, amber, −20 °C), no universal thermal-stability threshold is assigned [^2] |
+| Known degradation products | CBG (decarboxylation) [^4]; named secondary products were not resolved or confirmed in the cited studies and remain unresolved |
 
-> **Boiling point is not a device setpoint.** Blog figures such as "CBGA boils at 180 °C" are unreferenced marketing values; CBGA decomposes at 1 atm and no intact acid boiling point exists.
+> **Boiling point is not a device setpoint.** The cited evidence does not establish an intact atmospheric boiling point for CBGA. Blog figures such as "CBGA boils at 180 °C" are not a substitute for a thermodynamic property, device setpoint, or sample temperature [^3].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-CBGA has negligible volatility at ambient temperature; thermal release from botanical matrix follows decarboxylation to neutral CBG, which then evaporates. Device setpoints must be established empirically, not from boiling-point tables.
+CBGA-specific ambient vapor pressure and device release data were not located. Thermal release from botanical matrix may involve decarboxylation to neutral CBG, followed by evaporation, but the thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature. Device setpoint and actual sample temperature must be established separately [^3][^4][^5].
 
 ## Cannabis occurrence
 
@@ -75,8 +75,8 @@ Preclinical studies report CBGA effects on ion channels and inflammatory signali
 
 ## Degradation products
 
-- Primary: CBG (decarboxylation)
-- Secondary: CBC, CBL, CBSA, quinones (heat/light/air)
+- Primary: CBG (decarboxylation) [^4]
+- Secondary: unresolved; CBC, CBL, CBSA, and quinone assignments require compound-specific confirmation
 
 ## Sources
 

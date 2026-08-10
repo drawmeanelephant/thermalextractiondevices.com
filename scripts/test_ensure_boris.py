@@ -47,7 +47,15 @@ class TestEnsureBoris(unittest.TestCase):
 
     def run_script(self, script_path, args=None, env_override=None, cwd=None):
         env = os.environ.copy()
-        for var in ["BORIS_BIN", "BORIS_AUTO_PROVISION", "BORIS_COMMIT", "BORIS_COMMIT_OVERRIDE"]:
+        for var in [
+            "BORIS_BIN",
+            "BORIS_AUTO_PROVISION",
+            "BORIS_BRANCH",
+            "BORIS_COMMIT",
+            "BORIS_COMMIT_OVERRIDE",
+            "BORIS_REPOSITORY",
+            "ZIG_VERSION",
+        ]:
             env.pop(var, None)
         if env_override:
             env.update(env_override)
@@ -97,6 +105,32 @@ class TestEnsureBoris(unittest.TestCase):
         )
         self.assertEqual(rc, 0)
         self.assertEqual(stdout, target_bin)
+
+    def test_workflows_use_the_metadata_commit_not_a_floating_branch(self):
+        workflow_root = os.path.join(PROJECT_ROOT, ".github", "workflows")
+        for name in ("ci.yml", "deploy.yml"):
+            with open(os.path.join(workflow_root, name), encoding="utf-8") as f:
+                text = f.read()
+            self.assertNotIn("BORIS_BRANCH", text)
+            self.assertIn("metadata/boris-version.json", text)
+            self.assertIn("BORIS_COMMIT", text)
+            self.assertIn("fetch --depth=1 origin \"$BORIS_COMMIT\"", text)
+            self.assertIn('rev-parse HEAD)" = "$BORIS_COMMIT"', text)
+
+    def test_floating_commit_configuration_is_rejected(self):
+        """A branch/tag value must never be accepted as the Boris revision."""
+        config_path = os.path.join(self.repo_root, "metadata", "boris-version.json")
+        floating_config = dict(VERSION_DATA)
+        floating_config["commit"] = "afterparty"
+        with open(config_path, "w") as f:
+            json.dump(floating_config, f)
+
+        rc, stdout, stderr = self.run_script(
+            os.path.join(self.repo_root, "scripts", "ensure-boris.sh")
+        )
+        self.assertNotEqual(rc, 0)
+        self.assertEqual(stdout, "")
+        self.assertIn("commit must be a full SHA", stderr)
 
 if __name__ == "__main__":
     unittest.main()

@@ -78,6 +78,32 @@ class CoaVerifyExampleTest(unittest.TestCase):
         rel = SNAPSHOT_PATH.relative_to(ROOT)
         self.assertEqual(rel.parts[0], "var")
 
+    def test_durable_record_is_schema_shaped(self):
+        payload = record().to_dict()
+        self.assertEqual(payload["schema_version"], "1.0")
+        self.assertEqual(payload["report"]["report_id"], "lab-results/TLAB-0002")
+        self.assertEqual(payload["batch"]["record_kind"], "verified")
+        self.assertGreaterEqual(len(payload["measurements"]), 30)
+
+    def test_printed_units_and_calculated_limits_are_not_invented(self):
+        measurements = {m.compound_name: m for m in record().measurements}
+        self.assertEqual(measurements["CBD"].reported_value, "0.219")
+        self.assertEqual(measurements["CBD"].reported_unit, "mg/pkg")
+        self.assertEqual(measurements["Lead"].reported_value, "< LOQ")
+        self.assertEqual(measurements["Lead"].reported_unit, "µg/g")
+        self.assertEqual(measurements["Aflatoxin B1"].reported_unit, "µg/kg")
+        self.assertEqual(measurements["Aflatoxin B1"].unit, "other")
+        for name in ("Total THC", "Total CBD", "Total Cannabinoids"):
+            self.assertIsNotNone(measurements[name].calculation_formula)
+            self.assertIsNone(measurements[name].lod)
+            self.assertIsNone(measurements[name].loq)
+
+    def test_source_has_no_fabricated_missing_or_below_lod_rows(self):
+        states = {m.state.value for m in record().measurements}
+        self.assertEqual(states, {"numeric", "nd", "below_loq"})
+        self.assertNotIn("missing", states)
+        self.assertNotIn("below_lod", states)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -36,7 +36,7 @@ This is an editorial workflow label, **not a legal rating**. Statuses:
 | TJUR-0020 | Maine | baseline | |
 | TJUR-0021 | Maryland | baseline | |
 | TJUR-0022 | Massachusetts | data-ingestion-ready | Adapter fixture-tested; live sync pending |
-| TJUR-0023 | Michigan | baseline | |
+| TJUR-0023 | Michigan | deep-ingested | CRA evidence pass; public license/COA surfaces remain partial |
 | TJUR-0024 | Minnesota | baseline | Market ramp-up 2025–26 |
 | TJUR-0025 | Mississippi | stub-verified | |
 | TJUR-0026 | Missouri | stub-verified | Seed-to-sale vendor in flux |
@@ -101,7 +101,7 @@ This is an editorial workflow label, **not a legal rating**. Statuses:
 
 ## Counts (74 satellite jurisdiction pages)
 
-- deep-ingested: 1 (California)
+- deep-ingested: 2 (California, Michigan)
 - data-ingestion-ready: 1 (Massachusetts)
 - expanded: 11 (US: CO, CT, NV, NY, OR · International: Canada, Germany, Uruguay, Netherlands, Switzerland, Australia)
 - baseline: 20 (US: ME, MD, MI, MN, MT, NJ, NM, WA + federal · International: Malta, Luxembourg, Czechia, Portugal, Spain, New Zealand, Israel, South Africa, Thailand, Mexico, Colombia)
