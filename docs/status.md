@@ -86,7 +86,7 @@ optional skips.
 ## Archive integrity update
 
 Verified 2026-08-09. The Arizer Solo II and Solo III CPSC recalls are now
-modeled as `recalls/TRCL-0007` and `recalls/TRCL-0008`, with source-backed
+modeled as `recalls/TRCL-0010` and `recalls/TRCL-0011`, with source-backed
 relations to the manufacturer and Solo III device record. The crosslink layer
 now rejects a fully isolated satellite collection (`CXL-13`), and the DCC
 generator now emits conservative organization → laboratory/recall reverse
