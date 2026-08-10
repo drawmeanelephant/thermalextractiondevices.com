@@ -18,9 +18,18 @@ DIST_PATH="$DIST_DIR"
 if [[ "$DIST_PATH" != /* ]]; then
   DIST_PATH="$ROOT/$DIST_PATH"
 fi
-DIST_PATH=$(CDPATH= cd -- "$(dirname -- "$DIST_PATH")" && pwd)/$(basename -- "$DIST_PATH")
+if ! DIST_PATH=$(python3 -c '
+from pathlib import Path
+import sys
+
+print(Path(sys.argv[1]).resolve(strict=False))
+' "$DIST_PATH"); then
+  echo "ted-build: cannot resolve DIST_DIR=$DIST_DIR" >&2
+  exit 2
+fi
 case "$DIST_PATH" in
-  ""|"/"|"$ROOT")
+  "$ROOT/dist"/*) ;;
+  *)
     echo "ted-build: refusing unsafe DIST_DIR=$DIST_DIR" >&2
     exit 2
     ;;
