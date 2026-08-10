@@ -1,5 +1,34 @@
 # Boris Dogfood Script Audit
 
+## Current architectural correction (2026-08-09)
+
+This report preserves the original dogfood evidence, but the current Boris
+implementation review changes the planning status of several findings. The
+full TED-side retirement inventory is in
+`reports/boris-workaround-retirement-map.md`.
+
+* **BORIS-01/02/03 remain confirmed**, and should be treated as one generic
+  semantic-relations gap: constrained relation cardinality/kinds plus no
+  first-class HTML surface for outgoing relations or incoming backlinks.
+  TED's `crosslinks.py` remains required until that work lands.
+* **BORIS-06 is reclassified.** Boris already validates canonical page-ID
+  shape and duplicate IDs. `ted_ids.py` and `NaturalKeyRegistry` are TED
+  allocation/migration machinery, so their coexistence is a TED consolidation
+  issue, not proof that Boris needs an allocator or global registry.
+* **BORIS-08 is narrowed and confirmed.** The project-side
+  `unreferenced_page` filters are temporary; the desired Boris behavior is to
+  report those findings without failing by default, with an explicit strict
+  policy available to CI/users.
+* **BORIS-13 is now `needs-current-reproduction`.** The Appendix B literal
+  `.md` result is historical evidence from the pinned baseline, not a current
+  contract. Current Boris source reportedly has a graph-backed Markdown-link
+  rewrite and publication-manifest audit path. Keep
+  `scripts/audit_markdown_links.py` until the smallest old case is rerun.
+
+No project code or workaround is removed by this correction. Boris should not
+absorb TED's regulatory relationships, evidence projections, claim registry,
+COA model, or epistemic validation.
+
 **Scope:** All project-local automation in `thermalextractiondevices.com` (scripts, generators, ingestion utilities, validators, migration helpers, build wrappers, CI commands).
 **Method:** Documentation-only. No scripts were modified, no bugs were fixed, no features were implemented. Every finding records *why a script exists* and what it says about Boris.
 **Commit audited:** `3095c04` (github/main, 2026-08-09); **updated through `4a7b241`** (PR #28, jurisdiction-pipeline-infra) to incorporate the 5 scripts and 2 test modules that PR merged. Counts below reflect the updated tree.
@@ -91,8 +120,8 @@ Per-step Boris-boundary question and answer:
 | --- | --- | --- |
 | Source retrieval, checksumming, normalization | Regulator-specific acquisition; genuinely outside a static-site compiler | Correctly outside Boris |
 | Markdown generation from structured data | Boris has no data-file concept and no content-generation API; the *only* input is Markdown | Should probably be a Boris extension point (data files / generate hook) — partially "should probably be Boris" for the *rendering* side |
-| `ted_ids.py` ID normalization/allocation | Boris accepts `id:` but owns no identity policy, allocation, or migration record | Should probably be Boris (ID policy is generic) |
-| `audit_markdown_links.py` pre-check | Boris has a `check` command; whether it validates local Markdown links is undocumented — the project did not discover/trust it | Uncertain — could be "Boris can already do it" (discoverability) or a genuine gap |
+| `ted_ids.py` ID normalization/allocation | Boris validates canonical page-ID shape and duplicate IDs; TED owns domain form-code allocation and migration policy | Keep as TED policy; review the two TED allocation maps separately |
+| `audit_markdown_links.py` pre-check | Current Boris behavior needs a fresh minimal reproduction; the old `.md` fixture is historical evidence | Keep pending BORIS-13 reproduction |
 | Layout selection (14 `--layout-rule` globs) | Boris supports layout rules but apparently not a default-glob; every new collection requires editing `ted-build.sh` | Should probably be Boris (or docs for an existing glob syntax) |
 | `boris check` diagnostic filtering | Boris emits ~178 `unreferenced_page` findings on a healthy site; the project filters them in `validate_graph.sh` and again in `dcc_ingest.py` | Boris diagnostics gap (noise / undocumented baseline) |
 | `crosslinks.py` HTML injection | Boris renders no reverse edges/backlinks/related sections and exposes no graph data to templates | Should probably be Boris (generic) — this is the big one |
@@ -111,7 +140,7 @@ Legend — **manual**: run by a person; **auto**: wired into `validate_graph.sh`
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `scripts/ted-build.sh` | bash | 89 | Production HTML build: ID check → link audit → Boris compile (14 layout rules) → crosslinks injection → HTML-ID audit → proof check → copy `_headers` → release audit | `content/`, theme, `_headers` | `dist/cantilever/` | auto (CI, deploy, preview, validate_graph) | yes | writes only `dist/` | yes (wraps Boris + all post-steps) | Boris has no build pipeline / hooks; every pre/post step needs a wrapper | Medium: layout rules must be extended by hand per collection; audit hook is hand-rolled fail-closed logic |
 | `scripts/ted-publish.sh` | bash | 56 | Export HTML, IR, RAG, Context, llms.txt + release audits + claims.jsonl | `content/` | `publish/` | manual / release | no | writes only `publish/` | yes | Boris has no "publish bundle" orchestration; each export is a separate CLI flag | Low |
-| `bin/validate_graph.sh` | bash | 49 | The validation gate: ted_ids → device-taxonomy → COA content → completeness → cultivar claims → crosslinks → **boris check (with `unreferenced_page` filter)** → full build | content, metadata | pass/fail | auto (CI, deploy, cloudflare-build) | yes (CI gate) | no | yes | Boris `check` output needs filtering; the gate accumulates one step per project audit | Medium: grows per audit; duplicates `dcc_ingest.py`'s own filter |
+| `bin/validate_graph.sh` | bash | 49 | The validation gate: ted_ids → device-taxonomy → COA content → completeness → cultivar claims → crosslinks → **boris check (temporarily filters `unreferenced_page`)** → full build | content, metadata | pass/fail | auto (CI, deploy, cloudflare-build) | yes (CI gate) | no | yes | Temporary Boris check-policy workaround; the gate itself remains the TED validation entry point | Medium: duplicates `dcc_ingest.py`'s filter until the policy change lands |
 | `preview.sh` | bash | 12 | Build + serve on :8000 | — | dist/preview | manual | no | no | yes | Convenience wrapper around `ted-build.sh` + `http.server` | Low |
 | `scripts/cloudflare-build.sh` | bash | 21 | Legacy CF build entry: provision Boris → validate → build | — | dist/cantilever | manual/legacy | no (deploy.yml supersedes) | no | yes | Wrapper; overlaps CI/deploy | Low; superseded by workflows |
 
@@ -339,23 +368,23 @@ Priorities: **P0** actively dangerous / data-integrity risk; **P1** repeatedly c
 - **Migration implications:** six auditors collapse into declarative rules; `validate_graph.sh` shrinks.
 - **Priority:** P1.
 
-### 5. Stable canonical ID management is project-owned and duplicated — **P1/P2**
+### 5. TED domain ID allocation is duplicated; Boris page-ID validation is not — **TED review**
 
-- **Evidence:** `ted_ids.py` + `NaturalKeyRegistry`; two id-maps; committed generated `metadata/id-map.jsonl`; documented renumbering hazard; `docs/status.md` "global ID allocation unresolved." **PR #28 hit the collision live**: a fresh Massachusetts registry would have allocated `TJUR-0001` on top of California's (and the same for every shared prefix); the fix (seed registry from content, create-if-missing trunks) was implemented project-side in `ingest/ids.py` + `state_ingest.py` — see `reports/jurisdiction-pipeline-audit.md` §8.
+- **Evidence:** `ted_ids.py` + `NaturalKeyRegistry`; two id-maps; committed generated `metadata/id-map.jsonl`; documented renumbering hazard. **PR #28 hit the collision live**: a fresh Massachusetts registry would have allocated `TJUR-0001` on top of California's (and the same for every shared prefix); the fix (seed registry from content, create-if-missing trunks) was implemented project-side in `ingest/ids.py` + `state_ingest.py` — see `reports/jurisdiction-pipeline-audit.md` §8. Current Boris review separately confirms that Boris validates canonical page-ID shape and duplicate IDs.
 - **Affected scripts:** ted_ids.py, ingest/ids.py, and every consumer of `metadata/id-map.jsonl` (crosslinks, 3 auditors, publish).
 - **Affected content:** every page with an `id`.
-- **Current workaround:** a committed migration map regenerated by a script; a second registry with tamper-detection digest.
+- **Current workaround:** a committed TED migration map regenerated by a script; a second state-ingestion registry with tamper-detection digest. This is a TED consolidation question, not a missing Boris allocator.
 - **Why undesirable:** two sources of truth; ordering-dependent allocation; the risk of renumbering on anchor deletion.
 - **Frequency:** every build.
 - **Maintenance burden:** Medium.
 - **Risk of data corruption:** Medium (renumbering would silently break URLs).
 - **Risk of divergence:** High (two registries).
-- **AI-attractor factor:** **HIGH** — new collections require editing `ted_ids.py` prefix tables; agents have done so repeatedly (the file grew 9 prefixes in one commit).
-- **Boris partial support:** `id` field is validated as required/unique? (partially, via check), but no allocation or policy.
-- **Proposed Boris-level solution:** canonical ID validation/allocation in Boris, or a documented "ID policy" mechanism with collision detection and a stable migration story; alternatively accept the project registry but make it the *single* one.
-- **Core vs extension vs docs:** **CORE** (ID uniqueness is generic) with docs for migration.
-- **Migration implications:** `ted_ids.py` shrinks to a validator; `ingest/ids.py` could be deleted.
-- **Priority:** P1.
+- **AI-attractor factor:** **MEDIUM** — new collections still require TED allocation-policy edits, but the old claim that Boris lacks canonical ID validation is withdrawn.
+- **Boris support:** canonical page-ID shape and duplicate validation are already Boris responsibilities; allocation, natural-key persistence, domain prefixes, and migration maps are not.
+- **Proposed TED-level solution:** document non-overlapping authority, then consolidate or explicitly scope the shared content map and state natural-key map. Do not request a Boris allocator from this evidence.
+- **Core vs extension vs docs:** **TED architecture/docs**, not a Boris core finding.
+- **Migration implications:** keep both maps until a deliberate multi-state migration proves one can be removed; do not delete `ingest/ids.py` as a Boris cleanup.
+- **Priority:** TED review.
 
 ### 6. No build lifecycle hooks — **P2**
 
@@ -485,13 +514,13 @@ Candidates only — nothing is deleted. "Could disappear" ≠ "should disappear.
 
 | Script | Boris improvement required | Full deletion realistic? | Shrink instead? | Migration difficulty | Dependencies | Risk | Confidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `crosslinks.py` (+ validate_crosslinks.py) | Relation graph in templates / built-in backlinks + pagination | Yes (markup becomes template output) | Would shrink to a thin "edge classification" helper if kept | Medium (re-template the theme; retire hand-written Related sections) | id-map, claims, coa registries, theme | Low-Medium | High |
+| `crosslinks.py` (+ validate_crosslinks.py) | Relation graph in templates / built-in backlinks + pagination | Generic navigation slices: yes; TED semantic projections: no | Split: keep evidence-aware edge classification and projections | Medium (re-template the theme; retire only generic Related/Backlinks injection) | id-map, claims, coa registries, theme | Low-Medium | High |
 | `cultivar_claims.py` + `validate_cultivar_claims.py` | Extensible relation kinds | No — the claim vocabulary is domain logic | Yes — could emit Boris relations for entity-to-entity claims; keep registry for non-entity sources | Low | registry | Low | Medium |
 | `audit_device_taxonomy.py`, `audit_record_completeness.py`, `audit_coa_content.py` | Validation API / schema rules | Yes (rules become declarative) | Yes — could remain as docs + a thin adapter | Medium | vocab JSONs | Low | Medium |
-| `ted_ids.py` (validation mode) | ID policy in Boris | Yes for allocation; map stays as migration record | Yes — shrink to a migration-map writer | Low-Medium | metadata/id-map.jsonl | Medium (renumbering history) | Medium |
-| `ingest/ids.py` (`NaturalKeyRegistry`) | Single ID registry / allocation in Boris | Yes, if merged with ted_ids | Yes — merge into one registry | Medium (migrate id-maps) | data/massachusetts-ccc/id-map.json | Medium | Medium |
+| `ted_ids.py` (validation mode) | TED form-ID policy and migration; Boris already validates page-ID shape/uniqueness | No immediate Boris deletion | Yes — review as the shared TED allocation authority | Low-Medium | metadata/id-map.jsonl | Medium (renumbering history) | Medium |
+| `ingest/ids.py` (`NaturalKeyRegistry`) | State-ingestion natural-key persistence and allocation | No immediate Boris deletion | Yes — consolidate or explicitly scope against `ted_ids.py` | Medium (migrate id-maps) | data/massachusetts-ccc/id-map.json | Medium | Medium |
 | `ingest/markdown.py` | Data files or generate-from-data hook | No — still needed to emit pages | Yes — thinner if Boris owns grammar/escaping | Low | generators | Low | Medium |
-| `audit_markdown_links.py` | None needed — verified genuine gap (Boris skips `.md` targets by design); optionally a docs-links warning in Boris | No — should stay (catches source typos that ship as literal broken `.md` hrefs) | No | Low | none | Low | High |
+| `audit_markdown_links.py` | Current Boris local-Markdown behavior must be reproduced; old baseline said `.md` targets escaped | Pending BORIS-13 reproduction | Keep until the current contract is proven | Low | none | Low | Medium |
 | `audit_html_ids.py` | Post-render hook or output validation | Yes | No | Low | dist | Low | High |
 | `ted-build.sh` layout rules + audit hooks | Default layout rules; lifecycle hooks | No (wrapper stays) | Yes — much shorter | Low | Boris CLI | Low | High |
 | `bin/validate_graph.sh` | Clean diagnostics; validation API | No (gate stays) | Yes — drops 5 of 8 steps | Low | all auditors | Low | High |
@@ -509,7 +538,7 @@ See `reports/boris-issue-candidates.md` for independently readable, copy-ready i
 3. Allow extensible relation kinds (config/schema) — extension.
 4. First-class data files + template access — core/extension.
 5. Content-validation API or declarative schema rules — core/extension.
-6. Canonical ID policy/allocation (or consolidate the two project registries) — core.
+6. TED identity-boundary clarification and consolidation of the two project maps — TED architecture, not a Boris allocator request.
 7. Lifecycle hooks (before-build, after-render, after-write) — extension.
 8. Document `boris check` findings schema and allow configuring/ignoring `unreferenced_page` — core/docs.
 9. Default layout rules by collection — core/docs.
@@ -577,7 +606,7 @@ The verdict: the repository is dogfooding Boris as a *content compiler* successf
 
 Resolved empirically in the verification pass (2026-08-09; pinned Boris `9505ec6`, boris/0.8.1, provisioned via `scripts/ensure-boris.sh --provision`):
 
-1. ~~**Whether Boris already validates internal Markdown links**~~ — **RESOLVED.** Boris runs a post-render link audit (`link_audit.zig`) that fails the build on broken `.html`/asset hrefs (`EROUTEMISSING`/`EROUTEESCAPE`) but **deliberately skips literal `.md`/`.mdx` targets**; `boris check` reports no link findings. So `audit_markdown_links.py` is a **genuine gap**, not a duplicated capability (see finding 9b).
+1. **Whether current Boris validates internal Markdown links** — **NEEDS CURRENT REPRODUCTION.** The old pinned-baseline fixture showed a post-render audit that failed broken `.html`/asset hrefs (`EROUTEMISSING`/`EROUTEESCAPE`) but **skipped literal `.md`/`.mdx` targets**. Current Boris source reportedly includes a graph-backed documentation-link rewrite and publication-manifest audit path; rerun the smallest `.md` case before classifying `audit_markdown_links.py` as redundant.
 2. ~~**Whether Boris templates can access relations**~~ — **RESOLVED.** The template marker vocabulary is closed (`{{content}} {{nav}} {{breadcrumb}} {{title}} {{toc}} {{children}} {{metadata}} {{footer}} {{asset-url}}`); `{{relations}}` is a hard build error (`LayoutUnknownMarker`). Semantic relations are exposed **nowhere** in the HTML pipeline; the validated relation set is available only in the IR export (`graph.json`) (see finding 1).
 3. ~~**The current `unreferenced_page` baseline count and `boris check` output shape**~~ — **RESOLVED.** Re-measured live on the 417-page tree: **382 of 417 pages (91.6%)** flagged `unreferenced_page`; findings JSON is written to **stderr** (which is why `validate_graph.sh` captures `2>file`); the edges array exposes only `parent` edges, never semantic relations (see finding 7).
 4. ~~**Exact Boris version and feature set**~~ — **RESOLVED.** Boris source (`9505ec6`) inspected: `max_relation_count = 16` compile-time constant, fixed `[16]SemanticRelation` array, exactly 4 relation kinds, `role:trunk|satellite` layout-rule selectors, `impact` command, IR/RAG exports — all verified against fixtures (see Appendix B).
@@ -587,7 +616,12 @@ Resolved empirically in the verification pass (2026-08-09; pinned Boris `9505ec6
 
 All tests run against the pinned Boris binary (`9505ec6`, boris/0.8.1, built from source) on minimal fixture sites, 2026-08-09. Binary: `bin/boris` in this worktree.
 
-### B.1 Does `boris check` validate local Markdown links?
+### B.1 Historical baseline: did `boris check` validate local Markdown links?
+
+**Status note:** The result in this subsection is retained as historical
+evidence from Boris `9505ec6`; it is not the current Boris contract. The
+current implementation must be tested with the smallest equivalent fixture
+before changing TED's source-level Markdown-link gate.
 
 **No.** `boris check` reports only graph findings (`unreferenced_page`, etc.) — no link findings. Link validation happens in a **post-render audit** (`src/link_audit.zig`) that runs immediately before publishing:
 

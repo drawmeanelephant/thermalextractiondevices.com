@@ -13,8 +13,6 @@ permissions:
   pull-requests: write
 
 env:
-  BORIS_REPOSITORY: https://github.com/drawmeanelephant/boris.git
-  BORIS_BRANCH: afterparty
   BORIS_JOBS: 1
 
 jobs:
@@ -27,14 +25,57 @@ jobs:
       - name: Checkout Thermal Extraction Devices
         uses: actions/checkout@v4
 
-      - name: Set up pinned Zig
+      - name: Run repository unit tests
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tests -t . -v
+
+      - name: Run Boris provisioner tests
+        run: |
+          set -euo pipefail
+          python3 scripts/test_ensure_boris.py -v
+
+      - name: Load canonical Boris configuration
+        id: boris-metadata
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+
+          with open("metadata/boris-version.json", encoding="utf-8") as handle:
+              config = json.load(handle)
+          required = ("repository", "branch", "commit", "zig_version")
+          if any(not config.get(key) for key in required):
+              raise SystemExit("metadata/boris-version.json is missing a required Boris field")
+          if not re.fullmatch(r"[0-9a-f]{40}", config["commit"]):
+              raise SystemExit("metadata/boris-version.json commit must be a full SHA")
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as handle:
+              handle.write(f"BORIS_REPOSITORY={config['repository']}\n")
+              handle.write(f"BORIS_COMMIT={config['commit']}\n")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              handle.write(f"commit={config['commit']}\n")
+              handle.write(f"zig_version={config['zig_version']}\n")
+          PY
+
+      - name: Set up Zig from canonical metadata
         uses: mlugg/setup-zig@v2
         with:
-          version: 0.16.0
+          version: ${{ steps.boris-metadata.outputs.zig_version }}
 
-      - name: Obtain Boris source (afterparty branch)
+      - name: Verify Zig version
+        run: test "$(zig version)" = "${{ steps.boris-metadata.outputs.zig_version }}"
+
+      - name: Obtain Boris source at the configured commit
         run: |
-          git clone --branch "$BORIS_BRANCH" --single-branch --depth=1 "$BORIS_REPOSITORY" "$RUNNER_TEMP/boris"
+          set -euo pipefail
+          git init "$RUNNER_TEMP/boris"
+          git -C "$RUNNER_TEMP/boris" remote add origin "$BORIS_REPOSITORY"
+          git -C "$RUNNER_TEMP/boris" fetch --depth=1 origin "$BORIS_COMMIT"
+          git -C "$RUNNER_TEMP/boris" checkout --detach FETCH_HEAD
+          test "$(git -C "$RUNNER_TEMP/boris" remote get-url origin)" = "$BORIS_REPOSITORY"
+          test "$(git -C "$RUNNER_TEMP/boris" rev-parse HEAD)" = "$BORIS_COMMIT"
 
       - name: Cache Zig compiler directories
         uses: actions/cache@v4
@@ -42,10 +83,10 @@ jobs:
           path: |
             ${{ runner.temp }}/zig-global-cache
             ${{ runner.temp }}/zig-local-cache
-          key: ${{ runner.os }}-zig-${{ env.BORIS_BRANCH }}-${{ github.sha }}
+          key: ${{ runner.os }}-zig-${{ steps.boris-metadata.outputs.zig_version }}-${{ steps.boris-metadata.outputs.commit }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-zig-${{ env.BORIS_BRANCH }}-
-            ${{ runner.os }}-zig-
+            ${{ runner.os }}-zig-${{ steps.boris-metadata.outputs.zig_version }}-${{ steps.boris-metadata.outputs.commit }}-
+            ${{ runner.os }}-zig-${{ steps.boris-metadata.outputs.zig_version }}-
 
       - name: Build pinned Boris
         working-directory: ${{ runner.temp }}/boris

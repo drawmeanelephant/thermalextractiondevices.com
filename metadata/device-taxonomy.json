@@ -55,6 +55,13 @@
     "desktop",
     "cordless",
     "analog",
+    "digital",
+    "dial",
+    "defunct",
+    "ireland",
+    "18650",
+    "510",
+    "oil-cartridge",
     "catalytic",
     "glass-airpath",
     "dry-herb",
@@ -85,7 +92,17 @@
     "grenco-science",
     "magic-flight",
     "oglesby-butler",
-    "vapexhale"
+    "vapexhale",
+    "flytlab",
+    "flowermate",
+    "goboof",
+    "mig-vapor",
+    "smiss",
+    "topgreen",
+    "tronian",
+    "vaporfection",
+    "xmax",
+    "xvape"
   ],
   "tag_aliases": {
     "manual": "manual-thermal-cycle",
@@ -93,7 +110,11 @@
     "induction": "induction",
     "battery": "battery",
     "session": "session",
-    "on-demand": "on-demand"
+    "on-demand": "on-demand",
+    "wax": "concentrates",
+    "bubbler": "water-tool",
+    "forced-air-convection": "convection",
+    "glass-path": "glass-airpath"
   },
   "contradiction_rules": {
     "TAX-01": {

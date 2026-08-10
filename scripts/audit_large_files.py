@@ -284,13 +284,31 @@ def audit(root: Path, config: Dict[str, Any]) -> Tuple[List[Finding], Dict[str, 
     report["deleted_but_reachable"] = [
         {"path": path, "bytes": size} for path, size in deleted
     ]
+    # A deleted file that is still reachable is only an efficiency problem for
+    # ordinary build output — but for paths carrying PRIVACY.md category-4 data it
+    # is a live disclosure: `git show <old-commit>:<path>` returns the payload in
+    # full. Removing it from the working tree does not remove it from any clone.
+    # Those paths block; everything else informs.
+    sensitive_prefixes = tuple(config.get("history_sensitive_paths", ["data/"]))
     for path, size in deleted:
         if size >= large_bytes:
-            findings.append(Finding(
-                code="LARGE-004", severity="medium",
-                message="deleted file remains reachable in history ({} MiB)".format(round(size / 1048576, 1)),
-                path=human_path(path),
-            ))
+            human = human_path(path)
+            if human.startswith(sensitive_prefixes):
+                findings.append(Finding(
+                    code="LARGE-004", severity="high",
+                    message=(
+                        "deleted file remains reachable in git history ({} MiB) under a path "
+                        "carrying regulated data — still recoverable from any clone; see "
+                        "docs/history-cleanup-plan.md".format(round(size / 1048576, 1))
+                    ),
+                    path=human,
+                ))
+            else:
+                findings.append(Finding(
+                    code="LARGE-004", severity="medium",
+                    message="deleted file remains reachable in history ({} MiB)".format(round(size / 1048576, 1)),
+                    path=human,
+                ))
 
     return findings, report
 

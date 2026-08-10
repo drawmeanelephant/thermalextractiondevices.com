@@ -36,22 +36,22 @@ summary: Acidic phytocannabinoid precursor of Δ9-THC, dominant in fresh drug-ty
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
 | Melting point | ≈70 °C (with decomposition) for THCA-A; 184–185 °C for THCA-B (both reported in secondary sources; not independently verified) | THCA-A decarboxylates at melt [^2] |
-| Boiling point | **No experimentally measured boiling point at 1 atm.** The "≈437 °C" figure is a QSPR prediction, not a measurement; thermal degradation precedes boiling [^4] |
-| Vapor pressure | No authoritative experimental data; predicted values only. Experimental vapor pressures exist only for the neutral THC/CBD (Lovestead & Bruno 2017) | Antoine parameters not published [^4] |
+| Boiling point | **No compound-specific atmospheric boiling point was located.** The often-repeated ≈437 °C value is not a verified THCA measurement; the atmospheric value remains unresolved [^4] |
+| Vapor pressure | No authoritative experimental data or compound-specific curve was located. The measured THC/CBD vapor pressures must not be transferred to THCA | Antoine parameters not published [^4] |
 | logP (octanol-water) | ≈5.4–5.8 (predicted) | Highly lipophilic |
 | Water solubility | <1 mg/L (very low) | Soluble in ethanol, methanol, chloroform, DMSO, oils |
-| Thermal decomposition | Decarboxylation onset ≈105 °C; complete ≈160 °C (solid state, ≈20 min); onset shifts higher in plant matrix | First-order kinetics; Ea ≈85 kJ/mol [^3] |
-| Oxidation sensitivity | Moderate; forms CBN-type oxidation products under heat/air | Slower than THC oxidation; THCA decarboxylates first [^3] |
-| Light sensitivity | Photodegradation reported; UV accelerates decarboxylation and oxidation | Amber storage for standards [^3] |
-| Known degradation products | Δ9-THC (decarboxylation), CBN (oxidation of THC), Δ8-THC (isomerization), quinones (pyrolysis) | [^3] |
+| Thermal decomposition | In the cited vacuum-oven kinetic study, THCA-A decarboxylation rates were measured at 80, 95, and 110 °C in extracts/reference material; temperature, time, atmosphere, and matrix affect conversion, so no universal onset or completion temperature is assigned [^3] |
+| Oxidation sensitivity | Oxidation behavior is condition-dependent; CBN formation was observed in the cited heated analytical context, but no general stability rate is assigned [^3] |
+| Light sensitivity | Compound-specific photodegradation and UV thresholds remain unresolved; amber storage is a precaution, not a measured stability limit |
+| Known degradation products | Δ9-THC (decarboxylation), with CBN and Δ8-THC observed under cited heated analytical conditions [^3]; other high-temperature products remain unresolved |
 
-> **Boiling point is not a device setpoint.** No experimentally validated boiling point or vapor-pressure curve exists for THCA. The "437 °C" value is a QSPR prediction; thermal behavior in plant matrix is governed by decarboxylation kinetics, not phase change.
+> **Boiling point is not a device setpoint.** No compound-specific atmospheric boiling point or vapor-pressure curve was located for THCA. The "437 °C" value is unresolved, and thermal behavior in plant matrix is governed by condition-dependent decarboxylation kinetics rather than a device temperature [^3][^4].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-Thermal release of the THC series from botanical matrix requires decarboxylation of THCA to THC (onset ≈105 °C, accelerated at higher temperature), followed by vapor-pressure-driven evaporation of the neutral THC. Device chamber temperature is not sample temperature; material lags the setpoint.
+Thermal release of the THC series from botanical matrix involves decarboxylation of THCA to THC followed by vapor-pressure-driven evaporation of the neutral THC, but the conversion rate depends on temperature, time, atmosphere, matrix, and residence conditions [^3]. Device chamber temperature is not sample temperature; the thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature.
 
 ## Cannabis occurrence
 
@@ -78,8 +78,8 @@ Preclinical studies report THCA as a potent PPARγ agonist with neuroprotective 
 
 ## Degradation products
 
-- Primary: Δ9-THC (decarboxylation)
-- Secondary: CBN (oxidation of THC), Δ8-THC (isomerization), quinones (pyrolysis)
+- Primary: Δ9-THC (decarboxylation) [^3]
+- Secondary: CBN and Δ8-THC under cited heated analytical conditions [^3]; quinone products remain unresolved
 
 ## Sources
 

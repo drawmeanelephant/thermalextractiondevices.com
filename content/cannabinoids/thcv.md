@@ -34,23 +34,23 @@ summary: Propyl-side-chain homologue of Δ9-THC; no measured atmospheric boiling
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | **Not experimentally measured for pure THCV at 1 atm**; predicted ≈425–430 °C, with decomposition preceding boiling. Blog claims of "THCV boils at 220 °C" confuse vaporizer chamber temperature with a thermodynamic boiling point [^5] |
-| Boiling point (reduced pressure) | ≈200 °C at 0.02 Torr (short-path distillation, estimated; not independently verified) | By analogy to THC vacuum-distillation data |
-| Vapor pressure | Not directly measured; expected same order of magnitude as Δ9-THC (measured ≈2.6×10⁻⁵ Pa at 25 °C to ≈0.22 Pa at 121 °C) | Slightly higher than THC due to lower molecular mass [^2] |
+| Boiling point | **No compound-specific atmospheric boiling point was located for THCV.** Predicted values and the "220 °C" blog claim are not verified THCV measurements; the atmospheric value remains unresolved [^5] |
+| Boiling point (reduced pressure) | No compound-specific reduced-pressure boiling datum was independently verified; the value remains unresolved | THC vacuum-distillation data are not a THCV measurement [^2][^5] |
+| Vapor pressure | Not directly measured; no compound-specific vapor-pressure curve was located. Δ9-THC values are an analogy only and must not be presented as THCV data | Relative THCV volatility remains unresolved [^2] |
 | Melting point | Not reported in authoritative sources | Likely amorphous/semi-solid at room temperature |
 | logP (octanol-water) | ≈5.5–6.0 (estimated) | Propyl chain lowers logP vs. THC |
 | Water solubility | Practically insoluble | Soluble in ethanol, methanol, hydrocarbons, CO₂ |
-| Thermal decomposition | Begins ≈150–180 °C; accelerated above 200 °C; THCVA decarboxylation complete ≈110–130 °C | [^3][^4] |
-| Oxidation / light sensitivity | High; surface oxidation rapid on air exposure; UV accelerates | Store opaque, inert |
-| Known degradation products | Propyl-CBN-type analogs (C19), quinones, polymeric material (oxidation); not fully characterized | [^4] |
+| Thermal decomposition | No direct THCV thermal-decomposition curve was located; THC/THCVA study conditions are not a THCV sample-temperature threshold, so stability at device-relevant sample temperatures remains unresolved [^3][^4] |
+| Oxidation / light sensitivity | THCV-specific oxidation and light-stability rates are not directly characterized; no stability threshold is assigned [^4] |
+| Known degradation products | Secondary products are not fully characterized; propyl-CBN-type, quinone, and polymeric assignments remain unresolved analogies [^4] |
 
-> **Boiling point is not a device setpoint.** "THCV boils at 220 °C" is incorrect — it confuses vaporizer chamber temperature with a thermodynamic boiling point [^5]. The predicted normal boiling point exceeds 400 °C, and the compound decomposes before boiling at 1 atm.
+> **Boiling point is not a device setpoint.** "THCV boils at 220 °C" is not a verified THCV thermodynamic measurement; it may conflate a vaporizer chamber setting with the sample temperature [^5]. No compound-specific atmospheric boiling point was located.
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-As with THC, thermal release requires decarboxylation of any THCVA to THCV, followed by vapor-pressure-driven evaporation of the neutral compound from the matrix.
+As with THC, thermal release may involve decarboxylation of THCVA to THCV followed by vapor-pressure-driven evaporation from the matrix, but THCV-specific device/sample-temperature behavior is unresolved. The thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature; actual matrix release must be measured under stated conditions [^2][^3].
 
 ## Cannabis occurrence
 
@@ -72,7 +72,7 @@ Preclinical studies report THCV as a CB1 and CB2 receptor antagonist [^6]; appet
 
 ## Degradation products
 
-- Oxidation: propyl-CBN-type analogs (C19), quinones, polymeric material (not fully characterized)
+- Oxidation: unresolved; propyl-CBN-type analogs, quinones, and polymeric material require compound-specific confirmation
 
 ## Sources
 

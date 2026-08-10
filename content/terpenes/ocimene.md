@@ -62,7 +62,7 @@ Herbal tea component recognized in traditional perfumery and pest defense.
 
 ## Cannabis laboratory results
 
-Measured as (E)-β-ocimene at 191–1,382 µg/g dry weight in four of six cultivars (not detected in the remaining two), with extreme plant-to-plant variation; typically <5% of total terpenes [^4]. See [Lab Results](../lab-results.md) for batch data.
+Measured as (E)-β-ocimene at 191–1,382 µg/g dry weight in four of six cultivars (not detected in the remaining two), with extreme plant-to-plant variation; typically <5% of total terpenes [^4]. See [Lab Results](../lab-results.html) for batch data.
 
 ## Sources
 
@@ -73,4 +73,4 @@ Measured as (E)-β-ocimene at 191–1,382 µg/g dry weight in four of six cultiv
 
 ## Related pages
 
-- [Terpenes Index](../terpenes.md)
+- [Terpenes Index](../terpenes.html)
