@@ -34,21 +34,21 @@ summary: Acidic phytocannabinoid precursor of CBC, biosynthesized from CBGA; no 
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | **Not experimentally measured at 1 atm**; predicted >400 °C, with decomposition preceding boiling | Cannabinoid acids do not boil intact at atmospheric pressure [^3] |
-| Vapor pressure | Not measured; predicted very low (<10⁻⁵ Pa at 25 °C by analogy) | [^3] |
+| Boiling point | **No compound-specific atmospheric boiling point was located.** An intact-acid value remains unresolved; thermal conversion is expected before a directly observed atmospheric boil [^3] |
+| Vapor pressure | Not measured; no defensible compound-specific vapor-pressure value was located. Low volatility of the acid form is an unresolved qualitative expectation, not a measured pressure [^3] |
 | Melting point | Not reported in authoritative sources | Unknown |
 | logP (octanol-water) | 6.9 (computed XLogP3) | Very low aqueous solubility predicted |
-| Decarboxylation kinetics | Pseudo-first-order; complete at 160 °C in <1 min, at 120 °C in ≈40 min (pressurized-liquid conditions) | [^2] |
-| Oxidation / light sensitivity | Decarboxylates and oxidizes under UV/light; CBC (the neutral) forms CBL by [2+2] cycloaddition under UV (reported; unverified) | Store cold, dark, inert |
-| Known degradation products | CBC (decarboxylation); likely quinones and CBLA-type cycloaddition products under oxidation/photolysis | [^2] |
+| Decarboxylation kinetics | Pseudo-first-order conversion was reported at 120–160 °C in a pressurized-liquid extraction cell; the reported times are process-specific and are not dry-flower sample temperatures or device setpoints [^2] |
+| Oxidation / light sensitivity | CBCA-specific UV/oxidative stability and CBC→CBL pathways remain unresolved; no compound-specific threshold was verified | Store cold, dark, inert as a precaution |
+| Known degradation products | CBC (decarboxylation) is supported under the cited process conditions [^2]; secondary quinone and CBLA-type products remain unresolved analogies |
 
-> **Boiling point is not a device setpoint.** Marketing values such as "CBCA boils at 220 °C" are not physical boiling points; the compound decarboxylates to volatile CBC before any intact acid can boil.
+> **Boiling point is not a device setpoint.** The cited evidence does not establish a compound-specific atmospheric boiling point for CBCA. Marketing values such as "CBCA boils at 220 °C" must not be substituted for a thermodynamic property or a device/sample temperature [^3].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-Because the acid form has negligible volatility, thermal release from botanical matrix proceeds via decarboxylation to neutral CBC followed by co-evaporation with terpenes, rather than vaporization of intact CBCA.
+Because the acid form is expected to be less volatile than its neutral product, thermal release from botanical matrix may proceed via decarboxylation to neutral CBC followed by co-evaporation with terpenes; intact-CBCA evaporation is not directly characterized. The thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature [^2][^3].
 
 ## Cannabis occurrence
 
@@ -74,8 +74,8 @@ Minor-cannabinoid marketing claims for CBC/CBCA remain unsupported by controlled
 
 ## Degradation products
 
-- Primary: CBC (decarboxylation)
-- Secondary (oxidative/photolytic): quinones, CBLA-type cycloaddition products (analogous to CBC→CBL)
+- Primary: CBC (decarboxylation) [^2]
+- Secondary (oxidative/photolytic): unresolved; CBLA-type cycloaddition products are an analogy to CBC chemistry, not a verified CBCA result
 
 ## Sources
 

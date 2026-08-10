@@ -116,6 +116,58 @@ reused across runs. The file carries an integrity digest; editing it outside
 the importer raises `IdMappingChangedError`. Do not hand-edit the mapping —
 run the importer.
 
+## Shared ID authority and allocation reservation
+
+There is one canonical namespace. The global editorial authority is the ID in
+content frontmatter, with `metadata/id-map.jsonl` recording the migration from
+prior source identities. A state map is a durable natural-key registry and
+reservation history; it is not a second namespace. State adapters share the
+collection prefixes in `metadata/id-policy.json` and seed new allocations from
+the combined `content/` tree. Existing canonical, source-native, and
+provisional IDs are reused as-is; this procedure never renumbers them.
+
+The current state registry loads, allocates, and saves in one process but does
+not acquire a cross-process lock. Until that allocator is migrated into a
+shared transactional registry, every allocation touching a shared collection
+must use the repository lock for the complete preflight → allocation →
+postflight window. On macOS (the operator environment), run the whole state
+allocation as one locked shell group:
+
+```bash
+ID_LOCK="$PWD/.git/ted-id-allocation.lock"
+(
+  lockf -s -t 0 9 || exit 75
+  python3 scripts/ted_ids.py \
+    --root content --map metadata/id-map.jsonl --all-state-maps &&
+  python3 scripts/state_ingest.py massachusetts "$@" &&
+  python3 scripts/ted_ids.py \
+    --root content --map metadata/id-map.jsonl --all-state-maps
+) 9>"$ID_LOCK"
+```
+
+Put the state command's flags in place of `"$@"`; for example, invoke the
+group from a wrapper with `--dataset licenses`, or remove `"$@"` for the
+default live sync. Exit `75` means another allocator owns the reservation
+window; do not retry inside the same uncommitted content tree without first
+checking its status. On Linux, the equivalent is `flock -n` around the same
+three commands.
+
+For a global/editorial allocation, use the same lock and include `--write`
+only after reviewing the preflight result:
+
+```bash
+lockf -k -t 0 "$PWD/.git/ted-id-allocation.lock" \
+  python3 scripts/ted_ids.py \
+    --root content --map metadata/id-map.jsonl --all-state-maps --write
+```
+
+The `--all-state-maps` guard verifies every configured state map's digest,
+prefix, natural-key uniqueness, and canonical-ID uniqueness. `ted_ids.py`
+also treats every state-map form ID as reserved, including a historical claim
+whose page is not in the current tree, so a new editorial allocation cannot
+reuse it. A duplicate claim fails closed with `state ID collision`; it must be
+resolved by the integrator without renumbering either claimant.
+
 ## Privacy allowlists
 
 `PRIVACY_SPEC` in the state adapter defines the excluded field names and the

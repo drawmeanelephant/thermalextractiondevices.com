@@ -34,7 +34,7 @@ summary: "Jurisdiction profile for the State of Alabama: regulated medical canna
 
 ## Regulatory Overview
 
-Alabama enacted its medical cannabis program under the Darren Wesley "Ato" Hall Compassion Act (2021), administered by the Alabama Medical Cannabis Commission (AMCC). The AMCC awarded the first dispensary licenses in December 2025, with dispensaries expected to open through summer 2026. The program is limited to qualifying patients; there is no adult-use or home-cultivation provision.
+Alabama enacted its medical cannabis program under the Darren Wesley "Ato" Hall Compassion Act (2021), administered by the Alabama Medical Cannabis Commission (AMCC). AMCC reported that the first dispensary opened on June 4, 2026, with additional dispensary openings expected through summer 2026. The program is limited to qualifying patients; there is no adult-use or home-cultivation provision.
 
 ## Data Surface
 
@@ -54,7 +54,7 @@ Alabama enacted its medical cannabis program under the Darren Wesley "Ato" Hall 
 
 - **Statutory framework**: Alabama Act 2021-430 (Darren Wesley "Ato" Hall Compassion Act), effective 2021.
 - **Regulator**: Alabama Medical Cannabis Commission — https://amcc.alabama.gov/
-- **Dispensary licensing**: AMCC license approvals reported December 2025; dispensary openings expected summer 2026 — https://amcc.alabama.gov/patients/
+- **Dispensary opening status**: AMCC reported the first dispensary opening on June 4, 2026 — https://amcc.alabama.gov/faq/what-is-the-status-of-medical-cannabis-dispensaries-in-alabama/
 - **Retrieval date**: 2026-08-09
 
 ## Graph Connections

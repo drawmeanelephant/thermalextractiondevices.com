@@ -36,7 +36,7 @@ summary: "Jurisdiction profile for Portugal: decriminalized possession (Law 30/2
 
 ## Regulatory Overview
 
-Portugal decriminalized drug possession under Law 30/2000 (up to a 10-day personal-use supply, with administrative sanctions). Medical cannabis was regulated in 2019 (Decree-Law 8/2019); INFARMED licenses cultivation, manufacturing, import/export and maintains lists of authorized operators. Since January 2026, INFARMED's lists have seen a significant shakeup (30%+ of licensed operators suspended/lost status), and new mandatory reporting requirements were introduced in 2026. CBD is classified as an unauthorized medicinal product.
+Portugal decriminalized drug possession under Law 30/2000 (up to a 10-day personal-use supply, with administrative sanctions). Medical cannabis was regulated in 2019 (Decree-Law 8/2019); INFARMED licenses cultivation, manufacturing, import/export and maintains lists of authorized operators. This pass did not locate an official INFARMED notice substantiating a 30%+ operator-status change or a new 2026 mandatory-reporting rule, so those claims are not treated as current law. CBD is classified as an unauthorized medicinal product.
 
 ## Data Surface
 
@@ -56,7 +56,7 @@ Portugal decriminalized drug possession under Law 30/2000 (up to a 10-day person
 
 - **Statutory framework**: Law 30/2000 (decriminalization); Decree-Law 8/2019 (medical cannabis).
 - **Regulator**: INFARMED — https://www.infarmed.pt/
-- **2026 note**: operator-list shakeup and new mandatory reporting requirements (2026).
+- **2026 verification gap**: no official INFARMED notice located for the previously stated operator-list percentage or new mandatory-reporting rule; do not use those claims without item-level evidence.
 - **Retrieval date**: 2026-08-09
 
 ## Graph Connections

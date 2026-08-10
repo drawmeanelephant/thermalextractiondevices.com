@@ -1289,7 +1289,7 @@ def run_env(cmd: list[str], cwd: Path, env: dict) -> tuple[int, str]:
 
 def verify_content(repo_root: Path, boris_bin: str) -> bool:
     ok = True
-    code, out = run(["python3", "scripts/ted_ids.py", "--root", "content", "--map", "metadata/id-map.jsonl"], repo_root)
+    code, out = run(["python3", "scripts/ted_ids.py", "--root", "content", "--map", "metadata/id-map.jsonl", "--all-state-maps"], repo_root)
     if code != 0:
         guard(False, f"ted_ids validation failed:\n{out[:800]}")
         ok = False

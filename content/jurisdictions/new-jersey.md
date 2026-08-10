@@ -29,12 +29,12 @@ summary: "Jurisdiction profile for the State of New Jersey: adult-use and medica
 | Adult-use possession | Permitted (21+; up to 6 oz) |
 | Adult-use commercial sales | Operational (since April 2022) |
 | Medical cannabis | Regulated program (2010) |
-| Home cultivation | Permitted (up to 6 plants per person, 12 per household, subject to local rules) |
+| Home cultivation | Not permitted (the CRC does not authorize individuals to grow cannabis) |
 | Hemp relationship | Hemp regulated under the 2018 Farm Bill framework |
 
 ## Regulatory Overview
 
-New Jersey legalized adult use in 2020 (Public Question 1), with retail sales from April 2022, regulated by the Cannabis Regulatory Commission. The medical program dates to 2010. CRC publishes aggregate license-award totals, quarterly sales reports, and patient counts, but no public per-batch chemistry; machine readability is limited (one Socrata dispensary list).
+New Jersey legalized adult use in 2020 (Public Question 1), with retail sales from April 2022, regulated by the Cannabis Regulatory Commission. The medical program dates to 2010. The CRC's official FAQ states that the Commission does not permit individuals to grow cannabis; proposed home-grow legislation is not current authorization. CRC publishes aggregate license-award totals, quarterly sales reports, and patient counts, but no public per-batch chemistry; machine readability is limited (one Socrata dispensary list).
 
 ## Data Surface
 
@@ -54,6 +54,7 @@ New Jersey legalized adult use in 2020 (Public Question 1), with retail sales fr
 
 - **Statutory framework**: New Jersey Cannabis Regulatory, Enforcement Assistance, and Marketplace Modernization Act (2021); medical program (2010).
 - **Regulator**: Cannabis Regulatory Commission — https://www.nj.gov/cannabis/
+- **Home cultivation**: Commission FAQ states that individuals are not permitted to grow cannabis — https://www.nj.gov/cannabis/resources/faqs/commission/
 - **Data note**: aggregate statistics only; weakest machine readability of the ranked roadmap set (2026-08-08, `docs/state-expansion-roadmap.md` §3.10).
 - **Retrieval date**: 2026-08-09
 
