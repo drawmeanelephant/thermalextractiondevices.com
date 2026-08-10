@@ -1,0 +1,43 @@
+name: Reproducible Static Build
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 1 * *"
+
+permissions:
+  contents: read
+
+env:
+  BORIS_JOBS: 1
+
+jobs:
+  compare-builds:
+    name: Compare Two Clean Static Builds
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify reproducibility checker tests
+        run: python3 -m unittest tests.test_reproducible_build -v
+
+      - name: Provision Boris from canonical metadata
+        run: ./scripts/ensure-boris.sh --provision
+
+      - name: Build twice and compare every output byte
+        env:
+          BORIS_BIN: ./bin/boris
+        run: python3 scripts/check_reproducible_build.py
+
+      - name: Upload reproducibility evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-build-reproducibility
+          path: |
+            dist/reproducibility/report.json
+            dist/reproducibility/*.log
+          if-no-files-found: warn
