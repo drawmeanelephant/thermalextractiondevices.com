@@ -40,7 +40,7 @@ summary: Illustrative sample certificate of analysis record (demonstration) show
 | --- | --- |
 | Claimed label (as printed) | Blue Dream |
 | Resolution | Unresolved (demonstration) |
-| Canonical cultivar record | [Blue Dream Cultivar Page](../cultivars/blue-dream.md) (`cultivars/TCUL-0001`) |
+| Canonical cultivar record | [Blue Dream Cultivar Page](../cultivars/TCUL-0001.html) (`cultivars/TCUL-0001`) |
 
 The label "Blue Dream" is the **identity claimed for this batch**, not a measurement. In this demonstration record the
 claim is left unresolved: resolving it to a canonical cultivar is a separate act with an explicit confidence grade
@@ -51,9 +51,9 @@ None of the numbers on this page describe "Blue Dream" as a cultivar — they de
 
 | Terpene Compound | Concentration (mg/g) | Percent by Weight (%) | Status |
 | --- | --- | --- | --- |
-| [β-Myrcene](../terpenes/beta-myrcene.md) | 8.45 mg/g | 0.845 % | Detected (Dominant) |
+| [β-Myrcene](../terpenes/TTRP-0005.html) | 8.45 mg/g | 0.845 % | Detected (Dominant) |
 | [α-Pinene](../terpenes/alpha-pinene.md) | 3.12 mg/g | 0.312 % | Detected |
-| [D-Limonene](../terpenes/d-limonene.md) | 2.80 mg/g | 0.280 % | Detected |
+| [D-Limonene](../terpenes/TTRP-0007.html) | 2.80 mg/g | 0.280 % | Detected |
 | [β-Caryophyllene](../terpenes/beta-caryophyllene.md) | 2.15 mg/g | 0.215 % | Detected |
 | Total Terpenes | 18.70 mg/g | 1.870 % | **Calculated** (sum of the measured rows above) |
 
@@ -77,8 +77,8 @@ chemical compound.
 
 | Analyte | Result | Status / Qualifier | Note |
 | --- | --- | --- | --- |
-| [Lead (Pb)](../contaminants/TCNT-0007.md) | ND | **Not Detected** | Below the laboratory's detection capability; recorded as `nd`, never as zero |
-| [Ochratoxin A](../contaminants/TCNT-0003.md) | &lt;LOQ | **Below Limit of Quantitation** | Reporting limit 5 ppb; recorded as `below_loq`, never as zero |
+| [Lead (Pb)](../contaminants/TCNT-0007.html) | ND | **Not Detected** | Below the laboratory's detection capability; recorded as `nd`, never as zero |
+| [Ochratoxin A](../contaminants/TCNT-0003.html) | &lt;LOQ | **Below Limit of Quantitation** | Reporting limit 5 ppb; recorded as `below_loq`, never as zero |
 | Bifenthrin | *(blank)* | **Missing** | Analyte listed in the source panel excerpt but the result field is blank; recorded as `missing` |
 | Spinosad | — | **Not Tested** | Absent from this panel; recorded as `not_tested` — absence of a result is not evidence of absence |
 
@@ -103,6 +103,6 @@ the shape of the provenance chain, not to assert that the source above exists.
 
 ## Related Graph Connections
 
-- **Associated Commercial Product**: [Buckeye Relief Blue Dream Flower (sample record)](../products/example-producer-blue-dream.md)
-- **Genetic Cultivar Overview**: [Blue Dream Cultivar Page](../cultivars/blue-dream.md)
-- **Compound records referenced by this report**: [Lead](../contaminants/TCNT-0007.md), [Ochratoxin A](../contaminants/TCNT-0003.md), [β-Myrcene](../terpenes/beta-myrcene.md), [D-Limonene](../terpenes/d-limonene.md)
+- **Associated Commercial Product**: [Buckeye Relief Blue Dream Flower (sample record)](../products/TPRD-0001.html)
+- **Genetic Cultivar Overview**: [Blue Dream Cultivar Page](../cultivars/TCUL-0001.html)
+- **Compound records referenced by this report**: [Lead](../contaminants/TCNT-0007.html), [Ochratoxin A](../contaminants/TCNT-0003.html), [β-Myrcene](../terpenes/TTRP-0005.html), [D-Limonene](../terpenes/TTRP-0007.html)

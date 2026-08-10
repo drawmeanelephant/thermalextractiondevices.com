@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "state": "michigan",
+  "regulator": "Michigan Cannabis Regulatory Agency",
+  "retrieval_timestamp": "2026-08-09T00:00:00Z",
+  "publication_boundary": "Only compact normalized evidence and provenance are tracked; no private Accela/Metrc data or COA artifacts were found or retained.",
+  "datasets": {
+    "source-manifest": {"artifact": "data/source-manifests/stubs/michigan.json", "records": 12, "status": "ok"},
+    "license-evidence": {"artifact": "data/michigan-cra/licenses.json", "records": 3, "status": "partial", "note": "source-connected sample, not complete registry"},
+    "laboratory-discovery": {"artifact": "data/michigan-cra/laboratories.json", "records": 3, "status": "partial", "note": "first-party discovery sample; no complete public lab registry"},
+    "recalls": {"artifact": "data/michigan-cra/recalls.json", "records": 3, "status": "sample"},
+    "testing-requirements": {"artifact": "data/testing-requirements/michigan.json", "requirements": 11, "action_limit_rows": 28, "status": "ok"},
+    "coa": {"records": 0, "batches": 0, "analyte_results": 0, "status": "no public corpus located"}
+  }
+}
