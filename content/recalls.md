@@ -27,6 +27,15 @@ Representative notices with full archived detail pages:
 - [[recalls/TRCL-0005|Pre-roll products packaged by The Higher Path Pre-Roll]]
 - [[recalls/TRCL-0006|Flower products packaged by The Higher Path Flower]]
 
+### Michigan CRA records
+
+The following Michigan pages preserve CRA terminology and are not included in
+the California count above:
+
+- [[recalls/TRCL-0007|House Brands Distro / Top Smoke vape recall]]
+- [[recalls/TRCL-0008|Sky Cannabis / Motor City Cannacarts and RIPZ recall]]
+- [[recalls/TRCL-0009|BLOOM / Exhale Systems vape recall]]
+
 ## Full Official Index
 
 | Publication date | Type | Recall | Official notice |
