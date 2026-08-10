@@ -117,6 +117,12 @@ class TestEnsureBoris(unittest.TestCase):
             self.assertIn("fetch --depth=1 origin \"$BORIS_COMMIT\"", text)
             self.assertIn('rev-parse HEAD)" = "$BORIS_COMMIT"', text)
 
+        with open(os.path.join(workflow_root, "reproducibility.yml"), encoding="utf-8") as f:
+            text = f.read()
+        self.assertNotIn("BORIS_BRANCH", text)
+        self.assertIn("./scripts/ensure-boris.sh --provision", text)
+        self.assertIn("python3 scripts/check_reproducible_build.py", text)
+
     def test_floating_commit_configuration_is_rejected(self):
         """A branch/tag value must never be accepted as the Boris revision."""
         config_path = os.path.join(self.repo_root, "metadata", "boris-version.json")

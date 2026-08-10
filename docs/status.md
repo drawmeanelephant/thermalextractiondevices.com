@@ -1,7 +1,7 @@
 # Thermal Extraction Devices — Current Status
 
 Last verified: 2026-08-09
-Base commit reviewed: 8649973
+Base commit reviewed: e10f5dc
 
 This is the current coordination snapshot. It is intentionally shorter-lived
 than docs/roadmap.md and more operational than the public changelog.
@@ -26,6 +26,7 @@ than docs/roadmap.md and more operational than the public changelog.
 | Laboratory and batch/COA graph | Parked | California laboratory collections and demonstration records exist | Canonical batch/report/analyte model | Define the minimum batch/COA schema |
 | Profile intelligence | Parked | Terpene and evidence reference pages exist | Measured batch corpus and normalization | Start after batch/COA model |
 | Public release readiness | Blocked | Checklist and audits exist | Category-4 data in data/dcc, licensing, security contact | Decide data disposition before public release |
+| Static build reproducibility | Complete | Two pinned production builds produced 496 identical files; `reports/static-build-reproducibility.md` records the byte comparison | None | Run the monthly/manual reproducibility workflow and investigate any drift |
 
 ## Immediate priorities
 
@@ -81,8 +82,11 @@ The Boris graph, Cantilever build, Markdown-link audit, crosslink validator,
 and HTML-ID audit completed successfully. The device taxonomy, COA,
 cannabinoid thermal-property, and record-completeness audits report 0 errors
 and 0 warnings/findings. The crosslink validator reports 444 entities and
-1,664 edges with no problems. The system test run completed 339 tests with 6
-optional skips.
+1,664 edges with no problems. The system test run completed 343 tests with 6
+optional skips. Static build reproducibility is now machine-checked: two
+production builds from the pinned Boris toolchain contained the same 496 paths,
+10,133,239 bytes, and aggregate SHA-256
+`9a909f8c5656b8e300331427f98f0daafe63ad6b618278788535795bbc6ebb9b`.
 
 ## Archive integrity update
 

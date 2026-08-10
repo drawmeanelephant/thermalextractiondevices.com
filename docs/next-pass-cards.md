@@ -458,7 +458,9 @@ organization merge.
 ### P09 — Prove reproducible static builds
 
 **Type:** build verification  
-**Status:** blocked on P08  
+**Status:** complete — verified 2026-08-09; see
+`reports/static-build-reproducibility.md`
+
 **Scope:** reproducibility script/test, build reports, optional scheduled CI
 
 **Objective:** Demonstrate whether two clean builds from the same source and
