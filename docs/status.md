@@ -19,7 +19,7 @@ than docs/roadmap.md and more operational than the public changelog.
 | Workstream | Status | Current evidence | Main blocker | Next deliverable |
 | --- | --- | --- | --- | --- |
 | Roadmap and coordination | Complete | docs/roadmap.md, this file, and state lanes exist | None | Keep status current as work lands |
-| Multi-state ingestion architecture | In progress | California scripts and shared Massachusetts package coexist | Canonical CLI and global ID allocation are unresolved | Publish adapter contract and collision-safe registry |
+| Multi-state ingestion architecture | In progress | California scripts and shared Massachusetts package coexist; Boris validates canonical page-ID shape/uniqueness while TED owns domain allocation and migration policy | One documented TED allocation boundary across the shared content map and state natural-key maps | Consolidate or explicitly scope the two TED ID maps |
 | California DCC program | In progress | DCC scripts, content collections, and data/dcc snapshots are on main | Public-release privacy and storage decision | Reconcile or explicitly document the legacy path |
 | Massachusetts CCC program | Complete | Live sync verified (15 datasets, ~954k rows); 118 source-backed pages published; IDs reconciled with the shared collections (Massachusetts = jurisdictions/TJUR-0022) | Repo-wide release audit is blocked by pre-existing `data/dcc/` findings (see reports/massachusetts-ingestion-v2.md) | Keep manifests current as CCC publishes |
 | Device encyclopedia | In progress | 43 device records and four manufacturer records; the Cannabis Hardware catalog is complete and fully classified (TCHG-0004) | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |

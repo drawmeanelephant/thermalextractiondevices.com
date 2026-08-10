@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "state": "michigan",
+  "regulator_name": "Michigan Cannabis Regulatory Agency (CRA)",
+  "regulator_url": "https://www.michigan.gov/cra",
+  "researched": true,
+  "research_status": "verified 2026-08-09; public registry and COA limitations documented",
+  "updated_date": "2026-08-09",
+  "sources": [
+    {
+      "name": "CRA laws, rules, and other guidance",
+      "authority": "Michigan Cannabis Regulatory Agency",
+      "url": "https://www.michigan.gov/cra/laws-rules-other",
+      "source_class": "regulator-framework",
+      "machine_readable": false,
+      "format": "html"
+    },
+    {
+      "name": "CRA licensing reports",
+      "authority": "Michigan Cannabis Regulatory Agency",
+      "url": "https://www.michigan.gov/cra/resources/cannabis-regulatory-agency-licensing-reports",
+      "source_class": "license-statistics",
+      "machine_readable": false,
+      "format": "html-and-linked-reports"
+    },
+    {
+      "name": "Sampling and Testing Technical Guidance",
+      "authority": "Michigan Cannabis Regulatory Agency",
+      "url": "https://www.michigan.gov/cra/-/media/Project/Websites/cra/bulletin/5Technical/Sampling_and_Testing-_Technical_Guidance_for_Marijuana_Products_694124_7.pdf?rev=8e1a89c3519f4ff89889f66a38930f8c",
+      "source_class": "testing-requirements",
+      "machine_readable": false,
+      "format": "pdf"
+    },
+    {
+      "name": "CRA bulletins",
+      "authority": "Michigan Cannabis Regulatory Agency",
+      "url": "https://www.michigan.gov/cra/bulletins",
+      "source_class": "regulatory-bulletins",
+      "machine_readable": false,
+      "format": "html-and-linked-documents"
+    },
+    {
+      "name": "CRA enforcement division",
+      "authority": "Michigan Cannabis Regulatory Agency",
+      "url": "https://www.michigan.gov/cra/sections/enforcement-division",
+      "source_class": "enforcement-and-recalls",
+      "machine_readable": false,
+      "format": "html-and-linked-documents"
+    }
+  ],
+  "notes": "The expanded field-level manifest is retained at data/source-manifests/stubs/michigan.json for the source-manifest inventory."
+}
