@@ -11,7 +11,23 @@ BORIS_JOBS=${BORIS_JOBS:-1}
 
 cd "$ROOT"
 
-python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl
+# Boris audits the output directory while compiling. Remove prior generated
+# output first so stale crosslink index pages cannot be treated as source
+# links before the post-build crosslink step recreates the current set.
+DIST_PATH="$DIST_DIR"
+if [[ "$DIST_PATH" != /* ]]; then
+  DIST_PATH="$ROOT/$DIST_PATH"
+fi
+DIST_PATH=$(CDPATH= cd -- "$(dirname -- "$DIST_PATH")" && pwd)/$(basename -- "$DIST_PATH")
+case "$DIST_PATH" in
+  ""|"/"|"$ROOT")
+    echo "ted-build: refusing unsafe DIST_DIR=$DIST_DIR" >&2
+    exit 2
+    ;;
+esac
+rm -rf -- "$DIST_PATH"
+
+python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl --all-state-maps
 python3 scripts/audit_markdown_links.py "$CONTENT_DIR"
 
 "$BORIS_BIN" \

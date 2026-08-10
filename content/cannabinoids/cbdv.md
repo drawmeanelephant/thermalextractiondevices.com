@@ -33,22 +33,22 @@ summary: Propyl-side-chain homologue of CBD; no measured atmospheric boiling poi
 
 | Property | Value | Conditions / Notes |
 | --- | --- | --- |
-| Boiling point | **Not experimentally measured at 1 atm**; predicted ≈460–465 °C, with decomposition preceding boiling | "160–180 °C" figures in vape literature are misinterpreted evaporation temperatures [^3] |
-| Vapor pressure | Not measured; by analogy, higher than CBD (shorter side chain, lower mass) | CBD measured ≈10⁻³–10⁻¹ Pa over 61–121 °C (Lovestead & Bruno 2017); CBDV itself not measured [^2] |
+| Boiling point | **No compound-specific atmospheric boiling point was located for CBDV.** Do not substitute CBD's extrapolation or a device temperature; the atmospheric value remains unresolved [^2][^3] |
+| Vapor pressure | Not measured; no compound-specific vapor-pressure curve was located. CBD's measured curve is evidence for CBD only; relative CBDV volatility remains unresolved [^2] |
 | Melting point | Not reported in authoritative sources | Expected similar to or slightly below CBD (≈66 °C) |
 | logP (octanol-water) | Predicted ≈5.7–6.0 | Slightly lower than CBD |
 | Water solubility | Practically insoluble (<1 µg/mL estimated) | Soluble in ethanol, methanol, DMSO, lipids |
-| Thermal decomposition | Not independently characterized; by analogy to CBD, degradation becomes significant at elevated temperature | [^4] |
+| Thermal decomposition | Not independently characterized for CBDV; no compound-specific decomposition threshold is assigned. CBD degradation data are an analogy, not a CBDV sample-temperature result [^4] |
 | Oxidation / light sensitivity | High; polyphenolic structure vulnerable to air and UV (by analogy to CBD) | [^4] |
 | Known degradation products | CBEV-type (cannabielsoin), HU-331-analog quinones, CBNV (oxidative), by analogy to CBD (predicted; not experimentally characterized) | [^4] |
 
-> **Boiling point is not a device setpoint.** The commonly cited "CBDV boiling point ≈160–180 °C" is incorrect; those temperatures reflect matrix evaporation, not boiling at 1 atm [^3].
+> **Boiling point is not a device setpoint.** The commonly cited "CBDV boiling point ≈160–180 °C" is not supported as a CBDV thermodynamic property. It must not be used as a device setpoint or as the sample temperature [^3].
 
 ## Thermal-extraction context
 
 {{include includes/boiling-point-vs-device-note.md}}
 
-As with CBD, thermal release proceeds by vapor-pressure-driven evaporation after any acid-form material has decarboxylated.
+As with CBD, thermal release from a plant matrix may involve vapor-pressure-driven evaporation after any acid-form material has decarboxylated, but CBDV-specific release and degradation data are unresolved. The thermodynamic boiling point of the pure compound is not a device setpoint or a sample temperature; the device setpoint and actual sample temperature must be measured separately.
 
 ## Cannabis occurrence
 

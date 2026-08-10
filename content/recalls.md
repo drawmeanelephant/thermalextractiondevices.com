@@ -4,7 +4,7 @@ title: "Recalls"
 status: published
 tags: ["recall", "california", "safety"]
 relations: []
-summary: "California cannabis recall notices: 181 records indexed from the DCC recalls portal (latest 8/3/2026)."
+summary: "Dated California cannabis recall index sourced from the DCC recalls portal."
 ---
 
 # Recalls
@@ -13,8 +13,9 @@ summary: "California cannabis recall notices: 181 records indexed from the DCC r
 > Source data are entered by licensees and may later be corrected or revised by the Department of Cannabis Control (DCC).
 
 This collection indexes cannabis recall notices published by the California
-Department of Cannabis Control. 181 notices are listed from the official
-[recalls portal](https://recalls.cannabis.ca.gov/recalls) as of 2026-08-04.
+Department of Cannabis Control. The full official index below is a dated
+snapshot from the [recalls portal](https://recalls.cannabis.ca.gov/recalls) as
+of 2026-08-04.
 
 ## Archive Records
 

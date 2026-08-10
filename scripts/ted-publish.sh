@@ -19,7 +19,7 @@ fi
 mkdir -p "$PUBLISH_DIR"
 
 echo "==> Exporting Thermal Extraction Devices publishing artifacts to $PUBLISH_DIR"
-python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl
+python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl --all-state-maps
 
 "$BORIS_BIN" --input "$CONTENT_DIR" --theme "$THEME" --html-dir "$PUBLISH_DIR/site" --sitemap --site-url "$SITE_URL" --jobs "$BORIS_JOBS" --quiet
 "$BORIS_BIN" --input "$CONTENT_DIR" --out "$PUBLISH_DIR/ir" --quiet
