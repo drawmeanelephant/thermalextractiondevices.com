@@ -31,6 +31,17 @@ Run the complete local validation gate:
 ./bin/validate_graph.sh
 ```
 
+Prove that two production builds from the current source and pinned Boris
+toolchain contain exactly the same paths and bytes:
+
+```sh
+python3 scripts/check_reproducible_build.py
+```
+
+The checker writes its JSON evidence and build logs under the ignored
+`dist/reproducibility/` directory. A monthly and manually dispatchable GitHub
+workflow runs the same check without doubling every pull-request build.
+
 Run the blocking offline test suites used by CI:
 
 ```sh
