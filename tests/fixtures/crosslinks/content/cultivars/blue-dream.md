@@ -4,7 +4,7 @@ title: "Blue Dream Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar"]
-relations: [relates_to=terpenes/TTRP-0005]
+relations: []
 summary: Fixture cultivar page for crosslink tests.
 ---
 

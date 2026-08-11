@@ -12,6 +12,9 @@ RAG_SPLIT_SIZE=${RAG_SPLIT_SIZE:-131072}
 RAG_BUNDLE_DIR=${RAG_BUNDLE_DIR:-$PUBLISH_DIR/rag-bundle}
 RAG_COMPLETE_DIR=${RAG_COMPLETE_DIR:-$PUBLISH_DIR/rag-complete}
 RAG_BUNDLE_NAME=${RAG_BUNDLE_NAME:-thermal-extraction-devices}
+RAG_RESOLVED_DIR=${RAG_RESOLVED_DIR:-$PUBLISH_DIR/rag-resolved}
+RAG_RESOLVED_BUNDLE_DIR=${RAG_RESOLVED_BUNDLE_DIR:-$PUBLISH_DIR/rag-resolved-bundle}
+RAG_RESOLVED_BUNDLE_NAME=${RAG_RESOLVED_BUNDLE_NAME:-${RAG_BUNDLE_NAME}-resolved}
 
 cd "$ROOT"
 
@@ -28,10 +31,20 @@ python3 scripts/ted_ids.py --root "$CONTENT_DIR" --map metadata/id-map.jsonl --a
 "$BORIS_BIN" --input "$CONTENT_DIR" --theme "$THEME" --html-dir "$PUBLISH_DIR/site" --sitemap --site-url "$SITE_URL" --jobs "$BORIS_JOBS" --quiet
 "$BORIS_BIN" --input "$CONTENT_DIR" --out "$PUBLISH_DIR/ir" --quiet
 "$BORIS_BIN" --input "$CONTENT_DIR" --rag-dir "$PUBLISH_DIR/rag" --split-size "$RAG_SPLIT_SIZE" --quiet
+python3 scripts/audit_rag_includes.py --content "$CONTENT_DIR"
 python3 scripts/name_rag_bundle.py \
   --input "$PUBLISH_DIR/rag" \
   --output "$RAG_BUNDLE_DIR" \
   --name "$RAG_BUNDLE_NAME"
+python3 scripts/resolve_rag_includes.py \
+  --input "$PUBLISH_DIR/rag" \
+  --output "$RAG_RESOLVED_DIR" \
+  --content "$CONTENT_DIR"
+python3 scripts/audit_rag_includes.py --export "$RAG_RESOLVED_DIR"
+python3 scripts/name_rag_bundle.py \
+  --input "$RAG_RESOLVED_DIR" \
+  --output "$RAG_RESOLVED_BUNDLE_DIR" \
+  --name "$RAG_RESOLVED_BUNDLE_NAME"
 "$BORIS_BIN" --input "$CONTENT_DIR" --rag --complete --rag-dir "$RAG_COMPLETE_DIR" --quiet
 "$BORIS_BIN" --input "$CONTENT_DIR" --context-dir "$PUBLISH_DIR/context" --split-size "$RAG_SPLIT_SIZE" --quiet
 
@@ -48,7 +61,9 @@ site/      Public HTML site.
 llms.txt   Public crawler/discovery index.
 context/   Provenance-rich bundle for LLM context uploads.
 rag/       Canonical Boris working-context RAG export + sidecar manifest.
-rag-bundle/ Semantically named upload-ready working-context .md packs.
+rag-bundle/ Semantically named raw Boris working-context .md packs.
+rag-resolved/ Derived working-context packs with content/includes expanded.
+rag-resolved-bundle/ Semantically named resolved RAG packs for upload.
 rag-complete/ Full Boris RAG corpus with pages, graph, and catalog.
 ir/        Machine-readable graph and reverse-index artifacts.
 claims.jsonl  Cultivar identity claim registry (machine-readable, provenance-annotated).

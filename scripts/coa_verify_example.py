@@ -100,6 +100,7 @@ COMPOUND_IDS = {
     "CBGA": "cannabinoids/TCBN-0006",
     "THCA": "cannabinoids/TCBN-0007",
     "THCV": "cannabinoids/TCBN-0008",
+    "Δ9-THC": "cannabinoids/TCBN-0009",
     "Pyrethrins": "contaminants/TCNT-0001",
     "Aflatoxin B1": "contaminants/TCNT-0002",
     "Ochratoxin A": "contaminants/TCNT-0003",
@@ -312,6 +313,7 @@ def render_page(rec: CoaRecord) -> str:
         "cannabinoids/TCBN-0006": "cannabinoids/cbga.md",
         "cannabinoids/TCBN-0007": "cannabinoids/thca.md",
         "cannabinoids/TCBN-0008": "cannabinoids/thcv.md",
+        "cannabinoids/TCBN-0009": "cannabinoids/d9-thc.md",
         "contaminants/TCNT-0001": "contaminants/TCNT-0001.md",
         "contaminants/TCNT-0002": "contaminants/TCNT-0002.md",
         "contaminants/TCNT-0003": "contaminants/TCNT-0003.md",
@@ -372,7 +374,7 @@ title: "Verified COA: Dragonberry 750ml (10mg) — Batch 250410-37-002 (Infinite
 parent: lab-results
 status: published
 tags: ["lab-results", "coa", "verified", "california", "edible"]
-relations: [relates_to=products/TPRD-0002, relates_to=testing-laboratories/TSTL-0006, relates_to=organizations/TORG-0006, relates_to=jurisdictions/TJUR-0001, relates_to=cannabinoids/TCBN-0002, relates_to=cannabinoids/TCBN-0003, relates_to=cannabinoids/TCBN-0004, relates_to=cannabinoids/TCBN-0005, relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0007, relates_to=cannabinoids/TCBN-0008, relates_to=contaminants/TCNT-0002, relates_to=contaminants/TCNT-0003, relates_to=contaminants/TCNT-0005, relates_to=contaminants/TCNT-0006, relates_to=contaminants/TCNT-0007]
+relations: [relates_to=products/TPRD-0002, relates_to=testing-laboratories/TSTL-0006, relates_to=jurisdictions/TJUR-0001, relates_to=cannabinoids/TCBN-0002, relates_to=cannabinoids/TCBN-0003, relates_to=cannabinoids/TCBN-0004, relates_to=cannabinoids/TCBN-0005, relates_to=cannabinoids/TCBN-0006, relates_to=cannabinoids/TCBN-0007, relates_to=cannabinoids/TCBN-0008, relates_to=cannabinoids/TCBN-0009, relates_to=contaminants/TCNT-0002, relates_to=contaminants/TCNT-0003, relates_to=contaminants/TCNT-0005, relates_to=contaminants/TCNT-0006, relates_to=contaminants/TCNT-0007]
 summary: Verified certificate of analysis (Infinite Chemical Analysis Labs, CA) for Powered By Plants Dragonberry 750ml (10mg) edible liquid, batch 250410-37-002, with provenance.
 ---
 

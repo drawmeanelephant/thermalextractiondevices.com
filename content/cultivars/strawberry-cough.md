@@ -4,7 +4,7 @@ title: "Strawberry Cough Cultivar Overview"
 parent: cultivars
 status: published
 tags: ["cultivar", "sativa-dominant", "dutch-passion", "kyle-kushman", "genetics"]
-relations: [relates_to=terpenes/TTRP-0005, relates_to=terpenes/TTRP-0007, relates_to=terpenes/TTRP-0004, relates_to=reference/TREF-0002]
+relations: [relates_to=reference/TREF-0002]
 summary: Overview of the Strawberry Cough genetic lineage popularized by Kyle Kushman and Dutch Passion.
 ---
 

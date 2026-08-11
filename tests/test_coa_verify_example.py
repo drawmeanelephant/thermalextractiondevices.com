@@ -54,6 +54,15 @@ class CoaVerifyExampleTest(unittest.TestCase):
         self.assertEqual(len(calc), 3)  # Total THC, Total CBD, Total Cannabinoids
         self.assertTrue(all("0.877" in f for f in (m.calculation_formula for m in calc)))
 
+    def test_delta_9_thc_maps_to_canonical_cannabinoid_and_page_relation(self):
+        rec = record()
+        d9 = next(m for m in rec.measurements if m.compound_name == "Δ9-THC")
+        self.assertEqual(d9.compound_id, "cannabinoids/TCBN-0009")
+
+        page = render_page(rec)
+        self.assertIn("relates_to=cannabinoids/TCBN-0009", page)
+        self.assertIn("[Δ9-THC](../cannabinoids/d9-thc.md)", page)
+
     def test_rendered_page_is_boris_safe_and_under_relation_cap(self):
         page = render_page(record())
         self.assertIn("lab-results/TLAB-0002", page)

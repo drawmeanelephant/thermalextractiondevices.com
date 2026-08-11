@@ -5,7 +5,7 @@ parent: jurisdictions
 status: published
 tags: ["jurisdiction", "washington", "united-states", "regulatory"]
 relations: []
-summary: "Jurisdiction profile for the State of Washington: adult-use and medical programs under the LCB, rich dated XLSX lists, no public per-batch chemistry, and a statutory restriction on commercial use of records."
+summary: "Jurisdiction profile for the State of Washington: adult-use and medical programs under the LCB, rich dated XLSX lists, no public per-batch chemistry, and an archive-only caution around commercial-use requests for certain public-record lists."
 ---
 
 # Washington (Jurisdiction Profile)
@@ -34,7 +34,7 @@ summary: "Jurisdiction profile for the State of Washington: adult-use and medica
 
 ## Regulatory Overview
 
-Washington legalized adult use under Initiative 502 (2012), with retail sales from July 2014, regulated by the Liquor and Cannabis Board. The LCB publishes dated XLSX lists (license applicants, approved testing labs, sales activity, enforcement, compliance checks) with history back to FY2015. No public per-batch chemistry is published. **RCW 42.56.070(8) states LCB records may not be used for commercial purposes** — a legal gate before any derived publication.
+Washington legalized adult use under Initiative 502 (2012), with retail sales from July 2014, regulated by the Liquor and Cannabis Board. The LCB publishes dated XLSX lists (license applicants, approved testing labs, sales activity, enforcement, compliance checks) with history back to FY2015. No public per-batch chemistry is published. **RCW 42.56.070(8) addresses requests for lists of individuals for commercial purposes, so this archive treats Washington list ingestion as legally sensitive and archive-only until the publication posture is cleared.**
 
 ## Data Surface
 
@@ -55,7 +55,7 @@ Washington legalized adult use under Initiative 502 (2012), with retail sales fr
 ## Data-Ingestion Notes
 
 - Richest license/lab/enforcement/sales **lists** (FY2015+ history) but XLSX-only, no API, no public results.
-- **Legal gate**: RCW 42.56.070(8) — records "may not be used for commercial purposes"; rank WA ingest as archive-only until cleared.
+- **Legal gate**: RCW 42.56.070(8) is narrower than a blanket ban on all public records, but it does restrict commercial-purpose requests for certain lists of individuals; keep WA handling archive-only until publication use is cleared.
 
 ## Sources & Provenance
 
