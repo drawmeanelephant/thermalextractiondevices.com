@@ -8,7 +8,7 @@ allowed in git, and where large raw datasets should be stored instead.
 | Artifact | Path | Tracked in git? | Notes |
 | --- | --- | --- | --- |
 | Rendered site | `dist/cantilever/` | No (`dist/` ignored) | Deployed by Cloudflare Pages |
-| Publish bundle (site, `llms.txt`, context, working RAG, named RAG uploads, complete RAG, IR) | `publish/` | No (`publish/` ignored) | Produced by `scripts/ted-publish.sh`; `rag/` is the canonical Boris working export, `rag-bundle/` contains semantically named upload packs, and `rag-complete/` contains the full-corpus tree |
+| Publish bundle (site, `llms.txt`, context, raw/resolved RAG, named RAG uploads, complete RAG, IR) | `publish/` | No (`publish/` ignored) | Produced by `scripts/ted-publish.sh`; `rag/` is the canonical raw Boris working export, `rag-bundle/` is its semantically named copy, `rag-resolved/` expands validated `content/includes/` bodies into a derived working export, `rag-resolved-bundle/` is the resolved upload handoff, and `rag-complete/` remains the raw full-corpus tree |
 | Local preview output | `dist/preview/` (or `DIST_DIR`) | No | `./preview.sh` |
 | Boris compiler binary + manifest | `bin/boris`, `bin/boris.json` | No (`bin/boris*` ignored) | Built by CI from the Boris source and placed in `bin/`; binary is ~9 MiB |
 | Zig toolchain + caches | `.tools/` | No (`.tools/` ignored) | Compiler downloads and build cache |

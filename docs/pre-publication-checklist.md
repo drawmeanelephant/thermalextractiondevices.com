@@ -7,9 +7,10 @@ the mechanical parts, but human sign-off is required on judgment items.
 
 ## 0. Blockers — resolve before anything else
 
-- [ ] **[BLOCKER] Licensing decision made.** Choose and commit a real license
-      (see `LICENSE.md`). The repository is currently unlicensed (all rights
-      reserved by default).
+- [x] **[BLOCKER] Licensing decision recorded.** `LICENSE.md` records an
+      all-rights-reserved notice and the limited GitHub viewing/forking context.
+      Maintainers should confirm that proprietary terms remain intentional
+      before any release announcement.
 - [ ] **[BLOCKER] Private security reporting is enabled and tested.** Confirm
       the repository's GitHub Security-tab private advisory flow is available;
       `SECURITY.md` intentionally does not invent a mailbox or response SLA.

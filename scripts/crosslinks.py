@@ -1518,6 +1518,12 @@ def _validate_edge_type(edge: Edge, graph: CrosslinkGraph) -> Optional[str]:
                 f"{edge.to_id} must run product/cultivar -> compound"
             )
         return None
+    if edge.kind == "relates_to" and from_role == "cultivar" and to_role == "compound":
+        return (
+            f"CXL-03: direct semantic edge {edge.from_id} --{edge.kind}--> "
+            f"{edge.to_id} cannot connect a cultivar directly to a compound; "
+            "cultivar chemistry must be derived from reports"
+        )
     if edge.kind in ("reported_in_cultivars", "reported_in_products"):
         if from_role != "compound":
             return (

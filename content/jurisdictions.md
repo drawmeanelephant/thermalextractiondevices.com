@@ -56,7 +56,7 @@ Satellite records in this collection follow the form identifier schema `jurisdic
 | Nebraska | [profile](jurisdictions/nebraska.md) | No | Implementing | No | C |
 | Nevada | [profile](jurisdictions/nevada.md) | Yes | Yes | Yes | A |
 | New Hampshire | [profile](jurisdictions/new-hampshire.md) | No | Yes | No | C |
-| New Jersey | [profile](jurisdictions/new-jersey.md) | Yes | Yes | Yes | C |
+| New Jersey | [profile](jurisdictions/new-jersey.md) | Yes | Yes | No | C |
 | New Mexico | [profile](jurisdictions/new-mexico.md) | Yes | Yes | Yes | B |
 | New York | [profile](jurisdictions/new-york.md) | Yes | Yes | Yes | A |
 | North Carolina | [profile](jurisdictions/north-carolina.md) | No | No | No | C |

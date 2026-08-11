@@ -203,6 +203,48 @@ class TestReverseRelations(unittest.TestCase):
             self.assertEqual(edge.edge_class, "derived")
 
 
+class TestValidationRules(unittest.TestCase):
+    def test_direct_cultivar_to_compound_relation_is_rejected(self):
+        entities = {
+            "cultivars/TCUL-0001": Entity(
+                id="cultivars/TCUL-0001",
+                title="Fixture Cultivar",
+                source="cultivars/fixture.md",
+                collection="cultivars",
+                parent="cultivars",
+                role="satellite",
+            ),
+            "terpenes/TTRP-0001": Entity(
+                id="terpenes/TTRP-0001",
+                title="Fixture Terpene",
+                source="terpenes/fixture.md",
+                collection="terpenes",
+                parent="terpenes",
+                role="satellite",
+            ),
+        }
+        graph = CrosslinkGraph(
+            entities=entities,
+            edges=[
+                Edge(
+                    from_id="cultivars/TCUL-0001",
+                    to_id="terpenes/TTRP-0001",
+                    kind="relates_to",
+                    edge_class="direct",
+                )
+            ],
+        )
+
+        problems = validate_graph(graph, FIXTURES / "content")
+        self.assertTrue(
+            any(
+                "cannot connect a cultivar directly to a compound" in problem
+                for problem in problems
+            ),
+            problems,
+        )
+
+
 class TestDeterminism(unittest.TestCase):
     def test_export_json_is_stable(self):
         graph = build_fixture_graph()
