@@ -109,8 +109,13 @@ from scripts.ingest.validation import collect_entity_ids  # noqa: E402
 # Vocabulary
 # ---------------------------------------------------------------------------
 
-# Boris's closed semantic-relation vocabulary (frontmatter `relations:`).
-DIRECT_RELATION_KINDS = frozenset({"relates_to", "implements", "depends_on", "supersedes"})
+# Boris's semantic-relation kind grammar. Since Boris eb49644 (BORIS-03) the
+# vocabulary is OPEN: any `[a-z][a-z0-9_]{0,63}` token is accepted, so this
+# repository no longer maintains a competing allowlist that would reject
+# edges Boris itself compiles. The four historical kinds are retained only as
+# documentation of the original closed set.
+DIRECT_RELATION_KIND_RE = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
+CORE_RELATION_KINDS = frozenset({"relates_to", "implements", "depends_on", "supersedes"})
 
 # Claim kinds that form entity-to-entity edges in the derived navigation.
 CLAIM_ENTITY_KINDS = frozenset({
@@ -333,10 +338,10 @@ def parse_frontmatter_relations(text: str, source: str) -> list[tuple[str, str, 
                 "expected kind=entity-id"
             )
         kind, target = entry.groups()
-        if kind not in DIRECT_RELATION_KINDS:
+        if not DIRECT_RELATION_KIND_RE.match(kind):
             raise ValueError(
-                f"{source}: unknown relation kind {kind!r}; allowed: "
-                + ", ".join(sorted(DIRECT_RELATION_KINDS))
+                f"{source}: relation kind {kind!r} does not match Boris's "
+                "grammar [a-z][a-z0-9_]{0,63}"
             )
         relations.append((from_id, target, kind))
     return relations
@@ -1434,10 +1439,11 @@ def validate_graph(graph: CrosslinkGraph, content_root: Path) -> list[str]:
         seen.add(key)
 
     for edge in graph.edges:
-        if edge.edge_class == "direct" and edge.kind not in DIRECT_RELATION_KINDS:
+        if edge.edge_class == "direct" and not DIRECT_RELATION_KIND_RE.match(edge.kind):
             problems.append(
                 f"CXL-05: edge {edge.from_id} --{edge.kind}--> {edge.to_id} is "
-                "classified direct but is not a frontmatter relation kind"
+                "classified direct but its kind does not match Boris's "
+                "relation-kind grammar [a-z][a-z0-9_]{0,63}"
             )
         if edge.edge_class == "derived" and not edge.trace:
             problems.append(

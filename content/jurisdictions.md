@@ -106,6 +106,7 @@ Satellite records in this collection follow the form identifier schema `jurisdic
 | Canada | CA | [profile](jurisdictions/canada.md) | Federally legal adult use; provincial retail |
 | Colombia | CO | [profile](jurisdictions/colombia.md) | Medical (2016); personal dose not criminalized |
 | Czechia | CZ | [profile](jurisdictions/czechia.md) | Personal possession/cultivation legal 2026; no sales |
+| Denmark | DK | [profile](jurisdictions/denmark.md) | Permanent medical scheme from 2026 (LOV 439/2025); no adult use |
 | Germany | DE | [profile](jurisdictions/germany.md) | CanG 2024: possession/cultivation/associations; medical |
 | Israel | IL | [profile](jurisdictions/israel.md) | Large medical program; possession decriminalized in practice |
 | Luxembourg | LU | [profile](jurisdictions/luxembourg.md) | Personal possession/cultivation (2023); no sales |
