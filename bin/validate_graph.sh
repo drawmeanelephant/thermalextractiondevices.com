@@ -37,13 +37,13 @@ trap 'rm -f "$CHECK_REPORT"' EXIT
 if "$BORIS_BIN" check --input "$CONTENT_DIR" --format json 2>"$CHECK_REPORT"; then
   echo "✅ Boris graph diagnostics passed"
 else
-  unexpected=$(jq -r '[.findings[]? | select(.code != "unreferenced_page")] | length' "$CHECK_REPORT")
-  if [[ "$unexpected" -ne 0 ]]; then
-    echo "❌ Boris graph diagnostics found $unexpected unexpected finding(s)" >&2
-    cat "$CHECK_REPORT" >&2
-    exit 1
-  fi
-  echo "⚠️ Boris reported baseline diagnostics; parent edges remain valid."
+  # Boris >= eb49644 (BORIS-08) makes `unreferenced_page` informational by
+  # default, so a non-zero exit here is a real failure. The former filter
+  # that tolerated those findings is gone; use `--fail-on-unreferenced`
+  # for a deliberate strict audit instead.
+  echo "❌ Boris graph diagnostics failed" >&2
+  cat "$CHECK_REPORT" >&2
+  exit 1
 fi
 
 echo "==> Compiling primary Cantilever publication"
