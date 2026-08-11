@@ -131,6 +131,7 @@ partial, N = no / not operational / none located, — = not applicable.
 | [Canada](../content/jurisdictions/canada.md) | Federally legal adult use; provincial retail | Health Canada | 6-country deepened set |
 | [Colombia](../content/jurisdictions/colombia.md) | Medical (2016); personal dose not criminalized | INVIMA/ICA/FNE | baseline |
 | [Czechia](../content/jurisdictions/czechia.md) | Personal possession/cultivation legal 2026; no sales | MoH; SUKL | baseline |
+| [Denmark](../content/jurisdictions/denmark.md) | Permanent medical scheme from 1 Jan 2026 (LOV 439/2025); no adult use | Lægemiddelstyrelsen (DMA) | baseline |
 | [Germany](../content/jurisdictions/germany.md) | CanG 2024: possession/cultivation/associations; medical | BMG; BfArM | 6-country deepened set |
 | [Israel](../content/jurisdictions/israel.md) | Large medical program; possession decriminalized in practice | MoH Medical Cannabis Unit | baseline |
 | [Luxembourg](../content/jurisdictions/luxembourg.md) | Personal possession/cultivation (2023); no sales | Justice MoJ | baseline |
