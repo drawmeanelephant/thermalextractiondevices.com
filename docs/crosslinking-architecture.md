@@ -62,6 +62,17 @@ and never silently upgraded:
 | `identity_claim` | A claim-registry edge with an entity object | claim registry `object_is_entity: true` | a factual assertion — it stays "X claims Y" |
 | `derived` | Reverse navigation or multi-hop projection with an evidence trace | computed from the forward classes | primary evidence — always carries `trace` and renders with its source class |
 
+### `supersedes` does not mean "discontinued"
+
+The Boris `supersedes` relation records a documented product-line or design
+successor. It does **not** assert that the earlier device is unavailable,
+recalled, or no longer supported: both records may correctly have
+`status: published` and describe products that remain present in a source
+catalog or secondary market. Availability and lifecycle state belong in the
+record's dated prose and controlled tags, not in the relation kind. A
+`supersedes` edge therefore requires source-backed lineage or replacement
+wording, but never serves as an availability claim by itself.
+
 The invariant enforced by validation: a `derived` edge is never emitted as a
 primary factual assertion, and no `derived` edge exists without an evidence
 trace.
