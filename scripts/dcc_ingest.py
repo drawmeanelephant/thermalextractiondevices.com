@@ -1358,16 +1358,12 @@ def verify_content(repo_root: Path, boris_bin: str) -> bool:
         ok = False
     code, out = run([boris_bin, "check", "--input", "content", "--format", "json"], repo_root)
     if code != 0:
-        # Mirror bin/validate_graph.sh: tolerate baseline unreferenced_page findings.
-        try:
-            report = json.loads(out[out.index("{"):])
-            findings = report.get("findings", [])
-            unexpected = [f for f in findings if f.get("code") != "unreferenced_page"]
-        except (ValueError, json.JSONDecodeError):
-            unexpected = [{"code": "unparseable", "detail": out[:300]}]
-        if unexpected:
-            guard(False, f"boris check unexpected findings:\n{unexpected[:5]}")
-            ok = False
+        # Boris >= eb49644 (BORIS-08) treats `unreferenced_page` as informational
+        # by default, so a non-zero exit is a real failure. This previously
+        # re-implemented bin/validate_graph.sh's tolerate-baseline filter; both
+        # copies are now retired. Use `--fail-on-unreferenced` for a strict audit.
+        guard(False, f"boris check failed:\n{out[:800]}")
+        ok = False
     return ok
 
 
