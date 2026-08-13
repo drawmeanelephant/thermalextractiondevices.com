@@ -65,7 +65,7 @@ Woody aromatics of guaiacwood used in traditional medicine and perfumery.
 
 ## Cannabis laboratory results
 
-Quantitative flower data are scarce. A high-CBD full-spectrum extract was reported to contain guaiol at ~10% of its terpene fraction, with γ-curcumene dominant [^5]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Quantitative flower data are scarce. A high-CBD full-spectrum extract was reported to contain guaiol at ≈10% of its terpene fraction, with γ-curcumene dominant [^5]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 

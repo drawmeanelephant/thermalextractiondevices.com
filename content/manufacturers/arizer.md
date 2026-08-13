@@ -38,11 +38,14 @@ summary: Canadian hardware manufacturer known for glass pod stem systems and con
 
 ## Product Safety Recalls
 
-- **Solo II (2025)**: CPSC recall (September 18, 2025; ~5,460 US units, ~2,820 in Canada) — internal lithium-ion battery can overheat, produce smoke, and/or eject material, posing fire and burn hazards; affected units have serial numbers beginning with "M2". Consumers were offered a free Solo II MAX replacement [^4].
-- **Solo III (2026)**: CPSC recall (June 18, 2026; ~5,000 units, Intergalactic/Black color only) — internal lithium-ion battery can explode or ignite, posing fire and burn hazards; affected serial prefixes M3B1G5, M3F4G6, M35C43, M3PN54, M3SR42, M38G53, M3G576, M3C121. Consumers were offered a free Solo III V2 replacement [^5].
+- **Solo II (2025)**: CPSC recall (September 18, 2025; ≈5,460 US units, ≈2,820 in Canada) — internal lithium-ion battery can overheat, produce smoke, and/or eject material, posing fire and burn hazards; affected units have serial numbers beginning with "M2". Consumers were offered a free Solo II MAX replacement [^4].
+- **Solo III (2026)**: CPSC recall (June 18, 2026; ≈5,000 units, Intergalactic/Black color only) — internal lithium-ion battery can explode or ignite, posing fire and burn hazards; affected serial prefixes M3B1G5, M3F4G6, M35C43, M3PN54, M3SR42, M38G53, M3G576, M3C121. Consumers were offered a free Solo III V2 replacement [^5].
 
-> [!NOTE]
-> Both recalls involve the internal lithium-ion battery and the importer's remedy (replacement unit plus disposal instructions). These are device-level safety events documented by regulators; they do not alter the manufacturer's heating-element warranty terms.
+<Aside kind="note">
+
+Both recalls involve the internal lithium-ion battery and the importer's remedy (replacement unit plus disposal instructions). These are device-level safety events documented by regulators; they do not alter the manufacturer's heating-element warranty terms.
+
+</Aside>
 
 ## Sources
 

@@ -28,5 +28,8 @@ This product record demonstrates the archive's producer-product format. The prod
 - **Genetic Lineage**: [Blue Dream Cultivar Record](../cultivars/blue-dream.md)
 - **Batch Laboratory Report**: [Sample Batch 123 COA (demonstration)](../lab-results/example-producer-blue-dream-batch-123.md)
 
-> [!IMPORTANT]
-> No verified (non-demonstration) Certificate of Analysis is attached to this product record. Batch-level chemical values must be checked against an actual linked COA for any real product.
+<Aside kind="info">
+
+No verified (non-demonstration) Certificate of Analysis is attached to this product record. Batch-level chemical values must be checked against an actual linked COA for any real product.
+
+</Aside>

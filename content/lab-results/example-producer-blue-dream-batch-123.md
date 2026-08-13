@@ -14,11 +14,14 @@ summary: Illustrative sample certificate of analysis record (demonstration) show
 
 {{include includes/unavailable-report-disclosure.md}}
 
-> [!WARNING]
-> **DEMONSTRATION / SYNTHETIC DATA.** This record is a synthetic fixture built to exercise the archive's COA data model
-> (see `docs/coa-data-model.md` in the repository root). The laboratory name, producer, batch identifier, cultivar
-> claim, and every quantitative value below are **illustrative sample placeholders** — they are not a verified laboratory
-> report and must never be presented as real evidence for any product, batch, or cultivar.
+<Aside kind="warning">
+
+**DEMONSTRATION / SYNTHETIC DATA.** This record is a synthetic fixture built to exercise the archive's COA data model
+(see `docs/coa-data-model.md` in the repository root). The laboratory name, producer, batch identifier, cultivar
+claim, and every quantitative value below are **illustrative sample placeholders** — they are not a verified laboratory
+report and must never be presented as real evidence for any product, batch, or cultivar.
+
+</Aside>
 
 ## Certificate Header
 
@@ -70,8 +73,11 @@ chemical compound.
 | CBGA | 8.1 mg/g | 0.81 % |
 | Total Potential THC (calculated) | 217.4 mg/g (Decarb Equivalent) | 21.74 % |
 
-> [!NOTE]
-> **Measured vs calculated.** THCA, Δ9-THC, and CBGA are reported as individually measured values. The "Total Potential THC (calculated)" row uses the decarboxylation conversion formula Δ9-THC + (THCA × 0.877), i.e. 5.2 + (242.0 × 0.877) = 217.4 mg/g. It estimates potential THC after thermal decarboxylation; it is not total cannabinoids and is not a directly measured compound. The model retains the formula alongside the row; acid and neutral cannabinoids (THCA vs Δ9-THC) are never collapsed into one value.
+<Aside kind="note">
+
+**Measured vs calculated.** THCA, Δ9-THC, and CBGA are reported as individually measured values. The "Total Potential THC (calculated)" row uses the decarboxylation conversion formula Δ9-THC + (THCA × 0.877), i.e. 5.2 + (242.0 × 0.877) = 217.4 mg/g. It estimates potential THC after thermal decarboxylation; it is not total cannabinoids and is not a directly measured compound. The model retains the formula alongside the row; acid and neutral cannabinoids (THCA vs Δ9-THC) are never collapsed into one value.
+
+</Aside>
 
 ## Contaminant & Pesticide Panel (sample)
 
@@ -82,10 +88,13 @@ chemical compound.
 | Bifenthrin | *(blank)* | **Missing** | Analyte listed in the source panel excerpt but the result field is blank; recorded as `missing` |
 | Spinosad | — | **Not Tested** | Absent from this panel; recorded as `not_tested` — absence of a result is not evidence of absence |
 
-> [!IMPORTANT]
-> **Qualifier semantics (demonstration).** `ND`, `<LOQ`, blank, `0.0`, and "not tested" are five different facts. None
-> of them may be converted to zero, and a missing analyte is never inferred to be "not detected". This panel exercises
-> those distinctions exactly as the model's result states (`nd`, `below_loq`, `missing`, `not_tested`) define them.
+<Aside kind="info">
+
+**Qualifier semantics (demonstration).** `ND`, `<LOQ`, blank, `0.0`, and "not tested" are five different facts. None
+of them may be converted to zero, and a missing analyte is never inferred to be "not detected". This panel exercises
+those distinctions exactly as the model's result states (`nd`, `below_loq`, `missing`, `not_tested`) define them.
+
+</Aside>
 
 ## Source / Provenance (Placeholder)
 

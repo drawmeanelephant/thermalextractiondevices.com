@@ -29,7 +29,7 @@ summary: Los Angeles–based hardware brand (founded 2013) producing 510 batteri
 ## Engineering & Architecture
 
 - **Primary Heating Methods**: Ceramic convection oven (H2FLO); hybrid conduction/convection (LIFT); conductive 510 atomizers and ceramic slab / dual-quartz coils (STiK, CTRL 2.0) — per manufacturer product pages. [^2]
-- **Power Sources**: Internal lithium-ion batteries; the CTRL 2.0 uses USB-C fast charging with a manufacturer-stated ~40-minute charge time. [^2]
+- **Power Sources**: Internal lithium-ion batteries; the CTRL 2.0 uses USB-C fast charging with a manufacturer-stated ≈40-minute charge time. [^2]
 - **Warranty**: 1-year limited warranty (official warranty page). Some product pages carry a "10-year" claim; the official warranty page is treated as authoritative here, and the discrepancy is flagged. [^3]
 
 ## Repairability & Warranty Terms

@@ -12,13 +12,16 @@ summary: Cross-page index of the Cannabis Hardware device lineage — FlowerPot,
 
 Cannabis Hardware's desktop catalog is organized into three architectures: **FlowerPot** (wired heads driven by a 20 mm coil + PID), **ZenLeaf** (cordless wireless heads and 25 mm axial-coil base stations), and **Airstream** (integrated all-in-one). This guide maps the full lineage and links every modeled device to its `devices/TED-*` record, using the component roles defined in the [Device Architecture Taxonomy (TREF-0004)](../reference/TREF-0004.md), for which it is the reference application.
 
-> [!NOTE]
-> Every product in the manufacturer's two live collections has been classified. Models are
-> listed below with their record; SKUs that deliberately get no record are listed under
-> [Deliberately not modeled](#deliberately-not-modeled) with the rule that excludes them.
-> Dates are given as the manufacturer publishes them. Where the manufacturer publishes no
-> date, the archive gives the earliest and latest observed listing instead of an invented
-> release date, and says so.
+<Aside kind="note">
+
+Every product in the manufacturer's two live collections has been classified. Models are
+listed below with their record; SKUs that deliberately get no record are listed under
+[Deliberately not modeled](#deliberately-not-modeled) with the rule that excludes them.
+Dates are given as the manufacturer publishes them. Where the manufacturer publishes no
+date, the archive gives the earliest and latest observed listing instead of an invented
+release date, and says so.
+
+</Aside>
 
 ## Lineage tree
 
@@ -31,7 +34,7 @@ Cannabis Hardware (2009–present; formerly NewVape)
 │   │   └─ Vrod — titanium diffuser + 28 mm dish → TED-0038
 │   ├─ B-rod Mod (c. 2021) — COMMUNITY mod (Vrod filled with rubies); not a CH product
 │   ├─ Ball-vape generations
-│   │   ├─ Baller (gen 1, 2021-08) — hollowed Vrod diffuser, ~58–60 × 4 mm balls → TED-0039
+│   │   ├─ Baller (gen 1, 2021-08) — hollowed Vrod diffuser, ≈58–60 × 4 mm balls → TED-0039
 │   │   ├─ Screen Baller (gen 2, 2021-09) — screen-bottom diffuser (SKU 3408); COMPONENT, no record
 │   │   ├─ B2  (gen 3, by 2021-10, discontinued) — dual-use head + dish → TED-0028
 │   │   ├─ B1  (gen 3, head listed 2021-10) — high-airflow flower head → TED-0004

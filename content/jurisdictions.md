@@ -133,4 +133,4 @@ Every profile contains:
 2. **Current Framework** — separate dimensions for possession, commercial sales, medical access, home cultivation, and hemp where relevant. Frameworks are never collapsed into "legal"/"illegal".
 3. **Data Surface** — a table using `yes` / `partial` / `no public source located` / `unknown`, with the official source for each surface.
 4. **Sources & Provenance** — statutory framework with effective dates, regulator links, and retrieval date.
-5. **Last verified** — every page exposes its verification date; pages older than ~180 days are flagged for refresh by the maintenance queue.
+5. **Last verified** — every page exposes its verification date; pages older than ≈180 days are flagged for refresh by the maintenance queue.

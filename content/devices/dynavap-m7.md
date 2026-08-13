@@ -20,11 +20,11 @@ summary: Battery-free stainless steel mechanical thermal extraction device from 
 | Release Year | 2024 (with M7 XL) [^1] |
 | Heating Method | Conduction-dominant thermal mass storage with convection draw |
 | Operation Mode | On-Demand (analog, user-controlled) |
-| Temperature Control | Bimetallic disc Captive Cap with an audible "click"; **not** digital. DynaVap states the Captive Cap signals at ~240 °C ± 10 °C (~230–250 °C); the Low-Temp Cap signals at ~215 °C ± 10 °C (~205–220 °C) [^2] |
-| Bowl Capacity | ~0.1 g (Adjust-a-Bowl reduces to ~0.05 g) [^3] |
+| Temperature Control | Bimetallic disc Captive Cap with an audible "click"; **not** digital. DynaVap states the Captive Cap signals at ≈240 °C ± 10 °C (≈230–250 °C); the Low-Temp Cap signals at ≈215 °C ± 10 °C (≈205–220 °C) [^2] |
+| Bowl Capacity | ≈0.1 g (Adjust-a-Bowl reduces to ≈0.05 g) [^3] |
 | Airpath Materials | Stainless steel stem, tip, and condenser (per manufacturer). "Medical grade stainless steel" is DynaVap marketing language; DynaVap does not state the 316 grade on the M7 pages [^4] |
 | Power Source | External thermal input (butane torch or electromagnetic induction heater) |
-| Heat-Up Time | ~5–10 seconds (induction) / ~10–15 seconds (flame) — per DynaVap marketing |
+| Heat-Up Time | ≈5–10 seconds (induction) / ≈10–15 seconds (flame) — per DynaVap marketing |
 | Compatible Media | Dry botanical flower; concentrates via the [DynaCoil](https://www.dynavap.com/products/dynacoil) concentrate adapter |
 | Part Number | `VCM 853-73-15-00.f` (barcode 810086751556), per the manufacturer's own product data [^7] |
 | Form Factor | Handheld, pocket-sized, single-piece torch/induction-heated wand; not a modular ball-vape system — no separate heater-head/coil/PID/bowl components |

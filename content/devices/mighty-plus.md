@@ -29,14 +29,17 @@ summary: Portable hybrid conduction/convection thermal extractor from Storz & Bi
 | Chamber Surface | Ceramic-coated aluminum |
 | Cooling Unit / Airpath | PEEK cooling unit with a labyrinth-designed airpath (per manufacturer) [^4] |
 | Power Source | Two internal lithium-ion cells, 3300 mAh total (per manufacturer); "18650" cell format is reported by third parties, not stated officially [^5] |
-| Charging | USB-C with Power Delivery (5–15 V), max. power consumption ≈45 W; complies with IEC 60335 and EN 55011 (consumer electrical safety and EMC; distinct from the medical-device certification below); "Supercharge" reaches ~80 % in ~40 minutes; rated operating temperature 5 °C–35 °C (41 °F–95 °F) [^5]. Pass-through operation is supported with a sufficiently powerful USB-C supply (≥15 V @ 3 A): the batteries are bridged and the display shows "dct" to confirm pass-through charging, but the unit does not run directly on mains power without its batteries fitted — this archive does not tag `mains` alongside `battery` for that reason [^5] |
+| Charging | USB-C with Power Delivery (5–15 V), max. power consumption ≈45 W; complies with IEC 60335 and EN 55011 (consumer electrical safety and EMC; distinct from the medical-device certification below); "Supercharge" reaches ≈80 % in ≈40 minutes; rated operating temperature 5 °C–35 °C (41 °F–95 °F) [^5]. Pass-through operation is supported with a sufficiently powerful USB-C supply (≥15 V @ 3 A): the batteries are bridged and the display shows "dct" to confirm pass-through charging, but the unit does not run directly on mains power without its batteries fitted — this archive does not tag `mains` alongside `battery` for that reason [^5] |
 | Heat-Up Time | ≈60–70 seconds to 180 °C (per manufacturer) [^2] |
 | Compatible Media | Dry botanical flower; concentrates via stainless steel pad |
 
 ## Medical Device Status & Certification
 
-> [!IMPORTANT]
-> Only the **Mighty+ MEDIC** (and Volcano MEDIC 2) are certified medical devices, certified under the European Medical Device Regulation (EU MDR) by TÜV SÜD in July 2023 [^6]. The consumer **Mighty+** sold to the public is **not** a certified medical device; household units are subject to consumer appliance safety standards. Terms such as "medical grade" for materials are manufacturer marketing language unless a specific material standard is cited [^7].
+<Aside kind="info">
+
+Only the **Mighty+ MEDIC** (and Volcano MEDIC 2) are certified medical devices, certified under the European Medical Device Regulation (EU MDR) by TÜV SÜD in July 2023 [^6]. The consumer **Mighty+** sold to the public is **not** a certified medical device; household units are subject to consumer appliance safety standards. Terms such as "medical grade" for materials are manufacturer marketing language unless a specific material standard is cited [^7].
+
+</Aside>
 
 ## Safety Notes
 

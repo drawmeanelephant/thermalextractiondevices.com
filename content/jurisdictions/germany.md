@@ -36,11 +36,11 @@ summary: "Jurisdiction profile for Germany: Cannabis Act (CanG, 2024) legalizes 
 
 ## Regulatory Overview
 
-Germany's Cannabis Act (CanG) took effect April 1, 2024: possession and home cultivation were legalized, and non-commercial cultivation associations ("Anbauvereinigungen") began operating in July 2024. As of mid-2026, ~440–455 cultivation associations have been approved; the 2025 coalition agreement contained no specific repeal plan and the Act remains in force. Medical cannabis has been legal since 2017 and was removed from the Narcotics Act (BtMG) by the 2024 reform, with quality governed by pharmaceutical/GMP requirements.
+Germany's Cannabis Act (CanG) took effect April 1, 2024: possession and home cultivation were legalized, and non-commercial cultivation associations ("Anbauvereinigungen") began operating in July 2024. As of mid-2026, ≈440–455 cultivation associations have been approved; the 2025 coalition agreement contained no specific repeal plan and the Act remains in force. Medical cannabis has been legal since 2017 and was removed from the Narcotics Act (BtMG) by the 2024 reform, with quality governed by pharmaceutical/GMP requirements.
 
 ## Licensing Structure
 
-- **Cultivation associations**: non-commercial, member-based, licensed by state authorities; ~500 mature total (approx. 443–455 approved by mid-2026).
+- **Cultivation associations**: non-commercial, member-based, licensed by state authorities; ≈500 mature total (approx. 443–455 approved by mid-2026).
 - **Medical production**: licensed cultivation/manufacturing under GMP; BfArM registration of medical cannabis qualities.
 - No commercial adult-use retail licences exist.
 
@@ -75,7 +75,7 @@ Germany's Cannabis Act (CanG) took effect April 1, 2024: possession and home cul
 - **Statutory framework**: Cannabisgesetz (CanG), in force April 1, 2024; BtMG reform; AMG/GMP for medical products.
 - **Government**: BMG FAQ — https://www.bundesgesundheitsministerium.de/en/themen/cannabis/faq-cannabis-act
 - **Medical cannabis**: BfArM — https://www.bfarm.de/
-- **Association counts**: ~443–455 approved as of June 2026 (secondary reporting; verify against state authorities before reuse).
+- **Association counts**: ≈443–455 approved as of June 2026 (secondary reporting; verify against state authorities before reuse).
 - **Retrieval date**: 2026-08-09
 
 ## Graph Connections

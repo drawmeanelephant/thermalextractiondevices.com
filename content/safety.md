@@ -11,5 +11,8 @@ Source-supported safety guidance for thermal extraction devices, including handl
 
 Records follow the form identifier schema `safety/TSAFE-XXXX`.
 
-> [!NOTE]
-> No safety records have been published yet. This collection is reserved for manufacturer-verified safety documentation.
+<Aside kind="note">
+
+No safety records have been published yet. This collection is reserved for manufacturer-verified safety documentation.
+
+</Aside>

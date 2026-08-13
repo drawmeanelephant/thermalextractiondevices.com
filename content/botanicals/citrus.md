@@ -28,4 +28,4 @@ D-limonene extracted from cold-pressed citrus peel is widely utilized in natural
 
 ## Sources
 
-[^1]: The ~90–95% monoterpene figure for cold-pressed citrus peel oil is widely cited in essential-oil industry literature. The archive treats it as a reported industry figure; a specific primary measurement source should still be attached for this collection.
+[^1]: The ≈90–95% monoterpene figure for cold-pressed citrus peel oil is widely cited in essential-oil industry literature. The archive treats it as a reported industry figure; a specific primary measurement source should still be attached for this collection.

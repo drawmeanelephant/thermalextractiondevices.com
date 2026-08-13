@@ -1,2 +1,5 @@
-> [!IMPORTANT]
-> **Original report not linked.** The original laboratory report or Certificate of Analysis underlying this record has not been uploaded to the archive. Figures transcribed here cannot be independently re-checked until the original report is linked.
+<Aside kind="info">
+
+**Original report not linked.** The original laboratory report or Certificate of Analysis underlying this record has not been uploaded to the archive. Figures transcribed here cannot be independently re-checked until the original report is linked.
+
+</Aside>

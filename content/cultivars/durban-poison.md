@@ -42,5 +42,8 @@ The lineage and origin details above are first-party claims from the named breed
 
 - Dutch Passion, "Durban Poison" strain page: states the seeds "come originally from South Africa and were inbred over many years during the 70's" and describes the variety as a pure landrace sativa-dominant type. https://dutch-passion.us/cannabis-seeds/durban-poison (accessed 2026-08-08)
 
-> [!NOTE]
-> The specific import timeline and the role of individual breeders in bringing Durban Poison to the Netherlands are described differently across secondary and community accounts; only the first-party attribution above is relied on here.
+<Aside kind="note">
+
+The specific import timeline and the role of individual breeders in bringing Durban Poison to the Netherlands are described differently across secondary and community accounts; only the first-party attribution above is relied on here.
+
+</Aside>

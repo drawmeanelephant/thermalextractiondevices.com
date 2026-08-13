@@ -22,8 +22,11 @@ All satellite records in this collection follow the form identifier schema `cult
 
 - [[cultivars/TCUL-0001|Blue Dream]]
 
-> [!IMPORTANT]
-> The Blue Dream batch record attached to this archive is currently a **demonstration / sample record**, not a verified Certificate of Analysis. No cultivar currently has a verified batch COA attached.
+<Aside kind="info">
+
+The Blue Dream batch record attached to this archive is currently a **demonstration / sample record**, not a verified Certificate of Analysis. No cultivar currently has a verified batch COA attached.
+
+</Aside>
 
 ### Awaiting Product and COA Records
 

@@ -9,8 +9,13 @@ summary: "Dated California cannabis recall index sourced from the DCC recalls po
 
 # Recalls
 
-> [!WARNING] DCC data caveat
-> Source data are entered by licensees and may later be corrected or revised by the Department of Cannabis Control (DCC).
+<Aside kind="warning">
+
+**DCC data caveat**
+
+Source data are entered by licensees and may later be corrected or revised by the Department of Cannabis Control (DCC).
+
+</Aside>
 
 This collection indexes cannabis recall notices published by the California
 Department of Cannabis Control. The full official index below is a dated
