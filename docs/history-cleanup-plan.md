@@ -1,33 +1,34 @@
-# Git History Cleanup Plan (EXECUTED 2026-08-12)
+# Git History Cleanup Plan (EXECUTED 2026-08-12 — EXPOSURE NOT CLOSED)
 
-> **This plan was executed against `main` and force-pushed on 2026-08-12T18:04:56Z.**
-> The section below records the outcome. Everything from "When to execute this
-> plan" onward is the retained runbook, kept because the same procedure applies
-> if bulk or category-4 data is ever committed again.
+> **The rewrite ran and `main` is clean. The data is still downloadable.**
+> 43 of 44 `refs/pull/N/head` refs on GitHub still point at pre-rewrite history,
+> the repository is **public**, and an unauthenticated fetch of the purged
+> commit still returns the full 20.4 MiB licensee payload. Closing this needs
+> GitHub Support, not another local rewrite. See "What this does not fix".
 
 ## Outcome (verified 2026-08-13)
 
-The rewrite removed the California DCC bulk payloads from every commit that ever
-contained them. The originating commit `feat: California DCC ingestion workflow`
-was rewritten from `3628c64` to `2fd1800`, dropping 59 files and 1,693,037 lines.
-Every SHA from that commit onward changed; `main` moved from `a7f2044` to
-`39a5589`.
+The rewrite removed the California DCC bulk payloads from every commit on `main`
+that ever contained them. The originating commit `feat: California DCC ingestion
+workflow` was rewritten from `3628c64` to `2fd1800`, dropping 59 files and
+1,693,037 lines. Every SHA from that commit onward changed; `main` moved from
+`6e693a8` — the pre-rewrite twin of the PR #44 merge — to `39a5589`.
 
-| Deleted path | Size formerly in history | Reachable from `origin/main` now? |
-| --- | --- | --- |
-| `data/dcc/license-registry/latest.json` | 20.4 MiB | no |
-| `data/dcc/license-registry/previous.json` | 19.4 MiB | no |
-| `data/dcc/license-registry/2026-08-04/raw.json` | 19.9 MiB | no |
-| `data/dcc/license-registry/2026-08-04/normalized.json` | 19.4 MiB | no |
+| Deleted path | Size formerly in history | Reachable from `origin/main`? | Reachable from GitHub? |
+| --- | --- | --- | --- |
+| `data/dcc/license-registry/latest.json` | 20.4 MiB | no | **yes** |
+| `data/dcc/license-registry/previous.json` | 19.4 MiB | no | **yes** |
+| `data/dcc/license-registry/2026-08-04/raw.json` | 19.9 MiB | no | **yes** |
+| `data/dcc/license-registry/2026-08-04/normalized.json` | 19.4 MiB | no | **yes** |
 
-Why it mattered: before the rewrite, `git show <commit>:data/dcc/license-registry/latest.json`
-returned the full 20.4 MiB payload, from which roughly 20,700 business email
-addresses were recovered during verification. Each of the three payloads carried
-about 20,700 licensee records with business emails, phones, owner names and
-premises addresses. Anyone who could clone the repository could recover all of
-it, regardless of the working tree.
+Four paths, 79.1 MiB total. `previous.json` and `2026-08-04/normalized.json` are
+byte-identical, which is why earlier notes sometimes said "three payloads".
 
-Evidence, run against the rewritten upstream:
+Why it mattered, and still does: `git show <commit>:data/dcc/license-registry/latest.json`
+returns the full 20.4 MiB payload, carrying roughly 20,700 licensee records with
+business emails, phones, owner names and premises addresses.
+
+Evidence that `origin/main` is clean:
 
 ```
 git rev-list --objects origin/main \
@@ -37,18 +38,42 @@ git rev-list --objects origin/main \
 git log --oneline origin/main -- data/dcc/license-registry/latest.json   # -> 0 commits
 ```
 
-GitHub reports the repository at ~3.0 MiB of disk usage, and CI (`CI & Graph
-Validation`, `Deploy to Cloudflare Pages`) is green on the rewritten `39a5589`.
+A fresh clone's `.git` directory is 3.2 MiB (`size-pack` 3.02 MiB; the checked-out
+working tree is a further ~10 MiB), and CI (`CI & Graph Validation`, `Deploy to
+Cloudflare Pages`) is green on the rewritten `39a5589`.
 
 ### What this does not fix
 
+* **The payload is still anonymously downloadable from GitHub.** This is the open
+  item, not a footnote. Pull-request refs were never rewritten, so the pre-rewrite
+  history is still *reachable* — not merely uncollected garbage awaiting GC.
+  Verified 2026-08-13 from an empty directory with no credentials:
+
+  ```
+  git ls-remote origin 'refs/pull/*'                     # -> 45 refs
+  # 43 of 44 refs/pull/N/head still contain 3628c64
+
+  git init -q . && git fetch -q --depth=1 \
+    https://github.com/drawmeanelephant/thermalextractiondevices.com.git \
+    3628c641af3d262825b11b0baa4db7a304556356               # -> exit 0
+  git cat-file -s $(git rev-parse FETCH_HEAD:data/dcc/license-registry/latest.json)
+  # -> 21416582   (20.4 MiB, 8,869 distinct email addresses)
+  ```
+
+  The repository is **public** (`gh repo view --json visibility` -> `public`), so
+  the audience is everyone, not just collaborators.
+
+  Remediation is not another `filter-repo` run — the objects are held by refs this
+  repository does not control. It requires GitHub Support to drop the stale pull
+  refs and expire the unreachable objects, and it should be paired with a decision
+  about whether the affected licensees need notifying. Until that is done, treat
+  this dataset as published.
+
 * **Old clones still hold the data.** Any clone made before 2026-08-12 keeps the
   original objects. `LARGE-004` scans `git rev-list --all`, so a local clone with
-  pre-rewrite branches or tags will still report the three payloads — that is a
-  property of the local clone, not of `origin/main`. Delete stale local refs and
-  run `git gc --prune=now` to clear it.
-* **GitHub may retain unreachable objects** until its own garbage collection.
-  Treat any credential that was ever in those payloads as compromised.
+  pre-rewrite branches or tags still reports the payloads — that part is a
+  property of the stale clone. Delete the stale refs and run `git gc --prune=now`.
+
 * **Branches created before the rewrite reintroduce the blobs if merged.** Rebase
   or recreate them onto the rewritten `main` before opening a pull request.
 
@@ -66,6 +91,13 @@ state register, and grading public-record data as a blocking disclosure is how a
 gate earns a reputation for crying wolf. Genuine category-4 material is caught by
 `audit_sensitive_content.py`, which inspects content rather than path. See the
 rationale comment in `scripts/audit_large_files.py`.
+
+Neither audit can see the exposure that is still open. `LARGE-004` scans
+`git rev-list --all` in the *local* clone, and a CI checkout has no
+`refs/pull/*` refs, so the pull-ref exposure is structurally invisible to the
+gate. A green CI run is evidence about `origin/main`, never about what GitHub
+still serves. Check that with `git ls-remote origin 'refs/pull/*'` and an
+unauthenticated fetch, by hand.
 
 > **This is a history rewrite.** It changes every commit SHA from the first
 > touched commit onward, requires a force-push to `main`, and invalidates every

@@ -47,20 +47,27 @@ affected products, and related aggregate records.
 
 ## Remaining item
 
-None. The repo-wide public-release audit no longer blocks. The California
-`data/dcc/` findings that gated it (commit `3628c64`, since rewritten to
-`2fd1800`) were removed by the history rewrite executed on 2026-08-12; see
-`docs/history-cleanup-plan.md`. Massachusetts contributed zero findings then and
-contributes zero now.
+None for Massachusetts. This document previously recorded the repo-wide
+public-release audit as blocked by California's `data/dcc/` findings. That was
+already out of date before the history rewrite: the payloads were untracked from
+the working tree in `6d740f4`, and PR #41 graded the deleted-but-reachable
+history findings `medium`, below the `high` fail threshold, so the gate passed
+with every blob still reachable. The 2026-08-12 rewrite then removed the data
+from `main` — a privacy improvement, not a gate change. Massachusetts
+contributed zero findings throughout.
+
+The repository does still have an open PII exposure, but it is neither
+Massachusetts' nor blocking this lane: the purged payload remains downloadable
+from GitHub through pre-rewrite pull refs. See `docs/history-cleanup-plan.md`.
 
 ## Validation
 
-Verified 2026-08-13 on `39a5589`. Fixture tests, live smoke tests, ted_ids,
-Markdown link audit, privacy scan, Boris graph, full build and publish all
-pass. The release audit runs unconditionally and completes with no findings
-above its `high` fail threshold — the `SKIP_RELEASE_AUDIT=1` escape hatch this
-document previously relied on was removed from the codebase by the
-publication-hardening wave and no longer exists. Live re-sync is byte-identical.
+Verified 2026-08-13. Fixture tests, live smoke tests, ted_ids, Markdown link
+audit, privacy scan, Boris graph, full build and publish all pass. The release
+audit runs unconditionally and completes with no findings above its `high` fail
+threshold — the `SKIP_RELEASE_AUDIT=1` escape hatch this document previously
+relied on was removed from the codebase by the publication-hardening wave and no
+longer exists. Live re-sync is byte-identical.
 
 ## Changelog
 

@@ -27,19 +27,25 @@ content/ and the redacted `data/dcc/` provenance boundary.
 
 ## Blockers
 
+- **The DCC licensee registry is still downloadable from GitHub.** This is
+  California's data and California's blocker. The 2026-08-12 history rewrite
+  cleaned `main`, but 43 pre-rewrite `refs/pull/N/head` refs still carry commit
+  `3628c64`, and an unauthenticated fetch of it returns the 20.4 MiB
+  `data/dcc/license-registry/latest.json`. The repository is public. Closing it
+  needs GitHub Support; see `docs/history-cleanup-plan.md`.
 - Cross-state ID allocation and the canonical CLI are not yet unified.
 - The DCC tree disposition is private/unpublished storage; whether California
   is re-fetched through the shared adapter or frozen as a documented legacy
   snapshot is still undecided.
 
-## Resolved (2026-08-12)
+## Partially resolved (2026-08-12)
 
-The historical `data/dcc/` payloads no longer block public release. The history
+`origin/main` no longer carries the historical `data/dcc/` payloads. The history
 rewrite in `docs/history-cleanup-plan.md` was executed and `main` was
-force-pushed on 2026-08-12T18:04:56Z. A fresh clone of `origin/main` is 3.2 MiB
-with no blob above 2 MiB, and `git log origin/main -- data/dcc/license-registry/latest.json`
+force-pushed on 2026-08-12T18:04:56Z. A fresh clone's `.git` is 3.2 MiB with no
+blob above 2 MiB, and `git log origin/main -- data/dcc/license-registry/latest.json`
 returns no commits. Only `manifest.json`, `schema-report.md` and one sync report
-remain tracked under `data/dcc/`.
+remain tracked under `data/dcc/`. The pull-ref copies above are what is left.
 
 ## Next action
 

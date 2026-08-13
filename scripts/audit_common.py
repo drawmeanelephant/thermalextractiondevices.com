@@ -184,26 +184,27 @@ def load_config(path: Optional[Path]) -> Dict[str, Any]:
 def is_suppressed(finding: Finding, config: Dict[str, Any]) -> bool:
     """True when the finding matches a configured suppression.
 
-    A suppression is a bare code (``"SEC-001"``), an exact ``CODE:path`` pair, or
-    a ``CODE:directory/`` prefix. Only entries ending in ``/`` match by prefix,
-    so an existing exact entry can never silently widen into a directory.
+    A suppression is a bare code (``"SEC-001"``) or an exact ``CODE:path`` pair.
+    Matching is exact by design: there is no prefix, glob, or directory form.
 
-    The prefix form exists for finding classes that recur across a growing set of
-    generated files -- dated ingest sync reports, for instance -- where an exact
-    list would need an edit per file and would silently stop covering new ones.
+    That is a deliberate limitation. Silencing N files costs N reviewable config
+    lines, and that cost is the review signal -- a directory form would let one
+    line silence a whole growing subtree, including files that do not exist yet
+    and content nobody has read. A prefix form was written and removed on
+    2026-08-13 for exactly that reason: ``PII-007:data/massachusetts-ccc/sync-reports/``
+    would have pre-authorised every future sync report, and sync reports embed a
+    100-character window of real page content around each blocked field
+    (``scripts/ingest/validation.py``), with no name detector anywhere in the
+    audit to catch what PII-007 would have stopped reporting.
+
+    ``suppressions`` must be a list. A bare string is a config typo, and if it
+    were accepted the ``in`` operator would degrade to substring matching --
+    ``"PII-007"`` would then also silence ``PII-0071``. It fails closed instead.
     """
     suppress = config.get("suppressions", [])
-    if finding.key() in suppress or finding.code in suppress:
-        return True
-    if not finding.path:
+    if not isinstance(suppress, (list, tuple, set, frozenset)):
         return False
-    for entry in suppress:
-        if not isinstance(entry, str) or not entry.endswith("/"):
-            continue
-        prefix = "{}:".format(finding.code)
-        if entry.startswith(prefix) and finding.path.startswith(entry[len(prefix):]):
-            return True
-    return False
+    return finding.key() in suppress or finding.code in suppress
 
 
 def severity_rank(severity: str) -> int:
