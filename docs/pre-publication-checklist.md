@@ -9,22 +9,27 @@ the mechanical parts, but human sign-off is required on judgment items.
 
 - [ ] **[BLOCKER] Purge the licensee registry from GitHub's pull refs.**
       Verified open 2026-08-13. The 2026-08-12 history rewrite cleaned `main`,
-      but pull-request refs were never rewritten: 43 of 44 `refs/pull/N/head`
-      still contain the pre-rewrite commit `3628c64`, so the 20.4 MiB
-      `data/dcc/license-registry/latest.json` — roughly 20,700 licensee records,
-      8,869 distinct email addresses — is fetchable today by anyone, with no
-      credentials, from this public repository:
-      `git init -q . && git fetch --depth=1 https://github.com/drawmeanelephant/thermalextractiondevices.com.git 3628c641af3d262825b11b0baa4db7a304556356`
-      No local change fixes this; it needs GitHub Support to drop the stale pull
-      refs and expire the objects. Pair it with a decision on notifying the
-      affected licensees. Until then this dataset is published, and every other
-      item on this list is downstream of it. See `docs/history-cleanup-plan.md`.
+      but pull-request refs were never rewritten, so the pre-rewrite history is
+      still reachable and the California DCC licensee registry can still be
+      fetched from this public repository by an unauthenticated client. Roughly
+      20,700 licensee records. Reproduction steps and the affected object id are
+      held with the maintainers, not in this tracked file — publishing a runnable
+      recipe next to the finding would widen the exposure. Note that there is
+      nowhere private to file them yet; see the private-reporting blocker below. No local change fixes it; it needs a GitHub Support request to
+      drop the stale pull refs and expire the objects. Pair it with a decision on
+      notifying the affected licensees. Until then this dataset is published, and
+      every other item on this list is downstream of it. See
+      `docs/history-cleanup-plan.md`.
 - [x] **[BLOCKER] Licensing decision recorded.** `LICENSE.md` records an
       all-rights-reserved notice and the limited GitHub viewing/forking context.
       Maintainers should confirm that proprietary terms remain intentional
       before any release announcement.
-- [ ] **[BLOCKER] Private security reporting is enabled and tested.** Confirm
-      the repository's GitHub Security-tab private advisory flow is available;
+- [ ] **[BLOCKER] Private security reporting is enabled and tested.** Verified
+      **not enabled** on 2026-08-13: `gh api
+      repos/drawmeanelephant/thermalextractiondevices.com/private-vulnerability-reporting`
+      returns `enabled: false`, so the flow `SECURITY.md` directs reporters to does
+      not exist. This is no longer hypothetical — a real finding (the pull-ref
+      exposure above) had nowhere private to go. Requires repository admin;
       `SECURITY.md` intentionally does not invent a mailbox or response SLA.
 - [x] **[BLOCKER] No category-4 data in the in-scope publication tree.** Run
       `python3 scripts/audit_sensitive_content.py --config docs/audit-config.json`

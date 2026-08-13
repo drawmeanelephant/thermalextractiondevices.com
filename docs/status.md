@@ -7,9 +7,12 @@ Base commit reviewed: 39a5589
 > force-pushed on 2026-08-12T18:04:56Z to purge the California DCC bulk payloads
 > from git history, and `origin/main` is clean. GitHub still serves them: 43 of
 > 44 `refs/pull/N/head` refs point at pre-rewrite history, the repository is
-> public, and an unauthenticated fetch of `3628c64` still returns the 20.4 MiB
-> licensee registry. Details and the verification commands are in
-> docs/history-cleanup-plan.md. This is not something the release gate can see.
+> public, and the licensee registry is still fetchable by an unauthenticated
+> client. Specifics are held with the maintainers and deliberately not recorded in
+> this public repository; the shape and the remediation path are in
+> docs/history-cleanup-plan.md. Private vulnerability reporting is currently
+> DISABLED on this repository, so there is no private channel to file them in —
+> enabling it is part of the fix. This is not something the release gate can see.
 >
 > Mechanics: every SHA quoted below from before 2026-08-12 refers to pre-rewrite
 > history and no longer resolves upstream. Re-clone or hard-reset to
@@ -150,8 +153,8 @@ GitHub** through 43 pre-rewrite `refs/pull/N/head` refs, on a public repository,
 to an unauthenticated fetch. The release gate cannot see this: `LARGE-003` and
 `LARGE-004` scan `git rev-list --all` in the local clone, and a CI checkout has
 no `refs/pull/*`. A green gate is therefore not evidence the exposure is closed.
-See docs/history-cleanup-plan.md for the verification commands and the
-remediation path.
+See docs/history-cleanup-plan.md for the remediation path. The reproduction is not
+recorded in this repository; ask the maintainers.
 
 A working clone made before the rewrite also reports `LARGE-00x` findings,
 because its own stale branches and tags keep the purged payloads reachable

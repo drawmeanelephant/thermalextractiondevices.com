@@ -44,30 +44,33 @@ Cloudflare Pages`) is green on the rewritten `39a5589`.
 
 ### What this does not fix
 
-* **The payload is still anonymously downloadable from GitHub.** This is the open
-  item, not a footnote. Pull-request refs were never rewritten, so the pre-rewrite
-  history is still *reachable* — not merely uncollected garbage awaiting GC.
-  Verified 2026-08-13 from an empty directory with no credentials:
+* **The payload is still retrievable from GitHub.** This is the open item, not a
+  footnote. Pull-request refs were never rewritten, so the pre-rewrite history
+  remains *reachable* — not merely uncollected garbage awaiting GC — and an
+  unauthenticated client can still fetch the licensee registry from this public
+  repository. Verified 2026-08-13 from an empty directory with no credentials.
 
-  ```
-  git ls-remote origin 'refs/pull/*'                     # -> 45 refs
-  # 43 of 44 refs/pull/N/head still contain 3628c64
+  **Reproduction steps, the affected object id, and the payload contents are
+  deliberately not recorded here.** This file is tracked in the public
+  repository, so a runnable recipe published alongside the finding would widen
+  the exposure rather than describe it. They are held with the maintainers.
 
-  git init -q . && git fetch -q --depth=1 \
-    https://github.com/drawmeanelephant/thermalextractiondevices.com.git \
-    3628c641af3d262825b11b0baa4db7a304556356               # -> exit 0
-  git cat-file -s $(git rev-parse FETCH_HEAD:data/dcc/license-registry/latest.json)
-  # -> 21416582   (20.4 MiB, 8,869 distinct email addresses)
-  ```
+  There is currently nowhere private to file them: `SECURITY.md` directs
+  reporters to the GitHub Security-tab private advisory flow, and that flow is
+  **disabled** on this repository (`gh api repos/OWNER/REPO/private-vulnerability-reporting`
+  returns `enabled: false`). Enabling it is part of this fix, and it is already an
+  open blocker in `docs/pre-publication-checklist.md`.
 
-  The repository is **public** (`gh repo view --json visibility` -> `public`), so
-  the audience is everyone, not just collaborators.
+  The shape, which is safe to state: `git ls-remote origin 'refs/pull/*'` lists
+  45 refs, and all but one of the 44 `refs/pull/N/head` refs still contain the
+  commit that introduced the California DCC payloads. A maintainer can confirm
+  the whole finding from those two facts plus the advisory.
 
-  Remediation is not another `filter-repo` run — the objects are held by refs this
-  repository does not control. It requires GitHub Support to drop the stale pull
-  refs and expire the unreachable objects, and it should be paired with a decision
-  about whether the affected licensees need notifying. Until that is done, treat
-  this dataset as published.
+  Remediation is not another `filter-repo` run — the objects are held by refs
+  this repository does not control. It requires a GitHub Support request to drop
+  the stale pull refs and expire the unreachable objects, and it should be paired
+  with a decision about whether the affected licensees need notifying. Until that
+  is done, treat this dataset as published.
 
 * **Old clones still hold the data.** Any clone made before 2026-08-12 keeps the
   original objects. `LARGE-004` scans `git rev-list --all`, so a local clone with
