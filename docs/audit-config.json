@@ -52,13 +52,14 @@
     "coordinates": [
       "44.12345, -71.98765"
     ],
-    "tax_ids_comment": "Manufacturer product identifiers on device records (UPC/EAN barcodes and article numbers), reviewed 2026-08-08 and confirmed to be published product codes, not tax or parcel numbers. PII-005 flags any long numeric run for human review; these are the reviewed dispositions. Add an entry only after confirming the number is a manufacturer-published product identifier.",
+    "tax_ids_comment": "Reviewed dispositions for PII-005, which flags any long numeric run, EIN-shaped or parcel-shaped value for human review. The 12-digit entries are manufacturer product identifiers on device records (UPC/EAN barcodes and article numbers), reviewed 2026-08-08 and confirmed to be published product codes. '12-3456789' is the sequential-digit documentation placeholder used as the worked example beside EIN_RE in scripts/ingest/validation.py and as the synthetic fixture in tests/test_validation.py and tests/test_massachusetts.py that proves the EIN detector fires; it is not an issued Employer Identification Number. Reviewed 2026-08-13. Add an entry only after confirming the number is a published product identifier or a documentation placeholder.",
     "tax_ids": [
       "628078802274",
       "810086751556",
       "151000083483",
       "301872244",
-      "301371778"
+      "301371778",
+      "12-3456789"
     ],
     "large_files": [
       "themes/cantilever/assets/fonts/inter/Inter-Bold.ttf",
@@ -81,6 +82,11 @@
     "PII-005:scripts/audit_common.py",
     "PII-006:scripts/audit_common.py",
     "PII-007:docs/audit-config.json",
+    "PII-007:scripts/ingest/validation.py",
+    "PII-007:data/massachusetts-ccc/privacy-spec.md",
+    "PII-007:data/massachusetts-ccc/source-catalog.json",
+    "PII-007:data/massachusetts-ccc/sync-reports/",
+    "PII-007:reports/jurisdiction-pipeline-audit.md",
     "PII-001:tests/test_sensitive_content_classification.py",
     "PII-002:tests/test_sensitive_content_classification.py",
     "PII-003:tests/test_sensitive_content_classification.py",
@@ -122,6 +128,6 @@
     "Cross-Origin-Opener-Policy": "medium",
     "X-Frame-Options": "high"
   },
-  "suppressions_comment": "Self-detection only. audit_sensitive_content.py contains the PII regex definitions themselves, and test_sensitive_content_classification.py contains the synthetic PII-shaped fixtures that prove those regexes fire \u2014 including the negative controls that keep the business-contact rule from under-flagging. Scanning either file reports the detector, not a leak. Reviewed 2026-08-09.",
-  "suppressions_history_comment": "ACKNOWLEDGED, NOT RESOLVED \u2014 expires when this repository goes public. The three LARGE-004 entries above are ~79 MiB of California DCC licensee data that remains reachable in git history after 6d740f4 untracked it from the working tree; verification on 2026-08-09 recovered 20,697 email addresses from a single blob via `git show`. They are suppressed ONLY because this repository is private, so the exposure is bounded to people who already have access. This is a conscious deferral recorded so CI does not block contributors while the maintainer decides. It is NOT a disposition. Execute docs/history-cleanup-plan.md and DELETE these three entries before making the repository public \u2014 doing otherwise publishes the data. Tracked as a [BLOCKER] in docs/pre-publication-checklist.md. Reviewed 2026-08-09."
+  "suppressions_comment": "Two classes, both self-detection. (1) Detector definitions: audit_sensitive_content.py and audit_common.py contain the PII regexes themselves, and test_sensitive_content_classification.py contains the synthetic PII-shaped fixtures that prove those regexes fire, including the negative controls that keep the business-contact rule from under-flagging. (2) PII-007 exclusion declarations: scripts/ingest/validation.py defines EXCLUDED_FIELD_NAMES, docs/audit-config.json defines prohibited_fields, data/massachusetts-ccc/privacy-spec.md and source-catalog.json are generated echoes of that denylist, the sync-reports directory records which fields the privacy gate BLOCKED on each run, and reports/jurisdiction-pipeline-audit.md describes the California schema fields the pipeline drops. Every one of these names a field in order to exclude it; none carries a value. PII-007 is a substring scan with no value allowlist, so a path entry is the only available disposition. The sync-reports entry ends in '/' because the directory gains a dated file per sync and an exact list would stop covering new ones. Reviewed 2026-08-13.",
+  "suppressions_history_comment": "RESOLVED 2026-08-12. This key formerly recorded three LARGE-004 suppressions covering ~79 MiB of California DCC licensee data reachable in git history. docs/history-cleanup-plan.md was executed and main was force-pushed on 2026-08-12T18:04:56Z; the payloads are gone from origin/main and the suppression entries were removed. Verify with: git rev-list --objects origin/main | git cat-file --batch-check='%(objecttype) %(objectsize) %(rest)' | awk '$1==\"blob\" && $2>2000000' -- expect no output. A clone made before the rewrite still reports LARGE-003/LARGE-004 because those checks scan `git rev-list --all` over local refs; delete stale local branches and run `git gc --prune=now` rather than re-adding a suppression."
 }

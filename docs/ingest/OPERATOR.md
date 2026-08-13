@@ -248,23 +248,34 @@ version, reruns produce byte-identical content files (verified: 293 content
 files identical across a full live re-sync). Retrieval timestamps live in the
 manifest, never in page text.
 
-## Known pre-existing gate failure (California release audit)
+## Release audit (no bypass)
 
-The repo-wide public-release audit (`scripts/audit_public_release.py`) reports
-blocking PII findings on `data/dcc/` (California's committed license-registry
-JSON and recall HTML, added by commit `3628c64`). This is pre-existing on
-`main` and unrelated to Massachusetts; the Massachusetts pipeline contributes
-zero findings (its own privacy scan passes cleanly). To run the full build/publish
-gates, use the project's documented escape hatch:
+The repo-wide public-release audit (`scripts/audit_public_release.py`) runs
+unconditionally inside `bin/validate_graph.sh` and `scripts/ted-publish.sh`:
 
 ```bash
-SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash bin/validate_graph.sh
-SKIP_RELEASE_AUDIT=1 BORIS_BIN="$PWD/bin/boris" bash scripts/ted-publish.sh
+BORIS_BIN="$PWD/bin/boris" bash bin/validate_graph.sh
+BORIS_BIN="$PWD/bin/boris" bash scripts/ted-publish.sh
 ```
 
-Do not treat the CA findings as resolved by this task. Current cross-state
-architecture decisions and state status are tracked in `docs/status.md` and
-`docs/status/states/massachusetts.md`.
+The `SKIP_RELEASE_AUDIT=1` escape hatch this section used to document was
+removed by the publication-hardening wave. Setting it now does nothing; older
+reports in `reports/` that quote it are historical snapshots.
+
+The California `data/dcc/` findings that made a bypass necessary are gone. The
+committed licence-registry and recall payloads were untracked from the working
+tree, then removed from git history by the rewrite force-pushed on
+2026-08-12T18:04:56Z (see `docs/history-cleanup-plan.md`). The audit now
+completes with no findings above its `high` fail threshold. Massachusetts
+contributes zero findings and always did.
+
+If a `LARGE-003` or `LARGE-004` finding appears locally, check your clone before
+the repository: those checks scan `git rev-list --all`, so a branch or tag
+created before the rewrite still makes the purged payloads reachable on your
+machine. Delete the stale refs and run `git gc --prune=now`.
+
+Current cross-state architecture decisions and state status are tracked in
+`docs/status.md` and `docs/status/states/`.
 
 ## What is intentionally not generated
 

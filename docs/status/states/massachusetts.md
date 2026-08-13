@@ -1,7 +1,7 @@
 # State Status — Massachusetts
 
 Status: Complete (v2 productionized)
-Last verified: 2026-08-09
+Last verified: 2026-08-13
 Owner: Massachusetts implementation agent
 Branch: agent/massachusetts-ingestion-v2
 
@@ -47,17 +47,20 @@ affected products, and related aggregate records.
 
 ## Remaining item
 
-The repo-wide public-release audit (`scripts/audit_public_release.py`) is
-blocked by pre-existing PII findings in California's committed `data/dcc/`
-snapshots (commit `3628c64`). Massachusetts contributes zero findings. See
-`reports/massachusetts-ingestion-v2.md`.
+None. The repo-wide public-release audit no longer blocks. The California
+`data/dcc/` findings that gated it (commit `3628c64`, since rewritten to
+`2fd1800`) were removed by the history rewrite executed on 2026-08-12; see
+`docs/history-cleanup-plan.md`. Massachusetts contributed zero findings then and
+contributes zero now.
 
 ## Validation
 
-Fixture tests, live smoke tests, ted_ids, Markdown link audit, privacy scan,
-Boris graph + full build, and publish all pass (release audit via the
-project's documented `SKIP_RELEASE_AUDIT=1` escape hatch, as noted above).
-Live re-sync is byte-identical.
+Verified 2026-08-13 on `39a5589`. Fixture tests, live smoke tests, ted_ids,
+Markdown link audit, privacy scan, Boris graph, full build and publish all
+pass. The release audit runs unconditionally and completes with no findings
+above its `high` fail threshold — the `SKIP_RELEASE_AUDIT=1` escape hatch this
+document previously relied on was removed from the codebase by the
+publication-hardening wave and no longer exists. Live re-sync is byte-identical.
 
 ## Changelog
 

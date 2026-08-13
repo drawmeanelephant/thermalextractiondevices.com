@@ -32,23 +32,24 @@ than docs/roadmap.md and more operational than the public changelog.
 | Device encyclopedia | In progress | 43 device records and four manufacturer records; the Cannabis Hardware catalog is complete and fully classified (TCHG-0004) | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |
 | Laboratory and batch/COA graph | Parked | California laboratory collections and demonstration records exist | Canonical batch/report/analyte model | Define the minimum batch/COA schema |
 | Profile intelligence | Parked | Terpene and evidence reference pages exist | Measured batch corpus and normalization | Start after batch/COA model |
-| Public release readiness | In progress | History rewrite executed and verified: a fresh clone of `origin/main` is 3.2 MiB with no blob above 2 MiB and no `data/dcc` bulk payload reachable; the release audit reports 49 findings, none above the `high` fail threshold | 14 medium findings awaiting human review, plus the licensing and security-contact decisions | Adjudicate the 14 medium findings (10 × PII-007 prohibited field *names* in the privacy spec and ingest validator, 4 × PII-005 on the documentation placeholder EIN used in the test suite) |
-| Static build reproducibility | In progress | Two pinned production builds produced 496 identical files; `reports/static-build-reproducibility.md` records the byte comparison | The 496-path baseline predates the Denmark, relation-kind and RAG-export merges, so it no longer matches the current corpus | Re-run the reproducibility workflow against `39a5589` and record a new baseline |
+| Public release readiness | In progress | History rewrite executed and verified: a fresh clone of `origin/main` is 3.2 MiB with no blob above 2 MiB and no `data/dcc` bulk payload reachable. The 14 medium findings were adjudicated on 2026-08-13; the audit now reports 35 active findings — 20 `PII-005` low and 15 `REV-001` informational — with nothing at medium or above | Licensing and security-contact decisions | Settle the licence terms and the security contact, then work the 20 low `PII-005` human-review items |
+| Static build reproducibility | Complete | Re-baselined 2026-08-13: two pinned builds produced 494 identical files, 10,149,589 bytes, aggregate SHA-256 `d19089d9…`; `reports/static-build-reproducibility.md` also accounts for every file that changed since the 496-path baseline | None | Run the monthly/manual reproducibility workflow and investigate any drift |
 
 ## Immediate priorities
 
-1. Adjudicate the 14 medium release-audit findings and settle the licensing and
-   security-contact decisions, so public release readiness stops being the last
-   open gate.
+1. Settle the licence terms and the security contact. With the history rewrite
+   done and the medium findings adjudicated, these are the last two items
+   between the repository and a public release decision.
 2. Establish one safe multi-state ingestion contract without regressing
-   California.
+   California. Michigan is the forcing case: it is live content with no
+   adapter, because its sources are documents rather than bulk datasets.
 3. Make ID allocation global across all generated state collections.
 4. Decide whether California is migrated into the shared adapter architecture
    or remains a documented legacy path.
-5. Write the Michigan state lane document so all three live jurisdictions have
-   one.
-6. Define the minimum product → batch → laboratory report → analyte model
+5. Define the minimum product → batch → laboratory report → analyte model
    before scaling data ingestion.
+6. Answer issue #34 — bounded versus native rendering for Boris relation slots.
+   It gates whether the 174-line crosslink pagination layer can retire.
 
 ## Parallel-work contract
 
@@ -105,12 +106,13 @@ diagnostics pass outright. `python3 -m unittest discover -s tests -t .` ran 359
 tests with 6 skips and no failures. Upstream CI (`CI & Graph Validation`,
 `Deploy to Cloudflare Pages`) is green on `39a5589`.
 
-Static build reproducibility was last machine-checked at 496 paths / 10,133,239
-bytes / aggregate SHA-256
-`9a909f8c5656b8e300331427f98f0daafe63ad6b618278788535795bbc6ebb9b`. That
-baseline predates the Denmark, relation-kind and RAG-export merges, so the page
-count no longer matches; re-run the reproducibility workflow to establish a new
-baseline before quoting it.
+Static build reproducibility was re-baselined on 2026-08-13: two pinned builds
+produced 494 identical paths, 10,149,589 bytes, and aggregate SHA-256
+`d19089d96c9fde1aa72bef97224bc8227830bdfbe362ecd36669186342a7f0c5`. The output
+shrank by two files against the 496-path 2026-08-09 baseline while the corpus
+grew by one entity; `reports/static-build-reproducibility.md` names all four
+files that moved and traces the three removals to PR #44's `CXL-03` rule
+against direct cultivar → compound edges. No entity page was lost.
 
 ## Archive integrity update
 
@@ -138,13 +140,28 @@ purged payloads reachable *locally*; that is a property of the stale clone, not 
 `origin/main`. Delete stale local refs and `git gc --prune=now` before treating a
 `LARGE-00x` finding as real.
 
-Remaining release blockers are the 14 medium human-review findings and the
-licensing and security-contact decisions. The mediums are all schema- or
-placeholder-shaped rather than live data: `PII-007` fires on prohibited field
-*names* declared in `data/massachusetts-ccc/privacy-spec.md`,
-`data/massachusetts-ccc/source-catalog.json` and `scripts/ingest/validation.py`,
-and `PII-005` fires on the documentation placeholder EIN used in the test suite.
-They still need an explicit adjudication rather than a silent pass.
+The 14 medium findings were adjudicated on 2026-08-13 and the audit now reports
+35 active findings — 20 `PII-005` low and 15 `REV-001` informational — with
+nothing at medium or above. All 14 were declarations rather than data: `PII-007`
+is a bare substring scan with no value allowlist, so it fired on every place the
+prohibited-field denylist is *defined or echoed* — `EXCLUDED_FIELD_NAMES` in
+`scripts/ingest/validation.py`, the generated `privacy-spec.md` and
+`source-catalog.json`, the sync report recording which fields the privacy gate
+blocked, and a report describing the California fields the pipeline drops. Those
+are recorded as path suppressions with rationale in `docs/audit-config.json`. The
+placeholder EIN is now a value-scoped entry in `allowlist.tax_ids`, which is
+narrower than a path suppression because it silences that one value everywhere
+rather than that whole file.
+
+`audit_common.is_suppressed` gained directory-prefix suppression for this: an
+entry ending in `/` matches a subtree, so the dated `sync-reports/` directory
+does not need a new config line per sync. Entries without a trailing slash stay
+exact and can never widen, which `tests/test_audit_suppressions.py` pins in both
+directions.
+
+The remaining release blockers are the licensing and security-contact decisions,
+plus the 20 low `PII-005` items, which are long numeric runs flagged for human
+review by design.
 
 Validation must be rerun on the completed branch. Do not use an audit bypass as
 a release result.

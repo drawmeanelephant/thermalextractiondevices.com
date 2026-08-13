@@ -182,14 +182,27 @@ def load_config(path: Optional[Path]) -> Dict[str, Any]:
 
 
 def is_suppressed(finding: Finding, config: Dict[str, Any]) -> bool:
-    """True when the finding matches a configured suppression."""
+    """True when the finding matches a configured suppression.
+
+    A suppression is a bare code (``"SEC-001"``), an exact ``CODE:path`` pair, or
+    a ``CODE:directory/`` prefix. Only entries ending in ``/`` match by prefix,
+    so an existing exact entry can never silently widen into a directory.
+
+    The prefix form exists for finding classes that recur across a growing set of
+    generated files -- dated ingest sync reports, for instance -- where an exact
+    list would need an edit per file and would silently stop covering new ones.
+    """
     suppress = config.get("suppressions", [])
     if finding.key() in suppress or finding.code in suppress:
         return True
+    if not finding.path:
+        return False
     for entry in suppress:
-        if isinstance(entry, str) and entry.startswith(finding.code + ":"):
-            if entry == finding.key():
-                return True
+        if not isinstance(entry, str) or not entry.endswith("/"):
+            continue
+        prefix = "{}:".format(finding.code)
+        if entry.startswith(prefix) and finding.path.startswith(entry[len(prefix):]):
+            return True
     return False
 
 
