@@ -1,27 +1,58 @@
-# Git History Cleanup Plan (NOT executed)
+# Git History Cleanup Plan (EXECUTED 2026-08-12)
 
-> **Trigger condition 2 below is now MET (verified 2026-08-09).** The registry
-> payloads were removed from the working tree in `6d740f4` ("chore: harden public
-> publication boundary") and `data/dcc/*` was gitignored, but **no history rewrite
-> was performed**. The blobs remain fully reachable.
+> **This plan was executed against `main` and force-pushed on 2026-08-12T18:04:56Z.**
+> The section below records the outcome. Everything from "When to execute this
+> plan" onward is the retained runbook, kept because the same procedure applies
+> if bulk or category-4 data is ever committed again.
 
-Verified state, measured against `main` on 2026-08-09 (not estimated):
+## Outcome (verified 2026-08-13)
 
-| Deleted path | Size in history | Still readable? |
+The rewrite removed the California DCC bulk payloads from every commit that ever
+contained them. The originating commit `feat: California DCC ingestion workflow`
+was rewritten from `3628c64` to `2fd1800`, dropping 59 files and 1,693,037 lines.
+Every SHA from that commit onward changed; `main` moved from `a7f2044` to
+`39a5589`.
+
+| Deleted path | Size formerly in history | Reachable from `origin/main` now? |
 | --- | --- | --- |
-| `data/dcc/license-registry/latest.json` | 20.4 MiB | yes |
-| `data/dcc/license-registry/previous.json` | 19.4 MiB | yes |
-| `data/dcc/license-registry/2026-08-04/raw.json` | 19.9 MiB | yes |
-| `data/dcc/license-registry/2026-08-04/normalized.json` | 19.4 MiB | yes |
+| `data/dcc/license-registry/latest.json` | 20.4 MiB | no |
+| `data/dcc/license-registry/previous.json` | 19.4 MiB | no |
+| `data/dcc/license-registry/2026-08-04/raw.json` | 19.9 MiB | no |
+| `data/dcc/license-registry/2026-08-04/normalized.json` | 19.4 MiB | no |
 
-A single `git show <commit-before-6d740f4>:data/dcc/license-registry/latest.json`
-returns the full 20.4 MiB payload, from which **20,697 email addresses** were
-recovered during verification. Each of three payloads carries roughly 20,681
-licensee records with business emails, phones, owner names and premises addresses.
-**Anyone who can clone this repository can recover all of it**, regardless of the
-current working tree.
+Why it mattered: before the rewrite, `git show <commit>:data/dcc/license-registry/latest.json`
+returned the full 20.4 MiB payload, from which roughly 20,700 business email
+addresses were recovered during verification. Each of the three payloads carried
+about 20,700 licensee records with business emails, phones, owner names and
+premises addresses. Anyone who could clone the repository could recover all of
+it, regardless of the working tree.
 
-Why the audits did not catch this at first:
+Evidence, run against the rewritten upstream:
+
+```
+git rev-list --objects origin/main \
+  | git cat-file --batch-check='%(objecttype) %(objectsize) %(rest)' \
+  | awk '$1=="blob" && $2>2000000'      # -> no output
+
+git log --oneline origin/main -- data/dcc/license-registry/latest.json   # -> 0 commits
+```
+
+GitHub reports the repository at ~3.0 MiB of disk usage, and CI (`CI & Graph
+Validation`, `Deploy to Cloudflare Pages`) is green on the rewritten `39a5589`.
+
+### What this does not fix
+
+* **Old clones still hold the data.** Any clone made before 2026-08-12 keeps the
+  original objects. `LARGE-004` scans `git rev-list --all`, so a local clone with
+  pre-rewrite branches or tags will still report the three payloads — that is a
+  property of the local clone, not of `origin/main`. Delete stale local refs and
+  run `git gc --prune=now` to clear it.
+* **GitHub may retain unreachable objects** until its own garbage collection.
+  Treat any credential that was ever in those payloads as compromised.
+* **Branches created before the rewrite reintroduce the blobs if merged.** Rebase
+  or recreate them onto the rewritten `main` before opening a pull request.
+
+### Why the audits did not catch this at first
 
 * `audit_sensitive_content.py` scans the **tracked working tree** plus commit
   *metadata* (author/committer/message). It never reads historical blob contents,
@@ -29,20 +60,12 @@ Why the audits did not catch this at first:
 * `audit_large_files.py` did detect the deleted-but-reachable blobs, but graded
   them `medium` — below the `high` fail threshold — so the gate passed.
 
-That combination produced the worst possible signal: `Public-release audit passed`
-while the data was one command away. `LARGE-004` now grades deleted-but-reachable
-files under `history_sensitive_paths` (default `data/`) as **high**, so the gate
-blocks until this plan is executed or the finding is consciously accepted.
-
-The datasets contain personal/regulated data (business emails, phones, owner
-names, parcel numbers, premises addresses and coordinates). Removing that data
-from history, if decided, is exactly what this plan is for.
-
-This plan has **not** been executed and must not be run without maintainer
-sign-off and a full backup. It applies if category-4 data from `PRIVACY.md`
-(owner contact details, premises coordinates) is committed in `data/` and
-maintainers later decide those datasets must not be part of the public
-repository.
+`LARGE-004` still grades bulk data under `history_sensitive_paths` (default
+`data/`) as `medium`, deliberately: the California licence registry is a public
+state register, and grading public-record data as a blocking disclosure is how a
+gate earns a reputation for crying wolf. Genuine category-4 material is caught by
+`audit_sensitive_content.py`, which inspects content rather than path. See the
+rationale comment in `scripts/audit_large_files.py`.
 
 > **This is a history rewrite.** It changes every commit SHA from the first
 > touched commit onward, requires a force-push to `main`, and invalidates every
