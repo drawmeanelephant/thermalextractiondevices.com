@@ -129,6 +129,8 @@
   --warn-soft: rgba(230, 184, 0, 0.12);
   --note: #3498db;
   --note-soft: rgba(52, 152, 219, 0.12);
+  --info: #9b7fe0;                /* Violet — "important", distinct from note/warn */
+  --info-soft: rgba(155, 127, 224, 0.12);
   --danger: #e74c3c;
   --danger-soft: rgba(231, 76, 60, 0.12);
   
@@ -772,18 +774,6 @@ body {
   color: var(--code-ink);
 }
 
-.article pre[lang]::before {
-  content: attr(lang);
-  display: block;
-  font-size: 0.66rem;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
 .article kbd {
   font-family: var(--font-mono);
   font-size: 0.82em;
@@ -853,43 +843,28 @@ body {
   margin-top: 0.6rem;
 }
 
-/* ---------- callouts ---------- */
+/* ---------- admonitions (Boris <Aside>) ---------- */
 
-.article .note,
-.article .warning,
-.article .callout,
-.article .callout-tip,
-.article .callout-important,
-.article .callout-caution {
+/* Boris tokenizes <Aside kind="..."> itself, outside the Markdown renderer, and
+   emits <aside class="admonition admonition--KIND" aria-label="Kind"> with a
+   .admonition__title paragraph and .admonition__body wrapper. Styling the Boris
+   component rather than a renderer extension is what keeps these callouts
+   working across a renderer change; the previous .callout-* rules were tied to
+   ApexMarkdown's callout extension and died with it. */
+
+.article .admonition {
   font-family: var(--font-body);
   border-radius: var(--radius);
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
   padding: 0.85rem 1.05rem;
   margin: 1.2rem 0;
   font-size: 0.98rem;
   line-height: 1.6;
 }
 
-.article .note {
-  background: var(--note-soft);
-  border-left: 4px solid var(--note);
-}
-.article .note::before { content: "Note — "; font-weight: 700; color: var(--note); }
-
-.article .warning {
-  background: var(--danger-soft);
-  border-left: 4px solid var(--danger);
-}
-.article .warning::before { content: "Warning — "; font-weight: 700; color: var(--danger); }
-
-.article .callout,
-.article .callout-tip,
-.article .callout-important,
-.article .callout-warning {
-  border-left: 4px solid var(--accent);
-  background: var(--accent-soft);
-}
-
-.article .callout-title {
+.article .admonition__title {
+  margin: 0 0 0.35rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -897,10 +872,41 @@ body {
   color: var(--accent-strong);
 }
 
-.article .warning.callout,
-.article .callout-warning { border-left-color: var(--danger); background: var(--danger-soft); }
+.article .admonition__body > :first-child { margin-top: 0; }
+.article .admonition__body > :last-child { margin-bottom: 0; }
+.article .admonition blockquote { margin: 0.4rem 0 0; }
 
-.article .callout blockquote { margin: 0.4rem 0 0; }
+/* One colour family per kind. Severity ladder: note < tip < info < warning <
+   danger, matching the five kinds in Boris's Aside allowlist. */
+.article .admonition--note {
+  border-left-color: var(--note);
+  background: var(--note-soft);
+}
+.article .admonition--note .admonition__title { color: var(--note); }
+
+.article .admonition--tip {
+  border-left-color: var(--accent);
+  background: var(--accent-soft);
+}
+.article .admonition--tip .admonition__title { color: var(--accent-strong); }
+
+.article .admonition--info {
+  border-left-color: var(--info);
+  background: var(--info-soft);
+}
+.article .admonition--info .admonition__title { color: var(--info); }
+
+.article .admonition--warning {
+  border-left-color: var(--warn);
+  background: var(--warn-soft);
+}
+.article .admonition--warning .admonition__title { color: var(--warn); }
+
+.article .admonition--danger {
+  border-left-color: var(--danger);
+  background: var(--danger-soft);
+}
+.article .admonition--danger .admonition__title { color: var(--danger); }
 
 /* ---------- children list (section landing) ---------- */
 

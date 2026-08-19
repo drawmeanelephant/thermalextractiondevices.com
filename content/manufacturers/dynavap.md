@@ -33,7 +33,7 @@ summary: American thermal extraction hardware manufacturer specializing in batte
 - **Primary Heating Methods**: Conduction-dominant thermal mass storage with secondary convection during draw (per manufacturer).
 - **Power Sources**: External thermal input (butane torch, induction heater).
 - **Vapor Path Contact**: Stainless steel and titanium parts with high-temperature fluoroelastomer O-rings. DynaVap markets materials as "medical grade stainless steel" / "medical grade titanium"; the specific "316" steel grade is stated by DynaVap on some component pages (e.g., VonG X tip) but not on all [^2].
-- **Temperature Control**: Mechanical bimetallic disc cap that produces an audible "click". DynaVap states the Captive Cap clicks at ~240 °C ± 10 °C (~230–250 °C) and the Low-Temp Cap at ~215 °C ± 10 °C (~205–220 °C) [^3]. The click is an auditory/tactile indicator, not digital temperature regulation.
+- **Temperature Control**: Mechanical bimetallic disc cap that produces an audible "click". DynaVap states the Captive Cap clicks at ≈240 °C ± 10 °C (≈230–250 °C) and the Low-Temp Cap at ≈215 °C ± 10 °C (≈205–220 °C) [^3]. The click is an auditory/tactile indicator, not digital temperature regulation.
 
 ## Repairability & Warranty Terms
 

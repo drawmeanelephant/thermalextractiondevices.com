@@ -64,7 +64,7 @@ Associated with camphor-based liniments and herbal vapor treatments.
 
 ## Cannabis laboratory results
 
-Typically a minor constituent of cannabis flower: reported at 0.002–0.09 mg/g dry weight in THC-dominant material and up to ~0.48 mg/g in CBD-dominant flower across published surveys [^5]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
+Typically a minor constituent of cannabis flower: reported at 0.002–0.09 mg/g dry weight in THC-dominant material and up to ≈0.48 mg/g in CBD-dominant flower across published surveys [^5]. Consult [Lab Results](../lab-results.md) for batch-level measurements.
 
 ## Sources
 

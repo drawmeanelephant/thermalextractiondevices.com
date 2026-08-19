@@ -64,7 +64,7 @@ Cultivator, producer (manufacturer), retailer, micro-cultivator, delivery, hybri
 | Laboratory testing rules | yes | DCP regulations | no | Testing rules in regulation |
 | Contaminant/action limits | yes | DCP regulations | no | Panels in regulation |
 | Recalls/advisories | partial | DCP consumer alerts | no | Not structured |
-| Product/package identifiers | yes | Cannabis Product Registry `egd5-wb6r` | yes | ~35k rows (verified): brand, dosage form, producer, THC/THCA/CBD/CBDA, terpenes |
+| Product/package identifiers | yes | Cannabis Product Registry `egd5-wb6r` | yes | ≈35k rows (verified): brand, dosage form, producer, THC/THCA/CBD/CBDA, terpenes |
 | COAs/batch results | partial | Registry `lab_analysis` COA URL field | yes | COA documents are GUID links on elicense.ct.gov (link-stability caveat) |
 | Sales data | yes | data.ct.gov: monthly/weekly sales `f382-bnu5`, `ucaf-96h6`; price per gram `ttwq-xhyz`; product-type sales `twgv-a8qu`, `jyg4-yu7v`; avg product price `crdh-m57i`; products sold `t3s5-39as`; cannabis tax `jey2-vq68` | yes | Socrata SODA |
 | Open-data downloads | yes | data.ct.gov | yes | Socrata SODA API + CSV |

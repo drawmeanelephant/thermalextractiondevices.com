@@ -29,11 +29,16 @@ statement maps to a machine-readable record in `metadata/cultivar-claims.jsonl`
 | **Known aliases** | none documented in this archive | Unresolved alias terms are not merged; alias resolution requires repository evidence. |
 | **Breeder / origin** | not attributed | No page for the name "Blue Dream" itself exists on a first-party breeder site; the Santa Cruz, California origin is a secondary-account claim. |
 
-> [!NOTE] Chemistry firewall
-> Batch-level chemistry linked below describes the **specific batch and
-> product label**, not "Blue Dream" as a genetic object. This archive does not
-> assert that a cultivar name implies any fixed cannabinoid or terpene
-> profile. See [Cultivar Name, Product Name, and Chemovar](../reference/cultivar-name-vs-chemovar.md).
+<Aside kind="note">
+
+**Chemistry firewall**
+
+Batch-level chemistry linked below describes the **specific batch and
+product label**, not "Blue Dream" as a genetic object. This archive does not
+assert that a cultivar name implies any fixed cannabinoid or terpene
+profile. See [Cultivar Name, Product Name, and Chemovar](../reference/cultivar-name-vs-chemovar.md).
+
+</Aside>
 
 ## Products Carrying This Name
 
@@ -43,8 +48,11 @@ statement maps to a machine-readable record in `metadata/cultivar-claims.jsonl`
 
 - [Sample Batch 123 COA (demonstration)](../lab-results/example-producer-blue-dream-batch-123.md) — submitted sample carried the name Blue Dream (`CLM-0002`)
 
-> [!IMPORTANT]
-> The batch record linked above is a **demonstration / sample record**, not a verified Certificate of Analysis. Its batch identifier and numeric values are illustrative placeholders and must not be cited as verified laboratory evidence for this cultivar.
+<Aside kind="info">
+
+The batch record linked above is a **demonstration / sample record**, not a verified Certificate of Analysis. Its batch identifier and numeric values are illustrative placeholders and must not be cited as verified laboratory evidence for this cultivar.
+
+</Aside>
 
 ## Common Terpene Nodes
 

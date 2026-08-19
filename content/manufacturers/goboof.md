@@ -5,7 +5,7 @@ parent: manufacturers
 status: published
 tags: ["manufacturer", "goboof", "ireland", "dublin", "dry-herb"]
 relations: [relates_to=devices/TED-0052]
-summary: Irish dry-herb vaporizer company (designed in Dublin, manufactured in Ireland) behind the single-model Alfa line, active ~2014–2019.
+summary: Irish dry-herb vaporizer company (designed in Dublin, manufactured in Ireland) behind the single-model Alfa line, active ≈2014–2019.
 ---
 
 # Goboof Products Limited
@@ -19,10 +19,13 @@ summary: Irish dry-herb vaporizer company (designed in Dublin, manufactured in I
 | Legal Entity | Goboof Products Limited (Ireland) [^1] |
 | Headquarters | Designed in Dublin, manufactured in Ireland (per Medical Jane product review: "Manufactured In: Ireland; Designed In: Dublin") [^1] |
 | Operating Principle | Single-model dry-herb vaporizer line (Alfa) |
-| Operational Period | ~2014–~2019 (active sales); Castle D Enterprises Ltd (trading as Alfa Vaporizers) is reported to have assumed sales/service responsibility c. 2020 [^2] |
+| Operational Period | ≈2014–2019 (active sales); Castle D Enterprises Ltd (trading as Alfa Vaporizers) is reported to have assumed sales/service responsibility c. 2020 [^2] |
 
-> [!NOTE]
-> An Irish CRO registration number (525630) and the Castle D Enterprises Ltd successor arrangement are asserted in unpublished notes; the CRO record could not be independently re-verified in the 2026-08-08 pass (the Irish CRO portal blocks automated access) and the successor attribution rests on secondary (reviewer) reporting. Treat both as uncorroborated until verified against the CRO register.
+<Aside kind="note">
+
+An Irish CRO registration number (525630) and the Castle D Enterprises Ltd successor arrangement are asserted in unpublished notes; the CRO record could not be independently re-verified in the 2026-08-08 pass (the Irish CRO portal blocks automated access) and the successor attribution rests on secondary (reviewer) reporting. Treat both as uncorroborated until verified against the CRO register.
+
+</Aside>
 
 ## Official Product Families
 
@@ -31,7 +34,7 @@ summary: Irish dry-herb vaporizer company (designed in Dublin, manufactured in I
 ## Engineering & Architecture
 
 - **Primary Heating Methods**: Conduction — resistive heater embedded in a hard-anodized aluminum oven with a central heating pin (per official manual) [^3].
-- **Power Sources**: Internal non-user-replaceable lithium-ion battery (~2 h on the low setting); pass-through operation supported after partial charge [^3].
+- **Power Sources**: Internal non-user-replaceable lithium-ion battery (≈2 h on the low setting); pass-through operation supported after partial charge [^3].
 - **Temperature Control**: Rotary dial with five detents (OFF, LO, MID, HI, A/P, A/T); LO 190 °C, MID 210 °C, HI 220 °C per the official manual — one reviewer records HI as 230 °C, a discrepancy noted but not resolved here [^3][^2].
 
 ## Repairability & Warranty Terms

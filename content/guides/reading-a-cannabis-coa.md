@@ -19,21 +19,24 @@ summary: Step-by-step guide to interpreting laboratory Certificates of Analysis 
 
 ## Active THC Calculation (Ohio & Industry Standard)
 
-Raw plant material contains non-psychoactive THCA (tetrahydrocannabinolic acid). Upon thermal extraction, THCA undergoes thermal decarboxylation, releasing carbon dioxide ($\text{CO}_2$).
+Raw plant material contains non-psychoactive THCA (tetrahydrocannabinolic acid). Upon thermal extraction, THCA undergoes thermal decarboxylation, releasing carbon dioxide (CO<sub>2</sub>).
 
 The molecular weight ratio yields the conversion factor:
 
-$$\text{Total Active THC} = \Delta^9\text{-THC} + (\text{THCA} \times 0.877)$$
+`Total Active THC = Δ⁹-THC + (THCA × 0.877)`
 
 ### Example Calculation
 If a COA reports:
 - THCA: 24.2% (242.0 mg/g)
-- $\Delta^9$-THC: 0.52% (5.2 mg/g)
+- Δ⁹-THC: 0.52% (5.2 mg/g)
 
-$$\text{Total Active THC} = 0.52 + (24.2 \times 0.877) = 0.52 + 21.22 = 21.74\%$$
+`Total Active THC = 0.52 + (24.2 × 0.877) = 0.52 + 21.22 = 21.74%`
 
-> [!NOTE]
-> This worked example uses the same numeric values as the [Sample COA record (demonstration)](../lab-results/example-producer-blue-dream-batch-123.md) in this archive. Those figures are illustrative sample data used for teaching the calculation; they do not describe a verified real-world product.
+<Aside kind="note">
+
+This worked example uses the same numeric values as the [Sample COA record (demonstration)](../lab-results/example-producer-blue-dream-batch-123.md) in this archive. Those figures are illustrative sample data used for teaching the calculation; they do not describe a verified real-world product.
+
+</Aside>
 
 ## Units, LOD, and LOQ Handling
 

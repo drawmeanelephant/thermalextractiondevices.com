@@ -5,7 +5,7 @@ parent: jurisdictions
 status: published
 tags: ["jurisdiction", "switzerland", "international", "regulatory", "deep-data-candidate"]
 relations: []
-summary: "Jurisdiction profile for Switzerland: federal pilot-trial framework for adult-use cannabis (BAG-authorized trials, ~7 trials), medical cannabis via prescription, hemp <1% THC."
+summary: "Jurisdiction profile for Switzerland: federal pilot-trial framework for adult-use cannabis (BAG-authorized trials, ≈7 trials), medical cannabis via prescription, hemp <1% THC."
 ---
 
 # Switzerland (Jurisdiction Profile)
@@ -37,7 +37,7 @@ summary: "Jurisdiction profile for Switzerland: federal pilot-trial framework fo
 
 ## Regulatory Overview
 
-Switzerland has authorized **scientific pilot trials** for regulated adult-use cannabis under a 2021 legal amendment: the Federal Office of Public Health has approved about seven trials (Zürich's Züri Can is the flagship; ~10,400 adults enrolled across trials as of mid-2025). Zürich's trial was extended to October 2028. Medical cannabis has been available by prescription under the 2022 narcotics-law revision. Hemp with ≤1.0% THC is not regulated as a narcotic.
+Switzerland has authorized **scientific pilot trials** for regulated adult-use cannabis under a 2021 legal amendment: the Federal Office of Public Health has approved about seven trials (Zürich's Züri Can is the flagship; ≈10,400 adults enrolled across trials as of mid-2025). Zürich's trial was extended to October 2028. Medical cannabis has been available by prescription under the 2022 narcotics-law revision. Hemp with ≤1.0% THC is not regulated as a narcotic.
 
 ## Regulatory History
 
@@ -68,7 +68,7 @@ Switzerland has authorized **scientific pilot trials** for regulated adult-use c
 | Recalls/advisories | no public source located | — | — | No structured feed located |
 | Product/package identifiers | no public source located | — | — | Trial-internal tracking |
 | COAs/batch results | no public source located | — | — | Not public |
-| Sales data | partial | Trial evaluation reports | partial | Züri Can reported ~88,000 transactions / ~750 kg |
+| Sales data | partial | Trial evaluation reports | partial | Züri Can reported ≈88,000 transactions / ≈750 kg |
 | Open-data downloads | no public source located | — | — | No cannabis open-data portal located |
 
 ## Future Ingestion Opportunities

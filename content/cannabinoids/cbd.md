@@ -55,7 +55,7 @@ CBD volatilizes from botanical matrix through vapor-pressure-driven evaporation,
 
 Measured values are attached to batches and reports, not to cultivar names as universal claims:
 
-- High-CBD hemp flower cultivars have reported combined CBDA plus CBD in the ~10–20% w/w range in published analyses (representative, batch-attached; e.g., Stack et al. 2023 characterized 32 high-CBD cultivars) [^6].
+- High-CBD hemp flower cultivars have reported combined CBDA plus CBD in the ≈10–20% w/w range in published analyses (representative, batch-attached; e.g., Stack et al. 2023 characterized 32 high-CBD cultivars) [^6].
 - Measured drug-type (THC-dominant) flower batches in legal-market COA datasets report <1% CBDA plus CBD, often 0.1–0.5% [^7].
 - CBD is the neutral decarboxylation product of CBDA; fresh flower carries predominantly the acid form [^8].
 

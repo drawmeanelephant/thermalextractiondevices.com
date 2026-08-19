@@ -59,7 +59,7 @@ Cultivation, production (manufacturing), dispensary, distribution, testing labor
 
 | Data surface | Available? | Official source | Machine-readable? | Notes |
 | --- | --- | --- | --- | --- |
-| License registry | yes | CCB License Search + List of Licensees | partial | Searchable (~4,617 records); interactive; full-extract export not confirmed |
+| License registry | yes | CCB License Search + List of Licensees | partial | Searchable (≈4,617 records); interactive; full-extract export not confirmed |
 | Testing-laboratory registry | yes | Lab data `Testing Facility Name` field | yes | In the Metrc lab extracts |
 | Laboratory testing rules | yes | NAC 453A | no | Codified testing regulations |
 | Contaminant/action limits | yes | NAC 453A panels | no | Set in regulation |

@@ -22,8 +22,11 @@ summary: Florida vapor hardware brand (founded 2013, Pompano Beach) covering dry
 | Foundation Year | 2013 (per business-profile records) [^1] |
 | Status | Operations discontinued circa 2020–2021; VaporFi is the official home / exclusive distributor of Mig Vapor products (VaporFi blog, live page) [^2] |
 
-> [!NOTE]
-> Mig Vapor's direct support infrastructure is inactive and the brand's official site is no longer maintained. Specifications on this archive for Mig Vapor devices therefore derive from retailer and reviewer documentation and are labeled as third-party where no official manual was located.
+<Aside kind="note">
+
+Mig Vapor's direct support infrastructure is inactive and the brand's official site is no longer maintained. Specifications on this archive for Mig Vapor devices therefore derive from retailer and reviewer documentation and are labeled as third-party where no official manual was located.
+
+</Aside>
 
 ## Official Product Families
 

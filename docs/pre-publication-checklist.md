@@ -7,18 +7,37 @@ the mechanical parts, but human sign-off is required on judgment items.
 
 ## 0. Blockers — resolve before anything else
 
+- [ ] **[BLOCKER] Purge the licensee registry from GitHub's pull refs.**
+      Verified open 2026-08-13. The 2026-08-12 history rewrite cleaned `main`,
+      but pull-request refs were never rewritten, so the pre-rewrite history is
+      still reachable and the California DCC licensee registry can still be
+      fetched from this public repository by an unauthenticated client. Roughly
+      20,700 licensee records. Reproduction steps and the affected object id are
+      held with the maintainers, not in this tracked file — publishing a runnable
+      recipe next to the finding would widen the exposure. Note that there is
+      nowhere private to file them yet; see the private-reporting blocker below. No local change fixes it; it needs a GitHub Support request to
+      drop the stale pull refs and expire the objects. Pair it with a decision on
+      notifying the affected licensees. Until then this dataset is published, and
+      every other item on this list is downstream of it. See
+      `docs/history-cleanup-plan.md`.
 - [x] **[BLOCKER] Licensing decision recorded.** `LICENSE.md` records an
       all-rights-reserved notice and the limited GitHub viewing/forking context.
       Maintainers should confirm that proprietary terms remain intentional
       before any release announcement.
-- [ ] **[BLOCKER] Private security reporting is enabled and tested.** Confirm
-      the repository's GitHub Security-tab private advisory flow is available;
+- [ ] **[BLOCKER] Private security reporting is enabled and tested.** Verified
+      **not enabled** on 2026-08-13: `gh api
+      repos/drawmeanelephant/thermalextractiondevices.com/private-vulnerability-reporting`
+      returns `enabled: false`, so the flow `SECURITY.md` directs reporters to does
+      not exist. This is no longer hypothetical — a real finding (the pull-ref
+      exposure above) had nowhere private to go. Requires repository admin;
       `SECURITY.md` intentionally does not invent a mailbox or response SLA.
-- [ ] **[BLOCKER] No category-4 data in the in-scope publication tree.** Run
+- [x] **[BLOCKER] No category-4 data in the in-scope publication tree.** Run
       `python3 scripts/audit_sensitive_content.py --config docs/audit-config.json`
-      and disposition findings. The Massachusetts implementation lane is
-      explicitly excluded from this pass and remains a reported blocker until
-      its owner handles it.
+      and disposition findings. Verified 2026-08-13: 35 active findings, none
+      above `low`, and Massachusetts contributes zero. The Massachusetts lane is
+      no longer an exclusion — see `docs/status/states/massachusetts.md`. This
+      item covers the tracked tree only; the pull-ref exposure above is
+      separate and still open.
 - [ ] **[BLOCKER] Human review of flagged records.** Review every `REV-001`
       finding (producer/manufacturer/lab content, draft research queue) and
       confirm each record is accurate, evidenced, and safe to publish under
@@ -26,11 +45,13 @@ the mechanical parts, but human sign-off is required on judgment items.
 ## 1. Automated audits (all must pass)
 
 - [ ] `python3 scripts/audit_public_release.py --config docs/audit-config.json`
-      → exit 0 — current-tree California DCC payloads were removed; history
-      and excluded Massachusetts findings still require disposition.
+      → exit 0. Verified 2026-08-13 on the tracked tree: 75 findings, 35 active,
+      nothing at medium or above. Note the structural limit — this scans
+      `git rev-list --all` in the local clone, so it can see neither GitHub's
+      pull refs nor another machine's stale branches. A pass here is not
+      evidence about what GitHub serves.
 - [ ] `python3 scripts/audit_sensitive_content.py --config docs/audit-config.json`
-      → exit 0 for the in-scope tree; report excluded Massachusetts findings
-      separately rather than modifying that lane here.
+      → exit 0 for the in-scope tree. Massachusetts is no longer excluded.
 - [ ] `python3 scripts/audit_large_files.py --config docs/audit-config.json`
       → no giant tracked files, no duplicate dataset blobs, no
       external-storage candidates that should not exist
@@ -51,31 +72,34 @@ the mechanical parts, but human sign-off is required on judgment items.
       and normalized payloads are removed from tracked paths; the manifest,
       schema note, and sync report remain; ingest code uses private/unpublished
       storage and redacts sensitive fields.
-- [ ] No blob above the 5 MiB threshold reachable from any ref
-      (`python3 scripts/audit_large_files.py`) — historical DCC blobs remain
-      until the separate history-cleanup plan is executed.
+- [x] No blob above the 5 MiB threshold reachable from any ref in `origin/main`.
+      Verified 2026-08-13 on a fresh clone: the largest blob is a 327 KiB Inter
+      font, and `.git` is 3.2 MiB. Note that `audit_large_files.py` scans
+      `git rev-list --all` locally, so a stale clone reports otherwise; that is
+      the clone, not the repository.
 - [x] Duplicate current-tree DCC payload copies removed; private cache state
       is ignored and not a publication artifact.
-- [ ] **Repository hygiene: bulk payloads still reachable in git history.**
-      Verified 2026-08-10: the DCC registry payloads were untracked in `6d740f4`
-      but no history rewrite was performed, so ~60 MiB across three blobs remains
-      reachable and every clone still pays for it. Removing them takes the
-      repository from 6.33 MiB to 2.55 MiB. See `docs/history-cleanup-plan.md`.
+- [x] **Bulk payloads removed from `main`'s git history.** Executed
+      2026-08-12T18:04:56Z; four paths totalling 79.1 MiB are gone from
+      `origin/main`. This item is superseded by the pull-ref blocker in
+      section 0 — the same payload is still reachable through GitHub's
+      `refs/pull/*`. See `docs/history-cleanup-plan.md`.
 
-      **This is not a blocker and not a disclosure.** The payload is the
-      California DCC licence register, fetched from `search.cannabis.ca.gov` —
-      a public register the state operates so that licensed cannabis businesses
-      can be looked up by anyone. Cal. Civ. Code § 1798.82(i) excludes
-      information lawfully made public in government records from the definition
-      of personal information, and `PRIVACY.md` places records naming
-      identifiable businesses in category 5 (human review), not category 4
-      (never publish). Registered businesses do not carry a privacy expectation
-      in their own licence record.
+      **On severity.** The payload is the California DCC licence register,
+      fetched from `search.cannabis.ca.gov` — a public register the state
+      operates so that licensed cannabis businesses can be looked up by anyone.
+      Cal. Civ. Code § 1798.82(i) excludes information lawfully made public in
+      government records from the definition of personal information, and
+      `PRIVACY.md` places records naming identifiable businesses in category 5
+      (human review), not category 4 (never publish). That is why the audit
+      grades it `medium` rather than blocking.
 
-      What it *does* violate is `docs/artifact-storage.md` rule 4 — raw and
-      normalized payloads are not committed — which exists to stop a content
-      repository becoming a data lake. Fix it for that reason, on a convenient
-      schedule.
+      It is still a blocker for publication, for two reasons that do not depend
+      on the disclosure question: it violates `docs/artifact-storage.md` rule 4
+      (raw and normalized payloads are not committed), and republishing a
+      20.4 MiB bulk extract of 20,700 licensee contact records is a different
+      act from operating a per-record lookup, whatever the source register's
+      status. Decide it deliberately rather than by leaving pull refs in place.
 
 - [x] Repository visibility is public; this checklist does not change
       visibility.

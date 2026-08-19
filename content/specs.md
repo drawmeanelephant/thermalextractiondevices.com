@@ -11,5 +11,8 @@ Technical specifications and measured parameters for thermal extraction devices,
 
 Records follow the form identifier schema `specs/TSPEC-XXXX`.
 
-> [!NOTE]
-> No specification records have been published yet. Device parameters are currently recorded directly on each device page from official manufacturer documentation.
+<Aside kind="note">
+
+No specification records have been published yet. Device parameters are currently recorded directly on each device page from official manufacturer documentation.
+
+</Aside>

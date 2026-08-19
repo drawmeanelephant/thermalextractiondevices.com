@@ -85,17 +85,25 @@ record before release (the audit flags these as `REV-001`):
   warnings) or 5 (after review). Never commit categories 3 or 4.
 * **Corrections and takedowns** follow `DATA_SOURCES.md`; category-4 data
   discovered in the current tree is removed and the disposition is recorded
-  in the publication-hardening report. The Massachusetts implementation lane
-  remains explicitly outside this pass and is reported, not modified.
-* **Deletion does not erase history.** If prohibited data ever lands in a
-  commit, it remains reachable in history until the history-cleanup plan in
-  `docs/history-cleanup-plan.md` is executed. Rotate any exposed credential
-  regardless.
+  in the publication-hardening report.
+* **Deletion does not erase history, and a history rewrite does not erase
+  GitHub.** Prohibited data in a commit stays reachable until the plan in
+  `docs/history-cleanup-plan.md` is executed — and even then, GitHub keeps
+  serving the pre-rewrite commits through `refs/pull/*`, which a local rewrite
+  cannot touch. Closing that requires a GitHub Support request. Rotate any
+  exposed credential regardless. This is not hypothetical: it is the current
+  state of the California DCC licence registry in this repository.
 * **Automated enforcement:** `scripts/audit_public_release.py` and
-  `scripts/audit_sensitive_content.py` scan the tree and history for
+  `scripts/audit_sensitive_content.py` scan the tracked working tree for
   category-4 patterns (emails, phones, addresses, coordinates, tax IDs,
   personal paths, secrets). New allowlist entries require a PR review of
   `docs/audit-config.json`.
+* **What the audits do not scan.** `audit_sensitive_content.py` reads the
+  tracked tree plus commit *metadata* — author, committer, message — and never
+  reads a historical blob's contents. `audit_large_files.py` sees deleted-but-
+  reachable blobs by path and size only, and only within the local clone's own
+  refs. No audit can see what GitHub serves from pull refs. Do not read a green
+  gate as an assurance about history.
 
 ## Contact
 

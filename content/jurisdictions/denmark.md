@@ -24,14 +24,17 @@ summary: "Jurisdiction profile for Denmark: the medical cannabis scheme became p
 | Official sources | https://laegemiddelstyrelsen.dk/da/special/medicinsk-cannabis/ ; https://www.retsinformation.dk/eli/lta/2025/439 |
 | Last verified | 2026-08-10 |
 
-> [!WARNING]
-> **Use the Danish-language DMA pages, not the English ones.** The DMA's English
-> medicinal-cannabis pages were last updated in March 2022 and still describe a
-> *"pilot programme [that] runs until 31 December 2025"*. That is wrong: the scheme
-> became permanent on 1 January 2026. The English pages also name the wrong
-> compassionate-use products and omit cancer pain from the indication list. The
-> Danish pages (`/da/special/medicinsk-cannabis/`) were updated 1 January and
-> 3 June 2026 and are current.
+<Aside kind="warning">
+
+**Use the Danish-language DMA pages, not the English ones.** The DMA's English
+medicinal-cannabis pages were last updated in March 2022 and still describe a
+*"pilot programme [that] runs until 31 December 2025"*. That is wrong: the scheme
+became permanent on 1 January 2026. The English pages also name the wrong
+compassionate-use products and omit cancer pain from the indication list. The
+Danish pages (`/da/special/medicinsk-cannabis/`) were updated 1 January and
+3 June 2026 and are current.
+
+</Aside>
 
 ## Cannabis Framework
 
@@ -86,12 +89,15 @@ on 1 January 2026.
 | Intermediate manufacturer's permit (BEK 1608) | Manufacture of cannabis intermediate products | Premises and quality system per BEK 1608; a qualified person. **No safety-responsible person, no probity vetting, inspection discretionary** |
 | Development-scheme authorisation (`udviklingsordningen`) | Cultivation and handling for development purposes only — **may not supply patients or export** | Application plus a project description; DMA inspection. Sits outside the cannabis Act, under § 2(2) of the Act on Euphoriant Substances |
 
-> [!NOTE]
-> **"With cultivation activity" and "without cultivation activity" are not two
-> statutory permits.** BEK 1607 creates a single manufacturing permit on which
-> cultivation is an optional activity; the with/without split exists only in the
-> DMA's fee table, as items 7001/7002 versus 7012/7013. Secondary sources routinely
-> present them as distinct licence types. They are not.
+<Aside kind="note">
+
+**"With cultivation activity" and "without cultivation activity" are not two
+statutory permits.** BEK 1607 creates a single manufacturing permit on which
+cultivation is an optional activity; the with/without split exists only in the
+DMA's fee table, as items 7001/7002 versus 7012/7013. Secondary sources routinely
+present them as distinct licence types. They are not.
+
+</Aside>
 
 A qualified person needs a four-year degree plus two years' relevant experience, or
 a five-year degree plus one year.
@@ -126,15 +132,18 @@ The scheme distinguishes four product stages, and the licence types map onto the
 
 ## Fee Schedule
 
-> [!IMPORTANT]
-> **Two conflicting official fee schedules are in circulation and they do not
-> reconcile.** The DMA's published 2026 fee page lists figures roughly **13.5%
-> higher** than Bilag 1 of the fee order actually in force (BEK nr 1585 af
-> 05/12/2025). The DMA page also carries two item numbers (7012, 7013 — the
-> with/without-cultivation split) that **do not exist** in that order, and cites
-> BEK nr 2553 af 20/12/2021, which was repealed on 1 January 2026. Both figures are
-> recorded below. Anyone quoting a Danish cannabis fee should state which schedule
-> they mean.
+<Aside kind="info">
+
+**Two conflicting official fee schedules are in circulation and they do not
+reconcile.** The DMA's published 2026 fee page lists figures roughly **13.5%
+higher** than Bilag 1 of the fee order actually in force (BEK nr 1585 af
+05/12/2025). The DMA page also carries two item numbers (7012, 7013 — the
+with/without-cultivation split) that **do not exist** in that order, and cites
+BEK nr 2553 af 20/12/2021, which was repealed on 1 January 2026. Both figures are
+recorded below. Anyone quoting a Danish cannabis fee should state which schedule
+they mean.
+
+</Aside>
 
 | Fee item | DMA published 2026 (DKK) | BEK 1585 Bilag 1 (DKK) |
 | --- | --- | --- |
@@ -168,13 +177,16 @@ Unique patients in the scheme proper, by year:
 | 2023 | 1,323 | DMA monitoring report, 25 Nov 2025 |
 | 2024 | 1,605 | DMA monitoring report, 25 Nov 2025 |
 
-> [!CAUTION]
-> **A widely repeated "≈1,800 patients per year" figure is a primary-source error.**
-> The Ministry's 28 November 2024 press release states *"ca. 1.800 patienter
-> årligt"*. The evaluation it summarises reports 1,798 unique persons across
-> **three years** (2020–2022), whose annual figures were 812, 706 and 768. The
-> release overstates annual participation by roughly 2.3×. The Ministry's own
-> earlier release, 19 November 2024, omits the word *årligt* and is correct.
+<Aside kind="danger">
+
+**A widely repeated "≈1,800 patients per year" figure is a primary-source error.**
+The Ministry's 28 November 2024 press release states *"ca. 1.800 patienter
+årligt"*. The evaluation it summarises reports 1,798 unique persons across
+**three years** (2020–2022), whose annual figures were 812, 706 and 768. The
+release overstates annual participation by roughly 2.3×. The Ministry's own
+earlier release, 19 November 2024, omits the word *årligt* and is correct.
+
+</Aside>
 
 Indications: neuropathic pain accounts for **97.8%** of prescriptions
 (18,323 of 18,741) when all five neuropathic-pain codes are summed. The commonly

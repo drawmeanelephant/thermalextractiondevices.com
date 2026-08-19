@@ -1,7 +1,7 @@
 # State Status — California
 
 Status: In progress
-Last verified: 2026-08-08
+Last verified: 2026-08-13
 Owner: Unassigned
 Branch: main
 
@@ -27,10 +27,26 @@ content/ and the redacted `data/dcc/` provenance boundary.
 
 ## Blockers
 
-- Public release remains blocked by historical DCC payloads, licensing and
-  security-process decisions, and the explicitly excluded Massachusetts audit
-  findings. The current DCC tree disposition is private/unpublished storage.
+- **The DCC licensee registry is still retrievable from GitHub.** This is
+  California's data and California's blocker. The 2026-08-12 history rewrite
+  cleaned `main`, but 43 pre-rewrite `refs/pull/N/head` refs still carry the
+  commit that introduced the payloads, so an unauthenticated client can still
+  fetch the registry. The repository is public. Specifics are in the private
+  security advisory, not here. Closing it needs a GitHub Support request; see
+  `docs/history-cleanup-plan.md`.
 - Cross-state ID allocation and the canonical CLI are not yet unified.
+- The DCC tree disposition is private/unpublished storage; whether California
+  is re-fetched through the shared adapter or frozen as a documented legacy
+  snapshot is still undecided.
+
+## Partially resolved (2026-08-12)
+
+`origin/main` no longer carries the historical `data/dcc/` payloads. The history
+rewrite in `docs/history-cleanup-plan.md` was executed and `main` was
+force-pushed on 2026-08-12T18:04:56Z. A fresh clone's `.git` is 3.2 MiB with no
+blob above 2 MiB, and `git log origin/main -- data/dcc/license-registry/latest.json`
+returns no commits. Only `manifest.json`, `schema-report.md` and one sync report
+remain tracked under `data/dcc/`. The pull-ref copies above are what is left.
 
 ## Next action
 
@@ -39,6 +55,8 @@ keeping the legacy path with an explicit, tested compatibility boundary.
 
 ## Validation
 
-The source-only ID check currently passes for the combined content tree. The
-Boris graph, Cantilever build, Markdown-link audit, and HTML-ID audit pass; the
-overall release gate remains blocked by the known data/dcc privacy findings.
+Verified 2026-08-13 on `39a5589`. The source-only ID check passes for the
+combined content tree (445 pages). The Boris graph, Cantilever build,
+Markdown-link audit, crosslink validator and HTML-ID audit all pass, and the
+public-release audit now completes with no findings above its `high` fail
+threshold — no bypass required.
