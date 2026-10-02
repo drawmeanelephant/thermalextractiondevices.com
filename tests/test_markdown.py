@@ -22,7 +22,9 @@ class MarkdownTestCase(unittest.TestCase):
         self.assertIn('title: "He said \\"hi\\""', text)
         self.assertIn('id: x', text)
         self.assertIn("relations: [relates_to=z]", text)
-        self.assertNotIn("summary:", text)  # closed grammar: only allowed keys
+        # The helper emits the fields needed by ingest; it deliberately does
+        # not infer optional Boris publication metadata.
+        self.assertNotIn("summary:", text)
 
     def test_table_escaping(self):
         rendered = table(["A", "B"], [["x|y", "a\nb"]])

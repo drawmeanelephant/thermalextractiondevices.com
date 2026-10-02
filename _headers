@@ -9,11 +9,10 @@
 # Syndication feeds: correct XML types so browsers and feed readers
 # handle them natively instead of downloading or guessing.
 #
-# NOTE: feed autodiscovery <link rel=alternate> tags are NOT injected into
-# themes/cantilever layouts on purpose: Boris 0.8.1's link audit
-# (EROUTEMISSING) rejects hrefs to any file Boris itself does not publish,
-# and Boris's own --rss cannot be combined with --html-dir. Revisit when a
-# Boris release allows static extra outputs alongside HTML mode.
+# NOTE: feed autodiscovery <link rel=alternate> tags are not injected into the
+# layouts: Boris's link audit rejects hrefs to feed files generated after its
+# HTML pass, and its --rss mode cannot be combined with --html-dir. See the
+# feed-autodiscovery entry in reports/boris-workaround-retirement-map.md.
 /recalls.xml
   Content-Type: application/rss+xml; charset=utf-8
 /safety-advisories.xml

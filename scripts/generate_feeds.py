@@ -8,12 +8,12 @@ and writes, under the directory given by --output:
   safety-advisories.xml RSS 2.0  (safety advisories)
   feed.xml              Atom 1.0 (combined: recalls + advisories + changelog)
 
-Item URLs follow the Boris output layout (<collection>/<FORM-ID>.html,
-verified against the compiled site). Dates are RFC 822 (RSS) / RFC 3339
-(Atom). A record's source date comes from its `date:` frontmatter (ISO
-8601) when present, else from its rendered body fact tables; records with
-neither are omitted from the dated RSS feeds rather than guessed (no
-fabricated pubDates). The combined Atom feed includes undated records
+Item URLs use the extensionless Cloudflare Pages routes corresponding to
+Boris's <collection>/<FORM-ID>.html output files. Dates are RFC 822 (RSS) /
+RFC 3339 (Atom). A record's source date comes from its `published_at:`
+frontmatter (Boris's strict UTC timestamp) when present, else from its
+rendered body fact tables; records with neither are omitted from the dated
+RSS feeds rather than guessed (no fabricated pubDates). The combined Atom feed includes undated records
 (changelog today) ordered after the dated ones, carrying a stable
 1970-01-01 epoch `updated` so rebuilds never re-date them. A feed-level
 atom:author satisfies the RFC 4287 author MUST.
@@ -51,9 +51,8 @@ ATOM_EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
 FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 KV_RE = re.compile(r'^([A-Za-z_][\w-]*):\s*(.*)$', re.M)
 
-# Frontmatter `date:` accepted formats (ISO date, or RFC 3339 with an
-# explicit UTC designator or numeric offset).
-FM_DATE_FORMATS = ("%Y-%m-%d", "%Y-%m-%dT%H:%M:%S%z")
+# Boris requires exactly YYYY-MM-DDTHH:MM:SSZ for `published_at:`.
+PUBLISHED_AT_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$")
 
 # Source-date extraction from the rendered body tables: (label regex,
 # date format) pairs. Order matters only within one file; first match wins.
@@ -81,24 +80,22 @@ def strip_quotes(value: str) -> str:
     return value.strip().strip('"')
 
 
-def parse_frontmatter_date(value: str):
-    """Parse a frontmatter `date:` value, or return None."""
+def parse_published_at(value: str):
+    """Parse Boris's strict UTC `published_at:` timestamp, or return None."""
     raw = value.strip()
-    if raw.endswith("Z"):
-        raw = raw[:-1] + "+00:00"
-    for fmt in FM_DATE_FORMATS:
-        try:
-            return datetime.strptime(raw, fmt).replace(tzinfo=timezone.utc)
-        except ValueError:
-            continue
-    return None
+    if not PUBLISHED_AT_RE.fullmatch(raw):
+        return None
+    try:
+        return datetime.strptime(raw, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
 
 
-def extract_date(fm_date: str, body: str):
-    """Return the record's source date: frontmatter `date:` first, then the
+def extract_date(published_at: str, body: str):
+    """Return the record's source date: frontmatter `published_at:` first, then the
     body fact tables. None when neither yields a parseable date."""
-    if fm_date:
-        parsed = parse_frontmatter_date(fm_date)
+    if published_at:
+        parsed = parse_published_at(published_at)
         if parsed:
             return parsed
     for pattern, fmt in DATE_PATTERNS:
@@ -152,10 +149,10 @@ def collect(collection: str, content_root: Path):
         items.append({
             "collection": collection,
             "form_id": form_id,
-            "title": strip_quotes(fm.get("title") or form_id),
+            "title": re.sub(r"\s+", " ", strip_quotes(fm.get("title") or form_id)).strip(),
             "summary": strip_quotes(fm.get("summary") or "") or first_paragraph(body),
-            "date": extract_date(fm.get("date", ""), body),
-            "url_path": f"{collection}/{form_id}.html",
+            "date": extract_date(fm.get("published_at", ""), body),
+            "url_path": f"{collection}/{form_id}",
         })
     dated = [i for i in items if i["date"]]
     undated = sorted((i for i in items if not i["date"]), key=lambda i: i["form_id"])

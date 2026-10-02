@@ -124,26 +124,40 @@ def reachable_blobs(root: Path) -> List[Tuple[str, int, str]]:
 
 def duplicate_entries(root: Path) -> List[Tuple[str, List[str]]]:
     """Return (sha, paths) for every blob whose identical content appears
-    under two or more distinct paths anywhere in reachable history.
+    under two or more distinct paths in the same reachable tree.
 
-    Uses `git ls-tree -r` (git's own object store already deduplicates
-    blobs by content, so path multiplicity only shows up at the tree
-    level; `git rev-list --objects` collapses it).
+    A rename is not a duplicate: the old and new names must coexist in one
+    tree. Distinct tree objects are inspected once, even when many commits
+    share the same tree.
     """
-    rc, commits = _git(root, ["rev-list", "--all"])
-    if rc != 0 or not commits:
+    rc, output = _git(root, ["log", "--all", "--format=%T"])
+    if rc != 0 or not output:
         return []
-    paths_by_sha: Dict[str, set] = defaultdict(set)
-    for commit in commits.splitlines():
-        rc, out = _git(root, ["ls-tree", "-r", "--full-tree", commit])
+    trees = sorted({
+        line.strip()
+        for line in output.splitlines()
+        if len(line.strip()) == 40
+        and all(char in "0123456789abcdef" for char in line.strip())
+    })
+    duplicate_paths_by_sha: Dict[str, set] = defaultdict(set)
+    for tree in trees:
+        rc, out = _git(root, ["ls-tree", "-r", "--full-tree", tree])
         if rc != 0:
             continue
+        paths_by_sha: Dict[str, set] = defaultdict(set)
         for line in out.splitlines():
             meta, _, path = line.partition("\t")
             fields = meta.split()
             if len(fields) == 3 and fields[1] == "blob":
                 paths_by_sha[fields[2]].add(path)
-    return [(sha, sorted(paths)) for sha, paths in paths_by_sha.items() if len(paths) > 1]
+        for sha, paths in paths_by_sha.items():
+            if len(paths) > 1:
+                duplicate_paths_by_sha[sha].update(paths)
+    return [
+        (sha, sorted(paths))
+        for sha, paths in duplicate_paths_by_sha.items()
+        if len(paths) > 1
+    ]
 
 
 def deleted_but_reachable(root: Path) -> List[Tuple[str, int]]:

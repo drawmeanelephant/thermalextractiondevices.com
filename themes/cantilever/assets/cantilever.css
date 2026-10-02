@@ -813,6 +813,13 @@ body {
   vertical-align: top;
 }
 
+.article tbody tr > :first-child {
+  min-width: 7.5rem;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 .article tbody tr:nth-child(even) { background: var(--surface); }
 .article tbody tr:hover { background: var(--surface-hover); }
 

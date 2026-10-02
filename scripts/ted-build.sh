@@ -99,6 +99,16 @@ python3 scripts/generate_feeds.py \
   --output "$DIST_DIR" \
   --site-url "$SITE_URL"
 
+# Complete Boris output with TED-owned Pages artifacts: error page, crawler
+# policy, redirects for retired source paths, extensionless sitemap URLs, and
+# description/canonical head metadata.
+python3 scripts/finalize_site.py \
+  --content "$CONTENT_DIR" \
+  --theme "$THEME" \
+  --output "$DIST_DIR" \
+  --site-url "$SITE_URL" \
+  --git-root "$ROOT"
+
 # Public-release audit hook. Audit failures and audit-tool errors are release
 # failures; a broken audit cannot silently produce a deployable build.
 if [[ -f "$ROOT/docs/audit-config.json" ]]; then

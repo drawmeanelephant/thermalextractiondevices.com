@@ -17,7 +17,7 @@ ATOM_NS = "{http://www.w3.org/2005/Atom}"
 
 
 def write_record(root: Path, collection: str, form_id: str, *, title=None,
-                 status="published", summary=None, date=None, body=""):
+                 status="published", summary=None, published_at=None, body=""):
     col = root / collection
     col.mkdir(parents=True, exist_ok=True)
     fm = ["---", f"id: {collection}/{form_id}"]
@@ -27,8 +27,8 @@ def write_record(root: Path, collection: str, form_id: str, *, title=None,
         fm.append(f"status: {status}")
     if summary:
         fm.append(f'summary: "{summary}"')
-    if date:
-        fm.append(f"date: {date}")
+    if published_at:
+        fm.append(f"published_at: {published_at}")
     fm += ["---", ""]
     (col / f"{form_id}.md").write_text("\n".join(fm) + body, encoding="utf-8")
 
@@ -58,18 +58,19 @@ class TestDateExtraction(unittest.TestCase):
     def test_no_date_yields_none(self):
         self.assertIsNone(gf.extract_date("", "# Just prose\n\nNo tables here."))
 
-    def test_frontmatter_date_wins_over_body(self):
+    def test_published_at_wins_over_body(self):
         body = self._body_with("| **DCC Recall Publication Date** | 1/2/2020 |")
-        got = gf.extract_date("2026-08-04", body)
+        got = gf.extract_date("2026-08-04T00:00:00Z", body)
         self.assertEqual(got.strftime("%Y-%m-%d"), "2026-08-04")
 
-    def test_frontmatter_date_accepts_rfc3339_and_z(self):
-        self.assertEqual(gf.parse_frontmatter_date("2026-08-04").strftime("%Y-%m-%d"), "2026-08-04")
-        self.assertEqual(gf.parse_frontmatter_date("2026-08-04T10:20:30Z").strftime("%H:%M:%S"), "10:20:30")
-        self.assertEqual(gf.parse_frontmatter_date("2026-08-04T10:20:30+02:00").strftime("%H:%M:%S"), "10:20:30")
-        self.assertIsNone(gf.parse_frontmatter_date("not a date"))
+    def test_published_at_accepts_only_boris_utc_timestamp(self):
+        parsed = gf.parse_published_at("2026-08-04T10:20:30Z")
+        self.assertEqual(parsed.strftime("%H:%M:%S"), "10:20:30")
+        self.assertIsNone(gf.parse_published_at("2026-08-04"))
+        self.assertIsNone(gf.parse_published_at("2026-08-04T10:20:30+02:00"))
+        self.assertIsNone(gf.parse_published_at("not a date"))
 
-    def test_unparseable_frontmatter_date_falls_back_to_body(self):
+    def test_unparseable_published_at_falls_back_to_body(self):
         body = self._body_with("| Publication date | 2025-09-02 |")
         got = gf.extract_date("whenever", body)
         self.assertEqual(got.strftime("%Y-%m-%d"), "2025-09-02")
@@ -151,15 +152,15 @@ class TestEndToEnd(unittest.TestCase):
             entries = f.findall(ATOM_NS + "entry")
             self.assertEqual(len(entries), 4)
             ids = [e.findtext(ATOM_NS + "id") for e in entries]
-            self.assertIn("https://example.com/changelog/TCHG-0001.html", ids)
+            self.assertIn("https://example.com/changelog/TCHG-0001", ids)
             # RFC 4287 author MUST: feed-level author present.
             self.assertIsNotNone(f.find(ATOM_NS + "author"))
             # Undated entry carries the stable epoch, not build time.
-            undated = [e for e in entries if e.findtext(ATOM_NS + "id").endswith("TCHG-0001.html")]
+            undated = [e for e in entries if e.findtext(ATOM_NS + "id").endswith("TCHG-0001")]
             self.assertEqual(undated[0].findtext(ATOM_NS + "updated"), "1970-01-01T00:00:00Z")
             # Dated entries newest-first.
             ups = [e.findtext(ATOM_NS + "updated") for e in entries
-                   if not e.findtext(ATOM_NS + "id").endswith("TCHG-0001.html")]
+                   if not e.findtext(ATOM_NS + "id").endswith("TCHG-0001")]
             self.assertEqual(ups, sorted(ups, reverse=True))
 
     def test_deterministic_content_across_runs(self):
@@ -186,6 +187,36 @@ class TestEndToEnd(unittest.TestCase):
                 self.assertEqual(a, b, f"{name}: content changed between runs")
             # The dropped stamps really did tick (test tests something).
             self.assertNotEqual((out1 / "feed.xml").read_text(), (out2 / "feed.xml").read_text())
+
+    def test_feed_urls_are_extensionless_and_titles_are_normalized(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root, out = Path(tmp) / "content", Path(tmp) / "out"
+            write_record(
+                root,
+                "recalls",
+                "TRCL-0001",
+                title="Baddies Worldwide  Flower",
+                body="\n\nThe archived product was recalled.\n\n"
+                "| **Recall date** | January 2, 2025 |\n",
+            )
+            rc = self._run(root, out)
+            self.assertEqual(rc, 0)
+
+            rss = ET.parse(out / "recalls.xml").getroot()
+            item = rss.find("channel").find("item")
+            self.assertEqual(item.findtext("title"), "Baddies Worldwide Flower")
+            self.assertEqual(
+                item.findtext("link"),
+                "https://example.com/recalls/TRCL-0001",
+            )
+
+            atom = ET.parse(out / "feed.xml").getroot()
+            entry = atom.find(ATOM_NS + "entry")
+            self.assertEqual(
+                entry.findtext(ATOM_NS + "id"),
+                "https://example.com/recalls/TRCL-0001",
+            )
+            self.assertNotIn(".html", (out / "feed.xml").read_text(encoding="utf-8"))
 
     def test_validator_rejects_missing_author(self):
         # The RFC 4287 MUST must actually be enforced: strip the author
