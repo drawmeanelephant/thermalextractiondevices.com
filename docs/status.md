@@ -1,22 +1,23 @@
 # Thermal Extraction Devices — Current Status
 
-Last verified: 2026-08-13
-Base commit reviewed: 39a5589
+Last verified: 2026-10-02
+Base commit reviewed: c7b8b72
 
-> **Open PII exposure — verified 2026-08-13, needs GitHub Support.** `main` was
-> force-pushed on 2026-08-12T18:04:56Z to purge the California DCC bulk payloads
-> from git history, and `origin/main` is clean. GitHub still serves them: 43 of
-> 44 `refs/pull/N/head` refs point at pre-rewrite history, the repository is
-> public, and the licensee registry is still fetchable by an unauthenticated
-> client. Specifics are held with the maintainers and deliberately not recorded in
-> this public repository; the shape and the remediation path are in
-> docs/history-cleanup-plan.md. Private vulnerability reporting is currently
-> DISABLED on this repository, so there is no private channel to file them in —
-> enabling it is part of the fix. This is not something the release gate can see.
+> **Open PII exposure — last verified 2026-08-13; current remote status needs
+> re-checking.** `main` was force-pushed on 2026-08-12T18:04:56Z to purge the
+> California DCC bulk payloads from git history. On 2026-08-13, 43 of 44
+> `refs/pull/N/head` refs still pointed at pre-rewrite history, and the licensee
+> registry could be fetched anonymously from the public repository. Specifics
+> are held with the maintainers and deliberately not recorded in this public
+> repository; the remediation path is in docs/history-cleanup-plan.md. Private
+> vulnerability reporting was DISABLED when last checked. This worktree cannot
+> verify whether GitHub has since removed those refs or changed the setting.
+> This is not something the release gate can see.
 >
-> Mechanics: every SHA quoted below from before 2026-08-12 refers to pre-rewrite
-> history and no longer resolves upstream. Re-clone or hard-reset to
-> `origin/main`; rebase any older branch before opening a pull request.
+> Mechanics: every SHA quoted below from before 2026-08-12 refers to the
+> pre-rewrite repository state, not current `main`. Re-clone or hard-reset to
+> `origin/main`; rebase any older branch before opening a pull request. Stale
+> pull-request refs were the exception when last checked, as noted above.
 
 This is the current coordination snapshot. It is intentionally shorter-lived
 than docs/roadmap.md and more operational than the public changelog.
@@ -38,19 +39,20 @@ than docs/roadmap.md and more operational than the public changelog.
 | California DCC program | In progress | DCC scripts and content collections are on main; the bulk `data/dcc` payloads were removed from the tree and purged from git history on 2026-08-12, leaving only `manifest.json`, `schema-report.md` and one sync report tracked | Whether California is re-fetched through the shared adapter or documented as a frozen legacy snapshot | Reconcile or explicitly document the legacy path |
 | Massachusetts CCC program | Complete | Live sync verified (15 datasets, ~954k rows); 118 source-backed pages published; IDs reconciled with the shared collections (Massachusetts = jurisdictions/TJUR-0022) | None. Massachusetts contributes zero audit findings and always did | Keep manifests current as CCC publishes |
 | Michigan CRA program | In progress | The Michigan evidence wave merged in PR #31 as jurisdictions/TJUR-0023: 26 Michigan records plus two collection index pages updated, covering TLIC-0031..0033, TORG-0063..0068, TSTL-0029..0031, TDTS-0023..0027, TREQ-0003, TRCL-0007..0009, TPRD-0003..0005 and TCNT-0017. Lane document added 2026-08-13 | No adapter, no tests, no re-sync path: CRA sources are Accela search and DOCX aggregates, so Michigan evidence ages silently | Decide whether Michigan gets a document-source adapter or stays a curated wave — see docs/status/states/michigan.md |
-| Device encyclopedia | In progress | 43 device records and four manufacturer records; the Cannabis Hardware catalog is complete and fully classified (TCHG-0004) | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |
+| Device encyclopedia | In progress | Milestone A catalog now contains 100 devices and 29 manufacturers; Cannabis Hardware is fully classified (TCHG-0004). Recall coverage reached 16 records; RSS/Atom feeds and source-health auditing are present | Coverage of the remaining manufacturers | Apply the Cannabis Hardware completion pattern to the next manufacturer |
 | Laboratory and batch/COA graph | Parked | California laboratory collections and demonstration records exist | Canonical batch/report/analyte model | Define the minimum batch/COA schema |
 | Profile intelligence | Parked | Terpene and evidence reference pages exist | Measured batch corpus and normalization | Start after batch/COA model |
-| Public release readiness | Blocked | `origin/main` itself is clean — a fresh clone's `.git` is 3.2 MiB with no blob above 2 MiB and no `data/dcc` payload reachable — and the 14 medium audit findings were adjudicated on 2026-08-13, leaving 35 active (20 `PII-005` low, 15 `REV-001` informational) with nothing at medium or above | The purged licensee registry is still anonymously downloadable from GitHub through 43 pre-rewrite `refs/pull/N/head` refs, on a public repository | Get GitHub Support to drop the stale pull refs and expire the objects, then decide on licensee notification. Licence terms and the security contact remain open behind that |
-| Static build reproducibility | Complete | Re-baselined 2026-08-13: two pinned builds produced 494 identical files, 10,149,589 bytes, aggregate SHA-256 `d19089d9…`; `reports/static-build-reproducibility.md` accounts for all four files that appeared or disappeared since the 496-path baseline | None | Run the monthly/manual reproducibility workflow and investigate any drift |
+| Public release readiness | Blocked | Current audit (2026-10-02) reports 87 findings, 47 active: 32 `PII-005` low and 15 `REV-001` informational, with nothing at medium or above; prior 14 medium findings remain adjudicated | The purged licensee registry was reported anonymously downloadable through 43 pre-rewrite `refs/pull/N/head` refs; GitHub Support remediation remains unverified here | Confirm the stale pull refs are gone, then decide on licensee notification. Licence terms and the security contact remain open behind that |
+| Static build reproducibility | Complete | **Historical baseline (2026-08-13):** two pinned builds produced 494 identical files, 10,149,589 bytes, aggregate SHA-256 `d19089d9…`; see `reports/static-build-reproducibility.md` | None | Run the monthly/manual reproducibility workflow and investigate any drift |
 
 ## Immediate priorities
 
-1. Close the GitHub pull-ref exposure. The licensee registry is downloadable
-   today, without credentials, from a public repository. Open a GitHub Support
-   request to drop the stale `refs/pull/*` refs and expire the unreachable
-   objects, then decide whether the affected licensees need notifying. Nothing
-   else on this list matters as much, and no local change can fix it.
+1. Re-check and close the GitHub pull-ref exposure. The last verified state
+   (2026-08-13) was that the licensee registry was downloadable without
+   credentials from a public repository. Confirm whether the stale
+   `refs/pull/*` refs still expose the objects, then ask GitHub Support to drop
+   them if needed and decide whether the affected licensees need notifying.
+   Nothing else on this list matters as much, and no local change can fix it.
 2. Settle the licence terms and the security contact — the other two items
    between the repository and a public release decision.
 3. Establish one safe multi-state ingestion contract without regressing
@@ -106,30 +108,23 @@ lane.
 
 ## Verification notes
 
-Re-run 2026-08-13. The graph and audit figures are measured on the branch that
-carries this file, not on `39a5589` itself; upstream CI (`CI & Graph Validation`,
-`Deploy to Cloudflare Pages`) is separately green on `39a5589`.
+Re-run 2026-10-02 against base commit `c7b8b72` and the issue-queue changes in
+this worktree. `./bin/validate_graph.sh` passed: 546 content pages validated;
+taxonomy, COA, and cannabinoid thermal audits reported no findings; record
+completeness reported 24 non-blocking source-count warnings; 15 cultivar claims
+validated against 546 entities; and crosslink validation reported 546 entities,
+2,224 edges, and 1 COA record with no problems. Boris diagnostics and the HTML
+ID audit passed.
 
-`./bin/validate_graph.sh` completed cleanly. The source-only ID check validated
-445 pages without changing files. The device taxonomy, COA, cannabinoid
-thermal-property, and record-completeness audits each report 0 errors and 0
-warnings. The cultivar identity registry validated 15 claims against 445
-entities. The crosslink validator reports 445 entities, 1,614 edges and 1 COA
-record with no problems; publication derived navigation for 345 entity pages and
-19 index pages, and the HTML-ID audit found 0 duplicate IDs. The Boris graph
-diagnostics pass outright. `python3 -m unittest discover -s tests -t .` ran 368
-tests with 6 skips and no failures — 359 of those exist on `39a5589`, and this
-branch adds nine in `tests/test_audit_suppressions.py`.
+`python3 -m unittest discover -s tests -t . -v` ran 421 tests with 6 skips and
+no failures. `python3 scripts/test_ensure_boris.py -v` ran 4 tests with no
+failures. The production build generated 546 sitemap URLs, 389 descriptions,
+and 348 Cloudflare redirect rules. The large-file/history audit reported no
+findings. The public-release audit reported 87 findings (47 active: 32 low
+`PII-005` and 15 informational `REV-001`), with nothing at medium or above.
 
-Static build reproducibility was re-baselined on 2026-08-13: two pinned builds
-produced 494 identical paths, 10,149,589 bytes, and aggregate SHA-256
-`d19089d96c9fde1aa72bef97224bc8227830bdfbe362ecd36669186342a7f0c5`. The output
-shrank by two files against the 496-path 2026-08-09 baseline while the corpus
-grew by one entity; `reports/static-build-reproducibility.md` names all four
-files that appeared or disappeared and traces the three removals to PR #44's
-`CXL-03` rule against direct cultivar → compound edges. No entity page was lost.
-That report compares file *lists*, not file contents, and the Boris pin also
-moved between the two baselines, so the 16,350-byte growth is not attributed.
+The 2026-08-13 reproducibility measurement above is historical and has not been
+re-run against the current Boris pin or corpus.
 
 ## Archive integrity update
 

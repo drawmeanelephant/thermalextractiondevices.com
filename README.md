@@ -84,6 +84,17 @@ Primary build and publishing scripts:
   semantically named upload packs, the complete RAG corpus, Context, sitemap,
   and `llms.txt` artifacts.
 
+Cloudflare Pages deploys only `dist/cantilever/`. The portable `llms.txt`,
+Context, IR, and RAG artifacts under `publish/` are produced for separate
+distribution and are not uploaded by the Pages workflow.
+
+When a content file is renamed or its canonical `id` changes, regenerate the
+tracked legacy URL map from current content and Git history:
+
+```sh
+python3 scripts/update_legacy_paths.py
+```
+
 ---
 
 ## Repository Layout

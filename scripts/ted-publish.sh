@@ -84,6 +84,13 @@ python3 scripts/generate_feeds.py \
   --output "$PUBLISH_DIR/site" \
   --site-url "$SITE_URL"
 
+python3 scripts/finalize_site.py \
+  --content "$CONTENT_DIR" \
+  --theme "$THEME" \
+  --output "$PUBLISH_DIR/site" \
+  --site-url "$SITE_URL" \
+  --git-root "$ROOT"
+
 echo "==> Running release audits"
 python3 scripts/audit_public_release.py --config docs/audit-config.json --root "$ROOT" --report "$PUBLISH_DIR/public-release-report.json"
 python3 scripts/audit_sensitive_content.py --config docs/audit-config.json
